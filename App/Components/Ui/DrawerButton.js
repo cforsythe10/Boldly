@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Text, TouchableOpacity } from 'react-native'
 import styles from './Styles/DrawerButtonStyles'
-import ExamplesRegistry from '../Services/ExamplesRegistry'
+import ExamplesRegistry from '../../Services/ExamplesRegistry'
 
-// Note that this file (App/Components/DrawerButton) needs to be
+// Note that this file (App/Components/Ui/DrawerButton) needs to be
 // imported in your app somewhere, otherwise your component won't be
 // compiled and added to the examples dev screen.
 

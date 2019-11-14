@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import AlertMessage from '../../App/Components/AlertMessage'
+import AlertMessage from '../../App/Components/Ui/AlertMessage'
 import renderer from 'react-test-renderer'
 
 test('AlertMessage component renders correctly if show is true', () => {
