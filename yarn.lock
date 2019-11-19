@@ -801,7 +801,7 @@
     pirates "^4.0.0"
     source-map-support "^0.5.16"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2":
   version "7.7.2"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@babel/runtime/-/runtime-7.7.2.tgz#111a78002a5c25fc8e3361bedc9529c696b85a6a"
   integrity sha1-ERp4ACpcJfyOM2G+3JUpxpa4Wmo=
@@ -858,16 +858,6 @@
     "@emotion/stylis" "^0.7.1"
     "@emotion/utils" "^0.8.2"
 
-"@emotion/cache@^10.0.17":
-  version "10.0.19"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/cache/-/cache-10.0.19.tgz#d258d94d9c707dcadaf1558def968b86bb87ad71"
-  integrity sha1-0ljZTZxwfcra8VWN75aLhruHrXE=
-  dependencies:
-    "@emotion/sheet" "0.9.3"
-    "@emotion/stylis" "0.8.4"
-    "@emotion/utils" "0.11.2"
-    "@emotion/weak-memoize" "0.2.4"
-
 "@emotion/core@^0.13.1":
   version "0.13.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/core/-/core-0.13.1.tgz#4fa4983e18dbf089fa16584486c8033ca50013ea"
@@ -879,18 +869,6 @@
     "@emotion/sheet" "^0.8.1"
     "@emotion/utils" "^0.8.2"
 
-"@emotion/core@^10.0.7":
-  version "10.0.22"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/core/-/core-10.0.22.tgz#2ac7bcf9b99a1979ab5b0a876fbf37ab0688b177"
-  integrity sha1-Kse8+bmaGXmrWwqHb783qwaIsXc=
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    "@emotion/cache" "^10.0.17"
-    "@emotion/css" "^10.0.22"
-    "@emotion/serialize" "^0.11.12"
-    "@emotion/sheet" "0.9.3"
-    "@emotion/utils" "0.11.2"
-
 "@emotion/css@^0.9.8":
   version "0.9.8"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/css/-/css-0.9.8.tgz#43fd45c576656d4ed9cc3b8b427c66a2ed6af30a"
@@ -899,31 +877,10 @@
     "@emotion/serialize" "^0.9.1"
     "@emotion/utils" "^0.8.2"
 
-"@emotion/css@^10.0.22":
-  version "10.0.22"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/css/-/css-10.0.22.tgz#37b1abb6826759fe8ac0af0ac0034d27de6d1793"
-  integrity sha1-N7GrtoJnWf6KwK8KwANNJ95tF5M=
-  dependencies:
-    "@emotion/serialize" "^0.11.12"
-    "@emotion/utils" "0.11.2"
-    babel-plugin-emotion "^10.0.22"
-
-"@emotion/hash@0.7.3":
-  version "0.7.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/hash/-/hash-0.7.3.tgz#a166882c81c0c6040975dd30df24fae8549bd96f"
-  integrity sha1-oWaILIHAxgQJdd0w3yT66FSb2W8=
-
 "@emotion/hash@^0.6.6":
   version "0.6.6"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/hash/-/hash-0.6.6.tgz#62266c5f0eac6941fece302abad69f2ee7e25e44"
   integrity sha1-YiZsXw6saUH+zjAqutafLufiXkQ=
-
-"@emotion/is-prop-valid@0.8.5":
-  version "0.8.5"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/is-prop-valid/-/is-prop-valid-0.8.5.tgz#2dda0791f0eafa12b7a0a5b39858405cc7bde983"
-  integrity sha1-LdoHkfDq+hK3oKWzmFhAXMe96YM=
-  dependencies:
-    "@emotion/memoize" "0.7.3"
 
 "@emotion/is-prop-valid@^0.6.8":
   version "0.6.8"
@@ -931,11 +888,6 @@
   integrity sha1-aK0Cgx2kEhOiCJ0sq06KyLMMvYU=
   dependencies:
     "@emotion/memoize" "^0.6.6"
-
-"@emotion/memoize@0.7.3":
-  version "0.7.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/memoize/-/memoize-0.7.3.tgz#5b6b1c11d6a6dddf1f2fc996f74cf3b219644d78"
-  integrity sha1-W2scEdam3d8fL8mW90zzshlkTXg=
 
 "@emotion/memoize@^0.6.6":
   version "0.6.6"
@@ -950,17 +902,6 @@
     "@emotion/cache" "^0.8.8"
     "@emotion/weak-memoize" "^0.1.3"
 
-"@emotion/serialize@^0.11.12", "@emotion/serialize@^0.11.14":
-  version "0.11.14"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/serialize/-/serialize-0.11.14.tgz#56a6d8d04d837cc5b0126788b2134c51353c6488"
-  integrity sha1-VqbY0E2DfMWwEmeIshNMUTU8ZIg=
-  dependencies:
-    "@emotion/hash" "0.7.3"
-    "@emotion/memoize" "0.7.3"
-    "@emotion/unitless" "0.7.4"
-    "@emotion/utils" "0.11.2"
-    csstype "^2.5.7"
-
 "@emotion/serialize@^0.9.1":
   version "0.9.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/serialize/-/serialize-0.9.1.tgz#a494982a6920730dba6303eb018220a2b629c145"
@@ -970,11 +911,6 @@
     "@emotion/memoize" "^0.6.6"
     "@emotion/unitless" "^0.6.7"
     "@emotion/utils" "^0.8.2"
-
-"@emotion/sheet@0.9.3":
-  version "0.9.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/sheet/-/sheet-0.9.3.tgz#689f135ecf87d3c650ed0c4f5ddcbe579883564a"
-  integrity sha1-aJ8TXs+H08ZQ7QxPXdy+V5iDVko=
 
 "@emotion/sheet@^0.8.1":
   version "0.8.1"
@@ -990,16 +926,6 @@
     "@emotion/serialize" "^0.9.1"
     "@emotion/utils" "^0.8.2"
 
-"@emotion/styled-base@^10.0.23":
-  version "10.0.24"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/styled-base/-/styled-base-10.0.24.tgz#9497efd8902dfeddee89d24b0eeb26b0665bfe8b"
-  integrity sha1-lJfv2JAt/t3uidJLDusmsGZb/os=
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    "@emotion/is-prop-valid" "0.8.5"
-    "@emotion/serialize" "^0.11.14"
-    "@emotion/utils" "0.11.2"
-
 "@emotion/styled@^0.10.6":
   version "0.10.6"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/styled/-/styled-0.10.6.tgz#1f6af1d3d4bf9fdeb05a4d220046ce11ad21a7ca"
@@ -1007,48 +933,20 @@
   dependencies:
     "@emotion/styled-base" "^0.10.6"
 
-"@emotion/styled@^10.0.7":
-  version "10.0.23"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/styled/-/styled-10.0.23.tgz#2f8279bd59b99d82deade76d1046249ddfab7c1b"
-  integrity sha1-L4J5vVm5nYLeredtEEYknd+rfBs=
-  dependencies:
-    "@emotion/styled-base" "^10.0.23"
-    babel-plugin-emotion "^10.0.23"
-
-"@emotion/stylis@0.8.4":
-  version "0.8.4"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/stylis/-/stylis-0.8.4.tgz#6c51afdf1dd0d73666ba09d2eb6c25c220d6fe4c"
-  integrity sha1-bFGv3x3Q1zZmugnS62wlwiDW/kw=
-
 "@emotion/stylis@^0.7.1":
   version "0.7.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/stylis/-/stylis-0.7.1.tgz#50f63225e712d99e2b2b39c19c70fff023793ca5"
   integrity sha1-UPYyJecS2Z4rKznBnHD/8CN5PKU=
-
-"@emotion/unitless@0.7.4":
-  version "0.7.4"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/unitless/-/unitless-0.7.4.tgz#a87b4b04e5ae14a88d48ebef15015f6b7d1f5677"
-  integrity sha1-qHtLBOWuFKiNSOvvFQFfa30fVnc=
 
 "@emotion/unitless@^0.6.7":
   version "0.6.7"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/unitless/-/unitless-0.6.7.tgz#53e9f1892f725b194d5e6a1684a7b394df592397"
   integrity sha1-U+nxiS9yWxlNXmoWhKezlN9ZI5c=
 
-"@emotion/utils@0.11.2":
-  version "0.11.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/utils/-/utils-0.11.2.tgz#713056bfdffb396b0a14f1c8f18e7b4d0d200183"
-  integrity sha1-cTBWv9/7OWsKFPHI8Y57TQ0gAYM=
-
 "@emotion/utils@^0.8.2":
   version "0.8.2"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/utils/-/utils-0.8.2.tgz#576ff7fb1230185b619a75d258cbc98f0867a8dc"
   integrity sha1-V2/3+xIwGFthmnXSWMvJjwhnqNw=
-
-"@emotion/weak-memoize@0.2.4":
-  version "0.2.4"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
-  integrity sha1-Yipyvr0eP0jZIVY7S2CnYilagfw=
 
 "@emotion/weak-memoize@^0.1.3":
   version "0.1.3"
@@ -1216,17 +1114,6 @@
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha1-K1o6s/kYzKSKjHVMCBaOPwPrphs=
 
-"@reach/router@^1.2.1":
-  version "1.2.1"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@reach/router/-/router-1.2.1.tgz#34ae3541a5ac44fa7796e5506a5d7274a162be4e"
-  integrity sha1-NK41QaWsRPp3luVQal1ydKFivk4=
-  dependencies:
-    create-react-context "^0.2.1"
-    invariant "^2.2.3"
-    prop-types "^15.6.1"
-    react-lifecycles-compat "^3.0.4"
-    warning "^3.0.0"
-
 "@react-native-community/cli@^1.2.1":
   version "1.11.2"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@react-native-community/cli/-/cli-1.11.2.tgz#b14967f24a389f5a16889a747345cf0e5757a2f1"
@@ -1330,38 +1217,37 @@
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@redux-saga/types/-/types-1.1.0.tgz#0e81ce56b4883b4b2a3001ebe1ab298b84237204"
   integrity sha1-DoHOVrSIO0sqMAHr4aspi4QjcgQ=
 
-"@storybook/addon-actions@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/addon-actions/-/addon-actions-5.0.11.tgz#7ca6d6ce9400b9b97f2699935edade88905767c3"
-  integrity sha1-fKbWzpQAubl/JpmTXtreiJBXZ8M=
+"@storybook/addon-actions@^4.1.11":
+  version "4.1.18"
+  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/addon-actions/-/addon-actions-4.1.18.tgz#f8eae3fef92b9f3f4d166d066e98b47377784a7b"
+  integrity sha1-+Orj/vkrnz9NFm0Gbpi0c3d4Sns=
   dependencies:
-    "@storybook/addons" "5.0.11"
-    "@storybook/components" "5.0.11"
-    "@storybook/core-events" "5.0.11"
-    "@storybook/theming" "5.0.11"
-    core-js "^2.6.5"
-    fast-deep-equal "^2.0.1"
+    "@emotion/core" "^0.13.1"
+    "@emotion/provider" "^0.11.2"
+    "@emotion/styled" "^0.10.6"
+    "@storybook/addons" "4.1.18"
+    "@storybook/components" "4.1.18"
+    "@storybook/core-events" "4.1.18"
+    core-js "^2.5.7"
+    deep-equal "^1.0.1"
     global "^4.3.2"
     lodash "^4.17.11"
     make-error "^1.3.5"
-    polished "^2.3.3"
     prop-types "^15.6.2"
-    react "^16.8.1"
     react-inspector "^2.3.0"
     uuid "^3.3.2"
 
-"@storybook/addon-links@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/addon-links/-/addon-links-5.0.11.tgz#59a9ce8acc8d5dd7e5622ff875cafc8fe4d6e865"
-  integrity sha1-WanOisyNXdflYi/4dcr8j+TW6GU=
+"@storybook/addon-links@^4.1.11":
+  version "4.1.18"
+  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/addon-links/-/addon-links-4.1.18.tgz#ad534625baa74c3a5ed97cb430f811a78dfe0f4e"
+  integrity sha1-rVNGJbqnTDpe2Xy0MPgRp43+D04=
   dependencies:
-    "@storybook/addons" "5.0.11"
-    "@storybook/core-events" "5.0.11"
-    common-tags "^1.8.0"
-    core-js "^2.6.5"
+    "@storybook/addons" "4.1.18"
+    "@storybook/components" "4.1.18"
+    "@storybook/core-events" "4.1.18"
+    core-js "^2.5.7"
     global "^4.3.2"
     prop-types "^15.6.2"
-    qs "^6.5.2"
 
 "@storybook/addon-storyshots@^4.1.11":
   version "4.1.18"
@@ -1383,17 +1269,6 @@
   dependencies:
     "@storybook/channels" "4.1.18"
     "@storybook/components" "4.1.18"
-    global "^4.3.2"
-    util-deprecate "^1.0.2"
-
-"@storybook/addons@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/addons/-/addons-5.0.11.tgz#86de70747e0a692d9dd8ea431daa1147d8785697"
-  integrity sha1-ht5wdH4KaS2d2OpDHaoRR9h4Vpc=
-  dependencies:
-    "@storybook/channels" "5.0.11"
-    "@storybook/client-logger" "5.0.11"
-    core-js "^2.6.5"
     global "^4.3.2"
     util-deprecate "^1.0.2"
 
@@ -1419,24 +1294,10 @@
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/channels/-/channels-4.1.18.tgz#343db57866cc09ec61ee609e5149005010d3d4fa"
   integrity sha1-ND21eGbMCexh7mCeUUkAUBDT1Po=
 
-"@storybook/channels@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/channels/-/channels-5.0.11.tgz#fae33809ed14187e7962bb10b813085c6838538c"
-  integrity sha1-+uM4Ce0UGH55YrsQuBMIXGg4U4w=
-  dependencies:
-    core-js "^2.6.5"
-
 "@storybook/client-logger@4.1.18":
   version "4.1.18"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/client-logger/-/client-logger-4.1.18.tgz#b803177977eab32044f293317dfe22d829f4a32f"
   integrity sha1-uAMXeXfqsyBE8pMxff4i2Cn0oy8=
-
-"@storybook/client-logger@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/client-logger/-/client-logger-5.0.11.tgz#1211421355188f418cc421893f760a2feaf22d27"
-  integrity sha1-EhFCE1UYj0GMxCGJP3YKL+ryLSc=
-  dependencies:
-    core-js "^2.6.5"
 
 "@storybook/components@4.1.18":
   version "4.1.18"
@@ -1454,48 +1315,10 @@
     react-textarea-autosize "^7.0.4"
     render-fragment "^0.1.1"
 
-"@storybook/components@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/components/-/components-5.0.11.tgz#0cf3aad5df92bae9d896a4d6cc376d4445bbe27f"
-  integrity sha1-DPOq1d+SuunYlqTWzDdtREW74n8=
-  dependencies:
-    "@storybook/addons" "5.0.11"
-    "@storybook/client-logger" "5.0.11"
-    "@storybook/core-events" "5.0.11"
-    "@storybook/router" "5.0.11"
-    "@storybook/theming" "5.0.11"
-    core-js "^2.6.5"
-    global "^4.3.2"
-    immer "^1.12.0"
-    js-beautify "^1.8.9"
-    lodash.pick "^4.4.0"
-    lodash.throttle "^4.1.1"
-    memoizerific "^1.11.3"
-    polished "^2.3.3"
-    prop-types "^15.6.2"
-    react "^16.8.1"
-    react-dom "^16.8.1"
-    react-focus-lock "^1.17.7"
-    react-helmet-async "^0.2.0"
-    react-inspector "^2.3.0"
-    react-popper-tooltip "^2.8.0"
-    react-syntax-highlighter "^8.0.1"
-    react-textarea-autosize "^7.0.4"
-    reactjs-popup "^1.3.2"
-    recompose "^0.30.0"
-    render-fragment "^0.1.1"
-
 "@storybook/core-events@4.1.18":
   version "4.1.18"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/core-events/-/core-events-4.1.18.tgz#0c445c9ff72c83cee90efae99dbc6807daab1a12"
   integrity sha1-DERcn/csg87pDvrpnbxoB9qrGhI=
-
-"@storybook/core-events@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/core-events/-/core-events-5.0.11.tgz#c7f10df6de6eb9a92cb4fe30b77e956f11b971e6"
-  integrity sha1-x/EN9t5uuakstP4wt36VbxG5ceY=
-  dependencies:
-    core-js "^2.6.5"
 
 "@storybook/core@4.1.18":
   version "4.1.18"
@@ -1667,38 +1490,6 @@
   integrity sha1-jDEsJli57q/ORw4cOeQZPwtb+bE=
   dependencies:
     babel-runtime "^6.5.0"
-
-"@storybook/router@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/router/-/router-5.0.11.tgz#e742ec567f623877bdb45b5b26551cb9380c1bf2"
-  integrity sha1-50LsVn9iOHe9tFtbJlUcuTgMG/I=
-  dependencies:
-    "@reach/router" "^1.2.1"
-    "@storybook/theming" "5.0.11"
-    core-js "^2.6.5"
-    global "^4.3.2"
-    memoizerific "^1.11.3"
-    qs "^6.5.2"
-
-"@storybook/theming@5.0.11":
-  version "5.0.11"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/@storybook/theming/-/theming-5.0.11.tgz#46e243c36324676c36393c01695bdbd6369e79b4"
-  integrity sha1-RuJDw2MkZ2w2OTwBaVvb1jaeebQ=
-  dependencies:
-    "@emotion/core" "^10.0.7"
-    "@emotion/styled" "^10.0.7"
-    "@storybook/client-logger" "5.0.11"
-    common-tags "^1.8.0"
-    core-js "^2.6.5"
-    deep-object-diff "^1.1.0"
-    emotion-theming "^10.0.7"
-    global "^4.3.2"
-    lodash.isequal "^4.5.0"
-    lodash.mergewith "^4.6.1"
-    memoizerific "^1.11.3"
-    polished "^2.3.3"
-    prop-types "^15.6.2"
-    react-inspector "^2.3.1"
 
 "@storybook/ui@4.1.18":
   version "4.1.18"
@@ -2725,22 +2516,6 @@ babel-plugin-dynamic-import-node@^2.3.0:
   dependencies:
     object.assign "^4.1.0"
 
-babel-plugin-emotion@^10.0.22, babel-plugin-emotion@^10.0.23:
-  version "10.0.23"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/babel-plugin-emotion/-/babel-plugin-emotion-10.0.23.tgz#040d40bf61dcab6d31dd6043d10e180240b8515b"
-  integrity sha1-BA1Av2Hcq20x3WBD0Q4YAkC4UVs=
-  dependencies:
-    "@babel/helper-module-imports" "^7.0.0"
-    "@emotion/hash" "0.7.3"
-    "@emotion/memoize" "0.7.3"
-    "@emotion/serialize" "^0.11.14"
-    babel-plugin-macros "^2.0.0"
-    babel-plugin-syntax-jsx "^6.18.0"
-    convert-source-map "^1.5.0"
-    escape-string-regexp "^1.0.5"
-    find-root "^1.1.0"
-    source-map "^0.5.7"
-
 babel-plugin-ignite-ignore-reactotron@0.3.0:
   version "0.3.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/babel-plugin-ignite-ignore-reactotron/-/babel-plugin-ignite-ignore-reactotron-0.3.0.tgz#1801b207c7e3de5b3482671ca3cbb75dd4abd29e"
@@ -2763,7 +2538,7 @@ babel-plugin-jest-hoist@^24.9.0:
   dependencies:
     "@types/babel__traverse" "^7.0.6"
 
-babel-plugin-macros@^2.0.0, babel-plugin-macros@^2.4.2:
+babel-plugin-macros@^2.4.2:
   version "2.6.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/babel-plugin-macros/-/babel-plugin-macros-2.6.1.tgz#41f7ead616fc36f6a93180e89697f69f51671181"
   integrity sha1-Qffq1hb8NvapMYDolpf2n1FnEYE=
@@ -2880,7 +2655,7 @@ babel-plugin-syntax-flow@^6.18.0, babel-plugin-syntax-flow@^6.5.0:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/babel-plugin-syntax-flow/-/babel-plugin-syntax-flow-6.18.0.tgz#4c3ab20a2af26aa20cd25995c398c4eb70310c8d"
   integrity sha1-TDqyCiryaqIM0lmVw5jE63AxDI0=
 
-babel-plugin-syntax-jsx@^6.18.0, babel-plugin-syntax-jsx@^6.3.13, babel-plugin-syntax-jsx@^6.5.0, babel-plugin-syntax-jsx@^6.8.0:
+babel-plugin-syntax-jsx@^6.3.13, babel-plugin-syntax-jsx@^6.5.0, babel-plugin-syntax-jsx@^6.8.0:
   version "6.18.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
   integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
@@ -3933,26 +3708,6 @@ chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-change-emitter@^0.1.2:
-  version "0.1.6"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
-  integrity sha1-6LL+PX8at9aaMhma/5HqaTFAlRU=
-
-character-entities-legacy@^1.0.0:
-  version "1.1.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/character-entities-legacy/-/character-entities-legacy-1.1.3.tgz#3c729991d9293da0ede6dddcaf1f2ce1009ee8b4"
-  integrity sha1-PHKZkdkpPaDt5t3crx8s4QCe6LQ=
-
-character-entities@^1.0.0:
-  version "1.2.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/character-entities/-/character-entities-1.2.3.tgz#bbed4a52fe7ef98cc713c6d80d9faa26916d54e6"
-  integrity sha1-u+1KUv5++YzHE8bYDZ+qJpFtVOY=
-
-character-reference-invalid@^1.0.0:
-  version "1.1.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/character-reference-invalid/-/character-reference-invalid-1.1.3.tgz#1647f4f726638d3ea4a750cf5d1975c1c7919a85"
-  integrity sha1-Fkf09yZjjT6kp1DPXRl1wceRmoU=
-
 chardet@^0.4.0:
   version "0.4.2"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
@@ -4089,15 +3844,6 @@ cli-width@^2.0.0:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
   integrity sha1-/xnt6Kml5XkyQUewwR8PvLq+1jk=
 
-clipboard@^2.0.0:
-  version "2.0.4"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/clipboard/-/clipboard-2.0.4.tgz#836dafd66cf0fea5d71ce5d5b0bf6e958009112d"
-  integrity sha1-g22v1mzw/qXXHOXVsL9ulYAJES0=
-  dependencies:
-    good-listener "^1.2.2"
-    select "^1.1.2"
-    tiny-emitter "^2.0.0"
-
 cliui@^3.2.0:
   version "3.2.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/cliui/-/cliui-3.2.0.tgz#120601537a916d29940f934da3b48d585a39213d"
@@ -4162,11 +3908,6 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   integrity sha1-w9RaizT9cwYxoRCoolIGgrMdWn8=
   dependencies:
     delayed-stream "~1.0.0"
-
-comma-separated-tokens@^1.0.0:
-  version "1.0.7"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/comma-separated-tokens/-/comma-separated-tokens-1.0.7.tgz#419cd7fb3258b1ed838dc0953167a25e152f5b59"
-  integrity sha1-QZzX+zJYse2DjcCVMWeiXhUvW1k=
 
 commander@^2.19.0, commander@^2.20.0, commander@^2.9.0, commander@~2.20.3:
   version "2.20.3"
@@ -4243,14 +3984,6 @@ concat-stream@^2.0.0:
     readable-stream "^3.0.2"
     typedarray "^0.0.6"
 
-config-chain@^1.1.12:
-  version "1.1.12"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/config-chain/-/config-chain-1.1.12.tgz#0fde8d091200eb5e808caf25fe618c02f48e4efa"
-  integrity sha1-D96NCRIA616AjK8l/mGMAvSOTvo=
-  dependencies:
-    ini "^1.3.4"
-    proto-list "~1.2.1"
-
 connect@^3.6.5:
   version "3.7.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/connect/-/connect-3.7.0.tgz#5d49348910caa5e07a01800b030d0c35f20484f8"
@@ -4293,7 +4026,7 @@ content-type@~1.0.4:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
   integrity sha1-4TjMdeBAxyexlm/l5fjJruJW/js=
 
-convert-source-map@^1.4.0, convert-source-map@^1.5.0, convert-source-map@^1.5.1, convert-source-map@^1.7.0:
+convert-source-map@^1.4.0, convert-source-map@^1.5.1, convert-source-map@^1.7.0:
   version "1.7.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/convert-source-map/-/convert-source-map-1.7.0.tgz#17a2cb882d7f77d3490585e2ce6c524424a3a442"
   integrity sha1-F6LLiC1/d9NJBYXizmxSRCSjpEI=
@@ -4340,7 +4073,7 @@ core-js@^1.0.0:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
-core-js@^2.2.2, core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.0, core-js@^2.5.7, core-js@^2.6.5:
+core-js@^2.2.2, core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.0, core-js@^2.5.7:
   version "2.6.10"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/core-js/-/core-js-2.6.10.tgz#8a5b8391f8cc7013da703411ce5b585706300d7f"
   integrity sha1-iluDkfjMcBPacDQRzltYVwYwDX8=
@@ -4399,22 +4132,6 @@ create-react-class@^15.6.2, create-react-class@^15.6.3:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
-
-create-react-context@^0.2.1:
-  version "0.2.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
-  integrity sha1-nsFAppFKIu8EuLCbd3HeiVZ8tvM=
-  dependencies:
-    fbjs "^0.8.0"
-    gud "^1.0.0"
-
-create-react-context@^0.3.0:
-  version "0.3.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/create-react-context/-/create-react-context-0.3.0.tgz#546dede9dc422def0d3fc2fe03afe0bc0f4f7d8c"
-  integrity sha1-VG3t6dxCLe8NP8L+A6/gvA9PfYw=
-  dependencies:
-    gud "^1.0.0"
-    warning "^4.0.3"
 
 cross-spawn@6.0.5, cross-spawn@^6.0.0:
   version "6.0.5"
@@ -4520,11 +4237,6 @@ cssstyle@^1.0.0:
   dependencies:
     cssom "0.3.x"
 
-csstype@^2.5.7:
-  version "2.6.7"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/csstype/-/csstype-2.6.7.tgz#20b0024c20b6718f4eda3853a1f5a1cce7f5e4a5"
-  integrity sha1-ILACTCC2cY9O2jhTofWhzOf15KU=
-
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
@@ -4624,11 +4336,6 @@ deep-is@~0.1.3:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
 
-deep-object-diff@^1.1.0:
-  version "1.1.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/deep-object-diff/-/deep-object-diff-1.1.0.tgz#d6fabf476c2ed1751fc94d5ca693d2ed8c18bc5a"
-  integrity sha1-1vq/R2wu0XUfyU1cppPS7YwYvFo=
-
 define-properties@^1.1.2, define-properties@^1.1.3:
   version "1.1.3"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/define-properties/-/define-properties-1.1.3.tgz#cf88da6cbee26fe6db7094f61d870cbd84cee9f1"
@@ -4674,11 +4381,6 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
-
-delegate@^3.1.2:
-  version "3.2.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/delegate/-/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
-  integrity sha1-tmtxwxWFIuirV0T3INjKDCr1kWY=
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -4914,16 +4616,6 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-editorconfig@^0.15.3:
-  version "0.15.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/editorconfig/-/editorconfig-0.15.3.tgz#bef84c4e75fb8dcb0ce5cee8efd51c15999befc5"
-  integrity sha1-vvhMTnX7jcsM5c7o79UcFZmb78U=
-  dependencies:
-    commander "^2.19.0"
-    lru-cache "^4.1.5"
-    semver "^5.6.0"
-    sigmund "^1.0.1"
-
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -4961,15 +4653,6 @@ emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
-
-emotion-theming@^10.0.7:
-  version "10.0.19"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/emotion-theming/-/emotion-theming-10.0.19.tgz#66d13db74fccaefad71ba57c915b306cf2250295"
-  integrity sha1-ZtE9t0/MrvrXG6V8kVswbPIlApU=
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    "@emotion/weak-memoize" "0.2.4"
-    hoist-non-react-statics "^3.3.0"
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -5692,13 +5375,6 @@ fastparse@^1.1.1:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
   integrity sha1-kXKMWllC7O2FMSg8eUQe5BIsNak=
 
-fault@^1.0.2:
-  version "1.0.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/fault/-/fault-1.0.3.tgz#4da88cf979b6b792b4e13c7ec836767725170b7e"
-  integrity sha1-TaiM+Xm2t5K04Tx+yDZ2dyUXC34=
-  dependencies:
-    format "^0.2.2"
-
 faye-websocket@~0.11.0:
   version "0.11.3"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/faye-websocket/-/faye-websocket-0.11.3.tgz#5c0e9a8968e8912c286639fde977a8b209f2508e"
@@ -5734,7 +5410,7 @@ fbjs-scripts@^1.0.0:
     semver "^5.1.0"
     through2 "^2.0.0"
 
-fbjs@^0.8.0, fbjs@^0.8.1, fbjs@^0.8.9:
+fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -5867,7 +5543,7 @@ find-cache-dir@^2.0.0, find-cache-dir@^2.1.0:
     make-dir "^2.0.0"
     pkg-dir "^3.0.0"
 
-find-root@^1.0.0, find-root@^1.1.0:
+find-root@^1.0.0:
   version "1.1.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/find-root/-/find-root-1.1.0.tgz#abcfc8ba76f708c42a97b3d685b7e9450bfb9ce4"
   integrity sha1-q8/Iunb3CMQql7PWhbfpRQv7nOQ=
@@ -5912,11 +5588,6 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-focus-lock@^0.6.3:
-  version "0.6.6"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/focus-lock/-/focus-lock-0.6.6.tgz#98119a755a38cfdbeda0280eaa77e307eee850c7"
-  integrity sha1-mBGadVo4z9vtoCgOqnfjB+7oUMc=
-
 follow-redirects@1.5.10:
   version "1.5.10"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
@@ -5954,11 +5625,6 @@ format-json@1.0.3:
   version "1.0.3"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/format-json/-/format-json-1.0.3.tgz#268e3d3e169792ff49bb5b030f22c87ca1c2cd9f"
   integrity sha1-Jo49PhaXkv9Ju1sDDyLIfKHCzZ8=
-
-format@^0.2.2:
-  version "0.2.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
-  integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -6247,13 +5913,6 @@ globby@8.0.1:
     pify "^3.0.0"
     slash "^1.0.0"
 
-good-listener@^1.2.2:
-  version "1.2.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/good-listener/-/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
-  integrity sha1-1TswzfkxPf+33JoNR3CWqm0UXFA=
-  dependencies:
-    delegate "^3.1.2"
-
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.2.3"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
@@ -6263,11 +5922,6 @@ growly@^1.3.0:
   version "1.3.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
-
-gud@^1.0.0:
-  version "1.0.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
-  integrity sha1-pIlYGxfmpwvsqavjrlfeekmYUsA=
 
 gzip-size@5.0.0:
   version "5.0.0"
@@ -6382,30 +6036,10 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-hast-util-parse-selector@^2.0.0:
-  version "2.2.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/hast-util-parse-selector/-/hast-util-parse-selector-2.2.3.tgz#57edd449103900c7f63fd9e6f694ffd7e4634719"
-  integrity sha1-V+3USRA5AMf2P9nm9pT/1+RjRxk=
-
-hastscript@^5.0.0:
-  version "5.1.1"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/hastscript/-/hastscript-5.1.1.tgz#71726ee1e97220575d1f29a8e937387d99d48275"
-  integrity sha1-cXJu4elyIFddHymo6Tc4fZnUgnU=
-  dependencies:
-    comma-separated-tokens "^1.0.0"
-    hast-util-parse-selector "^2.0.0"
-    property-information "^5.0.0"
-    space-separated-tokens "^1.0.0"
-
 he@^1.2.0:
   version "1.2.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
-
-highlight.js@~9.12.0:
-  version "9.12.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/highlight.js/-/highlight.js-9.12.0.tgz#e6d9dbe57cbefe60751f02af336195870c90c01e"
-  integrity sha1-5tnb5Xy+/mB1HwKvM2GVhwyQwB4=
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -6652,11 +6286,6 @@ immer@1.7.2:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/immer/-/immer-1.7.2.tgz#a51e9723c50b27e132f6566facbec1c85fc69547"
   integrity sha1-pR6XI8ULJ+Ey9lZvrL7ByF/GlUc=
 
-immer@^1.12.0:
-  version "1.12.1"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/immer/-/immer-1.12.1.tgz#40c6e5b292c00560836c2993bda3a24379d466f5"
-  integrity sha1-QMblspLABWCDbCmTvaOiQ3nUZvU=
-
 immutable@^3.8.1:
   version "3.8.2"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
@@ -6812,7 +6441,7 @@ interpret@^1.0.0, interpret@^1.1.0:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha1-1QYaYiS+WOgIOYX1AU2EQ1lXYpY=
 
-invariant@^2.2.2, invariant@^2.2.3, invariant@^2.2.4:
+invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=
@@ -6847,19 +6476,6 @@ is-accessor-descriptor@^1.0.0:
   integrity sha1-FpwvbT3x+ZJhgHI2XJsOofaHhlY=
   dependencies:
     kind-of "^6.0.0"
-
-is-alphabetical@^1.0.0:
-  version "1.0.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/is-alphabetical/-/is-alphabetical-1.0.3.tgz#eb04cc47219a8895d8450ace4715abff2258a1f8"
-  integrity sha1-6wTMRyGaiJXYRQrORxWr/yJYofg=
-
-is-alphanumerical@^1.0.0:
-  version "1.0.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/is-alphanumerical/-/is-alphanumerical-1.0.3.tgz#57ae21c374277b3defe0274c640a5704b8f6657c"
-  integrity sha1-V64hw3Qnez3v4CdMZApXBLj2ZXw=
-  dependencies:
-    is-alphabetical "^1.0.0"
-    is-decimal "^1.0.0"
 
 is-arguments@^1.0.4:
   version "1.0.4"
@@ -6923,11 +6539,6 @@ is-date-object@^1.0.1:
   version "1.0.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/is-date-object/-/is-date-object-1.0.1.tgz#9aa20eb6aeebbff77fbd33e74ca01b33581d3a16"
   integrity sha1-mqIOtq7rv/d/vTPnTKAbM1gdOhY=
-
-is-decimal@^1.0.0:
-  version "1.0.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/is-decimal/-/is-decimal-1.0.3.tgz#381068759b9dc807d8c0dc0bfbae2b68e1da48b7"
-  integrity sha1-OBBodZudyAfYwNwL+64raOHaSLc=
 
 is-descriptor@^0.1.0:
   version "0.1.6"
@@ -7038,11 +6649,6 @@ is-glob@^4.0.0:
   integrity sha1-dWfb6fL14kZ7x3q4PEopSCQHpdw=
   dependencies:
     is-extglob "^2.1.1"
-
-is-hexadecimal@^1.0.0:
-  version "1.0.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/is-hexadecimal/-/is-hexadecimal-1.0.3.tgz#e8a426a69b6d31470d3a33a47bb825cda02506ee"
-  integrity sha1-6KQmppttMUcNOjOke7glzaAlBu4=
 
 is-my-ip-valid@^1.0.0:
   version "1.0.0"
@@ -7706,17 +7312,6 @@ jest@^24.9.0:
     import-local "^2.0.0"
     jest-cli "^24.9.0"
 
-js-beautify@^1.8.9:
-  version "1.10.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/js-beautify/-/js-beautify-1.10.2.tgz#88c9099cd6559402b124cfab18754936f8a7b178"
-  integrity sha1-iMkJnNZVlAKxJM+rGHVJNvinsXg=
-  dependencies:
-    config-chain "^1.1.12"
-    editorconfig "^0.15.3"
-    glob "^7.1.3"
-    mkdirp "~0.5.1"
-    nopt "~4.0.1"
-
 js-levenshtein@^1.1.3:
   version "1.1.6"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/js-levenshtein/-/js-levenshtein-1.1.6.tgz#c6cee58eb3550372df8deb85fad5ce66ce01d59d"
@@ -8048,11 +7643,6 @@ lodash.isequal@^4.5.0:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
-lodash.mergewith@^4.6.1:
-  version "4.6.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
-  integrity sha1-YXEh+JrFX1kEfHrsHM1mVMZZD1U=
-
 lodash.pad@^4.1.0:
   version "4.5.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/lodash.pad/-/lodash.pad-4.5.1.tgz#4330949a833a7c8da22cc20f6a26c4d59debba70"
@@ -8067,11 +7657,6 @@ lodash.padstart@^4.1.0:
   version "4.6.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/lodash.padstart/-/lodash.padstart-4.6.1.tgz#d2e3eebff0d9d39ad50f5cbd1b52a7bce6bb611b"
   integrity sha1-0uPuv/DZ05rVD1y9G1KnvOa7YRs=
-
-lodash.pick@^4.4.0:
-  version "4.4.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
-  integrity sha1-UvBWEP/53tQiYRRB7R/BI6AwAbM=
 
 lodash.pickby@^4.6.0:
   version "4.6.0"
@@ -8105,15 +7690,7 @@ lower-case@^1.1.1:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
   integrity sha1-miyr0bno4K6ZOkv31YdcOcQujqw=
 
-lowlight@~1.9.1:
-  version "1.9.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/lowlight/-/lowlight-1.9.2.tgz#0b9127e3cec2c3021b7795dd81005c709a42fdd1"
-  integrity sha1-C5En487CwwIbd5XdgQBccJpC/dE=
-  dependencies:
-    fault "^1.0.2"
-    highlight.js "~9.12.0"
-
-lru-cache@^4.0.1, lru-cache@^4.1.5:
+lru-cache@^4.0.1:
   version "4.1.5"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
   integrity sha1-i75Q6oW+1ZvJ4z3KuCNe6bz0Q80=
@@ -8158,11 +7735,6 @@ map-cache@^0.2.2:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
   integrity sha1-wyq9C9ZSXZsFFkW7TyasXcmKDb8=
 
-map-or-similar@^1.5.0:
-  version "1.5.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/map-or-similar/-/map-or-similar-1.5.0.tgz#6de2653174adfb5d9edc33c69d3e92a1b76faf08"
-  integrity sha1-beJlMXSt+12e3DPGnT6Sobdvrwg=
-
 map-visit@^1.0.0:
   version "1.0.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/map-visit/-/map-visit-1.0.0.tgz#ecdca8f13144e660f1b5bd41f12f3479d98dfb8f"
@@ -8195,13 +7767,6 @@ mem@^1.1.0:
   integrity sha1-Xt1StIXKHZAP5kiVUFOZoN+kX3Y=
   dependencies:
     mimic-fn "^1.0.0"
-
-memoizerific@^1.11.3:
-  version "1.11.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/memoizerific/-/memoizerific-1.11.3.tgz#7c87a4646444c32d75438570905f2dbd1b1a805a"
-  integrity sha1-fIekZGREwy11Q4VwkF8tvRsagFo=
-  dependencies:
-    map-or-similar "^1.5.0"
 
 memory-fs@^0.4.1:
   version "0.4.1"
@@ -8722,7 +8287,7 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
+mkdirp@^0.5.0, mkdirp@^0.5.1:
   version "0.5.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
@@ -8952,7 +8517,7 @@ node-version@^1.0.0:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/node-version/-/node-version-1.2.0.tgz#34fde3ffa8e1149bd323983479dda620e1b5060d"
   integrity sha1-NP3j/6jhFJvTI5g0ed2mIOG1Bg0=
 
-nopt@^4.0.1, nopt@~4.0.1:
+nopt@^4.0.1:
   version "4.0.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
   integrity sha1-0NRoWv1UFRk8jHUFYC0NF81kR00=
@@ -9361,18 +8926,6 @@ parse-asn1@^5.0.0:
     pbkdf2 "^3.0.3"
     safe-buffer "^5.1.1"
 
-parse-entities@^1.1.2:
-  version "1.2.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/parse-entities/-/parse-entities-1.2.2.tgz#c31bf0f653b6661354f8973559cb86dd1d5edf50"
-  integrity sha1-wxvw9lO2ZhNU+Jc1WcuG3R1e31A=
-  dependencies:
-    character-entities "^1.0.0"
-    character-entities-legacy "^1.0.0"
-    character-reference-invalid "^1.0.0"
-    is-alphanumerical "^1.0.0"
-    is-decimal "^1.0.0"
-    is-hexadecimal "^1.0.0"
-
 parse-glob@^3.0.4:
   version "3.0.4"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/parse-glob/-/parse-glob-3.0.4.tgz#b2c376cfb11f35513badd173ef0bb6e3a388391c"
@@ -9623,18 +9176,6 @@ pn@^1.1.0:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha1-4vTO8OIZ9GPBeas3Rj5OHs3Muvs=
 
-polished@^2.3.3:
-  version "2.3.3"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/polished/-/polished-2.3.3.tgz#bdbaba962ba8271b0e11aa287f2befd4c87be99a"
-  integrity sha1-vbq6liuoJxsOEaoofyvv1Mh76Zo=
-  dependencies:
-    "@babel/runtime" "^7.2.0"
-
-popper.js@^1.14.4:
-  version "1.16.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/popper.js/-/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"
-  integrity sha1-LhgWvLuqUY6mwuFaRm9Mucbi+7M=
-
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -9773,13 +9314,6 @@ pretty-hrtime@^1.0.3:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
   integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
 
-prismjs@^1.8.4, prismjs@~1.17.0:
-  version "1.17.1"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/prismjs/-/prismjs-1.17.1.tgz#e669fcbd4cdd873c35102881c33b14d0d68519be"
-  integrity sha1-5mn8vUzdhzw1ECiBwzsU0NaFGb4=
-  optionalDependencies:
-    clipboard "^2.0.0"
-
 private@^0.1.6, private@^0.1.8:
   version "0.1.8"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
@@ -9860,18 +9394,6 @@ prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.5.9,
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.8.1"
-
-property-information@^5.0.0:
-  version "5.3.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/property-information/-/property-information-5.3.0.tgz#bc87ac82dc4e72a31bb62040544b1bf9653da039"
-  integrity sha1-vIesgtxOcqMbtiBAVEsb+WU9oDk=
-  dependencies:
-    xtend "^4.0.1"
-
-proto-list@~1.2.1:
-  version "1.2.4"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/proto-list/-/proto-list-1.2.4.tgz#212d5bfe1318306a420f6402b8e26ff39647a849"
-  integrity sha1-IS1b/hMYMGpCD2QCuOJv85ZHqEk=
 
 proxy-addr@~2.0.5:
   version "2.0.5"
@@ -10088,13 +9610,6 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-clientside-effect@^1.2.0:
-  version "1.2.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-clientside-effect/-/react-clientside-effect-1.2.2.tgz#6212fb0e07b204e714581dd51992603d1accc837"
-  integrity sha1-YhL7DgeyBOcUWB3VGZJgPRrMyDc=
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-
 react-clone-referenced-element@^1.0.1:
   version "1.1.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-clone-referenced-element/-/react-clone-referenced-element-1.1.0.tgz#9cdda7f2aeb54fea791f3ab8c6ab96c7a77d0158"
@@ -10153,7 +9668,7 @@ react-dom@16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-dom@^16.7.0, react-dom@^16.8.1:
+react-dom@^16.7.0:
   version "16.11.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-dom/-/react-dom-16.11.0.tgz#7e7c4a5a85a569d565c2462f5d345da2dd849af5"
   integrity sha1-fnxKWoWladVlwkYvXTRdot2EmvU=
@@ -10168,21 +9683,6 @@ react-error-overlay@^5.1.0:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
   integrity sha1-DNc0B8XRQfljiuHgxj57K/fpkp0=
 
-react-fast-compare@^2.0.2:
-  version "2.0.4"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
-  integrity sha1-6EtNRVsP7BE+BALDKTUnFRlvgfk=
-
-react-focus-lock@^1.17.7:
-  version "1.19.1"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-focus-lock/-/react-focus-lock-1.19.1.tgz#2f3429793edaefe2d077121f973ce5a3c7a0651a"
-  integrity sha1-LzQpeT7a7+LQdxIflzzlo8egZRo=
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    focus-lock "^0.6.3"
-    prop-types "^15.6.2"
-    react-clientside-effect "^1.2.0"
-
 react-fuzzy@^0.5.2:
   version "0.5.2"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-fuzzy/-/react-fuzzy-0.5.2.tgz#fc13bf6f0b785e5fefe908724efebec4935eaefe"
@@ -10193,17 +9693,7 @@ react-fuzzy@^0.5.2:
     fuse.js "^3.0.1"
     prop-types "^15.5.9"
 
-react-helmet-async@^0.2.0:
-  version "0.2.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-helmet-async/-/react-helmet-async-0.2.0.tgz#d20d8725c1dcdcc95d54e281a1040af47c3abffa"
-  integrity sha1-0g2HJcHc3MldVOKBoQQK9Hw6v/o=
-  dependencies:
-    invariant "^2.2.4"
-    prop-types "^15.6.1"
-    react-fast-compare "^2.0.2"
-    shallowequal "^1.0.2"
-
-react-inspector@^2.3.0, react-inspector@^2.3.1:
+react-inspector@^2.3.0:
   version "2.3.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-inspector/-/react-inspector-2.3.1.tgz#f0eb7f520669b545b441af9d38ec6d706e5f649c"
   integrity sha1-8Ot/UgZptUW0Qa+dOOxtcG5fZJw=
@@ -10217,7 +9707,7 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.2, react-is@^16.8.3, react-is
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-is/-/react-is-16.11.0.tgz#b85dfecd48ad1ce469ff558a882ca8e8313928fa"
   integrity sha1-uF3+zUitHORp/1WKiCyo6DE5KPo=
 
-react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
+react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
@@ -10396,26 +9886,6 @@ react-navigation@3.11.0:
     react-navigation-stack "~1.4.0"
     react-navigation-tabs "~1.1.4"
 
-react-popper-tooltip@^2.8.0:
-  version "2.10.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-popper-tooltip/-/react-popper-tooltip-2.10.0.tgz#4d8383644d1002a50bd2bf74b2d1214d84ffc77c"
-  integrity sha1-TYODZE0QAqUL0r90stEhTYT/x3w=
-  dependencies:
-    "@babel/runtime" "^7.6.3"
-    react-popper "^1.3.4"
-
-react-popper@^1.3.4:
-  version "1.3.6"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-popper/-/react-popper-1.3.6.tgz#32122f83af8fda01bdd4f86625ddacaf64fdd06d"
-  integrity sha1-MhIvg6+P2gG91PhmJd2sr2T90G0=
-  dependencies:
-    "@babel/runtime" "^7.1.2"
-    create-react-context "^0.3.0"
-    popper.js "^1.14.4"
-    prop-types "^15.6.1"
-    typed-styles "^0.0.7"
-    warning "^4.0.2"
-
 react-proxy@^1.1.7:
   version "1.1.8"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-proxy/-/react-proxy-1.1.8.tgz#9dbfd9d927528c3aa9f444e4558c37830ab8c26a"
@@ -10456,17 +9926,6 @@ react-style-proptype@^3.0.0:
   integrity sha1-2OmY5iznnsNbCHJSuQ8Z8cM5aKA=
   dependencies:
     prop-types "^15.5.4"
-
-react-syntax-highlighter@^8.0.1:
-  version "8.1.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react-syntax-highlighter/-/react-syntax-highlighter-8.1.0.tgz#59103ff17a828a27ed7c8f035ae2558f09b6b78c"
-  integrity sha1-WRA/8XqCiiftfI8DWuJVjwm2t4w=
-  dependencies:
-    babel-runtime "^6.18.0"
-    highlight.js "~9.12.0"
-    lowlight "~1.9.1"
-    prismjs "^1.8.4"
-    refractor "^2.4.1"
 
 react-test-renderer@16.8.3:
   version "16.8.3"
@@ -10537,7 +9996,7 @@ react@16.8.3:
     prop-types "^15.6.2"
     scheduler "^0.13.3"
 
-react@^16.7.0, react@^16.8.1:
+react@^16.7.0:
   version "16.11.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/react/-/react-16.11.0.tgz#d294545fe62299ccee83363599bf904e4a07fdbb"
   integrity sha1-0pRUX+YimczugzY1mb+QTkoH/bs=
@@ -10545,11 +10004,6 @@ react@^16.7.0, react@^16.8.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-
-reactjs-popup@^1.3.2:
-  version "1.5.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/reactjs-popup/-/reactjs-popup-1.5.0.tgz#09ef15daf9bf932e9adbf595f3976851c24913cf"
-  integrity sha1-Ce8V2vm/ky6a2/WV85doUcJJE88=
 
 reactotron-core-client@^2.1.4, reactotron-core-client@^2.2.1, reactotron-core-client@^2.3.0:
   version "2.8.8"
@@ -10674,18 +10128,6 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
-recompose@^0.30.0:
-  version "0.30.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/recompose/-/recompose-0.30.0.tgz#82773641b3927e8c7d24a0d87d65aeeba18aabd0"
-  integrity sha1-gnc2QbOSfox9JKDYfWWu66GKq9A=
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    change-emitter "^0.1.2"
-    fbjs "^0.8.1"
-    hoist-non-react-statics "^2.3.1"
-    react-lifecycles-compat "^3.0.2"
-    symbol-observable "^1.0.4"
-
 recursive-readdir@2.2.2:
   version "2.2.2"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
@@ -10742,15 +10184,6 @@ reflect.ownkeys@^0.2.0:
   version "0.2.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/reflect.ownkeys/-/reflect.ownkeys-0.2.0.tgz#749aceec7f3fdf8b63f927a04809e90c5c0b3460"
   integrity sha1-dJrO7H8/34tj+SegSAnpDFwLNGA=
-
-refractor@^2.4.1:
-  version "2.10.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/refractor/-/refractor-2.10.0.tgz#4cc7efc0028a87924a9b31d82d129dec831a287b"
-  integrity sha1-TMfvwAKKh5JKmzHYLRKd7IMaKHs=
-  dependencies:
-    hastscript "^5.0.0"
-    parse-entities "^1.1.2"
-    prismjs "~1.17.0"
 
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
@@ -11246,11 +10679,6 @@ seamless-immutable@^7.1.4:
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/seamless-immutable/-/seamless-immutable-7.1.4.tgz#6e9536def083ddc4dea0207d722e0e80d0f372f8"
   integrity sha1-bpU23vCD3cTeoCB9ci4OgNDzcvg=
 
-select@^1.1.2:
-  version "1.1.2"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
-  integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
-
 "semver@2 || 3 || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0, semver@^5.7.0:
   version "5.7.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
@@ -11349,7 +10777,7 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shallowequal@^1.0.2, shallowequal@^1.1.0:
+shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha1-GI1SHelbkIdAT9TctosT3wrk5/g=
@@ -11403,11 +10831,6 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha1-1rkYHBpI05cyTISHHvvPxz/AZUs=
-
-sigmund@^1.0.1:
-  version "1.0.1"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/sigmund/-/sigmund-1.0.1.tgz#3ff21f198cad2175f9f3b781853fd94d0d19b590"
-  integrity sha1-P/IfGYytIXX587eBhT/ZTQ0ZtZA=
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
@@ -11561,11 +10984,6 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   version "0.6.1"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha1-dHIq8y6WFOnCh6jQu95IteLxomM=
-
-space-separated-tokens@^1.0.0:
-  version "1.1.4"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/space-separated-tokens/-/space-separated-tokens-1.1.4.tgz#27910835ae00d0adfcdbd0ad7e611fb9544351fa"
-  integrity sha1-J5EINa4A0K3829CtfmEfuVRDUfo=
 
 spawn-promise@^0.1.8:
   version "0.1.8"
@@ -11916,7 +11334,7 @@ svg-url-loader@^2.3.2:
     file-loader "4.0.0"
     loader-utils "1.2.3"
 
-symbol-observable@^1.0.3, symbol-observable@^1.0.4, symbol-observable@^1.2.0:
+symbol-observable@^1.0.3, symbol-observable@^1.2.0:
   version "1.2.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha1-wiaIrtTqs83C3+rLtWFmBWCgCAQ=
@@ -12047,11 +11465,6 @@ timers-browserify@^2.0.4:
   integrity sha1-gAsfPu4nLlvFPuRloE0OgEwxIR8=
   dependencies:
     setimmediate "^1.0.4"
-
-tiny-emitter@^2.0.0:
-  version "2.1.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
-  integrity sha1-HRpW7fxRxD6GPLtTgqcjMONVVCM=
 
 tmp@^0.0.33:
   version "0.0.33"
@@ -12189,11 +11602,6 @@ type@^2.0.0:
   version "2.0.0"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/type/-/type-2.0.0.tgz#5f16ff6ef2eb44f260494dae271033b29c09a9c3"
   integrity sha1-Xxb/bvLrRPJgSU2uJxAzspwJqcM=
-
-typed-styles@^0.0.7:
-  version "0.0.7"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/typed-styles/-/typed-styles-0.0.7.tgz#93392a008794c4595119ff62dde6809dbc40a3d9"
-  integrity sha1-kzkqAIeUxFlRGf9i3eaAnbxAo9k=
 
 typedarray@^0.0.6:
   version "0.0.6"
@@ -12477,14 +11885,7 @@ walker@^1.0.7, walker@~1.0.5:
   dependencies:
     makeerror "1.0.x"
 
-warning@^3.0.0:
-  version "3.0.0"
-  resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/warning/-/warning-3.0.0.tgz#32e5377cb572de4ab04753bdf8821c01ed605b7c"
-  integrity sha1-MuU3fLVy3kqwR1O9+IIcAe1gW3w=
-  dependencies:
-    loose-envify "^1.0.0"
-
-warning@^4.0.2, warning@^4.0.3:
+warning@^4.0.3:
   version "4.0.3"
   resolved "https://artifactory.nuix-philly.com:443/artifactory/api/npm/nuix-npm-virtual/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
   integrity sha1-Fungd+uKhtavfWSqHgX9hbRnjKM=
