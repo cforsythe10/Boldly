@@ -1,7 +1,7 @@
 const type = {
-  body: 'AvenirNext-Regular-08',
+  body: 'AvenirNext-Regular',
   header: 'f37ginger-regular-webfont',
-  link: 'AvenirNext-Medium-06'
+  link: 'AvenirNext-Medium'
 }
 
 const size = {
