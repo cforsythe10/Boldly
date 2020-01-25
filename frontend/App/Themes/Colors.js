@@ -34,6 +34,10 @@ const colors = {
   cerulean65 : '#71BBD6',
   cerulean35 : '#B3DBEA',
   cerulean10 : '#E9F4F8',
+  
+  fog : '#F7F7F7',
+  white : '#FFFFFF',
+  black : '#000000'
 }
 
 export default colors
