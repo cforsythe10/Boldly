@@ -1,55 +1,67 @@
 const type = {
-  base: 'Avenir-Book',
-  bold: 'Avenir-Black',
-  emphasis: 'HelveticaNeue-Italic'
+  body: 'AvenirNext-Regular-08',
+  header: 'f37ginger-regular-webfont',
+  link: 'AvenirNext-Medium-06'
 }
 
 const size = {
-  h1: 38,
-  h2: 34,
-  h3: 30,
-  h4: 26,
-  h5: 20,
-  h6: 19,
-  input: 18,
-  regular: 17,
-  medium: 14,
-  small: 12,
-  tiny: 8.5
+  h1: 32,
+  h2: 28,
+  h3: 24,
+  h4: 18,
+  h5: 16,
+  h6: 14,
+  regular: 16
 }
 
 const style = {
   h1: {
-    fontFamily: type.base,
+    fontFamily: type.header,
     fontSize: size.h1
   },
-  h2: {
-    fontWeight: 'bold',
+  sh1: {
+    fontFamily: type.body,
     fontSize: size.h2
   },
-  h3: {
-    fontFamily: type.emphasis,
+  h2: {
+    fontFamily: type.header,
+    fontSize: size.h2
+  },
+  sh2: {
+    fontFamily: type.body,
     fontSize: size.h3
   },
+  h3: {
+    fontFamily: type.header,
+    fontSize: size.h3
+  },
+  sh3: {
+    fontFamily: type.body,
+    fontSize: size.h5
+  },
   h4: {
-    fontFamily: type.base,
+    fontFamily: type.header,
     fontSize: size.h4
   },
   h5: {
-    fontFamily: type.base,
+    fontFamily: type.header,
     fontSize: size.h5
   },
   h6: {
-    fontFamily: type.emphasis,
+    fontFamily: type.header,
     fontSize: size.h6
   },
-  normal: {
-    fontFamily: type.base,
+  body: {
+    fontFamily: type.body,
     fontSize: size.regular
   },
-  description: {
-    fontFamily: type.base,
-    fontSize: size.medium
+  link: {
+    fontFamily: type.link,
+    fontSize: size.regular
+  },
+  captions: {
+    fontFamily: type.body,
+    fontSize: size.h6
   }
 }
 
