@@ -40,9 +40,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'boldly.apps.core',
-    'boldly.apps.authentication',
-    'boldly.apps.algo',
+    'boldly.api.core',
 ]
 
 MIDDLEWARE = [
