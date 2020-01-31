@@ -19,7 +19,18 @@ from rest_framework.routers import DefaultRouter
 from .api.core import views as coreViews
 
 router = DefaultRouter()
-router.register('users', coreViews.UserViewSet)
+router.register('survey', coreViews.SurveyViewSet)
+router.register('messages', coreViews.MessagesViewSet)
+router.register('insights', coreViews.InsightsandstatsViewSet)
+router.register('creators', coreViews.CreatorsViewSet)
+router.register('contracts', coreViews.ContractsViewSet)
+router.register('campaigninfo', coreViews.CampaignInfoViewSet)
+router.register('csettings', coreViews.CSettingsViewSet)
+router.register('brands', coreViews.BrandsViewSet)
+router.register('academy', coreViews.BoldAcademyViewSet)
+router.register('bsettings', coreViews.BSettingsViewSet)
+
+
 
 urlpatterns = [
     re_path('^', include(router.urls)),

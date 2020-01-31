@@ -3,7 +3,7 @@
 #   * Rearrange models' order
 #   * Make sure each model has one field with primary_key=True
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+#   * Remove `managed = True` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
@@ -13,7 +13,7 @@ class BSettings(models.Model):
     nightmode = models.BooleanField(db_column='nightMode')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'b_settings'
 
 
@@ -24,7 +24,7 @@ class BoldAcademy(models.Model):
     cuuid = models.ForeignKey('Creators', models.DO_NOTHING, db_column='cUUID')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'bold_academy'
 
 
@@ -37,7 +37,7 @@ class Brands(models.Model):
     email = models.CharField(db_column='Email', max_length=1)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'brands'
 
 
@@ -46,7 +46,7 @@ class CSettings(models.Model):
     cuuid = models.ForeignKey('Creators', models.DO_NOTHING, db_column='cUUID')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'c_settings'
 
 
@@ -68,7 +68,7 @@ class CampaignInfo(models.Model):
     desired_num_posts_per_week = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'campaign_info'
 
 
@@ -78,7 +78,7 @@ class Contracts(models.Model):
     documentname = models.CharField(db_column='documentName', max_length=1)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'contracts'
 
 
@@ -94,7 +94,7 @@ class Creators(models.Model):
     contractid = models.UUIDField(db_column='contractID')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'creators'
 
 
@@ -103,7 +103,7 @@ class Insightsandstats(models.Model):
     buuid = models.ForeignKey(Brands, models.DO_NOTHING, db_column='bUUID', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'insightsandstats'
 
 
@@ -115,7 +115,7 @@ class Messages(models.Model):
     buuid = models.ForeignKey(Brands, models.DO_NOTHING, db_column='bUUID')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'messages'
 
 
@@ -128,5 +128,5 @@ class Survey(models.Model):
     buuid = models.ForeignKey(Brands, models.DO_NOTHING, db_column='bUUID')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'survey'
