@@ -1,6 +1,7 @@
 import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
+import colors from './Colors'
 
 // This file is for a reusable grouping of Theme items.
 // Similar to an XML fragment layout in Android
@@ -65,6 +66,19 @@ const ApplicationStyles = {
       ...Fonts.style.h2,
       fontSize: 14,
       color: Colors.text
+    },
+    cerulean: {
+      ...Fonts.style.h1,
+      color: Colors.violet
+    },
+    sh2: {
+      fontFamily: Fonts.type.body,
+      fontSize: Fonts.size.h3,
+      color: Colors.charcoal
+    },
+    body: {
+      ...Fonts.style.body,
+      color: colors.charcoal
     }
   },
   darkLabelContainer: {
@@ -95,7 +109,9 @@ const ApplicationStyles = {
     borderColor: Colors.ember,
     alignItems: 'center',
     textAlign: 'center'
-  }
+  },
+  
+  
 }
 
 export default ApplicationStyles
