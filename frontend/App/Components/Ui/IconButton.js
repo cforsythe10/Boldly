@@ -55,9 +55,7 @@ export default class Header extends Component {
 
         return (
             
-            <View
-                    style={styles.iconButton}
-            >
+         
                 <TouchableHighlight onPress={ this.onClick } style={this.state.greenButtonState ? styles.greenIconButton : styles.iconButton} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
                     
                         <View
@@ -69,7 +67,6 @@ export default class Header extends Component {
                     
                 </TouchableHighlight>
 
-            </View>
         )
     }
 
