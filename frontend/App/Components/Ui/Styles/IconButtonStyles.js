@@ -1,8 +1,9 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import { Colors, Metrics, Fonts } from '../../../Themes'
 
 
 export default StyleSheet.create({
+  
   iconButton: {
     justifyContent: 'center',
     marginVertical: Metrics.section,
@@ -26,6 +27,31 @@ export default StyleSheet.create({
   buttonText: {
       fontSize: Fonts.size.h6,
       ...Fonts.style.h6,
-      color: Colors.charcoal
-  }
+      color: Colors.charcoal,
+      paddingTop: 16
+  },
+
+  buttonTextWhite: {
+    fontSize: Fonts.size.h6,
+    ...Fonts.style.h6,
+    color: Colors.white,
+    paddingTop: 16
+  },
+
+  greenIconButton: {
+    justifyContent: 'center',
+    marginVertical: Metrics.section,
+    width: 125,
+    height: 150,
+    paddingVertical: 15.5,
+    shadowColor: '#C1C1C1',
+    shadowOffset: { width: 4, height: 3},
+    shadowRadius: 4,
+    borderColor: Colors.white,
+    borderWidth: 2,
+    borderRadius: 22.5,
+    elevation: 4,
+    backgroundColor: Colors.pear
+  },
+
 })
