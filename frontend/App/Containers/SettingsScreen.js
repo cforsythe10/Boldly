@@ -3,15 +3,15 @@ import { ScrollView, Text, KeyboardAvoidingView } from 'react-native';
 
 import MainHeader from '../Navigation/MainHeader';
 
-import styles from './Styles/CampaignScreenStyle'
+import styles from './Styles/ProfileScreenStyle';
 
-export default class CampaignScreen extends Component {
+export default class SettingsScreen extends Component {
   render () {
     return (
       <ScrollView style={styles.container}>
         <KeyboardAvoidingView behavior='position'>
         	<MainHeader navigation = { this.props.navigation } />
-            <Text>CampaignScreen</Text>
+            <Text>ProfileScreen</Text>
         </KeyboardAvoidingView>
       </ScrollView>
     )
