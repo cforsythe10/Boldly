@@ -71,6 +71,10 @@ const ApplicationStyles = {
       ...Fonts.style.h1,
       color: Colors.violet
     },
+    surveyQuestion: {
+      ...Fonts.style.h1,
+      color: Colors.white
+    },
     sh2: {
       fontFamily: Fonts.type.body,
       fontSize: Fonts.size.h3,
@@ -79,6 +83,10 @@ const ApplicationStyles = {
     body: {
       ...Fonts.style.body,
       color: colors.charcoal
+    },
+    fullScreen: {
+      height: '100%',
+      width: '100%'
     }
   },
   darkLabelContainer: {
