@@ -1,32 +1,19 @@
-import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
-import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import React, { Component } from 'react';
+import { ScrollView, Text, KeyboardAvoidingView } from 'react-native';
 
-// Styles
-import styles from './Styles/MessagesScreenStyle'
+import MainHeader from '../Navigation/MainHeader';
 
-class MessagesScreen extends Component {
+import styles from './Styles/MessagesScreenStyle';
+
+export default class MessagesScreen extends Component {
   render () {
     return (
       <ScrollView style={styles.container}>
         <KeyboardAvoidingView behavior='position'>
-          <Text>MessagesScreen</Text>
+        	<MainHeader navigation = { this.props.navigation } />
+            <Text>MessagesScreen</Text>
         </KeyboardAvoidingView>
       </ScrollView>
     )
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MessagesScreen)
