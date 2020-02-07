@@ -12,14 +12,14 @@ export default class MainHeader extends Component {
 	}
 
 	openProfile() {
-		this.props.navigation.navigate('profile');
+		this.props.navigation.navigate('Profile');
 	}
 
 	render() {
 		return (
 			<View style = { styles.container } >
-				<RoundedButton text="Nav Menu" onPress = {() => this.handleClick()} />
-				<Button title="Profiles" onPress = {() => this.openProfile()} />
+				{/* <RoundedButton text="Nav Menu" onPress = {() => this.handleClick()} /> */}
+				{/* <Button title="Profiles" onPress = {() => this.openProfile()} /> */}
 			</ View>
 		);
 	}
