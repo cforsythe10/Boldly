@@ -1,32 +1,24 @@
-import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
-import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import React, { Component } from 'react';
+import { ScrollView, Text, KeyboardAvoidingView, Button } from 'react-native';
 
-// Styles
+import MainHeader from '../Navigation/MainHeader';
+
 import styles from './Styles/CampaignScreenStyle'
 
-class CampaignScreen extends Component {
-  render () {
+export default function CampaignScreen({ navigation }) {
     return (
       <ScrollView style={styles.container}>
         <KeyboardAvoidingView behavior='position'>
-          <Text>CampaignScreen</Text>
+          <MainHeader  />
+            <Text>Campaign  Screen</Text>
+            <Button title='View Profile' onPress={() => navigation.navigate('Profile')}>
+
+            </Button>
+            <Button title='Hamburger' onPress={() => navigation.openDrawer()}>
+            
+            </Button>
         </KeyboardAvoidingView>
       </ScrollView>
     )
-  }
+  
 }
-
-const mapStateToProps = (state) => {
-  return {
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CampaignScreen)

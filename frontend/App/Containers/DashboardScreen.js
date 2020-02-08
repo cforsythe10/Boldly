@@ -1,32 +1,24 @@
-import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
-import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import React, { Component } from 'react';
+import { ScrollView, Text, Button, KeyboardAvoidingView } from 'react-native';
 
-// Styles
-import styles from './Styles/DashboardScreenStyle'
+import MainHeader from '../Navigation/MainHeader';
 
-class DashboardScreen extends Component {
-  render () {
-    return (
-      <ScrollView style={styles.container}>
-        <KeyboardAvoidingView behavior='position'>
-          <Text>DashboardScreen</Text>
-        </KeyboardAvoidingView>
-      </ScrollView>
-    )
-  }
+import styles from './Styles/DashboardScreenStyle';
+
+export default function DashboardScreen({ navigation }) {
+  return (
+    <ScrollView style={styles.container}>
+      <KeyboardAvoidingView behavior='position'>
+        <MainHeader  />
+          <Text>Dashboard  Screen</Text>
+          <Button title='View Profile' onPress={() => navigation.navigate('Profile')}>
+
+          </Button>
+          <Button title='Hamburger' onPress={() => navigation.openDrawer()}>
+          
+          </Button>
+      </KeyboardAvoidingView>
+    </ScrollView>
+  )
+
 }
-
-const mapStateToProps = (state) => {
-  return {
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen)

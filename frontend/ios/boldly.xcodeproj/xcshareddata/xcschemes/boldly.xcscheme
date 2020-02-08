@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "boldly.app"
-               BlueprintName = "boldly"
-               ReferencedContainer = "container:boldly.xcodeproj">
+               BuildableName = "Boldly.app"
+               BlueprintName = "Boldly"
+               ReferencedContainer = "container:Boldly.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "boldlyTests.xctest"
-               BlueprintName = "boldlyTests"
-               ReferencedContainer = "container:boldly.xcodeproj">
+               BuildableName = "BoldlyTests.xctest"
+               BlueprintName = "BoldlyTests"
+               ReferencedContainer = "container:Boldly.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "boldlyTests.xctest"
-               BlueprintName = "boldlyTests"
-               ReferencedContainer = "container:boldly.xcodeproj">
+               BuildableName = "BoldlyTests.xctest"
+               BlueprintName = "BoldlyTests"
+               ReferencedContainer = "container:Boldly.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "boldly.app"
-            BlueprintName = "boldly"
-            ReferencedContainer = "container:boldly.xcodeproj">
+            BuildableName = "Boldly.app"
+            BlueprintName = "Boldly"
+            ReferencedContainer = "container:Boldly.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "boldly.app"
-            BlueprintName = "boldly"
-            ReferencedContainer = "container:boldly.xcodeproj">
+            BuildableName = "Boldly.app"
+            BlueprintName = "Boldly"
+            ReferencedContainer = "container:Boldly.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "boldly.app"
-            BlueprintName = "boldly"
-            ReferencedContainer = "container:boldly.xcodeproj">
+            BuildableName = "Boldly.app"
+            BlueprintName = "Boldly"
+            ReferencedContainer = "container:Boldly.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
