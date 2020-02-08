@@ -189,6 +189,11 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    def appcompat_version = "1.1.0"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+// For loading and tinting drawables on older versions of the platform
+    implementation "androidx.appcompat:appcompat-resources:$appcompat_version"
 }
 
 // Run this once to be able to run the application with BUCK
