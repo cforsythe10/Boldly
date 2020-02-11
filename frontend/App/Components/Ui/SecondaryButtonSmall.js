@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableOpacity, Text } from 'react-native'
-import styles from './Styles/Button250FogStyles'
+import styles from './Styles/SecondaryButtonSmallStyles'
 import ExamplesRegistry from '../../Services/ExamplesRegistry'
 
 // Note that this file (App/Components/Ui/RoundedButton) needs to be
@@ -9,7 +9,7 @@ import ExamplesRegistry from '../../Services/ExamplesRegistry'
 // compiled and added to the examples dev screen.
 
 
-export default class Button250Fog extends Component {
+export default class SecondaryButtonSmall extends Component {
   static propTypes = {
     onPress: PropTypes.func,
     text: PropTypes.string,

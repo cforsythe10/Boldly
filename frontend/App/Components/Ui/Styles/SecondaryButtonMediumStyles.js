@@ -9,13 +9,13 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: Colors.charcoal,
     backgroundColor: Colors.fog,
-    marginVertical: 5,
+    justifyContent: 'center'
   },
   buttonText: {
     color: Colors.charcoal,
     textAlign: 'center',
-    margin: 5,
-    fontSize: Fonts.size.small,
-    marginVertical: 5
+    fontWeight: 'normal',
+    fontSize: 14,
+    marginVertical: Metrics.baseMargin
   }
 })
