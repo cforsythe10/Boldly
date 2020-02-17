@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, TextInput } from 'react-native';
 import styles from './Styles/TextFieldWideStyles';
 
-export default class TextFieldTall extends Component {
+export default class TextFieldWide extends Component {
   constructor(props){
     super(props);
     this.state = {
