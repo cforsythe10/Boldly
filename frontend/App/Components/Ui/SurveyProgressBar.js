@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableOpacity, Text } from 'react-native'
-import styles from './Styles/PrimaryButtonLargeStyles'
+import styles from './Styles/PrimaryButtonSmallStyles'
 import ExamplesRegistry from '../../Services/ExamplesRegistry'
 
-export default class PrimaryButtonLarge extends Component {
+export default class PrimaryButtonSmall extends Component {
   static propTypes = {
     text: PropTypes.string,
     onPress: PropTypes.func,
@@ -15,7 +15,7 @@ export default class PrimaryButtonLarge extends Component {
     return (
       {...this.props},
       <TouchableOpacity style={[styles.button, this.props.styles]} onPress={this.props.onPress}>
-        <Text style={styles.buttonText}>{this.props.text}</Text>
+        <Text style={styles.buttonText}>'PLACEHOLDER TEXT'</Text>
       </TouchableOpacity>
     )
   }
