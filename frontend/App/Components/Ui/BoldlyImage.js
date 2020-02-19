@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles from './Styles/BoldlyImageStyles';
 
 const BoldlyImage = ({image, size = 'medium'}) => (
-    <LinearGradient colors={['#000000', '#FFFFFF']} style={styles.linearGradient}>
+    <LinearGradient colors={['rgba(0, 0, 0, 0.8)', 'rgba(255, 255, 255, 1)']} style={styles.linearGradient}>
         <Image source={Images[image]} style={styles[size]} />
     </LinearGradient>
 );
