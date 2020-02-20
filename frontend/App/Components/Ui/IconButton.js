@@ -9,7 +9,7 @@ import BrickAndMortarImage from '../../Images/Icons/brickAndMortar.svg'
 
 import { Colors } from '../../Themes/';
 
-export default class Header extends Component {
+export default class IconButton extends Component {
 
     
 
