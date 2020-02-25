@@ -5,7 +5,7 @@ import ProgressBar from 'react-native-progress/Bar';
 import { Colors } from '../../Themes/'
 
 export default class SurveyProgressBar extends Component {
-  props = {
+  static propTypes = {
     progress: PropTypes.number // this must be a decimal value between 0 and 1
   }
 
