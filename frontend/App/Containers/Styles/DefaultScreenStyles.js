@@ -5,10 +5,10 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   bigText: {
   	...Fonts.style.h2,
-  	//color: Colors.fog
+  	color: Colors.fog
   },
   smallText: {
   	...Fonts.style.h5,
-  	//color: Colors.fog
+  	color: Colors.fog
   }
 })

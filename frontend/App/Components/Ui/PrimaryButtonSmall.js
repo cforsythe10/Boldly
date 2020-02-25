@@ -19,7 +19,7 @@ export default class PrimaryButtonSmall extends Component {
     return (
       {...this.props},
       <TouchableOpacity style={[styles.button, this.props.styles]} onPress={this.props.onPress}>
-        <Text style={styles.buttonText}>'PLACEHOLDER TEXT'</Text>
+        <Text style={styles.buttonText}>{this.props.text}</Text>
       </TouchableOpacity>
     )
   }

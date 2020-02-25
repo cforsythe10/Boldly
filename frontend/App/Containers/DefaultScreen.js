@@ -8,7 +8,7 @@ import styles from './Styles/DefaultScreenStyles';
 
 export default function DefaultScreen({ navigation }) {
   return (
-    <View style={ styles.container }>
+    <View style={{ height: '100%', backgroundColor: '#000000' }}>
       <Text style={ styles.bigText }>Live your values.</ Text>
       <Text style={ styles.bigText }>Grow together.</ Text>
       <PrimaryButtonLarge text='Get started' onPress = {() => navigation.navigate('Survey')} />
