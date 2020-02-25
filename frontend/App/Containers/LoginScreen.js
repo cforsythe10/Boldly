@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native';
+import { View, Text } from 'react-native';
 
-import MainHeader from '../Navigation/MainHeader';
+import TextFieldDarkBG from '../Components/Ui/TextFieldDarkBG';
+import PrimaryButtonLarge from '../Components/Ui/PrimaryButtonLarge';
 
-import styles from './Styles/LoginScreenStyle';
+import Preview from '../Images/Icons/preview.svg'
 
-class LoginScreen extends Component {
-  render () {
+import styles from './Styles/LoginScreenStyles';
+import { Colors } from '../Themes';
+
+export default class DefaultScreen extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      showPass: false
+    }
+  }
+  render(){
     return (
-      <ScrollView style={styles.container}>
-        <KeyboardAvoidingView behavior='position'>
-        	<MainHeader navigation = { this.props.navigation } />
-        	<Text>LoginScreen</Text>
-        </KeyboardAvoidingView>
-      </ScrollView>
+      <View style={ {backgroundColor: '#000000', height: '100%' } }>
+        <Text style={ styles.text }>Log in</ Text>
+        <TextFieldDarkBG placeholder='Email' onChangeText={(text) => this.setState({ username: text })} secureTextEntry={false} />
+        <TextFieldDarkBG placeholder='Password' onChangeText={(text) => this.setState({ password: text })} secureTextEntry={!this.state.showPass} />
+        <Preview height={18.9} width={24} stroke={ Colors.fog } onPress={()=> this.setState({ showPass: !this.state.showPass})} />
+        <PrimaryButtonLarge text='Log in' onPress={() => this.props.navigation.navigate('Dashboard')} disabled={(this.state.username === '') || (this.state.password === '')} />
+      </ View>
     )
   }
 }

@@ -27,7 +27,7 @@ export default class TextFieldDarkBG extends Component {
 		          onChangeText={(text) => {
 		          	if(text === '') {
 		          		this.setState({
-				          	text: text,
+				          	//text: text,
 				          	style: {
 				          		...styles.TextInput,
 				          		opacity: 0.5,
@@ -35,7 +35,7 @@ export default class TextFieldDarkBG extends Component {
 			          });	
 		          	} else {
 			          	this.setState({
-				          	text: text,
+				          	//text: text,
 				          	style: {
 				          		...styles.TextInput,
 				          		opacity: 1.0
