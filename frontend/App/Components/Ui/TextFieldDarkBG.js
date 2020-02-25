@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, TextInput } from 'react-native'
 import styles from './Styles/TextFieldDarkBGStyles'
 
 export default class TextFieldDarkBG extends Component {
