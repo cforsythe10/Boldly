@@ -5,7 +5,7 @@ import styles from './Styles/TextFieldDarkBGStyles'
 
 export default class TextFieldDarkBG extends Component {
 	constructor(props){
-		super(props);
+		super(props)
 		this.state = {
 			text: '',
 			style: {
@@ -23,23 +23,13 @@ export default class TextFieldDarkBG extends Component {
 		          style={this.state.style}
 		          placeholderTextColor= '#D8D8D8'
 		          theme={{ fonts: { regular: 'AvenirNext-Regular' } }}
-		          onChangeText={(text) => {
-		          	if(text === '') {
-		          		this.setState({
-				          	style: {
-				          		...styles.TextInput,
-				          		opacity: 0.5,
-				          	}
-			          });	
-		          	} else {
-			          	this.setState({
-				          	style: {
-				          		...styles.TextInput,
-				          		opacity: 1.0
-				          	}
-			          });
-			        }
-		      	}}
+		          onChange={() => {
+	          		this.setState({
+			          	style: {
+			          		...styles.TextInput,
+			          		opacity: 1.0,
+			          	}
+		          	});}}
 		        />
 	      	</View>
 		)

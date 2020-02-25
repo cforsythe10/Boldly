@@ -5,6 +5,10 @@ import styles from './Styles/Survey4Styles';
 import { Colors } from '../../Themes';
 
 export default class Survey4 extends Component {
+	constructor(props){
+  		super(props);
+  	}
+  	
   	render() {
 		return (
 		<View style={{ height: '100%',  backgroundColor: '#000000' }}>
