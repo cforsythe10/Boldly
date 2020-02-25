@@ -41,9 +41,11 @@ const ApplicationStyles = {
     },
 
     container: {
-      flex: 1,
+      flex: 0.88,
       paddingTop: Metrics.baseMargin,
-      backgroundColor: Colors.transparent
+      backgroundColor: Colors.transparent,
+      paddingHorizontal: '12%'
+
     },
     section: {
       margin: Metrics.section,
@@ -83,6 +85,29 @@ const ApplicationStyles = {
     body: {
       ...Fonts.style.body,
       color: colors.charcoal
+    },
+    fullScreen: {
+      height: '100%',
+      width: '100%',
+      backgroundColor: Colors.cobalt
+    },
+    buttonContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      height: '100%'
+    },
+    valueButtonRow: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      height: 100
+    },
+
+    background: {
+      backgroundColor: Colors.violet,
+      height: '100%',
+      flex: 1
     },
     fullScreen: {
       height: '100%',
