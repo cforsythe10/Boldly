@@ -18,8 +18,7 @@ export default class TextFieldDarkBG extends Component {
 		return (
 			<View style={styles.BorderStyle}>
 				<TextInput
-				  secureTextEntry={( this.state.text <= 0 && this.state.emailStatus!='onFocus' ) ? true : false }
-		          placeholder='Insert Placeholder'
+				  placeholder='Insert Placeholder'
 		          {...this.props}
 		          style={this.state.style}
 		          placeholderTextColor= '#D8D8D8'
@@ -27,7 +26,6 @@ export default class TextFieldDarkBG extends Component {
 		          onChangeText={(text) => {
 		          	if(text === '') {
 		          		this.setState({
-				          	//text: text,
 				          	style: {
 				          		...styles.TextInput,
 				          		opacity: 0.5,
@@ -35,7 +33,6 @@ export default class TextFieldDarkBG extends Component {
 			          });	
 		          	} else {
 			          	this.setState({
-				          	//text: text,
 				          	style: {
 				          		...styles.TextInput,
 				          		opacity: 1.0

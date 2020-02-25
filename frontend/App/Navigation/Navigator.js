@@ -12,10 +12,20 @@ import Default from '../Containers/DefaultScreen';
 import Login from '../Containers/LoginScreen';
 import Survey from '../Containers/SurveyScreen';
 
+import Survey1 from '../Containers/SurveyContent/Survey1';
+import Survey2 from '../Containers/SurveyContent/Survey2';
+import Survey3 from '../Containers/SurveyContent/Survey3';
+import Survey4 from '../Containers/SurveyContent/Survey4';
+import Survey5 from '../Containers/SurveyContent/Survey5';
+import Survey6 from '../Containers/SurveyContent/Survey6';
+import Survey7 from '../Containers/SurveyContent/Survey7';
+import Survey8 from '../Containers/SurveyContent/Survey8';
+import Survey9 from '../Containers/SurveyContent/Survey9';
+import Survey10 from '../Containers/SurveyContent/Survey10';
+
 const WIDTH = Dimensions.get('window').width;
 
 const leftDrawer = createDrawerNavigator(
-
 	{
         Dashboard: {
 			screen: Dashboard
@@ -38,6 +48,47 @@ const leftDrawer = createDrawerNavigator(
 	},
 )
 
+const surveyNavigator = createStackNavigator(
+	{
+		Survey: {
+			screen: Survey
+		},
+		Survey1: {
+			screen: Survey1
+		},
+		Survey2: {
+			screen: Survey2
+		},
+		Survey3: {
+			screen: Survey3
+		},
+		Survey4: {
+			screen: Survey4
+		},
+		Survey5: {
+			screen: Survey5
+		},
+		Survey6: {
+			screen: Survey6
+		},
+		Survey7: {
+			screen: Survey7
+		},
+		Survey8: {
+			screen: Survey8
+		},
+		Survey9: {
+			screen: Survey9
+		},
+		Survey10: {
+			screen: Survey10
+		},
+	},
+	{
+		headerMode: 'none'
+	}
+);
+
 const Navigator = createStackNavigator(
 	{
 		Default: {
@@ -50,9 +101,7 @@ const Navigator = createStackNavigator(
         Login: {
         	screen: Login
         },
-        Survey: {
-        	screen: Survey
-        }
+        surveyNavigator
 	},
 	{
 		headerMode: 'none'

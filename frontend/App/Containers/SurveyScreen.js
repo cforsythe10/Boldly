@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-import styles from './Styles/DefaultScreenStyles';
+import Wave from '../Images/Icons/SurveyIcons_wavingHand.svg';
 
-export default function DefaultScreen({ navigation }) {
-  return (
-    <View style={ styles.container }>
+import styles from './Styles/SurveyScreenStyles';
+import { Colors } from '../Themes';
 
-    </ View>
-  )
+export default class SurveyScreen extends Component {
+  	render() {
+		return (
+		<View style={{ height: '100%',  backgroundColor: '#000000'}} onResponderGrant={(event) => this.props.navigation.navigate('Survey1')} onStartShouldSetResponder={ (event) => [true|false]}>
+			<Text style={ styles.text } >Welcome!</Text>
+			<Wave height={60} width={60} stroke={Colors.fog} />
+		</ View>
+	  )
+	}
 }
