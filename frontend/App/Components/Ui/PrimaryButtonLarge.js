@@ -4,11 +4,7 @@ import { TouchableOpacity, Text } from 'react-native'
 import styles from './Styles/PrimaryButtonLargeStyles'
 import ExamplesRegistry from '../../Services/ExamplesRegistry'
 
-// Note that this file (App/Components/Ui/PrimaryButtonSmall) needs to be
-// imported in your app somewhere, otherwise your component won't be
-// compiled and added to the examples dev screen.
-
-export default class PrimaryButtonSmall extends Component {
+export default class PrimaryButtonLarge extends Component {
   static propTypes = {
     text: PropTypes.string,
     onPress: PropTypes.func,
