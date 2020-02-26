@@ -13,7 +13,6 @@ export default function DashboardScreen({ navigation }) {
         <Text>Dashboard  Screen</Text>
         <Button title='View Profile' onPress={() => navigation.navigate('Profile')} />
         <Button title='Hamburger' onPress={() => navigation.openDrawer()} />
-        <BoldlyImage image='ir' size='large' />
     </ScrollView>
   );
 }
