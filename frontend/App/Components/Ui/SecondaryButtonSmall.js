@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableOpacity, Text } from 'react-native'
-import styles from './Styles/PrimaryButtonLargeStyles'
+import styles from './Styles/SecondaryButtonSmallStyles'
 import ExamplesRegistry from '../../Services/ExamplesRegistry'
 
-export default class PrimaryButtonLarge extends Component {
+// Note that this file (App/Components/Ui/PrimaryButtonSmall) needs to be
+// imported in your app somewhere, otherwise your component won't be
+// compiled and added to the examples dev screen.
+
+export default class SecondaryButtonSmall extends Component {
   static propTypes = {
     text: PropTypes.string,
     onPress: PropTypes.func,
@@ -19,4 +23,3 @@ export default class PrimaryButtonLarge extends Component {
       </TouchableOpacity>
     )
   }
-}
