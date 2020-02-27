@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import Logo from '../../Images/Icons/logosvg-final.svg';
 
-import IconButton from '../../Components/Ui/IconButton';
+import RadioIconButton from '../../Components/Ui/RadioIconButton';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
 
 import styles from './Styles/Survey1Styles';
@@ -14,7 +14,6 @@ export default class Survey1 extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			showContinue: false,
 			surveyInfo: {
   				isCreator: null,
   				name: '',
@@ -28,16 +27,32 @@ export default class Survey1 extends Component {
   				password: '',
   			},
   			brandSelected: false,
-  			creatorSelected: false,
+  			creatorSelected: false
+		}
+	}
+
+	actionCreator = () => {
+		console.log(this.state);
+		this.refs.creator.changeState();
+		if(!this.state.creatorSelected){
+			if(this.state.brandSelected) this.refs.brand.changeState();	
+		}
+	}
+
+	actionBrand = () => {
+		console.log(this.state);
+		this.refs.brand.changeState();
+		if(!this.state.brandSelected){
+			if(this.state.creatorSelected) this.refs.creator.changeState();	
 		}
 	}
 
 	callbackCreator = (data) => {
-  		if(data) this.setState({ surveyInfo: {...this.state.surveyInfo, isCreator: data}});
+  		this.setState({creatorSelected: data});
   	} 
 
   	callbackBrand = (data) => {
-  		if(data) this.setState({ surveyInfo: {...this.state.surveyInfo, isCreator: !data}});
+  		this.setState({brandSelected: data});
   	}
 
 	render() {
@@ -48,10 +63,13 @@ export default class Survey1 extends Component {
 				<Text style={ styles.back } onPress={() => this.props.navigation.navigate('Default')} >&#60;</Text>
 				<Logo height={30} width={70} stroke={Colors.fog} />
 				<Text style={ styles.text }>Are you a...</Text>
-				<IconButton ref='creator' svgName='CreatorImage' text='Creator' callback={this.callbackCreator} />
-				<IconButton ref='brand' svgName='BrandImage' text='Brand' callback={this.callbackBrand} />
-				{!this.state.showContinue ?
-					<PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey2', {...nextSurveyState} )} /> : null
+				<RadioIconButton onPress={this.actionCreator} ref='creator' svgName='CreatorImage' text='Creator' callback={this.callbackCreator} />
+				<RadioIconButton onPress={this.actionBrand} ref='brand' svgName='BrandImage' text='Brand' callback={this.callbackBrand} />
+				{this.state.creatorSelected || this.state.brandSelected ?
+					<PrimaryButtonLarge text='Continue' onPress={() => {
+						nextSurveyState.isCreator = this.state.creatorSelected;
+						this.props.navigation.navigate('Survey2', {...nextSurveyState} );
+					}} /> : null
 				}
 			</ LinearGradient>
 		</ View>

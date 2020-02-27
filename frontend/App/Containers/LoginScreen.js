@@ -32,7 +32,8 @@ export default class DefaultScreen extends Component {
           <TextFieldDarkBG placeholder='Email' onChangeText={(text) => this.setState({ username: text })} secureTextEntry={false} />
           <TextFieldDarkBG placeholder='Password' onChangeText={(text) => this.setState({ password: text })} secureTextEntry={!this.state.showPass} />
           <Preview height={18.9} width={24} stroke={ Colors.fog } onPress={()=> this.setState({ showPass: !this.state.showPass})} />
-          {this.state.username.length > 0 && this.state.password.length > 7 ? 
+          {this.state.password.length > 7 &&
+           /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.username) ? 
             <PrimaryButtonLarge text='Log in' onPress={() => this.props.navigation.navigate('Dashboard')} /> : null
           }
         </ LinearGradient>

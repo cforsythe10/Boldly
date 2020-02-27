@@ -39,6 +39,7 @@ export default class Survey4 extends Component {
   	callbackBnM = (data) => {
   		this.setState({showLocation: data});
   		if(data && this.state.currentState.isECommerse && this.state.currentState.location === '') this.setState({showContinue: false});
+  		if(!data) this.setState({currentState: {...this.state.currentState, location: ''}});
   	} 
 
   	callbackECom = (data) => {
@@ -66,7 +67,8 @@ export default class Survey4 extends Component {
 				{this.state.showLocation ?
 					<TextFieldDarkBG placeholder='Location' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} /> : null
 				}
-				{this.state.showContinue ?
+				{(this.state.currentState.isECommerse && !this.state.showLocation) ||
+				 (this.state.showLocation && this.state.currentState.location !== '') ?
 					<PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey5', {...nextSurveyState})} /> : null
 				}
 			</ LinearGradient>
