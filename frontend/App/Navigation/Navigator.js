@@ -22,6 +22,8 @@ import Survey7 from '../Containers/SurveyContent/Survey7';
 import Survey8 from '../Containers/SurveyContent/Survey8';
 import Survey9 from '../Containers/SurveyContent/Survey9';
 import Survey10 from '../Containers/SurveyContent/Survey10';
+import SurveyCreatorExtra1 from '../Containers/SurveyContent/SurveyCreatorExtra1';
+import SurveyCreatorExtra2 from '../Containers/SurveyContent/SurveyCreatorExtra2';
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -83,6 +85,12 @@ const surveyNavigator = createStackNavigator(
 		Survey10: {
 			screen: Survey10
 		},
+		SurveyCreatorExtra1: {
+			screen: SurveyCreatorExtra1
+		},
+		SurveyCreatorExtra2: {
+			screen: SurveyCreatorExtra2
+		}
 	},
 	{
 		headerMode: 'none'

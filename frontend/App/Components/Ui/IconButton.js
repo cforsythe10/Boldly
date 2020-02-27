@@ -35,7 +35,6 @@ export default class IconButton extends Component {
         } else {
             this.setState({ greenButtonState: true }); 
         }
-        
     }
 
     render() {
