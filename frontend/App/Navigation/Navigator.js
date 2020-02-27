@@ -21,7 +21,6 @@ import Survey6 from '../Containers/SurveyContent/Survey6';
 import Survey7 from '../Containers/SurveyContent/Survey7';
 import Survey8 from '../Containers/SurveyContent/Survey8';
 import Survey9 from '../Containers/SurveyContent/Survey9';
-import Survey10 from '../Containers/SurveyContent/Survey10';
 import SurveyCreatorExtra1 from '../Containers/SurveyContent/SurveyCreatorExtra1';
 import SurveyCreatorExtra2 from '../Containers/SurveyContent/SurveyCreatorExtra2';
 
@@ -81,9 +80,6 @@ const surveyNavigator = createStackNavigator(
 		},
 		Survey9: {
 			screen: Survey9
-		},
-		Survey10: {
-			screen: Survey10
 		},
 		SurveyCreatorExtra1: {
 			screen: SurveyCreatorExtra1

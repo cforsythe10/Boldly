@@ -28,12 +28,26 @@ export default class Survey4 extends Component {
   				password: '',
   			},
   			showContinue: false,
-  			showlocation: props.navigation.state.params.isCreator
+  			showLocation: props.navigation.state.params.isCreator
   		}
   	}
 
+  	componentDidMount(){
+  		if(this.state.currentState.isCreator) this.setState({currentState: {...currentState, isECommerse: false}});
+  	}
+
+  	callbackBnM = (data) => {
+  		this.setState({showLocation: data});
+  		if(data && this.state.currentState.isECommerse && this.state.currentState.location === '') this.setState({showContinue: false});
+  	} 
+
+  	callbackECom = (data) => {
+  		this.setState({ currentState: {...this.state.currentState, isECommerse: data}});
+  		if(data && !this.state.showLocation) this.setState({showContinue: true});
+  	}
+
   	_textChanged(text){
-  		this.setState({...this.state, currentState: {...this.state.currentState, location: text}, showContinue: true});
+  		this.setState({currentState: {...this.state.currentState, location: text}, showContinue: true});
   	}
 
   	render() {
@@ -44,12 +58,12 @@ export default class Survey4 extends Component {
 				<Text style={ styles.back } onPress={() => this.props.navigation.goBack()} >&#60;</Text>
 				<Logo height={30} width={70} stroke={Colors.fog} />
 				{!nextSurveyState.isCreator ?
-					<IconButton svgName='BrickAndMortarImage' text='Brick & Mortar' /> : null
+					<IconButton svgName='BrickAndMortarImage' text='Brick & Mortar' callback={this.callbackBnM} /> : null
 				}
 				{!nextSurveyState.isCreator ?
-					<IconButton svgName='ECommerceImage' text='E-Commerce' /> : null 
+					<IconButton svgName='ECommerceImage' text='E-Commerce' callback={this.callbackECom} /> : null 
 				}
-				{nextSurveyState.isCreator || !nextSurveyState.isECommerse ?
+				{this.state.showLocation ?
 					<TextFieldDarkBG placeholder='Location' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} /> : null
 				}
 				{this.state.showContinue ?

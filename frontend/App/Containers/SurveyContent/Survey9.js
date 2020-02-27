@@ -11,6 +11,7 @@ import { Colors, Fonts } from '../../Themes';
 export default class Survey9 extends Component {
 	constructor(props){
   		super(props);
+  		console.log(props.navigation.state.params);
   		this.state = {
   			email: props.navigation.state.params.email,
   			password: props.navigation.state.params.password,

@@ -32,7 +32,8 @@ export default class Survey2 extends Component {
 
   	_textChanged(val) {
   		let isName = /^[A-Za-z ,.'-]+ [A-Za-z ,.'-]/.test(val);
-  		this.setState({ currentState: {...this.state.currentState, name: val}, showContinue: isName});
+  		if(this.state.currentState.isCreator) this.setState({ currentState: {...this.state.currentState, name: val}, showContinue: isName});
+      else this.setState({ currentState: {...this.state.currentState, name: val}, showContinue: true})
   	}
 
   	render() {
@@ -48,8 +49,11 @@ export default class Survey2 extends Component {
 				<Text style={styles.subtext }>{this.state.currentState.isCreator ?
 					'This is how you will appear to brands' :
 					'This is how you will appear to creators'}</ Text>
-				<TextFieldDarkBG placeholder='Firstname Lastname' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} />
-				{this.state.showContinue ?
+        {this.state.currentState.isCreator ?
+				  <TextFieldDarkBG placeholder='Firstname Lastname' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} /> :
+				  <TextFieldDarkBG placeholder='Name' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} />
+        }
+        {this.state.showContinue ?
 					<PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey3', {...nextSurveyState})} /> : null
 				}
 			</ LinearGradient>

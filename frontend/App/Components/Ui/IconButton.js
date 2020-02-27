@@ -16,7 +16,6 @@ export default class IconButton extends Component {
     constructor(props) {
         super(props)
 
-        this.onClick = this.onClick.bind(this);
         this.state = {
             greenButtonState: false, 
             BackgroundColor: Colors.white
@@ -25,16 +24,13 @@ export default class IconButton extends Component {
 
     static propTypes = {
         text: PropTypes.string,
-        onPress: PropTypes.func,
-        svgName: PropTypes.string
+        svgName: PropTypes.string,
+        isRadio: PropTypes.bool
     }
 
     onClick() {
-        if (this.state.greenButtonState) {
-            this.setState({ greenButtonState: false }); 
-        } else {
-            this.setState({ greenButtonState: true }); 
-        }
+        this.props.callback(!this.state.greenButtonState);
+        this.setState({greenButtonState: !this.state.greenButtonState});
     }
 
     render() {
@@ -55,7 +51,7 @@ export default class IconButton extends Component {
         return (
             
          
-                <TouchableHighlight onPress={ this.onClick } style={this.state.greenButtonState ? styles.greenIconButton : styles.iconButton} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
+                <TouchableHighlight onPress={() => this.onClick()} style={this.state.greenButtonState ? styles.greenIconButton : styles.iconButton} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
                     
                         <View
                             style={styles.iconButtonContentContainer}

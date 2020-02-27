@@ -29,6 +29,7 @@ export default class ValueButton extends Component {
     static propTypes = {
         text: PropTypes.string,
         svgName: PropTypes.string,
+        callback: PropTypes.func
     }
 
     render() {
