@@ -72,16 +72,25 @@ export default class Survey1 extends Component {
 		<View style={ styles.fullScreen }>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
 				{this._renderHeader()}
-          		<ProgressBar progress={1/9} />
-				<Text style={ styles.text }>Are you a...</Text>
-				<RadioIconButton onPress={this.actionCreator} ref='creator' svgName='CreatorImage' text='Creator' callback={this.callbackCreator} />
-				<RadioIconButton onPress={this.actionBrand} ref='brand' svgName='BrandImage' text='Brand' callback={this.callbackBrand} />
-				{this.state.creatorSelected || this.state.brandSelected ?
-					<PrimaryButtonLarge text='Continue' onPress={() => {
-						nextSurveyState.isCreator = this.state.creatorSelected;
-						this.props.navigation.navigate('Survey2', {...nextSurveyState} );
-					}} /> : null
-				}
+          		
+				<View style={styles.contentContainer}>
+          			<ProgressBar progress={1/9} />
+					<Text style={ styles.text }>Are you a...</Text>
+				</View>
+
+				<View style={styles.buttonContainer}>
+					<RadioIconButton onPress={this.actionCreator} ref='creator' svgName='CreatorImage' text='Creator' callback={this.callbackCreator} />
+					<RadioIconButton onPress={this.actionBrand} ref='brand' svgName='BrandImage' text='Brand' callback={this.callbackBrand} />
+				</View>
+				
+				<View style={styles.continueContainer}>
+					{this.state.creatorSelected || this.state.brandSelected ?
+						<PrimaryButtonLarge text='Continue' onPress={() => {
+							nextSurveyState.isCreator = this.state.creatorSelected;
+							this.props.navigation.navigate('Survey2', {...nextSurveyState} );
+						}} /> : null
+					}
+				</View>
 			</ LinearGradient>
 		</ View>
 	  )

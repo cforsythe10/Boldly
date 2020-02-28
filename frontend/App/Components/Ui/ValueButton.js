@@ -59,7 +59,7 @@ export default class ValueButton extends Component {
 
         return (
             
-            <View>
+            <View style={styles.valueButtonAlignment}>
                 <TouchableHighlight onPress={() => {
                     if(!this.props.disabled || this.state.greenButtonState){
                         this.setState({greenButtonState: !this.state.greenButtonState});

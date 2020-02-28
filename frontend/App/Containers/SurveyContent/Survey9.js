@@ -27,15 +27,25 @@ export default class Survey9 extends Component {
 
   	render() {
 		return (
-		<View style={ styles.fullScreen } onResponderGrant={(event) => this.props.navigation.navigate('Survey4', {...this.state.currentState})} onStartShouldSetResponder={ (event) => [true|false]}>
+		<View style={ styles.fullScreen }>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-				<Logo height={30} width={70} />
-				<Text style={ styles.text } >Connect your social media</Text>
-				<Text onPress={() => this.setState({...this.state, showContinue: !this.state.showContinue})}>Will be implemented with backend integration</Text>
-				<Text style={ styles.link } onPress={() => this.props.navigation.navigate('Dashboard')} >Skip for now</ Text>
-				{this.state.showContinue ?
-					<PrimaryButtonLarge text='Go to Dashboard' onPress={() => this.props.navigation.navigate('Dashboard')} /> : null
-				}
+				
+				<View style={styles.logoContainer}>
+					<Logo height={30} width={70} />
+				</View>
+
+				<View style={styles.contentContainer}>
+					<Text style={ styles.text } >Connect your social media</Text>
+					<PrimaryButtonLarge text='Dummy Component' onPress={() => this.setState({...this.state, showContinue: !this.state.showContinue})} />
+					<Text style={ styles.link } onPress={() => this.props.navigation.navigate('Dashboard')} >Skip for now</ Text>
+				</View>
+
+				<View style={styles.continueContainer}>
+					{this.state.showContinue ?
+						<PrimaryButtonLarge text='Go to Dashboard' onPress={() => this.props.navigation.navigate('Dashboard')} /> : null
+					}
+				</View>
+
 			</ LinearGradient>
 		</ View>
 	  )

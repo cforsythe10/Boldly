@@ -9,10 +9,24 @@ export default StyleSheet.create({
   },
   text: {
   	...Fonts.style.h3,
-  	color: Colors.fog
+  	color: Colors.fog,
+    paddingTop: '14%'
   },
   subtext: {
   	...Fonts.style.sh3,
-  	color: Colors.fog
+  	color: Colors.fog,
+    paddingBottom: '16%'
+  },
+  continueContainer: {
+    flex: 1,
+    height: '11%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: 'transparent'
+  },
+  contentContainer: {
+    flex: 7,
+    alignItems: 'center',
   }
 })

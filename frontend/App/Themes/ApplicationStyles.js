@@ -92,16 +92,16 @@ const ApplicationStyles = {
       backgroundColor: Colors.cobalt
     },
     buttonContainer: {
-      flex: 1,
+      flex: 3,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: '100%'
+      height: '100%',
+      paddingVertical: '17%'
     },
     valueButtonRow: {
-      flex: 1,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: 100
+      paddingHorizontal: '8%'
     },
 
     background: {
@@ -127,7 +127,7 @@ const ApplicationStyles = {
       flexDirection: 'row',
       justifyContent: 'space-between',
       height: 88,
-      paddingHorizontal: '11%',
+      paddingHorizontal: '4%',
       backgroundColor: 'transparent',
       alignItems: 'center'
     }

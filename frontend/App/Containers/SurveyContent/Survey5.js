@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
 import Header from '../../Components/Ui/Header';
 
-import styles from './Styles/Survey3Styles';
+import BackButton from '../../Images/Icons/back.svg';
+import Logo from '../../Images/Icons/logo-fog.svg';
+
+import styles from './Styles/Survey5Styles';
 import { Colors } from '../../Themes';
 
 export default class Survey5 extends Component {
@@ -29,21 +32,42 @@ export default class Survey5 extends Component {
   		}
   	}
 
+    _renderHeader = () => {
+      return (
+      <View style={styles.surveyHeaderContainer}>
+              <TouchableHighlight onPress={() => this.props.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                  <BackButton height={20} width={20} stroke={Colors.white }/>
+              </TouchableHighlight>
+              
+              <Logo height={30} width={70}/>
+
+              <View height={20} width={20} />
+          </View>
+      )
+    }
+
   	render() {
   		const nextSurveyState = {...this.state.currentState, industries: ['test1', 'test2', 'test3']};
 		return (
 		  <View style={ styles.fullScreen } >
         <LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-          <Header headerType='Survey' navigation={ this.props.navigation } />
-          {nextSurveyState.isCreator ?
-            <ProgressBar progress={4/10} /> :
-            <ProgressBar progress={4/8} />
-          }
-          <Text style={ styles.text } >What industry are you in?</Text>
-				  <Text>Industry picker will be implemented when designs/data are ready</Text>
-				  {this.state.showContinue ?
-					 <PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey6', {...nextSurveyState})} /> : null
-				  }
+          {this._renderHeader()}
+
+          <View style={styles.contentContainer}>
+            {nextSurveyState.isCreator ?
+              <ProgressBar progress={4/10} /> :
+              <ProgressBar progress={4/8} />
+            }
+            <Text style={ styles.text } >What industry are you in?</Text>
+  				  <Text style={{ color: Colors.fog }}>Industry picker will be implemented when designs/data are ready</Text>
+				  </View>
+
+          <View style={styles.continueContainer}>
+            {this.state.showContinue ?
+  					 <PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey6', {...nextSurveyState})} /> : null
+  				  }
+          </View>
+
 			  </ LinearGradient>
 		  </ View>
 	  )

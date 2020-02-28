@@ -36,6 +36,10 @@ export default StyleSheet.create({
     elevation: 4,
   },
 
+  valueButtonAlignment: {
+    alignItems: 'center'
+  },
+
   valueButtonContainer: {
     alignSelf: 'center',
     alignItems: 'center'
