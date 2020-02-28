@@ -3,7 +3,8 @@ import { DrawerActions, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 
-import Home from '../Containers/DashboardScreen'
+import Home from '../Containers/DashboardScreenBrand'
+import Creator from '../Containers/DashboardScreenCreator'
 import Messages from '../Containers/MessagesScreen'
 import Campaign from '../Containers/CampaignScreen'
 import Profile from '../Containers/ProfileScreen'
@@ -25,6 +26,9 @@ const leftDrawer = createDrawerNavigator(
         },
         Settings: {
             screen: Settings
+        },
+        Creator: {
+            screen: Creator
         }
     },
     
