@@ -4,10 +4,17 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Dashboard from '../Containers/DashboardScreen';
+import DashboardRegularC from '../Containers/DashboardScreenRegular';
+import DashboardRegularB from '../Containers/DashboardScreenRegularBrand';
+import DashboardMissingCreator from '../Containers/DashboardMissingProfileElements';
+import DashboardMissingBrand from '../Containers/DashboardMissingProfileElementsBrand';
+import DashboardNoCampaign from '../Containers/DashboardMissingCampaign';
+
 import Messages from '../Containers/MessagesScreen';
 import Campaign from '../Containers/CampaignScreen';
 import Profile from '../Containers/ProfileScreen';
 import Settings from '../Containers/SettingsScreen';
+
 import Default from '../Containers/DefaultScreen';
 import Login from '../Containers/LoginScreen';
 import Survey from '../Containers/SurveyScreen';
@@ -93,12 +100,36 @@ const surveyNavigator = createStackNavigator(
 	}
 );
 
+const DashboardNavigator = createStackNavigator(
+    {
+        DashboardRegularC: {
+            screen: DashboardRegularC
+        },
+        DashboardRegularB: {
+            screen: DashboardRegularB
+        },
+        DashboardMissingProfileB: {
+            screen: DashboardMissingBrand
+        },
+        DashboardMissingProfileC: {
+            screen: DashboardMissingCreator
+        },
+        DashboardNoCampaign: {
+            screen: DashboardNoCampaign
+        }
+    },
+    {
+        headerMode: 'none'
+    }
+)
+
 const Navigator = createStackNavigator(
 	{
 		Default: {
 			screen: Default
 		},
 		leftDrawer,
+        DashboardNavigator,
         Profile: {
             screen: Profile
         },
