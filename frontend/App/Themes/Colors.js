@@ -37,7 +37,8 @@ const colors = {
   
   fog : '#F7F7F7',
   white : '#FFFFFF',
-  black : '#000000'
+  black : '#000000',
+  transparent: 'transparent'
 }
 
 export default colors
