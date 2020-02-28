@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Wave from '../Images/Icons/SurveyIcons_wavingHand.svg';
+import Logo from '../Images/Icons/logo-fog.svg'
 
 import styles from './Styles/SurveyScreenStyles';
 import { Colors } from '../Themes';
@@ -12,6 +13,7 @@ export default class SurveyScreen extends Component {
 		return (
 		<View style={ styles.fullScreen } onResponderGrant={(event) => this.props.navigation.navigate('Survey1')} onStartShouldSetResponder={ (event) => [true|false]}>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
+				<Logo height={30} width={70} />
 				<Text style={ styles.text } >Welcome!</Text>
 				<Wave height={60} width={60} stroke={Colors.fog} />
 			</ LinearGradient>

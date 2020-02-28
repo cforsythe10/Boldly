@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import ProgressBar from '../../Components/Ui/SurveyProgressBar';
+import Header from '../../Components/Ui/Header';
+
 import Happy from '../../Images/Icons/SurveyIcons_happy.svg';
-import Logo from '../../Images/Icons/logosvg-final.svg';
 
 import styles from './Styles/Survey3Styles';
 import { Colors } from '../../Themes';
@@ -30,15 +32,14 @@ export default class Survey3 extends Component {
 
   	render() {
 		return (
-		<View style={ styles.fullScreen } onResponderGrant={(event) => this.props.navigation.navigate('Survey4', {...this.state.currentState})} onStartShouldSetResponder={ (event) => [true|false]}>
+		  <View style={ styles.fullScreen } onResponderGrant={(event) => this.props.navigation.navigate('Survey4', {...this.state.currentState})} onStartShouldSetResponder={ (event) => [true|false]}>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-				<Text style={ styles.back } onPress={() => this.props.navigation.goBack()} >&#60;</Text>
-				<Logo height={30} width={70} stroke={Colors.fog} />
-				<Text style={ styles.text } >It's nice to meet you,</Text>
-				<Text style={ styles.text } >{this.state.currentState.name}!</Text>
-				<Happy height={60} width={60} stroke={Colors.fog} />
-			</ LinearGradient>
-		</ View>
+          <Header headerType='Survey' navigation={ this.props.navigation } />
+  				<Text style={ styles.text } >It's nice to meet you,</Text>
+				  <Text style={ styles.text } >{this.state.currentState.name}!</Text>
+				  <Happy height={60} width={60} stroke={Colors.fog} />
+			  </ LinearGradient>
+		  </ View>
 	  )
 	}
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import Logo from '../Images/Icons/logosvg-final.svg';
+import Logo from '../Images/Icons/logo-fog.svg';
 
 import PrimaryButtonLarge from '../Components/Ui/PrimaryButtonLarge';
 import PrimaryButtonSmall from '../Components/Ui/PrimaryButtonSmall';

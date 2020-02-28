@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
-
-import Logo from '../../Images/Icons/logosvg-final.svg';
+import Header from '../../Components/Ui/Header';
 
 import styles from './Styles/SurveyCreatorExtra1Styles';
 import { Colors } from '../../Themes';
@@ -32,17 +32,17 @@ export default class SurveyCreatorExtra1 extends Component {
   	render() {
   		const nextSurveyState = {...this.state.currentState, interests: ['test1', 'test2', 'test3']};
 		return (
-		<View style={ styles.fullScreen } >
+		  <View style={ styles.fullScreen } >
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-				<Text style={ styles.back } onPress={() => this.props.navigation.goBack()} >&#60;</Text>
-				<Logo height={30} width={70} stroke={Colors.fog} />
-				<Text style={ styles.text } >What are your interests?</Text>
-				<Text>Interests selection will be implemented when designs/data are ready</Text>
-				{this.state.showContinue ?
-					<PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('SurveyCreatorExtra2', {...nextSurveyState})} /> : null
-				}
-			</ LinearGradient>
-		</ View>
+          <Header headerType='Survey' navigation={ this.props.navigation } />
+          <ProgressBar progress={6/10} />
+  				<Text style={ styles.text } >What are your interests?</Text>
+  				<Text>Interests selection will be implemented when designs/data are ready</Text>
+  				{this.state.showContinue ?
+  					<PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('SurveyCreatorExtra2', {...nextSurveyState})} /> : null
+  				}
+			 </ LinearGradient>
+		  </ View>
 	  )
 	}
 }

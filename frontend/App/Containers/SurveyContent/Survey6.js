@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
 import ValueButton from '../../Components/Ui/ValueButton';
-
-import Logo from '../../Images/Icons/logosvg-final.svg';
+import Header from '../../Components/Ui/Header';
 
 import styles from './Styles/Survey6Styles';
 import { Colors } from '../../Themes';
@@ -128,23 +128,26 @@ export default class Survey5 extends Component {
 
   	render() {
   		return (
-		<View style={ styles.fullScreen } >
+		  <View style={ styles.fullScreen } >
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-				<Text style={ styles.back } onPress={() => this.props.navigation.goBack()} >&#60;</Text>
-				<Logo height={30} width={70} stroke={Colors.fog} />
-				<Text style={ styles.text }>What do you value?</Text>
-				<Text style={ styles.subtext }>Select 3</Text>
-				<View style={ styles.valueButtonContainer }>
-					<ValueButton text='Community' svgName='CommunityImage' callback={this.callback0} disabled={this.state.selectedCount > 2} />
-					<ValueButton text='Diversity' svgName='DiversityImage' callback={this.callback1} disabled={this.state.selectedCount > 2} />
-					<ValueButton text='Education' svgName='EducationImage' callback={this.callback2} disabled={this.state.selectedCount > 2} />
-					<ValueButton text='Family' svgName='FamilyImage' callback={this.callback3} disabled={this.state.selectedCount > 2} />
-				</View>	
-				{this.state.selectedCount === 3 ?
-					<PrimaryButtonLarge text='Continue' onPress={() => this.continuePressed()} /> : null
-				}
-			</ LinearGradient>
-		</ View>
+          <Header headerType='Survey' navigation={ this.props.navigation } />
+          {this.state.currentState.isCreator ?
+            <ProgressBar progress={5/10} /> :
+            <ProgressBar progress={5/8} />
+          }
+  				<Text style={ styles.text }>What do you value?</Text>
+  	 			<Text style={ styles.subtext }>Select 3</Text>
+  				<View style={ styles.valueButtonContainer }>
+  					<ValueButton text='Community' svgName='CommunityImage' callback={this.callback0} disabled={this.state.selectedCount > 2} />
+  					<ValueButton text='Diversity' svgName='DiversityImage' callback={this.callback1} disabled={this.state.selectedCount > 2} />
+  					<ValueButton text='Education' svgName='EducationImage' callback={this.callback2} disabled={this.state.selectedCount > 2} />
+  					<ValueButton text='Family' svgName='FamilyImage' callback={this.callback3} disabled={this.state.selectedCount > 2} />
+  				</View>	
+  				{this.state.selectedCount === 3 ?
+  					<PrimaryButtonLarge text='Continue' onPress={() => this.continuePressed()} /> : null
+  				}
+			  </ LinearGradient>
+		  </ View>
 	  )
 	}
 }

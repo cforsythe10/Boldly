@@ -112,6 +112,24 @@ const ApplicationStyles = {
     fullScreen: {
       height: '100%',
       width: '100%'
+    },
+    headerContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      height: 88,
+      paddingHorizontal: '11%',
+      backgroundColor: Colors.fog,
+      alignItems: 'center'
+    },
+    surveyHeaderContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      height: 88,
+      paddingHorizontal: '11%',
+      backgroundColor: 'transparent',
+      alignItems: 'center'
     }
   },
   darkLabelContainer: {
