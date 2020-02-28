@@ -2,24 +2,38 @@ import React, { Component } from 'react';
 import { ScrollView, Text, Button, View } from 'react-native';
 
 import Header from '../Components/Ui/Header'
-import BoldlyImage from '../Components/Ui/BoldlyImage'
+import PrimaryButtonLarge from '../Components/Ui/PrimaryButtonLarge';
 
 import styles from './Styles/DashboardScreenStyle';
+import { Fonts } from '../Themes';
 
 export default class DashboardScreen extends Component {
-
+constructor(props){
+    super(props);
+}
 
 render(){
-  return (
-    <View style={styles.container}>
-    	<Header headerType='MenuProfile' navigation={this.props.navigation}/>
-        <Text style={styles.text}>Insights</Text>
-        <View style={styles.insights}><Text>insights</Text></View>
-        <Text style={styles.text}>Messages</Text>
-        <View style={styles.messages}><Text>messages</Text></View>
-        <Text style={styles.text}>Matched Campaigns</Text>
-        <View style={styles.campaigns}><Text>campaigns</Text></View>
-
+    return (
+    <View style={styles.fullScreen}>
+    	<Header headerType='MenuProfile' />
+        
+        <View style={{...styles.centerContentContainer, flex: 9}}>
+            <View style={styles.cardContainer}>
+                <View style={styles.cardContentContainer}>
+                    <Text style={{...styles.darkText, textAlign: 'center'}}>Temporary dashboard to show page disambiguation.</Text>
+                    <Text style={{...Fonts.style.h6, paddingTop: '8%'}}>Dashboard for brand not finished profile</Text>
+                    <PrimaryButtonLarge text='Go1' onPress={() => {this.props.navigation.navigate('DashboardMissingProfileB')}} />
+                    <Text style={{...Fonts.style.h6}}>Dashboard for creator not finished profile</Text>
+                    <PrimaryButtonLarge text='Go2' onPress={() => {this.props.navigation.navigate('DashboardMissingProfileC')}} />
+                    <Text style={{...Fonts.style.h6}}>Dashboard for brand with no campaign</Text>
+                    <PrimaryButtonLarge text='Go3' onPress={() => {this.props.navigation.navigate('DashboardNoCampaign')}} />
+                    <Text style={{...Fonts.style.h6}}>Regular dashboard for brand</Text>
+                    <PrimaryButtonLarge text='Go4'  onPress={() => {this.props.navigation.navigate('DashboardRegularB')}} />
+                    <Text style={{...Fonts.style.h6}}>Regular dashboard for creator</Text>
+                    <PrimaryButtonLarge text='Go5' onPress={() => {this.props.navigation.navigate('DashboardRegularC')}} />
+                </View>
+            </View>
+        </View>
     </View>
   )	
 }

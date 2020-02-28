@@ -24,6 +24,7 @@ const ApplicationStyles = {
       marginVertical: Metrics.section,
       flex: 0.88,
       paddingVertical: 15.5,
+      width: '88%',
       backgroundColor: Colors.white,
       shadowColor: '#E6E6E6',
       shadowOffset: { width: 4, height: 3},
@@ -37,7 +38,8 @@ const ApplicationStyles = {
       alignSelf: 'center',
       alignItems: 'center',
       flex: 0.77,
-      paddingHorizontal: '6%'
+      paddingHorizontal: '6%',
+      textAlign: 'center'
     },
 
     container: {
