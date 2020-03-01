@@ -11,8 +11,8 @@ const googlePlacesApiKey = 'AIzaSyAaRpC7Y_nkSiJqEJr-84K_BcZEyDfLwy4';
 
 const GooglePlacesAutocompleteStyles = {
 	description: {
-		fontWeight: 'bold',
-		fontSize: 14,
+		fontFamily: Fonts.type.link,
+		fontSize: 16,
 		color: Colors.fog,
 		flex: 1,
 		opacity: 0.75,
@@ -25,6 +25,7 @@ const GooglePlacesAutocompleteStyles = {
 		margin: 15,
 		color: Colors.fog,
 		font: Fonts.type.body,
+		fontSize: 18,
 		borderLeftWidth: 0,
 		borderRightWidth: 0,
 		borderTopWidth: 0,
@@ -119,7 +120,7 @@ export default LocationInputField = ({styleType = 'dark', placeholder='Set your 
 
 				filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
 
-				debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
+				debounce={300} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
 				renderRightButton={() => <Image source={require('../../../Images/set-location.png')} style={{width: 25, height: 25, margin: 6, marginBottom: 10}} />}
     		/>
 		</LinearGradient>
