@@ -1,5 +1,5 @@
 import React, { useState, useCallback} from 'react';
-import { Image, YellowBox } from 'react-native';
+import { Image, YellowBox, TouchableHighlight, Text } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Colors from '../../../Themes/Colors'
 import LinearGradient from 'react-native-linear-gradient';
@@ -12,7 +12,11 @@ const googlePlacesApiKey = 'AIzaSyAaRpC7Y_nkSiJqEJr-84K_BcZEyDfLwy4';
 const GooglePlacesAutocompleteStyles = {
 	description: {
 		fontWeight: 'bold',
+		fontSize: 14,
 		color: Colors.fog,
+		flex: 1,
+		opacity: 0.75,
+		zIndex: 1,
 	},
 	predefinedPlacesDescription: {
 		color: Colors.fog
@@ -33,20 +37,30 @@ const GooglePlacesAutocompleteStyles = {
 		color: Colors.fog,
 	},
 	container: {
-		backgroundColor: Colors.transparent,
-		color: Colors.fog,
+		width: '95%',
+		marginLeft: 10,
 	},
 	listView: {
-		opacity: 0.75,
-		marginLeft: 10,
 		flex: 1,
-		fontSize: 18,
-		color: Colors.fog,
-		elevation: 1,
+		bottom: 15,
+		width: '90%',
+		left: 15,
+		paddingTop: 5,
+		paddingBottom: 5,
+		backgroundColor: 'rgba(247, 247, 247, 0.1)',
+		borderBottomLeftRadius: 22.5,
+		borderBottomRightRadius: 22.5,
+	},
+	separator: {
+		height: 0,
 	},
 	row: {
-		borderColor: Colors.fog,
-
+		flex: 1,
+		left: 15,
+		padding: 0,
+		height: 22,
+		opacity: 1,
+		zIndex: 1,
 	}
 }
 
@@ -71,13 +85,14 @@ export default LocationInputField = ({styleType = 'dark', placeholder='Set your 
 					changeText(data);
 					return;
 				}}
+				listUnderlayColor={'rgba(247, 247, 247, 0.75)'}
 
 				textInputProps={{
 					clearButtonMode: 'never',
 					placeholderTextColor: Colors.fog,
 				}}
 
-				getDefaultValue={() => placeholder}
+				getDefaultValue={() => ''}
 
 				query={{
 					// available options: https://developers.google.com/places/web-service/autocomplete
