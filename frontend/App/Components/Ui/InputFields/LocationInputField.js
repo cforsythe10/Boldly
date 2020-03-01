@@ -24,31 +24,39 @@ const GooglePlacesAutocompleteStyles = {
 		borderLeftWidth: 0,
 		borderRightWidth: 0,
 		borderTopWidth: 0,
-		borderBottomWidth: 1,
+		borderBottomWidth: 1.5,
 		borderBottomColor: Colors.fog,
 		backgroundColor: Colors.transparent,
 	},
 	textInput: {
-		color: Colors.fog,
 		backgroundColor: Colors.transparent,
+		color: Colors.fog,
 	},
 	container: {
 		backgroundColor: Colors.transparent,
+		color: Colors.fog,
 	},
 	listView: {
+		opacity: 0.75,
 		marginLeft: 10,
 		flex: 1,
 		fontSize: 18,
+		color: Colors.fog,
+		elevation: 1,
 	},
+	row: {
+		borderColor: Colors.fog,
+
+	}
 }
 
-export default LocationInputField = ({styleType = 'dark', placeholder='Set your location', width=250}) => {
+export default LocationInputField = ({styleType = 'dark', placeholder='Set your location', width=300}) => {
 	const [text, changeText] = useState('')
 	const [locations, modifyLocations] = useState([])
 	
 	YellowBox.ignoreWarnings([ 'VirtualizedLists should never be nested']);  // TODO: Remove when fixed
 	return (
-		<LinearGradient colors={[Colors.violet, Colors.magenta]} style={{flex: 1, width: width, borderRadius: 22.5}}>
+		<LinearGradient colors={[Colors.colbalt85, Colors.violet65]} start={{x: 0.5, y: 0.0}} end={{x: 1, y: 1}} style={{flex: 1, width: width, borderRadius: 22.5}}>
 			<GooglePlacesAutocomplete
 				placeholder= {placeholder}
 				minLength={2} // minimum length of text to search
@@ -61,9 +69,15 @@ export default LocationInputField = ({styleType = 'dark', placeholder='Set your 
 				renderDescription={row => row.description} // custom description render
 				onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
 					changeText(data);
+					return;
 				}}
 
-				getDefaultValue={() => ''}
+				textInputProps={{
+					clearButtonMode: 'never',
+					placeholderTextColor: Colors.fog,
+				}}
+
+				getDefaultValue={() => placeholder}
 
 				query={{
 					// available options: https://developers.google.com/places/web-service/autocomplete
@@ -91,7 +105,7 @@ export default LocationInputField = ({styleType = 'dark', placeholder='Set your 
 				filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
 
 				debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
-				renderRightButton={() => <Image source={require('../../../Images/set-location.png')} style={{width: 30, height: 30, margin: 5}} />}
+				renderRightButton={() => <Image source={require('../../../Images/set-location.png')} style={{width: 25, height: 25, margin: 6, marginBottom: 10}} />}
     		/>
 		</LinearGradient>
 	)

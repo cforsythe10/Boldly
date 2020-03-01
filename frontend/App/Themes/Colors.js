@@ -1,6 +1,7 @@
 const colors = {
   
   cobalt : '#3023AE',
+  colbalt85: '#3023AED9',
   cobalt65 : '#7870CA',
   cobalt35 : '#B7B2E3',
   cobalt10 : '#EAE9F6',
