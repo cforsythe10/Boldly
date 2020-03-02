@@ -8,7 +8,12 @@
 use Mix.Config
 
 config :boldly,
-  ecto_repos: [Boldly.Repo]
+  ecto_repos: [Boldly.Repo],
+  migration_timestamps: [type: :utc_datetime_usec],
+  database: "postgres",
+  username: "postgres",
+  password: "",
+  hostname: "localhost"
 
 # Configures the endpoint
 config :boldly, BoldlyWeb.Endpoint,
