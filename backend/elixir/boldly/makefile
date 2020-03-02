@@ -11,6 +11,11 @@ brand_schema:
 brand_endpoint:
 	mix phx.gen.json BrandAccount Brand brands id:uuid ecommerce:boolean location:string industries:string values:string email:string
 
+remove_brand_enpoint:
+	rm -rf lib/boldly_web/**/*brand*
+	rm -rf priv/repo/migrations/*brands*
+	rm -rf test/boldly_web/controllers/brand*
+
 remove_creator_schema:
 	rm -rf lib/boldly/creator*
 	rm -rf priv/repo/migrations/*creators*
