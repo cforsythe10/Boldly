@@ -73,6 +73,7 @@ defmodule Boldly.BrandAccountTest do
       assert brand.industries == "some industries"
       assert brand.location == "some location"
       assert brand.values == "some values"
+      assert Bcrypt.verify_pass("some password", brand.password_hash)
     end
 
     test "create_brand/1 with invalid data returns error changeset" do
@@ -88,6 +89,7 @@ defmodule Boldly.BrandAccountTest do
       assert brand.industries == "some updated industries"
       assert brand.location == "some updated location"
       assert brand.values == "some updated values"
+      assert Bcrypt.verify_pass("some updated password", brand.password_hash)
     end
 
     test "update_brand/2 with invalid data returns error changeset" do
