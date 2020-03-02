@@ -112,30 +112,36 @@ defmodule BoldlyWeb.UserControllerTest do
       conn: conn,
       current_user: current_user
     } do
-      conn = post(conn, Routes.user_path(conn,:sign_in, %{
-        email: current_user.email,
-        password: @current_user_attrs.password
-        })
+      conn =
+        post(
+          conn,
+          Routes.user_path(conn, :sign_in, %{
+            email: current_user.email,
+            password: @current_user_attrs.password
+          })
         )
 
-        assert json_response(conn, 200)["data"] == %{
-          "user" => %{
-            "id" => current_user.id,
-            "email" => current_user.email
-          }
-        }
+      assert json_response(conn, 200)["data"] == %{
+               "user" => %{
+                 "id" => current_user.id,
+                 "email" => current_user.email
+               }
+             }
     end
 
     test "renders errors when user credentials are bad", %{conn: conn} do
-      conn = post(conn, Routes.user_path(conn, :sign_in, %{
-        email: "non-existent email",
-        password: ""
-        })
+      conn =
+        post(
+          conn,
+          Routes.user_path(conn, :sign_in, %{
+            email: "non-existent email",
+            password: ""
+          })
         )
 
-        assert json_response(conn, 401)["errors"] == %{
-          "detail" => "Wrong email or password"
-        }
+      assert json_response(conn, 401)["errors"] == %{
+               "detail" => "Wrong email or password"
+             }
     end
   end
 
