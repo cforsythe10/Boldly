@@ -20,7 +20,18 @@ defmodule Boldly.AuthTest do
         |> Enum.into(@valid_attrs)
         |> Auth.create_user()
 
-      user
+      user1 = %Boldly.Auth.User{
+        __meta__: user.__meta__,
+        email: user.email,
+        id: user.id,
+        inserted_at: user.inserted_at,
+        is_active: user.is_active,
+        password: nil,
+        password_hash: user.password_hash,
+        updated_at: user.updated_at
+      }
+
+      user1
     end
 
     test "list_users/0 returns all users" do
@@ -67,6 +78,13 @@ defmodule Boldly.AuthTest do
     test "change_user/1 returns a user changeset" do
       user = user_fixture()
       assert %Ecto.Changeset{} = Auth.change_user(user)
+    end
+
+    test "authenticate_user/2 authenticates the user" do
+      user = user_fixture()
+      assert {:error, "Wrong email or password"} = Auth.authenticate_user("wrong email", "")
+      assert {:ok, authenticated_user} = Auth.authenticate_user(user.email, @valid_attrs.password)
+      assert user == authenticated_user
     end
   end
 end

@@ -13,7 +13,7 @@ defmodule BoldlyWeb.FallbackController do
     |> render(:"404")
   end
 
-  def call(conn, {:error, %Ecto.Changeset{}})do
+  def call(conn, {:error, %Ecto.Changeset{}}) do
     conn
     |> put_status(:unprocessable_entity)
     |> put_view(BoldlyWeb.ErrorView)

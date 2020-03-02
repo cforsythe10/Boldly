@@ -40,4 +40,22 @@ defmodule BoldlyWeb.UserController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def sign_in(conn, %{"email" => email, "password" => password}) do
+    case Boldly.Auth.authenticate_user(email, password) do
+      {:ok, user} ->
+        conn
+        |> put_session(:current_user_id, user.id)
+        |> put_status(:ok)
+        |> put_view(BoldlyWeb.UserView)
+        |> render("sign_in.json", user: user)
+
+      {:error, message} ->
+        conn
+        |> delete_session(:current_user_id)
+        |> put_status(:unauthorized)
+        |> put_view(BoldlyWeb.ErrorView)
+        |> render("401.json", message: message)
+    end
+  end
 end
