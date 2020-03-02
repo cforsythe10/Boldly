@@ -8,7 +8,7 @@ creator_endpoint:
 brand_schema:
 	mix phx.gen.context BrandAccount Brand brands id:uuid:unique ecommerce:boolean location:string industries:string values:string email:string
 
-remove_schema:
+remove_creator_schema:
 	rm -rf lib/boldly/creator*
 	rm -rf priv/repo/migrations/*creators*
 	rm -rf test/boldly/*creator*
