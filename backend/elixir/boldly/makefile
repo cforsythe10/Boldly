@@ -9,7 +9,7 @@ brand_schema:
 	mix phx.gen.context BrandAccount Brand brands id:uuid:unique ecommerce:boolean location:string industries:string values:string email:string
 
 brand_endpoint:
-	mix phx.gen.json BrandAccount Brand brands id:uuid ecommerce:boolean location:string industries:string values:string email:string
+	mix phx.gen.json BrandAccount Brand brands id:uuid ecommerce:boolean location:string industries:string values:string email:string --no-context --no-schema
 
 remove_brand_enpoint:
 	rm -rf lib/boldly_web/**/*brand*
