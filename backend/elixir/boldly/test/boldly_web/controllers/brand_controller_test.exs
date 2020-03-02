@@ -3,6 +3,7 @@ defmodule BoldlyWeb.BrandControllerTest do
 
   alias Boldly.BrandAccount
   alias Boldly.BrandAccount.Brand
+  alias Plug.Test
 
   @create_attrs %{
     ecommerce: true,
@@ -32,19 +33,44 @@ defmodule BoldlyWeb.BrandControllerTest do
     password: nil
   }
 
+  @current_attrs %{
+    ecommerce: true,
+    email: "some current email",
+    id: "7488a646-e31f-11e4-aace-600308960666",
+    industries: "some current industries",
+    location: "some current location",
+    values: "some current values",
+    password: "some current password"
+  }
+
   def fixture(:brand) do
     {:ok, brand} = BrandAccount.create_brand(@create_attrs)
     brand
   end
 
+  def fixture(:current_user) do
+    {:ok, current_user} = BrandAccount.create_brand(@current_attrs)
+    current_user
+  end
+
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    {:ok, conn: conn, current_user: current_user} = setup_current_user(conn)
+    {:ok, conn: put_req_header(conn, "accept", "application/json"), current_user: current_user}
   end
 
   describe "index" do
-    test "lists all brands", %{conn: conn} do
+    test "lists all brands", %{conn: conn, current_user: current_user} do
       conn = get(conn, Routes.brand_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
+      assert json_response(conn, 200)["data"] == [
+        %{
+          "uuid" => current_user.id,
+          "email" => current_user.email,
+          "ecommerce" => current_user.ecommerce,
+          "industries" => current_user.industries,
+          "location" => current_user.location,
+          "values" => current_user.values
+        }
+      ]
     end
   end
 
@@ -112,5 +138,14 @@ defmodule BoldlyWeb.BrandControllerTest do
   defp create_brand(_) do
     brand = fixture(:brand)
     {:ok, brand: brand}
+  end
+
+  defp setup_current_user(conn) do
+    current_user = fixture(:current_user)
+    {
+      :ok,
+      conn: Test.init_test_session(conn, current_user_id: current_user.id),
+      current_user: current_user
+    }
   end
 end

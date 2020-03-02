@@ -45,12 +45,14 @@ defmodule BoldlyWeb.BrandController do
     case Boldly.BrandAccount.authenticate_user(email, password) do
       {:ok, brand} ->
         conn
+        |> put_session(:current_user_id, brand.id)
         |> put_status(:ok)
         |> put_view(BoldlyWeb.BrandView)
         |> render("sign_in.json", brand: brand)
 
       {:error, message} ->
         conn
+        |> delete_session(:current_user_id)
         |> put_status(:unauthorized)
         |> put_view(BoldlyWeb.ErrorView)
         |> render("401.json", message: message)
