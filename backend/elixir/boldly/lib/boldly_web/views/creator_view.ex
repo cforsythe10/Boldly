@@ -11,14 +11,16 @@ defmodule BoldlyWeb.CreatorView do
   end
 
   def render("creator.json", %{creator: creator}) do
-    %{id: creator.id,
+    %{
+      id: creator.id,
       name: creator.name,
       birthday: creator.birthday,
       selectedvalues: creator.selectedvalues,
       industry: creator.industry,
       interests: creator.interests,
       location: creator.location,
-      email: creator.email}
+      email: creator.email
+    }
   end
 
   def render("sign_in.json", %{creator: creator}) do

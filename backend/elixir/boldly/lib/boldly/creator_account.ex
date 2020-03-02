@@ -120,5 +120,4 @@ defmodule Boldly.CreatorAccount do
       {:error, "Wrong email or password"}
     end
   end
-
 end

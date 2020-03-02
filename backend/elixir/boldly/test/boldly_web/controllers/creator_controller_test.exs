@@ -27,7 +27,17 @@ defmodule BoldlyWeb.CreatorControllerTest do
     selectedvalues: "some updated selectedvalues",
     password: "some other password"
   }
-  @invalid_attrs %{birthday: nil, email: nil, id: nil, industry: nil, interests: nil, location: nil, name: nil, selectedvalues: nil, password: nil}
+  @invalid_attrs %{
+    birthday: nil,
+    email: nil,
+    id: nil,
+    industry: nil,
+    interests: nil,
+    location: nil,
+    name: nil,
+    selectedvalues: nil,
+    password: nil
+  }
 
   @current_user_attrs %{
     birthday: ~D[2011-05-18],
@@ -59,16 +69,19 @@ defmodule BoldlyWeb.CreatorControllerTest do
   describe "index" do
     test "lists all creators", %{conn: conn, current_user: current_user} do
       conn = get(conn, Routes.creator_path(conn, :index))
-      assert json_response(conn, 200)["data"] == [%{
-        "id" => current_user.id,
-        "birthday" => Date.to_string(current_user.birthday),
-        "email" => current_user.email,
-        "industry" => current_user.industry,
-        "interests" => current_user.interests,
-        "location" => current_user.location,
-        "name" => current_user.name,
-        "selectedvalues" => current_user.selectedvalues
-        }]
+
+      assert json_response(conn, 200)["data"] == [
+               %{
+                 "id" => current_user.id,
+                 "birthday" => Date.to_string(current_user.birthday),
+                 "email" => current_user.email,
+                 "industry" => current_user.industry,
+                 "interests" => current_user.interests,
+                 "location" => current_user.location,
+                 "name" => current_user.name,
+                 "selectedvalues" => current_user.selectedvalues
+               }
+             ]
     end
   end
 
@@ -144,6 +157,9 @@ defmodule BoldlyWeb.CreatorControllerTest do
 
   defp setup_current_user(conn) do
     current_user = fixture(:current_user)
-    {:ok, conn: Test.init_test_session(conn, current_user_id: current_user.id), current_user: current_user}
+
+    {:ok,
+     conn: Test.init_test_session(conn, current_user_id: current_user.id),
+     current_user: current_user}
   end
 end
