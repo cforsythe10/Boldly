@@ -72,7 +72,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
 
       assert json_response(conn, 200)["data"] == [
                %{
-                 "id" => current_user.id,
+                 "uuid" => current_user.id,
                  "birthday" => Date.to_string(current_user.birthday),
                  "email" => current_user.email,
                  "industry" => current_user.industry,
@@ -88,12 +88,12 @@ defmodule BoldlyWeb.CreatorControllerTest do
   describe "create creator" do
     test "renders creator when data is valid", %{conn: conn} do
       conn = post(conn, Routes.creator_path(conn, :create), creator: @create_attrs)
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+      assert %{"uuid" => id} = json_response(conn, 201)["data"]
 
       conn = get(conn, Routes.creator_path(conn, :show, id))
 
       assert %{
-               "id" => id,
+               "uuid" => id,
                "birthday" => "2010-04-17",
                "email" => "some email",
                "industry" => "some industry",
@@ -115,12 +115,12 @@ defmodule BoldlyWeb.CreatorControllerTest do
 
     test "renders creator when data is valid", %{conn: conn, creator: %Creator{id: id} = creator} do
       conn = put(conn, Routes.creator_path(conn, :update, creator), creator: @update_attrs)
-      assert %{"id" => id} = json_response(conn, 200)["data"]
+      assert %{"uuid" => id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.creator_path(conn, :show, id))
 
       assert %{
-               "id" => id,
+               "uuid" => id,
                "birthday" => "2011-05-18",
                "email" => "some updated email",
                "industry" => "some updated industry",

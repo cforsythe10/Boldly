@@ -12,6 +12,8 @@ defmodule BoldlyWeb.Router do
 
   scope "/api", BoldlyWeb do
     pipe_through :api
+    resources "/brands", BrandController, except: [:new, :edit]
+    post "/brands/sign_in", BrandController, :sign_in
     post "/creators/sign_in", CreatorController, :sign_in
     post "/users/sign_in", UserController, :sign_in
   end
