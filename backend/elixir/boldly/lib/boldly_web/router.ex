@@ -3,15 +3,17 @@ defmodule BoldlyWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-    plug :fetch_session
+    # plug :fetch_session
   end
 
   pipeline :api_auth do
-    plug :ensure_authenticated
+    # plug :ensure_authenticated
   end
 
   scope "/api", BoldlyWeb do
     pipe_through :api
+    resources "/creators", CreatorController, except: [:new, :edit]
+    post "/creators/sign_in", CreatorController, :sign_in
     post "/users/sign_in", UserController, :sign_in
   end
 

@@ -101,4 +101,24 @@ defmodule Boldly.CreatorAccount do
   def change_creator(%Creator{} = creator) do
     Creator.changeset(creator, %{})
   end
+
+  def authenticate_creator(email, password) do
+    query = from(u in Creator, where: u.email == ^email)
+    query |> Repo.one() |> verify_password(password)
+  end
+
+  defp verify_password(nil, _) do
+    # Dummy check
+    Bcrypt.no_user_verify()
+    {:error, "Wrong email or password"}
+  end
+
+  defp verify_password(creator, password) do
+    if Bcrypt.verify_pass(password, creator.password_hash) do
+      {:ok, creator}
+    else
+      {:error, "Wrong email or password"}
+    end
+  end
+
 end
