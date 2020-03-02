@@ -3,6 +3,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
 
   alias Boldly.CreatorAccount
   alias Boldly.CreatorAccount.Creator
+  alias Plug.Test
 
   @create_attrs %{
     birthday: ~D[2010-04-17],
@@ -28,19 +29,46 @@ defmodule BoldlyWeb.CreatorControllerTest do
   }
   @invalid_attrs %{birthday: nil, email: nil, id: nil, industry: nil, interests: nil, location: nil, name: nil, selectedvalues: nil, password: nil}
 
+  @current_user_attrs %{
+    birthday: ~D[2011-05-18],
+    email: "some current email",
+    id: "7488a646-e31f-11e4-aace-600308960666",
+    industry: "some industry",
+    interests: "some interests",
+    location: "some location",
+    name: "some name",
+    selectedvalues: "some updated selectedvalues",
+    password: "some current password"
+  }
+
   def fixture(:creator) do
     {:ok, creator} = CreatorAccount.create_creator(@create_attrs)
     creator
   end
 
+  def fixture(:current_user) do
+    {:ok, current_creator} = CreatorAccount.create_creator(@current_user_attrs)
+    current_creator
+  end
+
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    {:ok, conn: conn, current_user: current_user} = setup_current_user(conn)
+    {:ok, conn: put_req_header(conn, "accept", "application/json"), current_user: current_user}
   end
 
   describe "index" do
-    test "lists all creators", %{conn: conn} do
+    test "lists all creators", %{conn: conn, current_user: current_user} do
       conn = get(conn, Routes.creator_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
+      assert json_response(conn, 200)["data"] == [%{
+        "id" => current_user.id,
+        "birthday" => Date.to_string(current_user.birthday),
+        "email" => current_user.email,
+        "industry" => current_user.industry,
+        "interests" => current_user.interests,
+        "location" => current_user.location,
+        "name" => current_user.name,
+        "selectedvalues" => current_user.selectedvalues
+        }]
     end
   end
 
@@ -112,5 +140,10 @@ defmodule BoldlyWeb.CreatorControllerTest do
   defp create_creator(_) do
     creator = fixture(:creator)
     {:ok, creator: creator}
+  end
+
+  defp setup_current_user(conn) do
+    current_user = fixture(:current_user)
+    {:ok, conn: Test.init_test_session(conn, current_user_id: current_user.id), current_user: current_user}
   end
 end

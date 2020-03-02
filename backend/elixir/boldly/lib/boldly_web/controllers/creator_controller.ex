@@ -45,12 +45,14 @@ defmodule BoldlyWeb.CreatorController do
     case Boldly.CreatorAccount.authenticate_creator(email, password) do
       {:ok, creator} ->
         conn
+        |> put_session(:current_user_id, creator.id)
         |> put_status(:ok)
         |> put_view(BoldlyWeb.CreatorView)
         |> render("sign_in.json", creator: creator)
 
       {:error, message} ->
         conn
+        |> delete_session(:current_user_id)
         |> put_status(:unauthorized)
         |> put_view(BoldlyWeb.ErrorView)
         |> render("401.json", message: message)
