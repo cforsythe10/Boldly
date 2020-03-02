@@ -10,7 +10,7 @@ defmodule Boldly.CreatorAccount.Creator do
     field :interests, :string
     field :location, :string
     field :name, :string
-    field :selectedvalues, :string
+    field :values, :string
     field :password, :string, virtual: true
     field :password_hash, :string
 
@@ -24,7 +24,7 @@ defmodule Boldly.CreatorAccount.Creator do
       :id,
       :name,
       :birthday,
-      :selectedvalues,
+      :values,
       :industry,
       :interests,
       :location,
@@ -35,7 +35,7 @@ defmodule Boldly.CreatorAccount.Creator do
       :id,
       :name,
       :birthday,
-      :selectedvalues,
+      :values,
       :industry,
       :interests,
       :location,

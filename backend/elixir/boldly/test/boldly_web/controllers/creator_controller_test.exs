@@ -13,7 +13,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
     interests: "some interests",
     location: "some location",
     name: "some name",
-    selectedvalues: "some selectedvalues",
+    values: "some values",
     password: "some password"
   }
   @update_attrs %{
@@ -24,7 +24,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
     interests: "some updated interests",
     location: "some updated location",
     name: "some updated name",
-    selectedvalues: "some updated selectedvalues",
+    values: "some updated values",
     password: "some other password"
   }
   @invalid_attrs %{
@@ -35,7 +35,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
     interests: nil,
     location: nil,
     name: nil,
-    selectedvalues: nil,
+    values: nil,
     password: nil
   }
 
@@ -47,7 +47,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
     interests: "some interests",
     location: "some location",
     name: "some name",
-    selectedvalues: "some updated selectedvalues",
+    values: "some updated values",
     password: "some current password"
   }
 
@@ -79,7 +79,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
                  "interests" => current_user.interests,
                  "location" => current_user.location,
                  "name" => current_user.name,
-                 "selectedvalues" => current_user.selectedvalues
+                 "values" => current_user.values
                }
              ]
     end
@@ -100,7 +100,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
                "interests" => "some interests",
                "location" => "some location",
                "name" => "some name",
-               "selectedvalues" => "some selectedvalues"
+               "values" => "some values"
              } = json_response(conn, 200)["data"]
     end
 
@@ -127,7 +127,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
                "interests" => "some updated interests",
                "location" => "some updated location",
                "name" => "some updated name",
-               "selectedvalues" => "some updated selectedvalues"
+               "values" => "some updated values"
              } = json_response(conn, 200)["data"]
     end
 

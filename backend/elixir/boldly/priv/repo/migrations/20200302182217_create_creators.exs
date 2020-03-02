@@ -6,7 +6,7 @@ defmodule Boldly.Repo.Migrations.CreateCreators do
       add :id, :uuid, primary_key: true, null: false
       add :name, :string, null: false
       add :birthday, :date, null: false
-      add :selectedvalues, :string
+      add :values, :string
       add :industry, :string
       add :interests, :string
       add :location, :string

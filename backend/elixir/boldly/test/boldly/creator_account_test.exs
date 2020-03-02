@@ -14,7 +14,7 @@ defmodule Boldly.CreatorAccountTest do
       interests: "some interests",
       location: "some location",
       name: "some name",
-      selectedvalues: "some selectedvalues",
+      values: "some values",
       password: "some password"
     }
     @update_attrs %{
@@ -25,7 +25,7 @@ defmodule Boldly.CreatorAccountTest do
       interests: "some updated interests",
       location: "some updated location",
       name: "some updated name",
-      selectedvalues: "some updated selectedvalues",
+      values: "some updated values",
       password: "some updated password"
     }
     @invalid_attrs %{
@@ -36,7 +36,7 @@ defmodule Boldly.CreatorAccountTest do
       interests: nil,
       location: nil,
       name: nil,
-      selectedvalues: nil,
+      values: nil,
       password: nil
     }
 
@@ -57,7 +57,7 @@ defmodule Boldly.CreatorAccountTest do
         interests: creator.interests,
         location: creator.location,
         name: creator.name,
-        selectedvalues: creator.selectedvalues,
+        values: creator.values,
         password: nil,
         password_hash: creator.password_hash
       }
@@ -82,7 +82,7 @@ defmodule Boldly.CreatorAccountTest do
       assert creator.interests == "some interests"
       assert creator.location == "some location"
       assert creator.name == "some name"
-      assert creator.selectedvalues == "some selectedvalues"
+      assert creator.values == "some values"
       assert Bcrypt.verify_pass("some password", creator.password_hash)
     end
 
@@ -100,7 +100,7 @@ defmodule Boldly.CreatorAccountTest do
       assert creator.interests == "some updated interests"
       assert creator.location == "some updated location"
       assert creator.name == "some updated name"
-      assert creator.selectedvalues == "some updated selectedvalues"
+      assert creator.values == "some updated values"
     end
 
     test "update_creator/2 with invalid data returns error changeset" do
