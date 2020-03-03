@@ -10,13 +10,9 @@ import BrickAndMortarImage from '../../Images/Icons/brickAndMortar.svg'
 import { Colors } from '../../Themes/';
 
 export default class IconButton extends Component {
-
-    
-
     constructor(props) {
         super(props)
 
-        this.onClick = this.onClick.bind(this);
         this.state = {
             greenButtonState: false, 
             BackgroundColor: Colors.white
@@ -25,27 +21,19 @@ export default class IconButton extends Component {
 
     static propTypes = {
         text: PropTypes.string,
-        onPress: PropTypes.func,
-        svgName: PropTypes.string
+        svgName: PropTypes.string,
+        callback: PropTypes.func
     }
 
     onClick() {
-        if (this.state.greenButtonState) {
-            this.setState({ greenButtonState: false }); 
-        } else {
-            this.setState({ greenButtonState: true }); 
-        }
-        
+        this.props.callback(!this.state.greenButtonState);
+        this.setState({greenButtonState: !this.state.greenButtonState});
     }
 
     render() {
 
         const GetSvg = () => {
             switch(this.props.svgName) {
-                case('BrandImage'):
-                    return <BrandImage height={60} width={60} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('CreatorImage'): 
-                    return <CreatorImage height={60} width={60} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('ECommerceImage'):
                     return <ECommerceImage height={60} width={60} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('BrickAndMortarImage'): 
@@ -56,7 +44,7 @@ export default class IconButton extends Component {
         return (
             
          
-                <TouchableHighlight onPress={ this.onClick } style={this.state.greenButtonState ? styles.greenIconButton : styles.iconButton} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
+                <TouchableHighlight onPress={() => this.onClick()} style={this.state.greenButtonState ? styles.greenIconButton : styles.iconButton} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
                     
                         <View
                             style={styles.iconButtonContentContainer}

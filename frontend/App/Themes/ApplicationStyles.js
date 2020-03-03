@@ -24,6 +24,7 @@ const ApplicationStyles = {
       marginVertical: Metrics.section,
       flex: 0.88,
       paddingVertical: 15.5,
+      width: '88%',
       backgroundColor: Colors.white,
       shadowColor: '#E6E6E6',
       shadowOffset: { width: 4, height: 3},
@@ -37,7 +38,8 @@ const ApplicationStyles = {
       alignSelf: 'center',
       alignItems: 'center',
       flex: 0.77,
-      paddingHorizontal: '6%'
+      paddingHorizontal: '6%',
+      textAlign: 'center'
     },
 
     container: {
@@ -92,16 +94,16 @@ const ApplicationStyles = {
       backgroundColor: Colors.cobalt
     },
     buttonContainer: {
-      flex: 1,
+      flex: 3,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: '100%'
+      height: '100%',
+      paddingVertical: '17%'
     },
     valueButtonRow: {
-      flex: 1,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: 100
+      paddingHorizontal: '8%'
     },
 
     background: {
@@ -127,7 +129,7 @@ const ApplicationStyles = {
       flexDirection: 'row',
       justifyContent: 'space-between',
       height: 88,
-      paddingHorizontal: '11%',
+      paddingHorizontal: '4%',
       backgroundColor: 'transparent',
       alignItems: 'center'
     }
