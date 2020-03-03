@@ -102,7 +102,7 @@ defmodule Boldly.CreatorAccount do
     Creator.changeset(creator, %{})
   end
 
-  def authenticate_creator(email, password) do
+  def authenticate_user(email, password) do
     query = from(u in Creator, where: u.email == ^email)
     query |> Repo.one() |> verify_password(password)
   end

@@ -108,5 +108,12 @@ defmodule Boldly.BrandAccountTest do
       brand = brand_fixture()
       assert %Ecto.Changeset{} = BrandAccount.change_brand(brand)
     end
+
+    test "authenticate_user/2 authenticates the user" do
+      brand = brand_fixture()
+      assert {:error, "Wrong email or password"} = BrandAccount.authenticate_user("wrong email", "")
+      assert {:ok, authenticated_user} = BrandAccount.authenticate_user(brand.email, @valid_attrs.password)
+      assert brand == authenticated_user
+    end
   end
 end

@@ -42,7 +42,7 @@ defmodule BoldlyWeb.CreatorController do
   end
 
   def sign_in(conn, %{"email" => email, "password" => password}) do
-    case Boldly.CreatorAccount.authenticate_creator(email, password) do
+    case Boldly.CreatorAccount.authenticate_user(email, password) do
       {:ok, creator} ->
         conn
         |> put_session(:current_user_id, creator.id)
