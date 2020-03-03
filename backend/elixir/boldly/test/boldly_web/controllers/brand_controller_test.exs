@@ -22,7 +22,8 @@ defmodule BoldlyWeb.BrandControllerTest do
     industries: "some updated industries",
     location: "some updated location",
     values: "some updated values",
-    password: "some updated password"
+    password: "some updated password",
+    name: "some updated name"
   }
   @invalid_attrs %{
     ecommerce: nil,
@@ -31,7 +32,8 @@ defmodule BoldlyWeb.BrandControllerTest do
     industries: nil,
     location: nil,
     values: nil,
-    password: nil
+    password: nil,
+    name: nil
   }
 
   @current_attrs %{
@@ -41,7 +43,8 @@ defmodule BoldlyWeb.BrandControllerTest do
     industries: "some current industries",
     location: "some current location",
     values: "some current values",
-    password: "some current password"
+    password: "some current password",
+    name: "some current name"
   }
 
   def fixture(:brand) do
@@ -62,16 +65,18 @@ defmodule BoldlyWeb.BrandControllerTest do
   describe "index" do
     test "lists all brands", %{conn: conn, current_user: current_user} do
       conn = get(conn, Routes.brand_path(conn, :index))
+
       assert json_response(conn, 200)["data"] == [
-        %{
-          "uuid" => current_user.id,
-          "email" => current_user.email,
-          "ecommerce" => current_user.ecommerce,
-          "industries" => current_user.industries,
-          "location" => current_user.location,
-          "values" => current_user.values
-        }
-      ]
+               %{
+                 "uuid" => current_user.id,
+                 "email" => current_user.email,
+                 "ecommerce" => current_user.ecommerce,
+                 "industries" => current_user.industries,
+                 "location" => current_user.location,
+                 "values" => current_user.values,
+                 "name" => current_user.name
+               }
+             ]
     end
   end
 
@@ -138,35 +143,41 @@ defmodule BoldlyWeb.BrandControllerTest do
 
   describe "sign in brand" do
     test "renders Brand when credentials are good", %{conn: conn, current_user: current_user} do
-      conn = post(conn, Routes.brand_path(conn, :sign_in, %{
-        email: current_user.email, password: @current_attrs.password
-        })
+      conn =
+        post(
+          conn,
+          Routes.brand_path(conn, :sign_in, %{
+            email: current_user.email,
+            password: @current_attrs.password
+          })
         )
-        assert json_response(conn, 200)["data"] == %{
-          "brand" => %{
-            "uuid" => current_user.id,
-            "ecommerce" => Date.to_string(current_user.birthday),
-            "email" => current_user.email,
-            "industries" => current_user.industry,
-            "location" => current_user.location,
-            "name" => current_user.name,
-            "values" => current_user.values
 
-          }
-        }
+      assert json_response(conn, 200)["data"] == %{
+               "brand" => %{
+                 "uuid" => current_user.id,
+                 "ecommerce" => current_user.ecommerce,
+                 "email" => current_user.email,
+                 "industries" => current_user.industries,
+                 "location" => current_user.location,
+                 "name" => current_user.name,
+                 "values" => current_user.values
+               }
+             }
     end
 
     test "renders errors when credentials are bad", %{conn: conn} do
-      conn = post(
-      conn, Routes.creator_path(conn, :sign_in, %{
-        email: "doesn't f*cking exist",
-        password: "bippittyboppitty"
-        })
-      )
+      conn =
+        post(
+          conn,
+          Routes.creator_path(conn, :sign_in, %{
+            email: "doesn't f*cking exist",
+            password: "bippittyboppitty"
+          })
+        )
 
       assert json_response(conn, 401)["errors"] == %{
-        "detail" => "Wrong email or password"
-      }
+               "detail" => "Wrong email or password"
+             }
     end
   end
 
@@ -177,6 +188,7 @@ defmodule BoldlyWeb.BrandControllerTest do
 
   defp setup_current_user(conn) do
     current_user = fixture(:current_user)
+
     {
       :ok,
       conn: Test.init_test_session(conn, current_user_id: current_user.id),

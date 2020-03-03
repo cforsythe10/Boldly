@@ -152,36 +152,42 @@ defmodule BoldlyWeb.CreatorControllerTest do
 
   describe "sign in creator" do
     test "renders Creator when credentials are good", %{conn: conn, current_user: current_user} do
-      conn = post(conn, Routes.creator_path(conn, :sign_in, %{
-        email: current_user.email, password: @current_user_attrs.password
-        })
+      conn =
+        post(
+          conn,
+          Routes.creator_path(conn, :sign_in, %{
+            email: current_user.email,
+            password: @current_user_attrs.password
+          })
         )
-        assert json_response(conn, 200)["data"] == %{
-          "creator" => %{
-            "uuid" => current_user.id,
-            "birthday" => Date.to_string(current_user.birthday),
-            "email" => current_user.email,
-            "industry" => current_user.industry,
-            "interests" => current_user.interests,
-            "location" => current_user.location,
-            "name" => current_user.name,
-            "values" => current_user.values
 
-          }
-        }
+      assert json_response(conn, 200)["data"] == %{
+               "creator" => %{
+                 "uuid" => current_user.id,
+                 "birthday" => Date.to_string(current_user.birthday),
+                 "email" => current_user.email,
+                 "industry" => current_user.industry,
+                 "interests" => current_user.interests,
+                 "location" => current_user.location,
+                 "name" => current_user.name,
+                 "values" => current_user.values
+               }
+             }
     end
 
     test "renders errors when credentials are bad", %{conn: conn} do
-      conn = post(
-      conn, Routes.creator_path(conn, :sign_in, %{
-        email: "doesn't f*cking exist",
-        password: "bippittyboppitty"
-        })
-      )
+      conn =
+        post(
+          conn,
+          Routes.creator_path(conn, :sign_in, %{
+            email: "doesn't f*cking exist",
+            password: "bippittyboppitty"
+          })
+        )
 
       assert json_response(conn, 401)["errors"] == %{
-        "detail" => "Wrong email or password"
-      }
+               "detail" => "Wrong email or password"
+             }
     end
   end
 

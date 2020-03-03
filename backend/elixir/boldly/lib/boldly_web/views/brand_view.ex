@@ -17,7 +17,8 @@ defmodule BoldlyWeb.BrandView do
       location: brand.location,
       industries: brand.industries,
       values: brand.values,
-      email: brand.email
+      email: brand.email,
+      name: brand.name
     }
   end
 
@@ -30,7 +31,8 @@ defmodule BoldlyWeb.BrandView do
           location: brand.location,
           industries: brand.industries,
           values: brand.values,
-          email: brand.email
+          email: brand.email,
+          name: brand.name
         }
       }
     }

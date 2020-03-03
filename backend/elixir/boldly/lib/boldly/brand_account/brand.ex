@@ -11,6 +11,7 @@ defmodule Boldly.BrandAccount.Brand do
     field :values, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :name, :string
 
     timestamps(type: :utc_datetime_usec)
   end
@@ -18,8 +19,17 @@ defmodule Boldly.BrandAccount.Brand do
   @doc false
   def changeset(brand, attrs) do
     brand
-    |> cast(attrs, [:id, :ecommerce, :location, :industries, :values, :email, :password])
-    |> validate_required([:id, :ecommerce, :location, :industries, :values, :email, :password])
+    |> cast(attrs, [:id, :ecommerce, :location, :industries, :values, :email, :password, :name])
+    |> validate_required([
+      :id,
+      :ecommerce,
+      :location,
+      :industries,
+      :values,
+      :email,
+      :password,
+      :name
+    ])
     |> unique_constraint(:id)
     |> unique_constraint(:email)
     |> put_password_hash()

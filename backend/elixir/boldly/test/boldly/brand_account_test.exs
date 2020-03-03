@@ -13,7 +13,8 @@ defmodule Boldly.BrandAccountTest do
       industries: "some industries",
       location: "some location",
       values: "some values",
-      password: "some password"
+      password: "some password",
+      name: "some name"
     }
     @update_attrs %{
       ecommerce: false,
@@ -22,7 +23,8 @@ defmodule Boldly.BrandAccountTest do
       industries: "some updated industries",
       location: "some updated location",
       values: "some updated values",
-      password: "some updated password"
+      password: "some updated password",
+      name: "some updated name"
     }
     @invalid_attrs %{
       ecommerce: nil,
@@ -31,7 +33,8 @@ defmodule Boldly.BrandAccountTest do
       industries: nil,
       location: nil,
       values: nil,
-      password: nil
+      password: nil,
+      name: nil
     }
 
     def brand_fixture(attrs \\ %{}) do
@@ -51,7 +54,8 @@ defmodule Boldly.BrandAccountTest do
         location: brand.location,
         values: brand.values,
         password: nil,
-        password_hash: brand.password_hash
+        password_hash: brand.password_hash,
+        name: brand.name
       }
     end
 
@@ -73,6 +77,7 @@ defmodule Boldly.BrandAccountTest do
       assert brand.industries == "some industries"
       assert brand.location == "some location"
       assert brand.values == "some values"
+      assert brand.name == "some name"
       assert Bcrypt.verify_pass("some password", brand.password_hash)
     end
 
@@ -89,6 +94,7 @@ defmodule Boldly.BrandAccountTest do
       assert brand.industries == "some updated industries"
       assert brand.location == "some updated location"
       assert brand.values == "some updated values"
+      assert brand.name == "some updated name"
       assert Bcrypt.verify_pass("some updated password", brand.password_hash)
     end
 
@@ -111,8 +117,13 @@ defmodule Boldly.BrandAccountTest do
 
     test "authenticate_user/2 authenticates the user" do
       brand = brand_fixture()
-      assert {:error, "Wrong email or password"} = BrandAccount.authenticate_user("wrong email", "")
-      assert {:ok, authenticated_user} = BrandAccount.authenticate_user(brand.email, @valid_attrs.password)
+
+      assert {:error, "Wrong email or password"} =
+               BrandAccount.authenticate_user("wrong email", "")
+
+      assert {:ok, authenticated_user} =
+               BrandAccount.authenticate_user(brand.email, @valid_attrs.password)
+
       assert brand == authenticated_user
     end
   end

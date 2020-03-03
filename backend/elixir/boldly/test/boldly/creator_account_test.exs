@@ -122,8 +122,13 @@ defmodule Boldly.CreatorAccountTest do
 
     test "authenticate_user/2 authenticates the user" do
       creator = creator_fixture()
-      assert {:error, "Wrong email or password"} = CreatorAccount.authenticate_user("wrong email", "")
-      assert {:ok, authenticated_user} = CreatorAccount.authenticate_user(creator.email, @valid_attrs.password)
+
+      assert {:error, "Wrong email or password"} =
+               CreatorAccount.authenticate_user("wrong email", "")
+
+      assert {:ok, authenticated_user} =
+               CreatorAccount.authenticate_user(creator.email, @valid_attrs.password)
+
       assert creator == authenticated_user
     end
   end
