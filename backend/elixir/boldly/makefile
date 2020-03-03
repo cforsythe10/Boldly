@@ -38,5 +38,10 @@ campaign_schema:
 	desired_engagement_rate:integer perks:string industry:string \
 	interests:string location:string specific_to_location:boolean
 
+remove_campaign_schema:
+	rm -rf lib/boldly/campaign*
+	rm -rf priv/repo/migrations/*campaign*
+	rm -rf test/boldly/*campaign*
+
 get_deps:
 	mix deps.get
