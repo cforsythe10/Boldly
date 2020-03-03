@@ -30,5 +30,13 @@ remove_creator_schema:
 	rm -rf priv/repo/migrations/*creators*
 	rm -rf test/boldly/*creator*
 
+campaign_schema:
+	mix phx.gen.context id:uuid:unique launched_by:references:brands \
+	name:string start_date:date end_date:date photo_reference:string \
+	description:string values:string creator_responsibilities:string \
+	age_range:string compensation:string desired_engagement_rate:int \
+	perks:string industry:string interests:string location:string \
+	specific_to_location:boolean
+
 get_deps:
 	mix deps.get
