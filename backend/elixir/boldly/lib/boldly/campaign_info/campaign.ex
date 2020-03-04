@@ -31,9 +31,7 @@ defmodule Boldly.CampaignInfo.Campaign do
 
   @doc false
   def changeset(campaign, attrs) do
-    # brand = Repo.one(from b in Boldly.BrandAccount.Brand, where: b.uuid == ^attrs["launched_by"])
     campaign
-    # |> Repo.preload(:brands)
     |> cast(attrs, [
       :uuid,
       :name,
@@ -55,7 +53,6 @@ defmodule Boldly.CampaignInfo.Campaign do
       :launched_by
     ])
     |> assoc_constraint(:brands, name: :launched_by)
-    # |> put_assoc(:launched_by, attrs.brand)
     |> validate_required([
       :uuid,
       :name,

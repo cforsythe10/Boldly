@@ -150,7 +150,7 @@ defmodule Boldly.CampaignInfoTest do
       assert campaign.start_date == ~D[2010-04-17]
       assert campaign.uuid == "7488a646-e31f-11e4-aace-600308960662"
       assert campaign.values == "some values"
-      assert campaign.launched_by == "7488a646-e31f-11e4-aace-600308960660"
+      assert campaign.launched_by == brand.uuid
     end
 
     test "create_campaign/1 with invalid data returns error changeset" do

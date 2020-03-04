@@ -39,6 +39,15 @@ campaign_schema:
 	interests:string location:string specific_to_location:boolean \
 	is_draft:boolean
 
+campaign_endpoint:
+	mix phx.gen.json CampaignInfo Campaign campaigns uuid:uuid:unique launched_by:references:brands \
+	name:string start_date:date end_date:date photo_reference:string \
+	description:string values:string creator_responsibilities:string \
+	age_range:string compensation:string \
+	desired_engagement_rate:integer perks:string industry:string \
+	interests:string location:string specific_to_location:boolean \
+	is_draft:boolean --no-context --no-schema
+
 remove_campaign_schema:
 	rm -rf lib/boldly/campaign*
 	rm -rf priv/repo/migrations/*campaign*
