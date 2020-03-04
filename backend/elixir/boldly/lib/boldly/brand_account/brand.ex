@@ -13,6 +13,7 @@ defmodule Boldly.BrandAccount.Brand do
     field :password_hash, :string
     field :name, :string
     field :uuid, Ecto.UUID, autogenerate: true
+    has_many :campaigns, Boldly.CampaignInfo.Campaign, [foreign_key: :launched_by, references: :uuid]
 
     timestamps(type: :utc_datetime_usec)
   end
@@ -20,9 +21,20 @@ defmodule Boldly.BrandAccount.Brand do
   @doc false
   def changeset(brand, attrs) do
     brand
-    |> cast(attrs, [:id, :uuid, :ecommerce, :location, :industries, :values, :email, :password, :name])
+    |> cast(attrs, [
+      :id,
+      :uuid,
+      :ecommerce,
+      :location,
+      :industries,
+      :values,
+      :email,
+      :password,
+      :name
+    ])
     |> validate_required([
-      :id, :uuid,
+      :id,
+      :uuid,
       :ecommerce,
       :location,
       :industries,
@@ -34,6 +46,7 @@ defmodule Boldly.BrandAccount.Brand do
     |> unique_constraint(:id)
     |> unique_constraint(:uuid)
     |> unique_constraint(:email)
+    |> cast_assoc(:campaigns)
     |> put_password_hash()
   end
 

@@ -8,7 +8,8 @@ defmodule BoldlyWeb.BrandControllerTest do
   @create_attrs %{
     ecommerce: true,
     email: "some email",
-    uuid: "7488a646-e31f-11e4-aace-600308960662", id: 1,
+    uuid: "7488a646-e31f-11e4-aace-600308960662",
+    id: 1,
     industries: "some industries",
     location: "some location",
     values: "some values",
@@ -18,7 +19,8 @@ defmodule BoldlyWeb.BrandControllerTest do
   @update_attrs %{
     ecommerce: false,
     email: "some updated email",
-    uuid: "7488a646-e31f-11e4-aace-600308960668", id: 1,
+    uuid: "7488a646-e31f-11e4-aace-600308960668",
+    id: 1,
     industries: "some updated industries",
     location: "some updated location",
     values: "some updated values",
@@ -28,7 +30,8 @@ defmodule BoldlyWeb.BrandControllerTest do
   @invalid_attrs %{
     ecommerce: nil,
     email: nil,
-    id: nil, uuid: nil,
+    id: nil,
+    uuid: nil,
     industries: nil,
     location: nil,
     values: nil,
@@ -39,7 +42,8 @@ defmodule BoldlyWeb.BrandControllerTest do
   @current_attrs %{
     ecommerce: true,
     email: "some current email",
-    uuid: "7488a646-e31f-11e4-aace-600308960666", id: 2,
+    uuid: "7488a646-e31f-11e4-aace-600308960666",
+    id: 2,
     industries: "some current industries",
     location: "some current location",
     values: "some current values",
