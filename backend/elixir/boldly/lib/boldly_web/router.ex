@@ -22,6 +22,7 @@ defmodule BoldlyWeb.Router do
     resources "/brands", BrandController, except: [:new, :edit]
     resources "/creators", CreatorController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
+    resources "/campaigns", CampaignController, except: [:new, :edit]
   end
 
   defp ensure_authenticated(conn, _opts) do

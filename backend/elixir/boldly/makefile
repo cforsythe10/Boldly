@@ -53,5 +53,10 @@ remove_campaign_schema:
 	rm -rf priv/repo/migrations/*campaign*
 	rm -rf test/boldly/*campaign*
 
+remove_campaign_enpoint:
+	rm -rf lib/boldly_web/**/*campagn*
+	rm -rf priv/repo/migrations/*campaigns*
+	rm -rf test/boldly_web/controllers/campaign*
+
 get_deps:
 	mix deps.get
