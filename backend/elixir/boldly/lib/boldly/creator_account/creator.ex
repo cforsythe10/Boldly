@@ -46,6 +46,7 @@ defmodule Boldly.CreatorAccount.Creator do
       :password
     ])
     |> unique_constraint(:id)
+    |> unique_constraint(:uuid)
     |> unique_constraint(:email)
     |> put_password_hash()
   end

@@ -9,7 +9,7 @@ defmodule Boldly.BrandAccountTest do
     @valid_attrs %{
       ecommerce: true,
       email: "some email",
-      id: "7488a646-e31f-11e4-aace-600308960662",
+      uuid: "7488a646-e31f-11e4-aace-600308960662", id: 1,
       industries: "some industries",
       location: "some location",
       values: "some values",
@@ -19,7 +19,7 @@ defmodule Boldly.BrandAccountTest do
     @update_attrs %{
       ecommerce: false,
       email: "some updated email",
-      id: "7488a646-e31f-11e4-aace-600308960668",
+      uuid: "7488a646-e31f-11e4-aace-600308960668", id: 1,
       industries: "some updated industries",
       location: "some updated location",
       values: "some updated values",
@@ -29,7 +29,7 @@ defmodule Boldly.BrandAccountTest do
     @invalid_attrs %{
       ecommerce: nil,
       email: nil,
-      id: nil,
+      id: nil, uuid: nil,
       industries: nil,
       location: nil,
       values: nil,
@@ -49,7 +49,7 @@ defmodule Boldly.BrandAccountTest do
         updated_at: brand.updated_at,
         ecommerce: brand.ecommerce,
         email: brand.email,
-        id: brand.id,
+        id: brand.id, uuid: brand.uuid,
         industries: brand.industries,
         location: brand.location,
         values: brand.values,
@@ -73,7 +73,8 @@ defmodule Boldly.BrandAccountTest do
       assert {:ok, %Brand{} = brand} = BrandAccount.create_brand(@valid_attrs)
       assert brand.ecommerce == true
       assert brand.email == "some email"
-      assert brand.id == "7488a646-e31f-11e4-aace-600308960662"
+      assert brand.uuid == "7488a646-e31f-11e4-aace-600308960662"
+      assert brand.id == 1
       assert brand.industries == "some industries"
       assert brand.location == "some location"
       assert brand.values == "some values"
@@ -90,7 +91,8 @@ defmodule Boldly.BrandAccountTest do
       assert {:ok, %Brand{} = brand} = BrandAccount.update_brand(brand, @update_attrs)
       assert brand.ecommerce == false
       assert brand.email == "some updated email"
-      assert brand.id == "7488a646-e31f-11e4-aace-600308960668"
+      assert brand.uuid == "7488a646-e31f-11e4-aace-600308960668"
+      assert brand.id == 1
       assert brand.industries == "some updated industries"
       assert brand.location == "some updated location"
       assert brand.values == "some updated values"

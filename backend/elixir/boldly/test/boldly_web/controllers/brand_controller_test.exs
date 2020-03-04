@@ -8,7 +8,7 @@ defmodule BoldlyWeb.BrandControllerTest do
   @create_attrs %{
     ecommerce: true,
     email: "some email",
-    id: "7488a646-e31f-11e4-aace-600308960662",
+    uuid: "7488a646-e31f-11e4-aace-600308960662", id: 1,
     industries: "some industries",
     location: "some location",
     values: "some values",
@@ -18,7 +18,7 @@ defmodule BoldlyWeb.BrandControllerTest do
   @update_attrs %{
     ecommerce: false,
     email: "some updated email",
-    id: "7488a646-e31f-11e4-aace-600308960668",
+    uuid: "7488a646-e31f-11e4-aace-600308960668", id: 1,
     industries: "some updated industries",
     location: "some updated location",
     values: "some updated values",
@@ -28,7 +28,7 @@ defmodule BoldlyWeb.BrandControllerTest do
   @invalid_attrs %{
     ecommerce: nil,
     email: nil,
-    id: nil,
+    id: nil, uuid: nil,
     industries: nil,
     location: nil,
     values: nil,
@@ -39,7 +39,7 @@ defmodule BoldlyWeb.BrandControllerTest do
   @current_attrs %{
     ecommerce: true,
     email: "some current email",
-    id: "7488a646-e31f-11e4-aace-600308960666",
+    uuid: "7488a646-e31f-11e4-aace-600308960666", id: 2,
     industries: "some current industries",
     location: "some current location",
     values: "some current values",
@@ -68,7 +68,8 @@ defmodule BoldlyWeb.BrandControllerTest do
 
       assert json_response(conn, 200)["data"] == [
                %{
-                 "uuid" => current_user.id,
+                 "uuid" => current_user.uuid,
+                 "id" => current_user.id,
                  "email" => current_user.email,
                  "ecommerce" => current_user.ecommerce,
                  "industries" => current_user.industries,
@@ -83,14 +84,15 @@ defmodule BoldlyWeb.BrandControllerTest do
   describe "create brand" do
     test "renders brand when data is valid", %{conn: conn} do
       conn = post(conn, Routes.brand_path(conn, :create), brand: @create_attrs)
-      assert %{"uuid" => id} = json_response(conn, 201)["data"]
+      assert %{"id" => id} = json_response(conn, 201)["data"]
 
       conn = get(conn, Routes.brand_path(conn, :show, id))
 
       assert %{
                "ecommerce" => true,
                "email" => "some email",
-               "uuid" => id,
+               "id" => id,
+               "uuid" => "7488a646-e31f-11e4-aace-600308960662",
                "industries" => "some industries",
                "location" => "some location",
                "values" => "some values"
@@ -108,14 +110,15 @@ defmodule BoldlyWeb.BrandControllerTest do
 
     test "renders brand when data is valid", %{conn: conn, brand: %Brand{id: id} = brand} do
       conn = put(conn, Routes.brand_path(conn, :update, brand), brand: @update_attrs)
-      assert %{"uuid" => id} = json_response(conn, 200)["data"]
+      assert %{"id" => id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.brand_path(conn, :show, id))
 
       assert %{
                "ecommerce" => false,
                "email" => "some updated email",
-               "uuid" => id,
+               "id" => id,
+               "uuid" => "7488a646-e31f-11e4-aace-600308960668",
                "industries" => "some updated industries",
                "location" => "some updated location",
                "values" => "some updated values"
@@ -154,7 +157,8 @@ defmodule BoldlyWeb.BrandControllerTest do
 
       assert json_response(conn, 200)["data"] == %{
                "brand" => %{
-                 "uuid" => current_user.id,
+                 "uuid" => current_user.uuid,
+                 "id" => current_user.id,
                  "ecommerce" => current_user.ecommerce,
                  "email" => current_user.email,
                  "industries" => current_user.industries,

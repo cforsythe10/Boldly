@@ -12,7 +12,8 @@ defmodule BoldlyWeb.BrandView do
 
   def render("brand.json", %{brand: brand}) do
     %{
-      uuid: brand.id,
+      uuid: brand.uuid,
+      id: brand.id,
       ecommerce: brand.ecommerce,
       location: brand.location,
       industries: brand.industries,
@@ -26,7 +27,8 @@ defmodule BoldlyWeb.BrandView do
     %{
       data: %{
         brand: %{
-          uuid: brand.id,
+          uuid: brand.uuid,
+          id: brand.id,
           ecommerce: brand.ecommerce,
           location: brand.location,
           industries: brand.industries,
