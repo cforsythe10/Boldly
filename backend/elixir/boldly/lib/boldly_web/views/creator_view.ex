@@ -12,14 +12,15 @@ defmodule BoldlyWeb.CreatorView do
 
   def render("creator.json", %{creator: creator}) do
     %{
-      uuid: creator.id,
+      uuid: creator.uuid,
       name: creator.name,
       birthday: creator.birthday,
       values: creator.values,
       industry: creator.industry,
       interests: creator.interests,
       location: creator.location,
-      email: creator.email
+      email: creator.email,
+      id: creator.id
     }
   end
 
@@ -27,14 +28,15 @@ defmodule BoldlyWeb.CreatorView do
     %{
       data: %{
         creator: %{
-          uuid: creator.id,
+          uuid: creator.uuid,
           name: creator.name,
           birthday: creator.birthday,
           values: creator.values,
           industry: creator.industry,
           interests: creator.interests,
           location: creator.location,
-          email: creator.email
+          email: creator.email,
+          id: creator.id
         }
       }
     }

@@ -36,7 +36,8 @@ campaign_schema:
 	description:string values:string creator_responsibilities:string \
 	age_range:string compensation:string \
 	desired_engagement_rate:integer perks:string industry:string \
-	interests:string location:string specific_to_location:boolean
+	interests:string location:string specific_to_location:boolean \
+	is_draft:boolean
 
 remove_campaign_schema:
 	rm -rf lib/boldly/campaign*

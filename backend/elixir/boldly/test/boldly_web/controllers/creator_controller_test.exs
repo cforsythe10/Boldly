@@ -8,7 +8,8 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @create_attrs %{
     birthday: ~D[2010-04-17],
     email: "some email",
-    id: "7488a646-e31f-11e4-aace-600308960662",
+    uuid: "7488a646-e31f-11e4-aace-600308960662",
+    id: 1,
     industry: "some industry",
     interests: "some interests",
     location: "some location",
@@ -19,7 +20,8 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @update_attrs %{
     birthday: ~D[2011-05-18],
     email: "some updated email",
-    id: "7488a646-e31f-11e4-aace-600308960668",
+    uuid: "7488a646-e31f-11e4-aace-600308960668",
+    id: 1,
     industry: "some updated industry",
     interests: "some updated interests",
     location: "some updated location",
@@ -30,6 +32,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @invalid_attrs %{
     birthday: nil,
     email: nil,
+    uuid: nil,
     id: nil,
     industry: nil,
     interests: nil,
@@ -42,7 +45,8 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @current_user_attrs %{
     birthday: ~D[2011-05-18],
     email: "some current email",
-    id: "7488a646-e31f-11e4-aace-600308960666",
+    uuid: "7488a646-e31f-11e4-aace-600308960666",
+    id: 2,
     industry: "some industry",
     interests: "some interests",
     location: "some location",
@@ -72,14 +76,15 @@ defmodule BoldlyWeb.CreatorControllerTest do
 
       assert json_response(conn, 200)["data"] == [
                %{
-                 "uuid" => current_user.id,
+                 "uuid" => current_user.uuid,
                  "birthday" => Date.to_string(current_user.birthday),
                  "email" => current_user.email,
                  "industry" => current_user.industry,
                  "interests" => current_user.interests,
                  "location" => current_user.location,
                  "name" => current_user.name,
-                 "values" => current_user.values
+                 "values" => current_user.values,
+                 "id" => current_user.id
                }
              ]
     end
@@ -88,12 +93,13 @@ defmodule BoldlyWeb.CreatorControllerTest do
   describe "create creator" do
     test "renders creator when data is valid", %{conn: conn} do
       conn = post(conn, Routes.creator_path(conn, :create), creator: @create_attrs)
-      assert %{"uuid" => id} = json_response(conn, 201)["data"]
+      assert %{"id" => id} = json_response(conn, 201)["data"]
 
       conn = get(conn, Routes.creator_path(conn, :show, id))
 
       assert %{
-               "uuid" => id,
+               "uuid" => "7488a646-e31f-11e4-aace-600308960662",
+               "id" => id,
                "birthday" => "2010-04-17",
                "email" => "some email",
                "industry" => "some industry",
@@ -115,12 +121,13 @@ defmodule BoldlyWeb.CreatorControllerTest do
 
     test "renders creator when data is valid", %{conn: conn, creator: %Creator{id: id} = creator} do
       conn = put(conn, Routes.creator_path(conn, :update, creator), creator: @update_attrs)
-      assert %{"uuid" => id} = json_response(conn, 200)["data"]
+      assert %{"id" => id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.creator_path(conn, :show, id))
 
       assert %{
-               "uuid" => id,
+               "uuid" => "7488a646-e31f-11e4-aace-600308960668",
+               "id" => id,
                "birthday" => "2011-05-18",
                "email" => "some updated email",
                "industry" => "some updated industry",
@@ -163,7 +170,8 @@ defmodule BoldlyWeb.CreatorControllerTest do
 
       assert json_response(conn, 200)["data"] == %{
                "creator" => %{
-                 "uuid" => current_user.id,
+                 "uuid" => current_user.uuid,
+                 "id" => current_user.id,
                  "birthday" => Date.to_string(current_user.birthday),
                  "email" => current_user.email,
                  "industry" => current_user.industry,

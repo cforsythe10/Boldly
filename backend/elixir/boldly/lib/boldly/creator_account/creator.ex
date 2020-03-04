@@ -2,7 +2,7 @@ defmodule Boldly.CreatorAccount.Creator do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @primary_key {:id, :binary_id, autogenerate: true}
+  @primary_key {:id, :id, autogenerate: true}
   schema "creators" do
     field :birthday, :date
     field :email, :string
@@ -13,6 +13,7 @@ defmodule Boldly.CreatorAccount.Creator do
     field :values, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :uuid, Ecto.UUID, autogenerate: true
 
     timestamps(type: :utc_datetime_usec)
   end
@@ -22,6 +23,7 @@ defmodule Boldly.CreatorAccount.Creator do
     creator
     |> cast(attrs, [
       :id,
+      :uuid,
       :name,
       :birthday,
       :values,
@@ -33,6 +35,7 @@ defmodule Boldly.CreatorAccount.Creator do
     ])
     |> validate_required([
       :id,
+      :uuid,
       :name,
       :birthday,
       :values,
