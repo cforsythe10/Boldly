@@ -20,7 +20,7 @@ defmodule Boldly.Repo.Migrations.CreateCampaigns do
       add :location, :string
       add :specific_to_location, :boolean, default: false, null: false
       add :is_draft, :boolean, default: false, null: false
-      add :launched_by, references(:brands, on_delete: :nothing)
+      add :launched_by, references(:brands, on_delete: :nothing, name: :launched_by, column: :uuid, type: :uuid)
 
       timestamps()
     end

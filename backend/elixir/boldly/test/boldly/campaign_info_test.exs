@@ -37,7 +37,8 @@ defmodule Boldly.CampaignInfoTest do
       start_date: ~D[2010-04-17],
       uuid: "7488a646-e31f-11e4-aace-600308960662",
       values: "some values",
-      brands: %{
+      launched_by: "7488a646-e31f-11e4-aace-600308960660",
+      brand: %{
         ecommerce: true,
         email: "some email",
         uuid: "7488a646-e31f-11e4-aace-600308960660",
@@ -90,9 +91,30 @@ defmodule Boldly.CampaignInfoTest do
 
     def campaign_fixture(attrs \\ %{}) do
       {:ok, brand} = attrs |> Enum.into(@valid_brand_attrs) |> Boldly.BrandAccount.create_brand()
+
+      use_attrs = %{
+        age_range: @valid_attrs.age_range,
+        compensation: @valid_attrs.compensation,
+        creator_responsibilities: @valid_attrs.creator_responsibilities,
+        description: @valid_attrs.description,
+        desired_engagement_rate: @valid_attrs.desired_engagement_rate,
+        end_date: @valid_attrs.end_date,
+        industry: @valid_attrs.industry,
+        interests: @valid_attrs.interests,
+        is_draft: @valid_attrs.is_draft,
+        location: @valid_attrs.location,
+        name: @valid_attrs.name,
+        perks: @valid_attrs.perks,
+        photo_reference: @valid_attrs.photo_reference,
+        specific_to_location: @valid_attrs.specific_to_location,
+        start_date: @valid_attrs.start_date,
+        uuid: @valid_attrs.uuid,
+        values: @valid_attrs.values,
+        launched_by: brand.uuid
+      }
       {:ok, campaign} =
         attrs
-        |> Enum.into(@valid_attrs)
+        |> Enum.into(use_attrs)
         |> CampaignInfo.create_campaign()
 
       campaign
@@ -109,6 +131,7 @@ defmodule Boldly.CampaignInfoTest do
     end
 
     test "create_campaign/1 with valid data creates a campaign" do
+      {:ok, brand} = %{} |> Enum.into(@valid_brand_attrs) |> Boldly.BrandAccount.create_brand()
       assert {:ok, %Campaign{} = campaign} = CampaignInfo.create_campaign(@valid_attrs)
       assert campaign.age_range == "some age_range"
       assert campaign.compensation == "some compensation"
@@ -127,6 +150,7 @@ defmodule Boldly.CampaignInfoTest do
       assert campaign.start_date == ~D[2010-04-17]
       assert campaign.uuid == "7488a646-e31f-11e4-aace-600308960662"
       assert campaign.values == "some values"
+      assert campaign.launched_by == "7488a646-e31f-11e4-aace-600308960660"
     end
 
     test "create_campaign/1 with invalid data returns error changeset" do

@@ -46,7 +46,7 @@ defmodule Boldly.BrandAccount.Brand do
     |> unique_constraint(:id)
     |> unique_constraint(:uuid)
     |> unique_constraint(:email)
-    |> cast_assoc(:campaigns)
+    # |> cast_assoc(:campaigns)
     |> put_password_hash()
   end
 
