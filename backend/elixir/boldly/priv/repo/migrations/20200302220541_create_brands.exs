@@ -11,10 +11,9 @@ defmodule Boldly.Repo.Migrations.CreateBrands do
       add :email, :string, null: false
       add :password_hash, :string, null: false
       add :name, :string, null: false
-      add :profile_picture, # what value for profile pic?
+      add :profile_picture, :string
       add :bio, :string, null: false
-      add :website, :url, null: false
-      add :featured_posts, # what value for gram posts?
+      add :website, :string, null: false
 
       timestamps(type: :utc_datetime_usec)
     end
