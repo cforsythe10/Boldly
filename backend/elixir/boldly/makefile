@@ -31,7 +31,7 @@ remove_creator_schema:
 	rm -rf test/boldly/*creator*
 
 campaign_schema:
-	mix phx.gen.context CampaignInfo Campaign campaigns id:uuid:unique launched_by:references:brands \
+	mix phx.gen.context CampaignInfo Campaign campaigns uuid:uuid:unique launched_by:references:brands \
 	name:string start_date:date end_date:date photo_reference:string \
 	description:string values:string creator_responsibilities:string \
 	age_range:string compensation:string \
