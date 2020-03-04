@@ -40,7 +40,7 @@ campaign_schema:
 	is_draft:boolean
 
 campaign_endpoint:
-	mix phx.gen.json CampaignInfo Campaign campaigns uuid:uuid:unique launched_by:references:brands \
+	mix phx.gen.json CampaignInfo Campaign campaigns uuid:uuid launched_by:references:brands \
 	name:string start_date:date end_date:date photo_reference:string \
 	description:string values:string creator_responsibilities:string \
 	age_range:string compensation:string \
