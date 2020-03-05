@@ -8,8 +8,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @create_attrs %{
     birthday: ~D[2010-04-17],
     email: "some email",
-    uuid: "7488a646-e31f-11e4-aace-600308960662",
-    id: 1,
+
     industry: "some industry",
     interests: "some interests",
     location: "some location",
@@ -20,8 +19,7 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @update_attrs %{
     birthday: ~D[2011-05-18],
     email: "some updated email",
-    uuid: "7488a646-e31f-11e4-aace-600308960668",
-    id: 1,
+
     industry: "some updated industry",
     interests: "some updated interests",
     location: "some updated location",
@@ -45,8 +43,6 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @current_user_attrs %{
     birthday: ~D[2011-05-18],
     email: "some current email",
-    uuid: "7488a646-e31f-11e4-aace-600308960666",
-    id: 2,
     industry: "some industry",
     interests: "some interests",
     location: "some location",
@@ -93,12 +89,12 @@ defmodule BoldlyWeb.CreatorControllerTest do
   describe "create creator" do
     test "renders creator when data is valid", %{conn: conn} do
       conn = post(conn, Routes.creator_path(conn, :create), creator: @create_attrs)
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+      assert %{"id" => id, "uuid" => uuid} = json_response(conn, 201)["data"]
 
       conn = get(conn, Routes.creator_path(conn, :show, id))
 
       assert %{
-               "uuid" => "7488a646-e31f-11e4-aace-600308960662",
+               "uuid" => uuid,
                "id" => id,
                "birthday" => "2010-04-17",
                "email" => "some email",
@@ -124,9 +120,10 @@ defmodule BoldlyWeb.CreatorControllerTest do
       assert %{"id" => id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.creator_path(conn, :show, id))
+      uuid = creator.uuid
 
       assert %{
-               "uuid" => "7488a646-e31f-11e4-aace-600308960668",
+               "uuid" => uuid,
                "id" => id,
                "birthday" => "2011-05-18",
                "email" => "some updated email",
