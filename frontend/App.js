@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux';
 import Navigator from './App/Navigation/Navigator'
-import initStore from './App/Redux/createStore';
+import initStore from './App/Redux/CreateStore';
 
 const store = initStore();
 
