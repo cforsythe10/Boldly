@@ -8,7 +8,7 @@ defmodule BoldlyWeb.BrandControllerTest do
   @create_attrs %{
     ecommerce: true,
     email: "some email",
-    uuid: "7488a646-e31f-11e4-aace-600308960662",
+    # uuid: "7488a646-e31f-11e4-aace-600308960662",
     industries: "some industries",
     location: "some location",
     values: "some values",
@@ -18,7 +18,7 @@ defmodule BoldlyWeb.BrandControllerTest do
   @update_attrs %{
     ecommerce: false,
     email: "some updated email",
-    uuid: "7488a646-e31f-11e4-aace-600308960662",
+    # uuid: "7488a646-e31f-11e4-aace-600308960662",
     industries: "some updated industries",
     location: "some updated location",
     values: "some updated values",
@@ -94,7 +94,7 @@ defmodule BoldlyWeb.BrandControllerTest do
                "ecommerce" => true,
                "email" => "some email",
                "id" => id,
-               "uuid" => "7488a646-e31f-11e4-aace-600308960662",
+               # "uuid" => "7488a646-e31f-11e4-aace-600308960662",
                "industries" => "some industries",
                "location" => "some location",
                "values" => "some values"
@@ -115,12 +115,13 @@ defmodule BoldlyWeb.BrandControllerTest do
       assert %{"id" => id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.brand_path(conn, :show, id))
+      uuid = brand.uuid
 
       assert %{
                "ecommerce" => false,
                "email" => "some updated email",
                "id" => id,
-               "uuid" => "7488a646-e31f-11e4-aace-600308960668",
+               "uuid" => uuid,
                "industries" => "some updated industries",
                "location" => "some updated location",
                "values" => "some updated values"
