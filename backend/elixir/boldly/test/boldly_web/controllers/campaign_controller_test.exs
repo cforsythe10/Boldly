@@ -5,7 +5,6 @@ defmodule BoldlyWeb.CampaignControllerTest do
   alias Boldly.CampaignInfo.Campaign
   alias Plug.Test
 
-
   @valid_brand_attrs %{
     ecommerce: true,
     email: "some email",
@@ -59,8 +58,25 @@ defmodule BoldlyWeb.CampaignControllerTest do
     launched_by: "7488a646-e31f-11e4-aace-600308960660"
   }
 
-
-  @invalid_attrs %{age_range: nil, compensation: nil, creator_responsibilities: nil, description: nil, desired_engagement_rate: nil, end_date: nil, industry: nil, interests: nil, is_draft: nil, location: nil, name: nil, perks: nil, photo_reference: nil, specific_to_location: nil, start_date: nil, uuid: nil, values: nil}
+  @invalid_attrs %{
+    age_range: nil,
+    compensation: nil,
+    creator_responsibilities: nil,
+    description: nil,
+    desired_engagement_rate: nil,
+    end_date: nil,
+    industry: nil,
+    interests: nil,
+    is_draft: nil,
+    location: nil,
+    name: nil,
+    perks: nil,
+    photo_reference: nil,
+    specific_to_location: nil,
+    start_date: nil,
+    uuid: nil,
+    values: nil
+  }
 
   def fixture(:campaign) do
     # {:ok, brand} =  %{} |> Enum.into(@valid_brand_attrs) |> Boldly.BrandAccount.create_brand()
@@ -145,7 +161,10 @@ defmodule BoldlyWeb.CampaignControllerTest do
   describe "update campaign" do
     setup [:create_campaign]
 
-    test "renders campaign when data is valid", %{conn: conn, campaign: %Campaign{id: id} = campaign} do
+    test "renders campaign when data is valid", %{
+      conn: conn,
+      campaign: %Campaign{id: id} = campaign
+    } do
       conn = put(conn, Routes.campaign_path(conn, :update, campaign), campaign: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

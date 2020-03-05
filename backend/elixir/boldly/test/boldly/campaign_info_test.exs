@@ -6,7 +6,6 @@ defmodule Boldly.CampaignInfoTest do
   describe "campaigns" do
     alias Boldly.CampaignInfo.Campaign
 
-
     @valid_brand_attrs %{
       ecommerce: true,
       email: "some email",
@@ -112,6 +111,7 @@ defmodule Boldly.CampaignInfoTest do
         values: @valid_attrs.values,
         launched_by: brand.uuid
       }
+
       {:ok, campaign} =
         attrs
         |> Enum.into(use_attrs)

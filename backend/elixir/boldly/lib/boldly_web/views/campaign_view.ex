@@ -11,7 +11,8 @@ defmodule BoldlyWeb.CampaignView do
   end
 
   def render("campaign.json", %{campaign: campaign}) do
-    %{id: campaign.id,
+    %{
+      id: campaign.id,
       uuid: campaign.uuid,
       name: campaign.name,
       start_date: campaign.start_date,

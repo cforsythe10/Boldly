@@ -13,7 +13,10 @@ defmodule Boldly.BrandAccount.Brand do
     field :password_hash, :string
     field :name, :string
     field :uuid, Ecto.UUID, autogenerate: true
-    has_many :campaigns, Boldly.CampaignInfo.Campaign, [foreign_key: :launched_by, references: :uuid]
+
+    has_many :campaigns, Boldly.CampaignInfo.Campaign,
+      foreign_key: :launched_by,
+      references: :uuid
 
     timestamps(type: :utc_datetime_usec)
   end
