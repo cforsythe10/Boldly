@@ -25,7 +25,6 @@ defmodule Boldly.BrandAccount.Brand do
   def changeset(brand, attrs) do
     brand
     |> cast(attrs, [
-      :id,
       :uuid,
       :ecommerce,
       :location,
@@ -36,8 +35,7 @@ defmodule Boldly.BrandAccount.Brand do
       :name
     ])
     |> validate_required([
-      :id,
-      :uuid,
+      # :uuid,
       :ecommerce,
       :location,
       :industries,
@@ -46,7 +44,7 @@ defmodule Boldly.BrandAccount.Brand do
       :password,
       :name
     ])
-    |> unique_constraint(:id)
+    # |> unique_constraint(:id)
     |> unique_constraint(:uuid)
     |> unique_constraint(:email)
     # |> cast_assoc(:campaigns)
