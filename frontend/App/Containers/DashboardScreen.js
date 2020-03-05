@@ -9,8 +9,9 @@ import { Fonts } from '../Themes';
 // import { testActionCreator } from '../Redux/createStore'; // Importing the neccassary action creators, ideally in one file
 // import { connect } from 'react-redux'; // Import the connect function to connect your component/screen to redux state
 
-const DashboardScreen = ({someActionCreator}) => {
-    someActionCreator('data');
+// const DashboardScreen = ({someActionCreator}) => {
+//     someActionCreator('data');
+const DashboardScreen = () => {
     return (
         <View style={styles.fullScreen}>
             <Header headerType='MenuProfile' />
