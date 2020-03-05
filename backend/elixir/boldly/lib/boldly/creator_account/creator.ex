@@ -22,7 +22,6 @@ defmodule Boldly.CreatorAccount.Creator do
   def changeset(creator, attrs) do
     creator
     |> cast(attrs, [
-      :id,
       :uuid,
       :name,
       :birthday,
@@ -34,8 +33,7 @@ defmodule Boldly.CreatorAccount.Creator do
       :password
     ])
     |> validate_required([
-      :id,
-      :uuid,
+      # :uuid,
       :name,
       :birthday,
       :values,
@@ -45,7 +43,7 @@ defmodule Boldly.CreatorAccount.Creator do
       :email,
       :password
     ])
-    |> unique_constraint(:id)
+    # |> unique_constraint(:id)
     |> unique_constraint(:uuid)
     |> unique_constraint(:email)
     |> put_password_hash()
