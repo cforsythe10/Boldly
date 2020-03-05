@@ -1,49 +1,38 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import Rehydration from '../Services/Rehydration'
-import ReduxPersist from '../Config/ReduxPersist'
-import Config from '../Config/DebugConfig'
-import createSagaMiddleware from 'redux-saga'
-import ScreenTracking from './ScreenTrackingMiddleware'
-import { appNavigatorMiddleware } from '../Navigation/ReduxNavigation'
+import { createStore, combineReducers } from 'redux';
+// import { inputReducer } from './Inputs/input-reducer'; Example of a import of a reducer file
 
-// creates the store
-export default (rootReducer, rootSaga) => {
-  /* ------------- Redux Configuration ------------- */
+// FAKE ACTION
 
-  const middleware = []
-  const enhancers = []
+const TEST_ACTION = 'TEST_ACTION';
 
-  /* ------------- Navigation Middleware ------------ */
-  middleware.push(appNavigatorMiddleware)
+// FAKE ACTION CREATOR
 
-  /* ------------- Analytics Middleware ------------- */
-  middleware.push(ScreenTracking)
-
-  /* ------------- Saga Middleware ------------- */
-
-  const sagaMonitor = Config.useReactotron ? console.tron.createSagaMonitor() : null
-  const sagaMiddleware = createSagaMiddleware({ sagaMonitor })
-  middleware.push(sagaMiddleware)
-
-  /* ------------- Assemble Middleware ------------- */
-
-  enhancers.push(applyMiddleware(...middleware))
-
-  // if Reactotron is enabled (default for __DEV__), we'll create the store through Reactotron
-  const createAppropriateStore = Config.useReactotron ? console.tron.createStore : createStore
-  const store = createAppropriateStore(rootReducer, compose(...enhancers))
-
-  // configure persistStore and check reducer version number
-  if (ReduxPersist.active) {
-    Rehydration.updateReducers(store)
-  }
-
-  // kick off root saga
-  let sagasManager = sagaMiddleware.run(rootSaga)
-
-  return {
-    store,
-    sagasManager,
-    sagaMiddleware
-  }
+export const testActionCreator = (someData) => {
+    console.log('ActionCreator', someData);
+    return {
+        type: TEST_ACTION,
+        data: someData
+    }
 }
+
+// FAKE REDUCER
+
+const test = (state = {}, action) => {
+    switch(action.type) {
+        case TEST_ACTION: {
+            console.log('Reducer', action.type, action.data);
+            return action.data;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
+const rootReducer = combineReducers({
+    test
+});
+
+const initStore = () => createStore(rootReducer, {}); // Second Param is the inital state of the whole store
+
+export default initStore;
