@@ -75,6 +75,10 @@ const ApplicationStyles = {
       ...Fonts.style.h1,
       color: Colors.violet
     },
+    screenTitle: {
+      ...Fonts.style.h4,
+      color: Colors.cobalt
+    },
     surveyQuestion: {
       ...Fonts.style.h1,
       color: Colors.white
