@@ -51,13 +51,13 @@ export default class Header extends Component {
         const BackProfileHTML = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.navigate('Profile')} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <BackButton height={20} width={20} stroke={Colors.black }/>
+                    <BackButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Logo height={30} width={70}/>
                 
                 <TouchableHighlight onPress={() => navigation.navigate('Profile')} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <ProfileButton height={20} width={20} stroke={Colors.black }/>
+                    <ProfileButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
             </View>
@@ -66,7 +66,7 @@ export default class Header extends Component {
         const BackProfileTitle = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.navigate('Profile')} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <BackButton height={20} width={20} stroke={Colors.black }/>
+                    <BackButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Text style={styles.screenTitle}>
@@ -74,7 +74,7 @@ export default class Header extends Component {
                 </Text>
                 
                 <TouchableHighlight onPress={() => navigation.navigate('Profile')} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <ProfileButton height={20} width={20} stroke={Colors.black }/>
+                    <ProfileButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
             </View>
@@ -83,13 +83,13 @@ export default class Header extends Component {
         const MenuCheckHTML = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <MenuButton height={20} width={20} stroke={Colors.black }/>
+                    <MenuButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Logo height={30} width={70}/>
                 
                 <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <Check height={20} width={20} stroke={Colors.black }/>
+                    <Check height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
             </View>
@@ -98,7 +98,7 @@ export default class Header extends Component {
         const MenuCheckTitle = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <MenuButton height={20} width={20} stroke={Colors.black }/>
+                    <MenuButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Text style={styles.screenTitle}>
@@ -106,7 +106,7 @@ export default class Header extends Component {
                 </Text>
                 
                 <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <Check height={20} width={20} stroke={Colors.black }/>
+                    <Check height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
             </View>
@@ -115,13 +115,13 @@ export default class Header extends Component {
         const XCheckHTML = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <SettingsButton height={20} width={20} stroke={Colors.black }/>
+                    <SettingsButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Logo height={30} width={70}/>
                 
                 <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <Check height={20} width={20} stroke={Colors.black }/>
+                    <Check height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
             </View>
@@ -130,7 +130,7 @@ export default class Header extends Component {
         const XCheckTitle = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <SettingsButton height={20} width={20} stroke={Colors.black }/>
+                    <SettingsButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Text style={styles.screenTitle}>
@@ -138,7 +138,7 @@ export default class Header extends Component {
                 </Text>
                 
                 <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <Check height={20} width={20} stroke={Colors.black }/>
+                    <Check height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
             </View>
@@ -147,13 +147,13 @@ export default class Header extends Component {
         const MenuProfileHTML = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <MenuButton height={20} width={20} stroke={Colors.black }/>
+                    <MenuButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Logo height={30} width={70}/>
 
                 <TouchableHighlight onPress={() => navigation.navigate('Profile') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <ProfileButton height={20} width={20} stroke={Colors.black }/>
+                    <ProfileButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
             </View>
         )
@@ -161,7 +161,7 @@ export default class Header extends Component {
         const MenuProfileTitle = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <MenuButton height={20} width={20} stroke={Colors.black }/>
+                    <MenuButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Text style={styles.screenTitle}>
@@ -169,7 +169,7 @@ export default class Header extends Component {
                 </Text>
 
                 <TouchableHighlight onPress={() => navigation.navigate('Profile') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <ProfileButton height={20} width={20} stroke={Colors.black }/>
+                    <ProfileButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
             </View>
         )
@@ -203,13 +203,13 @@ export default class Header extends Component {
         const MenuEditHTML = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <MenuButton height={20} width={20} stroke={ Colors.black }/>
+                    <MenuButton height={20} width={20} stroke={ Colors.charcoal65 }/>
                 </TouchableHighlight>
                  
                     <Logo height={30} width={70}/>
 
                 <TouchableHighlight onPress={() => navigation.navigate('Edit') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <EditButton height={20} width={20} stroke={ Colors.black }/>
+                    <EditButton height={20} width={20} stroke={ Colors.charcoal65 }/>
                 </TouchableHighlight>
                     
             </View>
@@ -218,7 +218,7 @@ export default class Header extends Component {
         const MenuEditTitle = (
             <View style={styles.headerContainer}>
                 <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <MenuButton height={20} width={20} stroke={ Colors.black }/>
+                    <MenuButton height={20} width={20} stroke={ Colors.charcoal65 }/>
                 </TouchableHighlight>
                  
                 <Text style={styles.screenTitle}>
@@ -226,7 +226,7 @@ export default class Header extends Component {
                 </Text>
 
                 <TouchableHighlight onPress={() => navigation.navigate('Edit') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
-                    <EditButton height={20} width={20} stroke={ Colors.black }/>
+                    <EditButton height={20} width={20} stroke={ Colors.charcoal65 }/>
                 </TouchableHighlight>
                     
             </View>
