@@ -9,6 +9,7 @@ import ProfileButton from '../../Images/Icons/profile.svg'
 import EditButton from '../../Images/Icons/edit.svg'
 import Logo from '../../Images/Icons/logo-purple.svg'
 import LogoFog from '../../Images/Icons/logo-fog.svg'
+import Check from '../../Images/Icons/check.svg'
 import { Colors } from '../../Themes/';
 
 export default class Header extends Component {
@@ -28,7 +29,8 @@ export default class Header extends Component {
         text: PropTypes.string,
         onPress: PropTypes.func,
         RightSvgName: PropTypes.string,
-        headerType: PropTypes.string
+        headerType: PropTypes.string,
+        title: PropTypes.string
     }
 
     onClick() {
@@ -60,17 +62,83 @@ export default class Header extends Component {
                 
             </View>
         )
-        
-        const BackSettingsHTML = (
+
+        const BackProfileTitle = (
             <View style={styles.headerContainer}>
-                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => navigation.navigate('Profile')} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <BackButton height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+                <Text style={styles.screenTitle}>
+                    {this.props.title}
+                </Text>
+                
+                <TouchableHighlight onPress={() => navigation.navigate('Profile')} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <ProfileButton height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+            </View>
+        )
+        
+        const MenuCheckHTML = (
+            <View style={styles.headerContainer}>
+                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <MenuButton height={20} width={20} stroke={Colors.black }/>
                 </TouchableHighlight>
                 
                 <Logo height={30} width={70}/>
                 
-                <TouchableHighlight onPress={() => navigation.navigate('Settings')} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <Check height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+            </View>
+        )
+
+        const MenuCheckTitle = (
+            <View style={styles.headerContainer}>
+                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <MenuButton height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+                <Text style={styles.screenTitle}>
+                    {this.props.title}
+                </Text>
+                
+                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <Check height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+            </View>
+        )
+
+        const XCheckHTML = (
+            <View style={styles.headerContainer}>
+                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <SettingsButton height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+                <Logo height={30} width={70}/>
+                
+                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <Check height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+            </View>
+        )
+
+        const XCheckTitle = (
+            <View style={styles.headerContainer}>
+                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <SettingsButton height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+                <Text style={styles.screenTitle}>
+                    {this.props.title}
+                </Text>
+                
+                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <Check height={20} width={20} stroke={Colors.black }/>
                 </TouchableHighlight>
                 
             </View>
@@ -90,6 +158,22 @@ export default class Header extends Component {
             </View>
         )
 
+        const MenuProfileTitle = (
+            <View style={styles.headerContainer}>
+                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <MenuButton height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+                
+                <Text style={styles.screenTitle}>
+                    {this.props.title}
+                </Text>
+
+                <TouchableHighlight onPress={() => navigation.navigate('Profile') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <ProfileButton height={20} width={20} stroke={Colors.black }/>
+                </TouchableHighlight>
+            </View>
+        )
+
         const SurveyHTML = (
             <View style={styles.surveyHeaderContainer}>
                 <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
@@ -97,6 +181,20 @@ export default class Header extends Component {
                 </TouchableHighlight>
                 
                 <LogoFog height={30} width={70}/>
+
+                <View height={20} width={20} />
+            </View>
+        )
+
+        const SurveyTitle = (
+            <View style={styles.surveyHeaderContainer}>
+                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <BackButton height={20} width={20} stroke={Colors.white }/>
+                </TouchableHighlight>
+                
+                <Text style={styles.screenTitle}>
+                    {this.props.title}
+                </Text>
 
                 <View height={20} width={20} />
             </View>
@@ -117,18 +215,51 @@ export default class Header extends Component {
             </View>
         )
 
+        const MenuEditTitle = (
+            <View style={styles.headerContainer}>
+                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <MenuButton height={20} width={20} stroke={ Colors.black }/>
+                </TouchableHighlight>
+                 
+                <Text style={styles.screenTitle}>
+                    {this.props.title}
+                </Text>
+
+                <TouchableHighlight onPress={() => navigation.navigate('Edit') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <EditButton height={20} width={20} stroke={ Colors.black }/>
+                </TouchableHighlight>
+                    
+            </View>
+        )
+
+
+
         const HeaderSvgs = () => {
             switch(this.props.headerType) {
                 case('BackProfile'): 
-                    return BackProfileHTML     
-                case('BackSettings'): 
-                    return BackSettingsHTML
+                    return BackProfileHTML
+                case('BackProfileTitle'):
+                    return BackProfileTitle     
+                case('MenuCheck'): 
+                    return MenuCheckHTML
+                case('MenuCheckTitle'):
+                    return MenuCheckTitle
+                case('XCheck'): 
+                    return MenuCheckHTML
+                case('XCheckTitle'):
+                    return MenuCheckTitle
                 case('MenuProfile'):
                     return MenuProfileHTML
+                case('MenuProfileTitle'):
+                    return MenuProfileTitle
                 case('Survey'): 
                     return SurveyHTML
+                case('SurveyTitle'):
+                    return SurveyTitle
                 case('MenuEdit'): 
                     return MenuEditHTML
+                case('MenuEditTitle'):
+                    return MenuEditTitle
                 default:
                     return BackProfileHTML
             }
