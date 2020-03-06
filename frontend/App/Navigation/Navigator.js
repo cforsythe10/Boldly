@@ -33,28 +33,17 @@ import SurveyCreatorExtra2 from '../Containers/SurveyContent/SurveyCreatorExtra2
 
 const WIDTH = Dimensions.get('window').width;
 
-const leftDrawer = createDrawerNavigator(
-	{
-        Dashboard: {
-			screen: Dashboard
-        },
-        Messages: {
-            screen: Messages
-        },
-        Campaigns: {
-            screen: Campaign
-        },
-        Settings: {
-            screen: Settings
-        }
-    },
+// const leftDrawer = createDrawerNavigator(
+// 	{
+        
+//     },
     
-	{
-		drawerPosition: 'left',
-		drawerWidth: WIDTH * 0.83,
-		getCustomActionCreators: (route, stateKey) => { return { toggleLeftDrawer: () => DrawerActions.toggleDrawer({ key: stateKey }) }; },
-	},
-)
+// 	{
+// 		drawerPosition: 'left',
+// 		drawerWidth: WIDTH * 0.83,
+// 		getCustomActionCreators: (route, stateKey) => { return { toggleLeftDrawer: () => DrawerActions.toggleDrawer({ key: stateKey }) }; },
+// 	},
+// )
 
 const surveyNavigator = createStackNavigator(
 	{
@@ -100,9 +89,16 @@ const surveyNavigator = createStackNavigator(
 	}
 );
 
-const DashboardNavigator = createStackNavigator(
-    {
-        DashboardRegularC: {
+
+const Navigator = createStackNavigator(
+	{
+		Default: {
+			screen: Default
+		},
+		Dashboard: {
+			screen: Dashboard
+		},
+		DashboardRegularC: {
             screen: DashboardRegularC
         },
         DashboardRegularB: {
@@ -116,20 +112,16 @@ const DashboardNavigator = createStackNavigator(
         },
         DashboardNoCampaign: {
             screen: DashboardNoCampaign
-        }
-    },
-    {
-        headerMode: 'none'
-    }
-)
-
-const Navigator = createStackNavigator(
-	{
-		Default: {
-			screen: Default
-		},
-		leftDrawer,
-        DashboardNavigator,
+        },
+        Messages: {
+            screen: Messages
+        },
+        Campaigns: {
+            screen: Campaign
+        },
+        Settings: {
+            screen: Settings
+        },
         Profile: {
             screen: Profile
         },

@@ -78,16 +78,24 @@ export default class Header extends Component {
                     <LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
                     <View style={styles.hamburgerMenuContainer}>
                         <View style={styles.rightIcon}>
-                            <TouchableHighlight onPress={this.close} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                            <TouchableHighlight onPress={this.close} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                                 <Close height={20} width={20} stroke={Colors.fog }/>
                             </TouchableHighlight>
                         </View>
 
                         <View style={styles.menuList}>
-                            <Text style={styles.menuItem}>Dashboard</Text>
-                            <Text style={styles.menuItem}>Messages</Text>
+                            <TouchableHighlight onPress={() => {navigation.navigate('Dashboard'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                                <Text style={styles.menuItem}>Dashboard</Text>
+                            </TouchableHighlight>
+                            <TouchableHighlight onPress={() => {navigation.navigate('Messages'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                                <Text style={styles.menuItem}>Messages</Text>
+                            </TouchableHighlight>
+                                <TouchableHighlight onPress={() => {navigation.navigate('Campaigns'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                             <Text style={styles.menuItem}>Campaigns</Text>
-                            <Text style={styles.menuItem}>Settings</Text>
+                                </TouchableHighlight>
+                            <TouchableHighlight onPress={() => {navigation.navigate('Settings'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                                <Text style={styles.menuItem}>Settings</Text>
+                            </TouchableHighlight>
                         </View>
 
                         <View>
