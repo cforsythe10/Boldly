@@ -43,10 +43,6 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: '11%'
   },
-  centerContentContainer: {
-    alignItems: 'center',
-    flex: 3
-  },
   newUserContentBar: {
     borderTopWidth: 1,
     width: 160,
@@ -65,16 +61,6 @@ export default StyleSheet.create({
     marginBottom: 8,
     ...Fonts.style.h4,
     color: Colors.charcoal
-  },
-  bulletPoints:{
-    ...Fonts.captions,
-    color: Colors.charcoal,
-    paddingVertical: '1%',
-    textAlign: 'center'
-  },
-  bulletContainer: {
-    alignItems: 'flex-start',
-    width:'75%'
   },
   buttonContainer: {
     paddingTop: '15%'

@@ -8,10 +8,10 @@ import DashboardRegularC from '../Containers/DashboardScreenRegular';
 import DashboardRegularB from '../Containers/DashboardScreenRegularBrand';
 import DashboardMissingCreator from '../Containers/DashboardMissingProfileElements';
 import DashboardMissingBrand from '../Containers/DashboardMissingProfileElementsBrand';
-import DashboardNoCampaign from '../Containers/DashboardMissingCampaign';
 
 import Messages from '../Containers/MessagesScreen';
 import Campaign from '../Containers/CampaignScreen';
+import CampaignCreator from '../Containers/CampaignCreatorScreen';
 import Profile from '../Containers/ProfileScreen';
 import Settings from '../Containers/SettingsScreen';
 
@@ -109,25 +109,27 @@ const Navigator = createStackNavigator(
         },
         DashboardMissingProfileC: {
             screen: DashboardMissingCreator
-        },
-        DashboardNoCampaign: {
-            screen: DashboardNoCampaign
-        },
-        Messages: {
-            screen: Messages
-        },
-        Campaigns: {
-            screen: Campaign
-        },
-        Settings: {
-            screen: Settings
-        },
+        }
+    },
+    {
+        headerMode: 'none'
+    }
+)
+
+const Navigator = createStackNavigator(
+	{
+		Default: {
+			screen: Default,
+		},
+		leftDrawer,
+        DashboardNavigator,
         Profile: {
             screen: Profile
         },
         Login: {
         	screen: Login
-        },
+		},
+		CampaignCreator,
         surveyNavigator
 	},
 	{
