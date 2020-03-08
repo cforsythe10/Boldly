@@ -12,7 +12,7 @@ contract_template_schema:
 	mix phx.gen.context ContractTemplate Template templates file_path:string
 
 contract_template_endpoint:
-	mix phx.gen.json ContractTemplate Template templates file_path:string
+	mix phx.gen.json ContractTemplate Template templates file_path:string --no-context --no-schema
 
 signed_contract_schema:
 	mix phx.gen.context SignedContract Contract contracts id:uuid file_path:string
