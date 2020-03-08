@@ -40,7 +40,7 @@ defmodule BoldlyWeb.ParticipantControllerTest do
     photo_reference: "some photo_reference",
     specific_to_location: true,
     start_date: ~D[2010-04-17],
-    values: "some values",
+    values: "some values"
   }
 
   @create_attrs %{
@@ -87,13 +87,16 @@ defmodule BoldlyWeb.ParticipantControllerTest do
       |> Boldly.CreatorAccount.create_creator()
 
     part_attrs = %{
-      is_active: true, is_pending: false, creator_uuid: creator.uuid, campaign_uuid: campaign.uuid
+      is_active: true,
+      is_pending: false,
+      creator_uuid: creator.uuid,
+      campaign_uuid: campaign.uuid
     }
-
   end
 
   def fixture(:participant) do
     part_attrs = fixture(:setup_part)
+
     {:ok, participant} =
       %{}
       |> Enum.into(part_attrs)
@@ -137,8 +140,13 @@ defmodule BoldlyWeb.ParticipantControllerTest do
   describe "update participant" do
     setup [:create_participant]
 
-    test "renders participant when data is valid", %{conn: conn, participant: %Participant{id: id} = participant} do
-      conn = put(conn, Routes.participant_path(conn, :update, participant), participant: @update_attrs)
+    test "renders participant when data is valid", %{
+      conn: conn,
+      participant: %Participant{id: id} = participant
+    } do
+      conn =
+        put(conn, Routes.participant_path(conn, :update, participant), participant: @update_attrs)
+
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.participant_path(conn, :show, id))
@@ -151,7 +159,9 @@ defmodule BoldlyWeb.ParticipantControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, participant: participant} do
-      conn = put(conn, Routes.participant_path(conn, :update, participant), participant: @invalid_attrs)
+      conn =
+        put(conn, Routes.participant_path(conn, :update, participant), participant: @invalid_attrs)
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

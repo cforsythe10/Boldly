@@ -1,16 +1,14 @@
-defmodule Boldly.CampaignPartTest do
+defmodule Boldly.SignedContractTest do
   use Boldly.DataCase
 
-  alias Boldly.CampaignPart
+  alias Boldly.SignedContract
 
-  describe "participants" do
-    alias Boldly.CampaignPart.Participant
+  describe "contracts" do
+    alias Boldly.SignedContract.Contract
 
     @valid_brand_attrs %{
       ecommerce: true,
       email: "some email",
-      uuid: "7488a646-e31f-11e4-aace-600308960660",
-      id: 1,
       industries: "some industries",
       location: "some location",
       values: "some values",
@@ -44,16 +42,16 @@ defmodule Boldly.CampaignPartTest do
       photo_reference: "some photo_reference",
       specific_to_location: true,
       start_date: ~D[2010-04-17],
-      uuid: "7488a646-e31f-11e4-aace-600308960662",
-      values: "some values",
-      launched_by: "7488a646-e31f-11e4-aace-600308960660"
+      values: "some values"
     }
 
-    @valid_attrs %{is_active: true, is_pending: true}
-    @update_attrs %{is_active: false, is_pending: false}
-    @invalid_attrs %{is_active: nil, is_pending: nil}
+    @valid_attrs %{file_path: "some file_path"}
+    @update_attrs %{
+      file_path: "some updated file_path"
+    }
+    @invalid_attrs %{file_path: nil}
 
-    def participant_fixture(attrs \\ %{}) do
+    def pre_contract_fixture(attrs \\ %{}) do
       {:ok, brand} = attrs |> Enum.into(@valid_brand_attrs) |> Boldly.BrandAccount.create_brand()
 
       use_attrs = %{
@@ -72,7 +70,6 @@ defmodule Boldly.CampaignPartTest do
         photo_reference: @valid_camapign_attrs.photo_reference,
         specific_to_location: @valid_camapign_attrs.specific_to_location,
         start_date: @valid_camapign_attrs.start_date,
-        uuid: @valid_camapign_attrs.uuid,
         values: @valid_camapign_attrs.values,
         launched_by: brand.uuid
       }
@@ -97,59 +94,79 @@ defmodule Boldly.CampaignPartTest do
       {:ok, participant} =
         attrs
         |> Enum.into(part_attrs)
-        |> CampaignPart.create_participant()
+        |> Boldly.CampaignPart.create_participant()
 
-      participant
+      contract_attrs = %{
+        brand_uuid: brand.uuid,
+        campaign_uuid: campaign.uuid,
+        creator_uuid: creator.uuid,
+        file_path: "some file_path"
+      }
     end
 
-    test "list_participants/0 returns all participants" do
-      participant = participant_fixture()
-      assert CampaignPart.list_participants() == [participant]
+    def contract_fixture(attrs \\ %{}) do
+      contract_attrs = pre_contract_fixture()
+
+      {:ok, contract} =
+        attrs
+        |> Enum.into(contract_attrs)
+        |> SignedContract.create_contract()
+
+      contract
     end
 
-    test "get_participant!/1 returns the participant with given id" do
-      participant = participant_fixture()
-      assert CampaignPart.get_participant!(participant.id) == participant
+    test "list_contracts/0 returns all contracts" do
+      contract = contract_fixture()
+      assert SignedContract.list_contracts() == [contract]
     end
 
-    test "create_participant/1 with valid data creates a participant" do
-      assert %Participant{} = participant = participant_fixture()
-      assert participant.is_active == true
-      assert participant.is_pending == false
+    test "get_contract!/1 returns the contract with given id" do
+      contract = contract_fixture()
+      assert SignedContract.get_contract!(contract.id) == contract
     end
 
-    test "create_participant/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = CampaignPart.create_participant(@invalid_attrs)
+    test "create_contract/1 with valid data creates a contract" do
+      contr_attrs = pre_contract_fixture()
+      assert {:ok, %Contract{} = contract} = SignedContract.create_contract(contr_attrs)
+      assert contract.file_path == "some file_path"
     end
 
-    test "update_participant/2 with valid data updates the participant" do
-      participant = participant_fixture()
-
-      assert {:ok, %Participant{} = participant} =
-               CampaignPart.update_participant(participant, @update_attrs)
-
-      assert participant.is_active == false
-      assert participant.is_pending == false
+    test "create_contract/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = SignedContract.create_contract(@invalid_attrs)
     end
 
-    test "update_participant/2 with invalid data returns error changeset" do
-      participant = participant_fixture()
+    test "update_contract/2 with valid data updates the contract" do
+      contract = contract_fixture()
+
+      contr_attrs = %{
+        brand_uuid: contract.brand_uuid, campaing_uuid: contract.campaign_uuid, creator_uuid: contract.creator_uuid, file_path: "some other file_path", id: contract.id
+      }
+
+      assert {:ok, %Contract{} = contract1} =
+               SignedContract.update_contract(contract, contr_attrs)
+
+      assert contract1.file_path == "some other file_path"
+      assert contract1.id == contract.id
+    end
+
+    test "update_contract/2 with invalid data returns error changeset" do
+      contract = contract_fixture()
 
       assert {:error, %Ecto.Changeset{}} =
-               CampaignPart.update_participant(participant, @invalid_attrs)
+               SignedContract.update_contract(contract, @invalid_attrs)
 
-      assert participant == CampaignPart.get_participant!(participant.id)
+      assert contract == SignedContract.get_contract!(contract.id)
     end
 
-    test "delete_participant/1 deletes the participant" do
-      participant = participant_fixture()
-      assert {:ok, %Participant{}} = CampaignPart.delete_participant(participant)
-      assert_raise Ecto.NoResultsError, fn -> CampaignPart.get_participant!(participant.id) end
+    test "delete_contract/1 deletes the contract" do
+      contract = contract_fixture()
+      assert {:ok, %Contract{}} = SignedContract.delete_contract(contract)
+      assert_raise Ecto.NoResultsError, fn -> SignedContract.get_contract!(contract.id) end
     end
 
-    test "change_participant/1 returns a participant changeset" do
-      participant = participant_fixture()
-      assert %Ecto.Changeset{} = CampaignPart.change_participant(participant)
+    test "change_contract/1 returns a contract changeset" do
+      contract = contract_fixture()
+      assert %Ecto.Changeset{} = SignedContract.change_contract(contract)
     end
   end
 end

@@ -11,7 +11,8 @@ defmodule BoldlyWeb.ParticipantView do
   end
 
   def render("participant.json", %{participant: participant}) do
-    %{id: participant.id,
+    %{
+      id: participant.id,
       is_pending: participant.is_pending,
       is_active: participant.is_active,
       campaign_uuid: participant.campaign_uuid,

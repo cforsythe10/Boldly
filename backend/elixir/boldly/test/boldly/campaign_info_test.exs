@@ -36,7 +36,7 @@ defmodule Boldly.CampaignInfoTest do
       start_date: ~D[2010-04-17],
       uuid: "7488a646-e31f-11e4-aace-600308960662",
       values: "some values",
-      launched_by: "7488a646-e31f-11e4-aace-600308960660",
+      launched_by: "7488a646-e31f-11e4-aace-600308960660"
     }
     @update_attrs %{
       age_range: "some updated age_range",
