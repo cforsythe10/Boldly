@@ -8,7 +8,6 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @create_attrs %{
     birthday: ~D[2010-04-17],
     email: "some email",
-
     industry: "some industry",
     interests: "some interests",
     location: "some location",
@@ -19,7 +18,6 @@ defmodule BoldlyWeb.CreatorControllerTest do
   @update_attrs %{
     birthday: ~D[2011-05-18],
     email: "some updated email",
-
     industry: "some updated industry",
     interests: "some updated interests",
     location: "some updated location",

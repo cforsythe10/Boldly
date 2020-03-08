@@ -14,7 +14,7 @@ defmodule Boldly.CreatorAccountTest do
       location: "some location",
       name: "some name",
       values: "some values",
-      password: "some password",
+      password: "some password"
     }
     @update_attrs %{
       birthday: ~D[2011-05-18],
@@ -24,7 +24,7 @@ defmodule Boldly.CreatorAccountTest do
       location: "some updated location",
       name: "some updated name",
       values: "some updated values",
-      password: "some updated password",
+      password: "some updated password"
     }
     @invalid_attrs %{
       birthday: nil,
