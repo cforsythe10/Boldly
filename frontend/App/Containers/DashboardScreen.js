@@ -33,6 +33,7 @@ const DashboardScreen = () => {
                 </View>
             </View>
         </View>
+    </View>
     )
 }
 
