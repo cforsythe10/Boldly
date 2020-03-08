@@ -9,7 +9,7 @@ setup_dbs: get_deps
 	MIX_ENV=test mix ecto.reset
 
 campign_participant_schema:
-	mix phx.gen.context CampaignPart CampaignPart campaign_part is_pending:boolean is_active:boolean
+	mix phx.gen.context CampaignPart Particpant participants is_pending:boolean is_active:boolean
 
 creator_schema:
 	mix phx.gen.context CreatorAccount Creator creators id:uuid:unique name:string birthday:date values:string industry:string interests:string location:string email:string:unique
