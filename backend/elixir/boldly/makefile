@@ -8,7 +8,7 @@ setup_dbs: get_deps
 	mix ecto.reset
 	MIX_ENV=test mix ecto.reset
 
-campign_participant_schema:
+campaign_participant_schema:
 	mix phx.gen.context CampaignPart Particpant participants is_pending:boolean is_active:boolean
 
 creator_schema:

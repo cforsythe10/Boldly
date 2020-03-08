@@ -18,7 +18,7 @@ defmodule Boldly.CampaignInfo.Campaign do
     field :photo_reference, :string
     field :specific_to_location, :boolean, default: false
     field :start_date, :date
-    field :uuid, Ecto.UUID
+    field :uuid, Ecto.UUID, autogenerate: true
     field :values, :string
 
     belongs_to :brands, Boldly.BrandAccount.Brand,
@@ -54,7 +54,6 @@ defmodule Boldly.CampaignInfo.Campaign do
     ])
     |> assoc_constraint(:brands, name: :launched_by)
     |> validate_required([
-      :uuid,
       :name,
       :start_date,
       :end_date,

@@ -37,17 +37,6 @@ defmodule Boldly.CampaignInfoTest do
       uuid: "7488a646-e31f-11e4-aace-600308960662",
       values: "some values",
       launched_by: "7488a646-e31f-11e4-aace-600308960660",
-      brand: %{
-        ecommerce: true,
-        email: "some email",
-        uuid: "7488a646-e31f-11e4-aace-600308960660",
-        id: 1,
-        industries: "some industries",
-        location: "some location",
-        values: "some values",
-        password: "some password",
-        name: "some name"
-      }
     }
     @update_attrs %{
       age_range: "some updated age_range",
