@@ -4,7 +4,7 @@ defmodule Boldly.CampaignPartTest do
   alias Boldly.CampaignPart
 
   describe "participants" do
-    alias Boldly.CampaignPart.Particpant
+    alias Boldly.CampaignPart.Participant
 
     @valid_brand_attrs %{
       ecommerce: true,
@@ -110,7 +110,7 @@ defmodule Boldly.CampaignPartTest do
     end
 
     test "create_participant/1 with valid data creates a participant" do
-      assert %Particpant{} = participant = participant_fixture()
+      assert %Participant{} = participant = participant_fixture()
       assert participant.is_active == true
       assert participant.is_pending == false
     end
@@ -122,7 +122,7 @@ defmodule Boldly.CampaignPartTest do
     test "update_participant/2 with valid data updates the participant" do
       participant = participant_fixture()
 
-      assert {:ok, %Particpant{} = participant} =
+      assert {:ok, %Participant{} = participant} =
                CampaignPart.update_participant(participant, @update_attrs)
 
       assert participant.is_active == false
@@ -140,7 +140,7 @@ defmodule Boldly.CampaignPartTest do
 
     test "delete_participant/1 deletes the participant" do
       participant = participant_fixture()
-      assert {:ok, %Particpant{}} = CampaignPart.delete_participant(participant)
+      assert {:ok, %Participant{}} = CampaignPart.delete_participant(participant)
       assert_raise Ecto.NoResultsError, fn -> CampaignPart.get_participant!(participant.id) end
     end
 

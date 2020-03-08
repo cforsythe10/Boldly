@@ -1,4 +1,4 @@
-defmodule Boldly.CampaignPart.Particpant do
+defmodule Boldly.CampaignPart.Participant do
   use Ecto.Schema
   import Ecto.Changeset
 

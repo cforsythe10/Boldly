@@ -6,7 +6,7 @@ defmodule Boldly.CampaignPart do
   import Ecto.Query, warn: false
   alias Boldly.Repo
 
-  alias Boldly.CampaignPart.Particpant
+  alias Boldly.CampaignPart.Participant
 
   @doc """
   Returns the list of participants.
@@ -14,28 +14,28 @@ defmodule Boldly.CampaignPart do
   ## Examples
 
       iex> list_participants()
-      [%Particpant{}, ...]
+      [%Participant{}, ...]
 
   """
   def list_participants do
-    Repo.all(Particpant)
+    Repo.all(Participant)
   end
 
   @doc """
   Gets a single participant.
 
-  Raises `Ecto.NoResultsError` if the Particpant does not exist.
+  Raises `Ecto.NoResultsError` if the Participant does not exist.
 
   ## Examples
 
       iex> get_participant!(123)
-      %Particpant{}
+      %Participant{}
 
       iex> get_participant!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_participant!(id), do: Repo.get!(Particpant, id)
+  def get_participant!(id), do: Repo.get!(Participant, id)
 
   @doc """
   Creates a participant.
@@ -43,15 +43,15 @@ defmodule Boldly.CampaignPart do
   ## Examples
 
       iex> create_participant(%{field: value})
-      {:ok, %Particpant{}}
+      {:ok, %Participant{}}
 
       iex> create_participant(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
   def create_participant(attrs \\ %{}) do
-    %Particpant{}
-    |> Particpant.changeset(attrs)
+    %Participant{}
+    |> Participant.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -61,15 +61,15 @@ defmodule Boldly.CampaignPart do
   ## Examples
 
       iex> update_participant(participant, %{field: new_value})
-      {:ok, %Particpant{}}
+      {:ok, %Participant{}}
 
       iex> update_participant(participant, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_participant(%Particpant{} = participant, attrs) do
+  def update_participant(%Participant{} = participant, attrs) do
     participant
-    |> Particpant.changeset(attrs)
+    |> Participant.changeset(attrs)
     |> Repo.update()
   end
 
@@ -79,13 +79,13 @@ defmodule Boldly.CampaignPart do
   ## Examples
 
       iex> delete_participant(participant)
-      {:ok, %Particpant{}}
+      {:ok, %Participant{}}
 
       iex> delete_participant(participant)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_participant(%Particpant{} = participant) do
+  def delete_participant(%Participant{} = participant) do
     Repo.delete(participant)
   end
 
@@ -95,10 +95,10 @@ defmodule Boldly.CampaignPart do
   ## Examples
 
       iex> change_participant(participant)
-      %Ecto.Changeset{source: %Particpant{}}
+      %Ecto.Changeset{source: %Participant{}}
 
   """
-  def change_participant(%Particpant{} = participant) do
-    Particpant.changeset(participant, %{})
+  def change_participant(%Participant{} = participant) do
+    Participant.changeset(participant, %{})
   end
 end
