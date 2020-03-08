@@ -75,6 +75,10 @@ const ApplicationStyles = {
       ...Fonts.style.h1,
       color: Colors.violet
     },
+    screenTitle: {
+      ...Fonts.style.h4,
+      color: Colors.cobalt
+    },
     surveyQuestion: {
       ...Fonts.style.h1,
       color: Colors.white
@@ -94,16 +98,16 @@ const ApplicationStyles = {
       backgroundColor: Colors.cobalt
     },
     buttonContainer: {
-      flex: 1,
+      flex: 3,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: '100%'
+      height: '100%',
+      paddingVertical: '17%'
     },
     valueButtonRow: {
-      flex: 1,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: 100
+      paddingHorizontal: '8%'
     },
 
     background: {
@@ -129,9 +133,46 @@ const ApplicationStyles = {
       flexDirection: 'row',
       justifyContent: 'space-between',
       height: 88,
-      paddingHorizontal: '11%',
+      paddingHorizontal: '4%',
       backgroundColor: 'transparent',
       alignItems: 'center'
+    },
+    hamburgerMenu: {
+      height: '100%',
+      color: Colors.fog,
+      width: '76%',
+      margin: 0,
+      
+    },
+    hamburgerMenuContainer: {
+      padding: 24,
+      paddingLeft: 40,
+      paddingTop: 32,
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'space-between'
+    },
+    menuList: {
+ 
+      paddingTop: 32,
+      paddingBottom: 120,
+      
+    },
+    menuItem: {
+      ...Fonts.style.h2,
+      color: Colors.fog,
+      paddingBottom: 32
+    },
+    menuItemSmall: {
+      ...Fonts.style.h4,
+      color: Colors.fog,
+      paddingBottom: 120,
+      paddingTop: 32
+    },
+    rightIcon: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
     }
   },
   darkLabelContainer: {

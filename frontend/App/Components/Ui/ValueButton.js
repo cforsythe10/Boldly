@@ -18,9 +18,8 @@ import { Colors } from '../../Themes';
 export default class ValueButton extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
 
-        this.onClick = this.onClick.bind(this);
         this.state = {
             greenButtonState: false, 
             BackgroundColor: Colors.white
@@ -29,17 +28,8 @@ export default class ValueButton extends Component {
 
     static propTypes = {
         text: PropTypes.string,
-        onPress: PropTypes.func,
-        svgName: PropTypes.string
-    }
-
-    onClick() {
-        if (this.state.greenButtonState) {
-            this.setState({ greenButtonState: false }); 
-        } else {
-            this.setState({ greenButtonState: true }); 
-        }
-        
+        svgName: PropTypes.string,
+        callback: PropTypes.func
     }
 
     render() {
@@ -69,8 +59,13 @@ export default class ValueButton extends Component {
 
         return (
             
-         
-                <TouchableHighlight onPress={ this.onClick } style={this.state.greenButtonState ? styles.greenValueButton : styles.valueButton} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
+            <View style={styles.valueButtonAlignment}>
+                <TouchableHighlight onPress={() => {
+                    if(!this.props.disabled || this.state.greenButtonState){
+                        this.setState({greenButtonState: !this.state.greenButtonState});
+                        this.props.callback(!this.state.greenButtonState);
+                    }
+                }} style={this.state.greenButtonState ? styles.greenValueButton : styles.valueButton} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
                     
                         <View
                             style={styles.valueButtonContainer}
@@ -79,7 +74,8 @@ export default class ValueButton extends Component {
                         </View>
                     
                 </TouchableHighlight>
-
+                <Text style={{ ...styles.buttonTextWhite }} >{this.props.text}</ Text>
+            </ View>
         )
     }
 
