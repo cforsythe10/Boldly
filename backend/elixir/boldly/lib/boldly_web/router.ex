@@ -17,6 +17,7 @@ defmodule BoldlyWeb.Router do
     post "/users/sign_in", UserController, :sign_in
     resources "/campaign_participants", ParticipantController, except: [:new, :edit]
     resources "/contracts", ContractController, except: [:new, :edit]
+    resources "/templates", TemplateController, except: [:new, :edit]
   end
 
   scope "/api", BoldlyWeb do
