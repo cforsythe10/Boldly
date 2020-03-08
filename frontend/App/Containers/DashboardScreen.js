@@ -15,7 +15,7 @@ constructor(props){
 render(){
     return (
     <View style={styles.fullScreen}>
-    	<Header headerType='MenuProfile' />
+    	<Header headerType='MenuProfile' navigation={this.props.navigation}/>
         
         <View style={{...styles.centerContentContainer, flex: 9}}>
             <View style={styles.cardContainer}>

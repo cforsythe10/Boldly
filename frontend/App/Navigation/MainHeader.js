@@ -8,7 +8,7 @@ import styles from './Styles/MainHeaderStyles'
 
 export default class MainHeader extends Component {
 	handleClick() {
-		this.props.navigation.openDrawer()
+		this.props.navigation.navigate.openDrawer()
 	}
 
 	openProfile() {

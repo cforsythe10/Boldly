@@ -13,6 +13,8 @@ import Messages from '../Containers/MessagesScreen';
 import Campaign from '../Containers/CampaignScreen';
 import Profile from '../Containers/ProfileScreen';
 import Settings from '../Containers/SettingsScreen';
+import SettingsBrand from '../Containers/SettingsBrand';
+import SettingsCreator from '../Containers/SettingsCreator';
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -28,9 +30,12 @@ const leftDrawer = createDrawerNavigator(
         Campaigns: {
             screen: Campaign
         },
-        Settings: {
-            screen: Settings
-        }
+        SettingsBrand: {
+            screen: SettingsBrand
+        },
+        SettingsCreator: {
+            screen: SettingsCreator
+        },
     },
     
 	{
