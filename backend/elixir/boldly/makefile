@@ -8,6 +8,9 @@ setup_dbs: get_deps
 	mix ecto.reset
 	MIX_ENV=test mix ecto.reset
 
+signed_contract_schema:
+	mix phx.gen.context SignedContract Contract contracts uuid:uuid file_path:string
+
 campaign_participant_schema:
 	mix phx.gen.context CampaignPart Participant participants is_pending:boolean is_active:boolean
 
