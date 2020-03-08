@@ -11,6 +11,9 @@ setup_dbs: get_deps
 contract_template_schema:
 	mix phx.gen.context ContractTemplate Template templates file_path:string
 
+contract_template_endpoint:
+	mix phx.gen.json ContractTemplate Template templates file_path:string
+
 signed_contract_schema:
 	mix phx.gen.context SignedContract Contract contracts id:uuid file_path:string
 
