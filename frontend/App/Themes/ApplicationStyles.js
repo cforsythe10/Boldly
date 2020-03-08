@@ -136,6 +136,43 @@ const ApplicationStyles = {
       paddingHorizontal: '4%',
       backgroundColor: 'transparent',
       alignItems: 'center'
+    },
+    hamburgerMenu: {
+      height: '100%',
+      color: Colors.fog,
+      width: '76%',
+      margin: 0,
+      
+    },
+    hamburgerMenuContainer: {
+      padding: 24,
+      paddingLeft: 40,
+      paddingTop: 32,
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'space-between'
+    },
+    menuList: {
+ 
+      paddingTop: 32,
+      paddingBottom: 120,
+      
+    },
+    menuItem: {
+      ...Fonts.style.h2,
+      color: Colors.fog,
+      paddingBottom: 32
+    },
+    menuItemSmall: {
+      ...Fonts.style.h4,
+      color: Colors.fog,
+      paddingBottom: 120,
+      paddingTop: 32
+    },
+    rightIcon: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
     }
   },
   darkLabelContainer: {
