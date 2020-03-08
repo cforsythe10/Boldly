@@ -8,6 +8,9 @@ setup_dbs: get_deps
 	mix ecto.reset
 	MIX_ENV=test mix ecto.reset
 
+contract_template_schema:
+	mix phx.gen.context ContractTemplate Template templates file_path:string
+
 signed_contract_schema:
 	mix phx.gen.context SignedContract Contract contracts id:uuid file_path:string
 
