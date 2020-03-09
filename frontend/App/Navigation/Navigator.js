@@ -89,7 +89,6 @@ const surveyNavigator = createStackNavigator(
 	}
 );
 
-
 const Navigator = createStackNavigator(
 	{
 		Default: {
@@ -109,32 +108,27 @@ const Navigator = createStackNavigator(
         },
         DashboardMissingProfileC: {
             screen: DashboardMissingCreator
-        }
-    },
-    {
-        headerMode: 'none'
-    }
-)
-
-const Navigator = createStackNavigator(
-	{
-		Default: {
-			screen: Default,
-		},
-		leftDrawer,
-        DashboardNavigator,
+        },
+        Messages: {
+            screen: Messages
+        },
+        Campaigns: {
+            screen: Campaign
+        },
+        Settings: {
+            screen: Settings
+        },
         Profile: {
             screen: Profile
         },
         Login: {
         	screen: Login
-		},
-		CampaignCreator,
+        },
         surveyNavigator
 	},
 	{
 		headerMode: 'none'
 	}
-)
+);
 
 export default createAppContainer(Navigator)

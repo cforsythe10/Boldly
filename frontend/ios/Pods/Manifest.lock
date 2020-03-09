@@ -260,10 +260,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
-<<<<<<< HEAD
   - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
-=======
->>>>>>> Fixed LoginAndSurvey for ios
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -322,11 +319,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
-<<<<<<< HEAD
   react-native-geolocation:
     :path: "../node_modules/@react-native-community/geolocation"
-=======
->>>>>>> Fixed LoginAndSurvey for ios
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-RCTActionSheet:
@@ -384,10 +378,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
   react-native-date-picker: 142a75882184791d3afa3a7a3c3085e1d70496c9
-<<<<<<< HEAD
   react-native-geolocation: a7b94614afbd5fd8350e0233a2025c8228fc8041
-=======
->>>>>>> Fixed LoginAndSurvey for ios
   react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
