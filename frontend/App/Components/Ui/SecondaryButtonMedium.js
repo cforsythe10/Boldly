@@ -23,3 +23,4 @@ export default class SecondaryButtonMedium extends Component {
       </TouchableOpacity>
     )
   }
+}
