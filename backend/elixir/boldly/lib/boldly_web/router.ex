@@ -24,7 +24,6 @@ defmodule BoldlyWeb.Router do
     pipe_through [:api, :api_auth]
     resources "/brands", BrandController, except: [:new, :edit]
     resources "/creators", CreatorController, except: [:new, :edit]
-    resources "/users", UserController, except: [:new, :edit]
     resources "/campaigns", CampaignController, except: [:new, :edit]
   end
 
