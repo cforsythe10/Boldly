@@ -16,6 +16,9 @@ import Profile from '../Containers/ProfileScreen';
 import Settings from '../Containers/SettingsScreen';
 import SettingsBrand from '../Containers/SettingsBrand';
 import SettingsCreator from '../Containers/SettingsCreator';
+import SettingsEmail from '../Containers/SettingsEmail';
+import SettingsPassword from '../Containers/SettingsPassword';
+import SettingsPayment from '../Containers/SettingsPayment';
 
 import Default from '../Containers/DefaultScreen';
 import Login from '../Containers/LoginScreen';
@@ -121,6 +124,15 @@ const Navigator = createStackNavigator(
         },
         SettingsCreator: {
             screen: SettingsCreator
+        },
+        SettingsEmail: {
+            screen: SettingsEmail
+        },
+        SettingsPassword: {
+            screen: SettingsPassword
+        },
+        SettingsPayment: {
+            screen: SettingsPayment
         },
         Profile: {
             screen: Profile

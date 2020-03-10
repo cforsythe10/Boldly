@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Button, View } from 'react-native';
+import { ScrollView, Text, Button, View, Alert, TouchableOpacity } from 'react-native';
 
 import ToggleSwitch from 'toggle-switch-react-native'
 
@@ -13,6 +13,13 @@ import Password from '../Images/Icons/password.svg'
 import styles from './Styles/SettingsScreenStyle';
 
 export default class SettingsBrand extends Component {
+state = {
+    isOnMatches: true,
+    isOnMessages: true,
+    isOnReminders: true,
+    isOnInvisible: false
+  };
+
 constructor(props){
     super(props);
 }
@@ -27,49 +34,61 @@ render(){
         </View>
         <View style={styles.settingsCard}>
             <View style={styles.settingsContent}>
-                <Text>New Matches</Text>
+                <View style={styles.iconWithText}>
+                    <Text>New Matches                                                      </Text>
+                    <ToggleSwitch isOn={this.state.isOnMatches} size='small' onToggle={() => this.setState({ isOnMatches: !this.state.isOnMatches })} />
+                </View>
             </View>
         </View>
         <View style={styles.settingsCard}>
             <View style={styles.settingsContent}>
-                <Text>New Messages</Text>
+                <View style={styles.iconWithText}>
+                    <Text>New Messages                                                   </Text>
+                    <ToggleSwitch isOn={this.state.isOnMessages} size='small' onToggle={() => this.setState({ isOnMessages: !this.state.isOnMessages })} />
+                </View>
             </View>
         </View>
         <View style={styles.settingsCard}>
             <View style={styles.settingsContent}>
-                <Text>Reminders & News</Text>
+                <View style={styles.iconWithText}>
+                    <Text>Reminders & News                                             </Text>
+                    <ToggleSwitch isOn={this.state.isOnReminders} size='small' onToggle={() => this.setState({ isOnReminders: !this.state.isOnReminders })} />
+                </View>
             </View>
         </View>
 
         <View style={styles.settingsHeader}>
             <Text style={styles.headerText}>Account Information</Text>
         </View>
-        <View style={styles.settingsCard}>
+        <TouchableOpacity style={styles.settingsCard} onPress={() => this.props.navigation.navigate('SettingsEmail')}>
             <View style={styles.settingsContent}>
                 <Text><Email height={20} width={20} />   currentemail@gmail.com                             <Edit height={20} width={20} /></Text>
             </View>
-        </View>
-        <View style={styles.settingsCard}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.settingsCard} onPress={() => this.props.navigation.navigate('SettingsPassword')}>
             <View style={styles.settingsContent}>
-                <Text><Password height={20} width={20} />   ********                                                          <Edit height={20} width={20} /></Text>
+                <Text><Password height={20} width={20} />   ********                                                           <Edit height={20} width={20} /></Text>
             </View>
-        </View>
+        </TouchableOpacity>
 
         <View style={styles.settingsHeader}>
             <Text style={styles.headerText}>Payment Methods</Text>
         </View>
-        <View style={styles.settingsCard}>
+        <TouchableOpacity style={styles.settingsCard} onPress={() => this.props.navigation.navigate('SettingsPayment')}>
             <View style={styles.settingsContent}>
                 <Text>Choose payment method                                     <Edit height={20} width={20} /></Text>
             </View>
-        </View>
+        </TouchableOpacity>
 
         <View style={styles.settingsHeader}>
             <Text style={styles.headerText}>Account Status</Text>
         </View>
         <View style={styles.settingsCard}>
             <View style={styles.settingsContent}>
-                <Text>Invisible Mode</Text>
+                <View style={styles.iconWithText}>
+                    <Text>Invisible Mode                                                    </Text>
+                    <ToggleSwitch isOn={this.state.isOnInvisible} size='small' onToggle={() => this.setState({ isOnInvisible: !this.state.isOnInvisible })} />
+                </View>
             </View>
         </View>
         <View style={styles.settingsContent}>
@@ -96,7 +115,7 @@ render(){
         </View>
 
         <View style={styles.deleteSection}>
-            <SecondaryButtonMedium text='Delete account' onPress = {() => navigation.navigate('SettingsCreator')} />
+            <SecondaryButtonMedium text='Delete account' onPress = {() => Alert.alert('Delete account', 'Are you sure you want to deactivate your account?', [{text: 'Cancel', style: 'cancel'}, {text: 'OK'}])} />
             <View style={styles.settingsContent}>
                 <Text style={styles.deleteText}>This will remove your profile & settings from our system. This action cannot be undone.</Text>
             </View>

@@ -42,6 +42,16 @@ export default StyleSheet.create({
       paddingHorizontal: '4%',
   },
 
+  settingsInputCard: {
+      justifyContent: 'center',
+      flex: 0.7,
+      paddingHorizontal: '4%',
+  },
+
+  iconWithText: {
+      flexDirection: 'row'
+  },
+
   deleteSection: {
     justifyContent: 'center',
     alignSelf: 'center',
@@ -60,4 +70,11 @@ export default StyleSheet.create({
 	textAlign: 'center',
 	justifyContent: 'flex-end'
   },
+
+  save:{
+  paddingVertical: 30,
+	alignItems: 'center',
+	justifyContent: 'flex-start',
+	flex: 6
+  }
 })

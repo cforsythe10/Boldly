@@ -5,10 +5,9 @@ export default StyleSheet.create({
   button: {
     width: 250,
     height: 40,
+    justifyContent: 'center',
     marginVertical: 5,
-    borderTopWidth: 1,
     borderRadius: 20,
-    borderBottomWidth: 1,
     backgroundColor: Colors.magenta
   },
   buttonText: {
