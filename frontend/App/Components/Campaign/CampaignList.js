@@ -2,52 +2,68 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import styles from './Styles/CampaignStyles';
+import Card from '../Ui/Card';
+import { ScrollView } from 'react-native-gesture-handler';
 
-const campaignTypes = ['Current', 'Past'];
+const campaignSections = {
+    CURRENT: 'CURRENT',
+    PAST: 'PAST'
+}
 
 const CampaignList = ({campaigns}) => {
-    const [campaignTypeSelected, setCampaignType] = useState(campaignTypes[0]);
-    // const matchedCampaignsImages = campaigns.matchedCampaigns.images;
-    // const savedCampaignsImages = campaigns.savedForLaterCampaigns.images;
-    // const appliedCampaignsImages = campaigns.appliedCampaigns.images;
-    // const activeCampaignsImages = campaigns.activeCampaigns.images;
-    // useEffect(async () => {
-    //     const campaignImages = axios.get(`${apiUrl}/${user}/images`); // Mock url for now
-    //     // Might need to add some logic to handle campaign images logic
-    //     setCampaignMatchesImages(campaignImages);
-    // }, []);
+    const [campaignTypeSelected, setCampaignType] = useState(campaignSections.CURRENT);
+    const {
+        campaignMatches,
+        campaignSavedForLater,
+        campaignApplied,
+        campaignActive
+    } = campaigns;
 
     return (
-        <View>
+        <ScrollView>
            <View style={styles.campaignTypeBar}>
-                {campaignTypes.map(campaignType => 
-                    <TouchableOpacity
-                        style={styles.campaignTypeButton}
-                        key={campaignType}
-                        onPress={() => setCampaignType(campaignType)}
-                    >
-                        <Text>{campaignType}</Text>
-                        {campaignType === campaignTypeSelected && <View style={styles.selectedBar} />}
-                    </TouchableOpacity>
-                )}
+                <TouchableOpacity
+                    style={styles.campaignTypeButton}
+                    key={campaignSections.CURRENT}
+                    onPress={() => setCampaignType(campaignSections.CURRENT)}
+                >
+                    <Text style={styles.campaignTypeText}>Current</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.campaignTypeButton}
+                    key={campaignSections.PAST}
+                    onPress={() => setCampaignType(campaignSections.PAST)}
+                >
+                    <Text style={styles.campaignTypeText}>Past</Text>
+                </TouchableOpacity>
            </View>
-           <View style={styles.campaignMatches}>
-               <Text>Your Matches</Text>
-                {/* map function for each card*/}
-           </View>
-           <View style={styles.campaignSavedForLater}>
-                <Text>Saved for Later</Text>
-                {/* map function for each card*/}
-           </View>
-           <View style={styles.campaignApplied}>
-                <Text>Applied</Text>
-                {/* map function for each card*/}
-           </View>
-           <View style={styles.campaignActive}>
-                <Text>Active</Text>
-                {/* map function for each card*/}
-           </View>
-        </View>
+           {campaignTypeSelected === campaignSections.CURRENT && <View style={styles.selectedBar} />}
+           {campaignTypeSelected === campaignSections.PAST && <View style={{...styles.selectedBar, left: '51%'}} />}
+           {campaignTypeSelected === campaignSections.CURRENT ? (
+                <View style={styles.campaigns}>
+                        <View style={styles.campaignMatches}>
+                            <Text style={styles.header}>Your Matches</Text>
+                            {campaignMatches && campaignMatches.map(match => <Card key={match.id} {...match} />)}
+                        </View>
+                        <View style={styles.campaignSavedForLater}>
+                            <Text style={styles.header}>Saved for Later</Text>
+                            {campaignSavedForLater && campaignSavedForLater.map(match => <Card key={match.id} {...match} />)}
+                        </View>
+                        <View style={styles.campaignApplied}>
+                            <Text style={styles.header}>Applied</Text>
+                            {campaignApplied && campaignApplied.map(match => <Card key={match.id} {...match} />)}
+                        </View>
+                        <View style={styles.campaignActive}>
+                            <Text style={styles.header}>Active</Text>
+                            {campaignActive && campaignActive.map(match => <Card key={match.id} {...match} />)}
+                        </View>
+                </View>
+           ) : (
+               <View style={styles.campaigns}>
+                   {campaignApplied && campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+               </View>
+           )}
+        </ScrollView>
     );
 }
 

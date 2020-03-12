@@ -10,12 +10,43 @@ export default CampaignScreen = ({navigation}) => {
 	const [campaigns, modifyCampaigns] = useState(true);
 	
 	useEffect(() => {
-		// call BE
-		// modifyCampaigns({ // temp
-		// 	mockData1: '1',
-		// 	mockData2: '2',
-		// 	mockData3: '3'
-		// });
+		modifyCampaigns({
+			campaignMatches: [{ // Mocked
+				id: 'campaign1',
+				campaignName: 'Campaign 1',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				values: ['value1', 'value2', 'value3']
+			}],
+			campaignSavedForLater: [{
+				id: 'campaign2',
+				campaignName: 'Campaign 2',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				values: ['value1', 'value2', 'value3']
+			}],
+			campaignApplied: [{
+				id: 'campaign3',
+				campaignName: 'Campaign 3',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				values: ['value1', 'value2']
+
+			}],
+			campaignActive: [{
+				id: 'campaign4',
+				campaignName: 'Campaign 4',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				values: ['value1', 'value2']
+			}, {
+				id: 'campaign5',
+				campaignName: 'Campaign 5',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				values: ['value1']
+			}]
+		});
 	});
 
 	return (
