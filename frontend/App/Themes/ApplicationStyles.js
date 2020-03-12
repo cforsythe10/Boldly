@@ -2,7 +2,7 @@ import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
 import colors from './Colors'
-var {vw, vh, vmin, vmax} = require('react-native-viewport-units');
+import {vh} from '../Services/viewport-units';
 // This file is for a reusable grouping of Theme items.
 // Similar to an XML fragment layout in Android
 
