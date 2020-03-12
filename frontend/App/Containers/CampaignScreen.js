@@ -1,24 +1,29 @@
-import React, { Component } from 'react';
-import { ScrollView, Text, KeyboardAvoidingView, Button } from 'react-native';
-
-import MainHeader from '../Navigation/MainHeader';
+import React, { useState, useEffect } from 'react';
+import { View } from 'react-native';
+import Header from '../Components/Ui/Header';
+import { CampaignList, NoCampaigns } from '../Components/Campaign/index';
 
 import styles from './Styles/CampaignScreenStyle'
 
-export default function CampaignScreen({ navigation }) {
-    return (
-      <ScrollView style={styles.container}>
-        <KeyboardAvoidingView behavior='position'>
-          <MainHeader  />
-            <Text>Campaign  Screen</Text>
-            <Button title='View Profile' onPress={() => navigation.navigate('Profile')}>
+export default CampaignScreen = ({navigation}) => {
 
-            </Button>
-            <Button title='Hamburger' onPress={() => navigation.openDrawer()}>
-            
-            </Button>
-        </KeyboardAvoidingView>
-      </ScrollView>
-    )
-  
-}
+	const [campaigns, modifyCampaigns] = useState(true);
+	
+	useEffect(() => {
+		// call BE
+		// modifyCampaigns({ // temp
+		// 	mockData1: '1',
+		// 	mockData2: '2',
+		// 	mockData3: '3'
+		// });
+	});
+
+	return (
+		<View style={styles.fullScreen}>
+    		<Header headerType='MenuProfile' />
+			<View style={{...styles.centerContentContainer, flex: 9}}>
+				{campaigns ? <CampaignList campaigns={campaigns} navigation={navigation} /> : <NoCampaigns navigation={navigation} />}
+			</View>
+    	</View>
+	);
+};

@@ -19,6 +19,18 @@ const ApplicationStyles = {
       bottom: 0,
       right: 0
     },
+    
+    bulletPoints:{
+      ...Fonts.captions,
+      color: Colors.charcoal,
+      paddingVertical: '1%',
+      textAlign: 'center'
+    },
+    bulletContainer: {
+      alignItems: 'flex-start',
+      width:'75%'
+    },
+
     cardContainer: {
       justifyContent: 'center',
       marginVertical: Metrics.section,
@@ -58,6 +70,11 @@ const ApplicationStyles = {
       alignSelf: 'center',
       paddingHorizontal: 0,
       paddingVertical: 12,
+    },
+    
+    centerContentContainer: {
+      alignItems: 'center',
+      flex: 3
     },
 
     container: {

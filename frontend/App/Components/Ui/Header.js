@@ -21,7 +21,7 @@ export default class Header extends Component {
     constructor(props) {
         super(props)
 
-        navigation=this.props.navigation;
+        this.navigation = this.props.navigation;
         this.onClick = this.onClick.bind(this);
         this.state = {
             greenButtonState: false, 
@@ -84,16 +84,16 @@ export default class Header extends Component {
                         </View>
 
                         <View style={styles.menuList}>
-                            <TouchableHighlight onPress={() => {navigation.navigate('Dashboard'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                            <TouchableHighlight onPress={() => {this.navigation.navigate('Dashboard'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                                 <Text style={styles.menuItem}>Dashboard</Text>
                             </TouchableHighlight>
-                            <TouchableHighlight onPress={() => {navigation.navigate('Messages'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                            <TouchableHighlight onPress={() => {this.navigation.navigate('Messages'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                                 <Text style={styles.menuItem}>Messages</Text>
                             </TouchableHighlight>
-                                <TouchableHighlight onPress={() => {navigation.navigate('Campaigns'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                                <TouchableHighlight onPress={() => {this.navigation.navigate('Campaigns'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                             <Text style={styles.menuItem}>Campaigns</Text>
                                 </TouchableHighlight>
-                            <TouchableHighlight onPress={() => {navigation.navigate('Settings'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                            <TouchableHighlight onPress={() => {this.navigation.navigate('Settings'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                                 <Text style={styles.menuItem}>Settings</Text>
                             </TouchableHighlight>
                         </View>

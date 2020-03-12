@@ -8,10 +8,10 @@ import DashboardRegularC from '../Containers/DashboardScreenRegular';
 import DashboardRegularB from '../Containers/DashboardScreenRegularBrand';
 import DashboardMissingCreator from '../Containers/DashboardMissingProfileElements';
 import DashboardMissingBrand from '../Containers/DashboardMissingProfileElementsBrand';
-import DashboardNoCampaign from '../Containers/DashboardMissingCampaign';
 
 import Messages from '../Containers/MessagesScreen';
 import Campaign from '../Containers/CampaignScreen';
+import CampaignCreator from '../Containers/CampaignCreatorScreen';
 import Profile from '../Containers/ProfileScreen';
 import Settings from '../Containers/SettingsScreen';
 import SettingsBrand from '../Containers/SettingsBrand';
@@ -89,7 +89,6 @@ const surveyNavigator = createStackNavigator(
 	}
 );
 
-
 const Navigator = createStackNavigator(
 	{
 		Default: {
@@ -109,9 +108,6 @@ const Navigator = createStackNavigator(
         },
         DashboardMissingProfileC: {
             screen: DashboardMissingCreator
-        },
-        DashboardNoCampaign: {
-            screen: DashboardNoCampaign
         },
         Messages: {
             screen: Messages
@@ -148,6 +144,6 @@ const Navigator = createStackNavigator(
 	{
 		headerMode: 'none'
 	}
-)
+);
 
 export default createAppContainer(Navigator)
