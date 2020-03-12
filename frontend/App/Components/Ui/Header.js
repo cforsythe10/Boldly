@@ -179,13 +179,13 @@ export default class Header extends Component {
         const XCheckHTML = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <Close height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
                 <Logo height={30} width={70}/>
                 
-                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <Check height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 {MenuHTML}
@@ -195,7 +195,7 @@ export default class Header extends Component {
         const XCheckTitle = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <Close height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
@@ -203,7 +203,7 @@ export default class Header extends Component {
                     {this.props.title}
                 </Text>
                 
-                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <Check height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 {MenuHTML}
@@ -219,7 +219,7 @@ export default class Header extends Component {
                 
                 <Logo height={30} width={70}/>
 
-                <TouchableHighlight onPress={() => navigation.navigate('Profile') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.navigate('Profile') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <ProfileButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 {MenuHTML}
@@ -237,7 +237,7 @@ export default class Header extends Component {
                     {this.props.title}
                 </Text>
 
-                <TouchableHighlight onPress={() => navigation.navigate('Profile') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.navigate('Profile') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <ProfileButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 {MenuHTML}
@@ -246,7 +246,7 @@ export default class Header extends Component {
 
         const SurveyHTML = (
             <View style={styles.surveyHeaderContainer}>
-                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <BackButton height={20} width={20} stroke={Colors.white }/>
                 </TouchableHighlight>
                 
@@ -259,7 +259,7 @@ export default class Header extends Component {
 
         const SurveyTitle = (
             <View style={styles.surveyHeaderContainer}>
-                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <BackButton height={20} width={20} stroke={Colors.white }/>
                 </TouchableHighlight>
                 
@@ -280,7 +280,7 @@ export default class Header extends Component {
                  
                     <Logo height={30} width={70}/>
 
-                <TouchableHighlight onPress={() => navigation.navigate('Edit') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.navigate('Edit') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <EditButton height={20} width={20} stroke={ Colors.charcoal65 }/>
                 </TouchableHighlight>
                 {MenuHTML}
@@ -298,7 +298,7 @@ export default class Header extends Component {
                     {this.props.title}
                 </Text>
 
-                <TouchableHighlight onPress={() => navigation.navigate('Edit') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.navigate('Edit') } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <EditButton height={20} width={20} stroke={ Colors.charcoal65 }/>
                 </TouchableHighlight>
                 {MenuHTML}
