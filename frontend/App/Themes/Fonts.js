@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 
 const type = {
   body: 'AvenirNext-Regular',
-  header: Platform.OS ? 'F37Ginger' : 'f37ginger-regular-webfont',
+  header: Platform.OS === 'ios' ? 'F37Ginger' : 'f37ginger-regular-webfont',
   link: 'AvenirNext-Medium'
 }
 
