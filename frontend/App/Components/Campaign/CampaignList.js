@@ -43,24 +43,24 @@ const CampaignList = ({campaigns}) => {
                 <View style={styles.campaigns}>
                         <View style={styles.campaignMatches}>
                             <Text style={styles.header}>Your Matches</Text>
-                            {campaignMatches && campaignMatches.map(match => <Card key={match.id} {...match} />)}
+                            {campaignMatches && campaignMatches.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
                         </View>
                         <View style={styles.campaignSavedForLater}>
                             <Text style={styles.header}>Saved for Later</Text>
-                            {campaignSavedForLater && campaignSavedForLater.map(match => <Card key={match.id} {...match} />)}
+                            {campaignSavedForLater && campaignSavedForLater.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
                         </View>
                         <View style={styles.campaignApplied}>
                             <Text style={styles.header}>Applied</Text>
-                            {campaignApplied && campaignApplied.map(match => <Card key={match.id} {...match} />)}
+                            {campaignApplied && campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
                         </View>
                         <View style={styles.campaignActive}>
                             <Text style={styles.header}>Active</Text>
-                            {campaignActive && campaignActive.map(match => <Card key={match.id} {...match} />)}
+                            {campaignActive && campaignActive.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
                         </View>
                 </View>
            ) : (
                <View style={styles.campaigns}>
-                   {campaignApplied && campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                    {campaignApplied && campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
                </View>
            )}
         </ScrollView>
