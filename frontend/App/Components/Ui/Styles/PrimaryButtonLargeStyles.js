@@ -15,6 +15,7 @@ export default StyleSheet.create({
     margin: 5,
     textAlign: 'center',
     color: Colors.white,
-    fontSize: Fonts.size.medium
+    fontSize: Fonts.size.medium,
+    ...Fonts.style.buttonLarge
   }
 })

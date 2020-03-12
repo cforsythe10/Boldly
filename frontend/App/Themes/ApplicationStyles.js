@@ -2,7 +2,7 @@ import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
 import colors from './Colors'
-
+var {vw, vh, vmin, vmax} = require('react-native-viewport-units');
 // This file is for a reusable grouping of Theme items.
 // Similar to an XML fragment layout in Android
 
@@ -32,6 +32,14 @@ const ApplicationStyles = {
       borderRadius: 15,
       elevation: 3
     },
+
+    coverImage: {
+      width: '100%',
+        height: 70*vh,
+        alignSelf: 'center',
+        borderRadius: 15,
+        overflow: 'hidden'
+    },
     
     cardContentContainer: {
       justifyContent: 'center',
@@ -40,6 +48,16 @@ const ApplicationStyles = {
       flex: 0.77,
       paddingHorizontal: '6%',
       textAlign: 'center'
+    },
+
+    profileSection: {
+      flex: 1,
+      width: '100%',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignSelf: 'center',
+      paddingHorizontal: 0,
+      paddingVertical: 12,
     },
 
     container: {
@@ -88,6 +106,40 @@ const ApplicationStyles = {
       fontSize: Fonts.size.h3,
       color: Colors.charcoal
     },
+    h3: {
+      ...Fonts.style.h3,
+      color: Colors.fog,
+      marginTop: 4,
+      
+    },
+    h5: {
+      ...Fonts.style.h5,
+      color: Colors.charcoal,
+      marginTop: 4,
+      marginBottom: 8,
+      flex:0.88,
+      paddingHorizontal: '6%',
+    },
+    sh3: {
+      ...Fonts.style.sh3,
+      color: Colors.fog,
+      marginTop: 4,
+    },
+    h6: {
+      ...Fonts.style.h6,
+      textTransform: 'capitalize'
+      
+    },
+    valueDisplay: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: '8%',
+      flex: 1,
+      width: '100%',
+      alignSelf: 'center',
+      paddingVertical: 12,
+      
+    },
     body: {
       ...Fonts.style.body,
       color: colors.charcoal
@@ -96,6 +148,18 @@ const ApplicationStyles = {
       height: '100%',
       width: '100%',
       backgroundColor: Colors.cobalt
+    },
+    profileHeader: {
+      height: 90,
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignContent: 'space-between',
+      paddingHorizontal: 35,
+      marginBottom: 35,
+      overflow: 'hidden',
+    },
+    scene: {
+      flex: 1
     },
     buttonContainer: {
       flex: 3,
@@ -117,7 +181,9 @@ const ApplicationStyles = {
     },
     fullScreen: {
       height: '100%',
-      width: '100%'
+      width: '100%',
+      padding: 0,
+      margin: 0
     },
     headerContainer: {
       flex: 1,
@@ -173,6 +239,19 @@ const ApplicationStyles = {
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'flex-end',
+    },
+    fog: {
+      backgroundColor: Colors.fog
+    },
+    violet: {
+      backgroundColor: Colors.violet
+    },
+    profileScroll: {
+      margin: '6%',
+      borderRadius: 15,
+      width: '88%',
+      height: '92%',
+      overflow: 'hidden',
     }
   },
   darkLabelContainer: {

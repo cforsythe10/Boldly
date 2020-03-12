@@ -36,6 +36,20 @@ export default StyleSheet.create({
     elevation: 4,
   },
 
+  coloredValue: {
+    justifyContent: 'center',
+    width: 70,
+    height: 70,
+    backgroundColor: Colors.white,
+    shadowColor: '#C1C1C1',
+    shadowOffset: { width: 4, height: 3},
+    shadowRadius: 4,
+    borderRadius: 70 / 2 ,
+    elevation: 2,
+    borderColor: Colors.charcoal,
+    borderWidth: 1,
+  },
+
   valueButtonAlignment: {
     alignItems: 'center'
   },
@@ -47,7 +61,7 @@ export default StyleSheet.create({
 
   buttonText: {
       fontSize: Fonts.size.h6,
-      ...Fonts.style.h6,
+      ...Fonts.style.captions,
       color: Colors.charcoal,
       paddingTop: 16
   },
