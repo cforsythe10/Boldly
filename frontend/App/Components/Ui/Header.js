@@ -73,7 +73,7 @@ export default class Header extends Component {
             onBackButtonPress={this.close}
             useNativeDriver={true}
              >
-                    <StatusBar hidden={true} backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
+                    <StatusBar  backgroundColor={Colors.charcoal} translucent={false} barStyle="dark-content" />
                     <View style={styles.hamburgerMenu}>
                     <LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
                     <View style={styles.hamburgerMenuContainer}>
@@ -145,7 +145,7 @@ export default class Header extends Component {
         const MenuCheckHTML = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.toggleModal() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <MenuButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
@@ -161,7 +161,7 @@ export default class Header extends Component {
         const MenuCheckTitle = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.toggleModal() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <MenuButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
@@ -229,7 +229,7 @@ export default class Header extends Component {
         const MenuProfileTitle = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.toggleModal() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <MenuButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
@@ -274,7 +274,7 @@ export default class Header extends Component {
         const MenuEditHTML = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.toggleModal() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <MenuButton height={20} width={20} stroke={ Colors.charcoal65 }/>
                 </TouchableHighlight>
                  
@@ -290,7 +290,7 @@ export default class Header extends Component {
         const MenuEditTitle = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => navigation.openDrawer() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.toggleModal() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <MenuButton height={20} width={20} stroke={ Colors.charcoal65 }/>
                 </TouchableHighlight>
                  

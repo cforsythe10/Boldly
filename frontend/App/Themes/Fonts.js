@@ -1,7 +1,8 @@
+import { Platform } from 'react-native';
+
 const type = {
   body: 'AvenirNext-Regular',
-  // header: 'f37ginger-regular-webfont',
-  header: 'AvenirNext-Medium', // temp to get rid of problem
+  header: Platform.OS ? 'F37Ginger' : 'f37ginger-regular-webfont',
   link: 'AvenirNext-Medium'
 }
 
@@ -16,6 +17,10 @@ const size = {
 }
 
 const style = {
+  buttonLarge: {
+    fontFamily: type.header,
+    fontSize: 20
+  },
   h1: {
     fontFamily: type.header,
     fontSize: size.h1

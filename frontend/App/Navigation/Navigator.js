@@ -14,6 +14,11 @@ import Campaign from '../Containers/CampaignScreen';
 import CampaignCreator from '../Containers/CampaignCreatorScreen';
 import Profile from '../Containers/ProfileScreen';
 import Settings from '../Containers/SettingsScreen';
+import SettingsBrand from '../Containers/SettingsBrand';
+import SettingsCreator from '../Containers/SettingsCreator';
+import SettingsEmail from '../Containers/SettingsEmail';
+import SettingsPassword from '../Containers/SettingsPassword';
+import SettingsPayment from '../Containers/SettingsPayment';
 
 import Default from '../Containers/DefaultScreen';
 import Login from '../Containers/LoginScreen';
@@ -30,13 +35,6 @@ import Survey8 from '../Containers/SurveyContent/Survey8';
 import Survey9 from '../Containers/SurveyContent/Survey9';
 import SurveyCreatorExtra1 from '../Containers/SurveyContent/SurveyCreatorExtra1';
 import SurveyCreatorExtra2 from '../Containers/SurveyContent/SurveyCreatorExtra2';
-
-const WIDTH = Dimensions.get('window').width;
-
-// const leftDrawer = createDrawerNavigator(
-// 	{
-        
-//     },
     
 // 	{
 // 		drawerPosition: 'left',
@@ -44,6 +42,8 @@ const WIDTH = Dimensions.get('window').width;
 // 		getCustomActionCreators: (route, stateKey) => { return { toggleLeftDrawer: () => DrawerActions.toggleDrawer({ key: stateKey }) }; },
 // 	},
 // )
+
+const WIDTH = Dimensions.get('window').width;
 
 const surveyNavigator = createStackNavigator(
 	{
@@ -117,6 +117,21 @@ const Navigator = createStackNavigator(
         },
         Settings: {
             screen: Settings
+        },
+        SettingsBrand: {
+            screen: SettingsBrand
+        },
+        SettingsCreator: {
+            screen: SettingsCreator
+        },
+        SettingsEmail: {
+            screen: SettingsEmail
+        },
+        SettingsPassword: {
+            screen: SettingsPassword
+        },
+        SettingsPayment: {
+            screen: SettingsPayment
         },
         Profile: {
             screen: Profile

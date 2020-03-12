@@ -23,3 +23,4 @@ export default class SecondaryButtonLarge extends Component {
       </TouchableOpacity>
     )
   }
+}
