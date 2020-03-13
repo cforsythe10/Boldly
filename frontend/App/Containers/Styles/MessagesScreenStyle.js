@@ -27,22 +27,22 @@ export default StyleSheet.create({
   },
   boldText: {
     ...Fonts.style.h6,
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
     color: Colors.charcoal
   },
   normalText: {
-    ...Fonts.style.h6,
+    ...Fonts.style.small,
     color: Colors.charcoal
   },
   timeBold: {
     ...Fonts.style.h6,
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
     color: Colors.charcoal,
     position: 'absolute',
     left: '70%'
   },
   timeNormal: {
-    ...Fonts.style.h6,
+    ...Fonts.style.small,
     color: Colors.charcoal,
     position: 'absolute',
     left: '70%'

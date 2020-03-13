@@ -22,7 +22,8 @@ export default StyleSheet.create({
   },
 
   messageBoxTextLeft: {
-    color: '#082029'
+    color: '#082029',
+    ...Fonts.style.body,
   },
 
   messageBoxRight: {
@@ -31,6 +32,7 @@ export default StyleSheet.create({
   },
 
   messageBoxTextRight: {
-    color: Colors.white
+    color: Colors.white,
+    ...Fonts.style.body,
   },
 })

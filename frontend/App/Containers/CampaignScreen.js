@@ -58,7 +58,7 @@ export default CampaignScreen = ({navigation}) => {
 
 	return (
 		<View style={styles.fullScreen}>
-    		<Header headerType='MenuProfile' navigation={navigation}/>
+    		<Header headerType='MenuProfileTitle' title="Campaigns" navigation={navigation}/>
 			<View style={{...styles.centerContentContainer, flex: 9}}>
 				{campaigns ? <CampaignList campaigns={campaigns} navigation={navigation} /> : <NoCampaigns navigation={navigation} />}
 			</View>

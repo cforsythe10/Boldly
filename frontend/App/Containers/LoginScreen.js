@@ -29,7 +29,7 @@ export default class DefaultScreen extends Component {
           <Header headerType='Survey' navigation={ this.props.navigation } />
           <View style={styles.contentContainer}>
             <Text style={ styles.text }>Log in</ Text>
-            <TextFieldDarkBG placeholder='Email' onChangeText={(text) => this.setState({ username: text })} secureTextEntry={false} />
+            <TextFieldDarkBG placeholder='Email' keyboardType="email-address" autocompleteType="email" onChangeText={(text) => this.setState({ username: text })} secureTextEntry={false} />
             <View style={styles.textFieldFormatter} >
               <TextFieldDarkBG placeholder='Password' onChangeText={(text) => this.setState({ password: text })} secureTextEntry={!this.state.showPass} />
               <Preview height={18.9} width={24} stroke={ Colors.fog } style={styles.preview} onPress={()=> this.setState({ showPass: !this.state.showPass})} />

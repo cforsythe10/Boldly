@@ -58,6 +58,10 @@ const style = {
     fontFamily: type.header,
     fontSize: size.h6
   },
+  small: {
+    fontFamily: type.body,
+    fontSize: size.h6
+  },
   body: {
     fontFamily: type.body,
     fontSize: size.regular
