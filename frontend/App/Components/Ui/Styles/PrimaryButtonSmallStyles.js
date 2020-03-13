@@ -6,9 +6,9 @@ export default StyleSheet.create({
     width: 150,
     height: 30,
     marginVertical: 5,
-    borderTopWidth: 1,
+    borderTopWidth: 0,
     borderRadius: 20,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0,
     backgroundColor: Colors.magenta
   },
   buttonText: {
@@ -17,6 +17,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
     color: Colors.white,
-    fontSize: Fonts.size.small
+    fontSize: Fonts.size.small,
+    ...Fonts.style.h6
   }
 })

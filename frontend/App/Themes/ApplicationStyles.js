@@ -2,7 +2,8 @@ import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
 import colors from './Colors'
-
+import {vh, vw} from '../Services/viewport-units';
+import { View } from 'react-native';
 // This file is for a reusable grouping of Theme items.
 // Similar to an XML fragment layout in Android
 
@@ -19,6 +20,18 @@ const ApplicationStyles = {
       bottom: 0,
       right: 0
     },
+    
+    bulletPoints:{
+      ...Fonts.captions,
+      color: Colors.charcoal,
+      paddingVertical: '1%',
+      textAlign: 'center'
+    },
+    bulletContainer: {
+      alignItems: 'flex-start',
+      width:'75%'
+    },
+
     cardContainer: {
       justifyContent: 'center',
       marginVertical: Metrics.section,
@@ -32,6 +45,44 @@ const ApplicationStyles = {
       borderRadius: 15,
       elevation: 3
     },
+
+    mockTextArea: {
+      width: '100%',
+    height: 136,
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+    padding: 6,
+    marginVertical: 8,
+    },
+
+    mockTextField: {
+      width: '100%',
+      height: 37,  
+      borderRadius: 10,
+      opacity: 1.0,
+      marginVertical: 8,
+      paddingHorizontal: 6,
+      backgroundColor: Colors.white,
+    },
+
+    coverImage: {
+      width: '100%',
+        height: 70*vh,
+        alignSelf: 'center',
+        borderRadius: 15,
+        overflow: 'hidden'
+    },
+
+    profileImage: {
+      width: 104,
+      height: 104,
+      alignSelf: 'center',
+      borderRadius: 52,
+      borderWidth: 2,
+      borderColor: Colors.white,
+      overflow: 'hidden',
+      marginVertical: 6,
+    },
     
     cardContentContainer: {
       justifyContent: 'center',
@@ -40,6 +91,21 @@ const ApplicationStyles = {
       flex: 0.77,
       paddingHorizontal: '6%',
       textAlign: 'center'
+    },
+
+    profileSection: {
+      flex: 1,
+      width: '100%',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignSelf: 'center',
+      paddingHorizontal: 0,
+      paddingVertical: 12,
+    },
+
+    centerContentContainer: {
+      alignItems: 'center',
+      flex: 3
     },
 
     container: {
@@ -88,6 +154,44 @@ const ApplicationStyles = {
       fontSize: Fonts.size.h3,
       color: Colors.charcoal
     },
+    h3: {
+      ...Fonts.style.h3,
+      color: Colors.fog,
+      marginTop: 4,
+      
+    },
+    h5: {
+      ...Fonts.style.h5,
+      color: Colors.charcoal,
+      marginTop: 4,
+      marginBottom: 8,
+      flex:0.88,
+      paddingHorizontal: '6%',
+    },
+    sh3: {
+      ...Fonts.style.sh3,
+      color: Colors.fog,
+      marginTop: 4,
+    },
+    h6: {
+      ...Fonts.style.h6,
+      textTransform: 'capitalize'
+      
+    },
+    link: {
+      ...Fonts.style.link,
+      color: Colors.violet,
+    },
+    valueDisplay: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: '8%',
+      flex: 1,
+      width: '100%',
+      alignSelf: 'center',
+      paddingVertical: 12,
+      
+    },
     body: {
       ...Fonts.style.body,
       color: colors.charcoal
@@ -96,6 +200,21 @@ const ApplicationStyles = {
       height: '100%',
       width: '100%',
       backgroundColor: Colors.cobalt
+    },
+    profileHeader: {
+      height: 90,
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignContent: 'space-between',
+      paddingHorizontal: 35,
+      marginBottom: 35,
+      overflow: 'hidden',
+    },
+    scene: {
+      flex: 1
+    },
+    caption: {
+      ...Fonts.style.captions,
     },
     buttonContainer: {
       flex: 3,
@@ -110,6 +229,39 @@ const ApplicationStyles = {
       paddingHorizontal: '8%'
     },
 
+    postRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      flex: 1,
+      marginVertical: 10
+    },
+    postThumb: {
+      width: 100,
+      height: 100,
+      alignSelf: 'center',
+      borderRadius: 10,
+      overflow: 'hidden',
+    },
+    postFeature: {
+      width: 90*vw,
+      height: 90*vw
+    },
+    blankThumb: {
+      width: 100,
+      height: 100,
+      alignSelf: 'center',
+      borderRadius: 10,
+      borderWidth: 2,
+      borderColor: Colors.white,
+      overflow: 'hidden',
+      backgroundColor: Colors.charcoal35,
+      alignItems: 'center',
+      alignContent: 'center',
+      flexDirection: 'column'
+    },
+
+
+
     background: {
       backgroundColor: Colors.violet,
       height: '100%',
@@ -117,7 +269,9 @@ const ApplicationStyles = {
     },
     fullScreen: {
       height: '100%',
-      width: '100%'
+      width: '100%',
+      padding: 0,
+      margin: 0
     },
     headerContainer: {
       flex: 1,
@@ -173,6 +327,19 @@ const ApplicationStyles = {
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'flex-end',
+    },
+    fog: {
+      backgroundColor: Colors.fog
+    },
+    violet: {
+      backgroundColor: Colors.violet
+    },
+    profileScroll: {
+      margin: '6%',
+      borderRadius: 15,
+      width: '88%',
+      height: '92%',
+      overflow: 'hidden',
     }
   },
   darkLabelContainer: {

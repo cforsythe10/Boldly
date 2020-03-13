@@ -1,7 +1,8 @@
+import { Platform } from 'react-native';
+
 const type = {
   body: 'AvenirNext-Regular',
-  // header: 'f37ginger-regular-webfont',
-  header: 'AvenirNext-Medium', // temp to get rid of problem
+  header: Platform.OS === 'ios' ? 'F37Ginger' : 'f37ginger-regular-webfont',
   link: 'AvenirNext-Medium'
 }
 
@@ -12,10 +13,15 @@ const size = {
   h4: 18,
   h5: 16,
   h6: 14,
-  regular: 16
+  regular: 16,
+  caption: 12,
 }
 
 const style = {
+  buttonLarge: {
+    fontFamily: type.header,
+    fontSize: 20
+  },
   h1: {
     fontFamily: type.header,
     fontSize: size.h1
@@ -62,7 +68,7 @@ const style = {
   },
   captions: {
     fontFamily: type.body,
-    fontSize: size.h6
+    fontSize: size.caption,
   }
 }
 

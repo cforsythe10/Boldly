@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, TextInput } from 'react-native';
+import PropTypes from 'prop-types'
 import styles from './Styles/TextFieldTallStyles';
 
 export default class TextFieldTall extends Component {
@@ -13,12 +14,16 @@ export default class TextFieldTall extends Component {
     };
   }
 
+  static propTypes = {
+    placeholder: PropTypes.string,
+  }
+
   render() {
     return (
       <View style={styles.BorderStyle}>
         <TextInput
           secureTextEntry={( this.state.text <= 0 && this.state.emailStatus!='onFocus' ) ? true : false }
-              placeholder='Insert Placeholder'
+              placeholder={this.props.placeholder}
               {...this.props}
               style={this.state.style}
               placeholderTextColor= '#C1C1C1'
