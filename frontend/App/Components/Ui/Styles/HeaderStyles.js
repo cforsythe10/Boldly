@@ -88,6 +88,30 @@ export default StyleSheet.create({
     borderColor: Colors.pear65,
     borderWidth: 2,
     elevation: 4,
+  },
+  profilePic: {
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    backgroundColor: Colors.white,
+    overflow: 'hidden',
+    alignItems: 'center',
+    marginRight: 5
+  },
+  noProfilePic: {
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    backgroundColor: Colors.charcoal35,
+  },
+  image: { 
+    flex: 1, 
+    height: 30, 
+    width: 30,
+  },
+  otherProfileContainer:{
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 })
 

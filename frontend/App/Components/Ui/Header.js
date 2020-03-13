@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import { View, Text, TouchableHighlight, Button } from 'react-native'
+import { View, Text, TouchableHighlight, Button, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styles from './Styles/HeaderStyles'
 import BackButton from '../../Images/Icons/back.svg'
@@ -13,6 +13,9 @@ import Logo from '../../Images/Icons/logo-purple.svg'
 import LogoFog from '../../Images/Icons/logo-fog.svg'
 import Check from '../../Images/Icons/check.svg'
 import Close from '../../Images/Icons/close.svg'
+import Search from '../../Images/Icons/search.svg'
+import Ellipses from '../../Images/Icons/ellipses.svg'
+
 import { Colors } from '../../Themes/';
 import Modal from "react-native-modal";
 
@@ -210,6 +213,51 @@ export default class Header extends Component {
             </View>
         )
 
+        const MenuSearchTitle = (
+            <View style={styles.headerContainer}>
+                <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
+                <TouchableHighlight onPress={() => this.toggleModal() } activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <MenuButton height={20} width={20} stroke={Colors.charcoal65 }/>
+                </TouchableHighlight>
+                
+                <Text style={styles.screenTitle}>
+                    {this.props.title}
+                </Text>
+
+
+                <TouchableHighlight activeOpacity={ 0.8 } underlayColor={ Colors.fog }>
+                    <Search height={20} width={20} stroke={Colors.charcoal65 }/>
+                </TouchableHighlight>
+                {MenuHTML}
+            </View>
+        )
+
+        const BackEllipsesOtherProfile = (
+            <View style={styles.headerContainer}>
+                <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
+                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                    <BackButton height={20} width={20} stroke={Colors.charcoal65 }/>
+                </TouchableHighlight>
+                
+                <TouchableOpacity onPress={ () => this.props.navigation.navigate('Profile') }>
+                    <View style={ styles.otherProfileContainer }>
+                        <View style={ styles.profilePic }>
+                        {this.props.source ? 
+                            <Image source={require('../../Images/temporaryProfilePic.png')} resizeMode='contain' style={styles.image} /> :
+                            <View style={styles.noProfilePic}></View>
+                        }
+                        </View>
+                        <Text style={styles.screenTitle}>
+                            {this.props.title}
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+                
+                <Ellipses height={20} width={20} stroke={Colors.charcoal65 }/>
+                {MenuHTML}
+            </View>
+        )
+
         const MenuProfileHTML = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
@@ -333,6 +381,10 @@ export default class Header extends Component {
                     return MenuEditHTML
                 case('MenuEditTitle'):
                     return MenuEditTitle
+                case('MenuSearchTitle'):
+                    return MenuSearchTitle
+                case('BackEllipsesOtherProfile'):
+                    return BackEllipsesOtherProfile
                 default:
                     return BackProfileHTML
             }
