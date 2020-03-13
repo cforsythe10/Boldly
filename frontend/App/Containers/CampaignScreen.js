@@ -17,7 +17,7 @@ export default CampaignScreen = ({navigation}) => {
 				id: 'campaign1',
 				campaignName: 'Campaign 1',
 				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
+				campaignImageSource: '../../Images/Janessa2.jpg',
 				navigateToCampaignProfiles: mockedProfileNavigation,
 				values: ['value1', 'value2', 'value3']
 			}],
@@ -58,7 +58,7 @@ export default CampaignScreen = ({navigation}) => {
 
 	return (
 		<View style={styles.fullScreen}>
-    		<Header headerType='MenuProfile' />
+    		<Header headerType='MenuProfile' navigation={navigation}/>
 			<View style={{...styles.centerContentContainer, flex: 9}}>
 				{campaigns ? <CampaignList campaigns={campaigns} navigation={navigation} /> : <NoCampaigns navigation={navigation} />}
 			</View>
