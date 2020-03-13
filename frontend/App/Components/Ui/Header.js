@@ -235,11 +235,11 @@ export default class Header extends Component {
         const BackEllipsesOtherProfile = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <BackButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
-                <TouchableOpacity onPress={ () => this.props.navigation.navigate('Profile') }>
+                <TouchableOpacity onPress={ () => this.navigation.navigate('Profile') }>
                     <View style={ styles.otherProfileContainer }>
                         <View style={ styles.profilePic }>
                         {this.props.source ? 
