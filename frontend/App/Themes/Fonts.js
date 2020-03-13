@@ -13,7 +13,8 @@ const size = {
   h4: 18,
   h5: 16,
   h6: 14,
-  regular: 16
+  regular: 16,
+  caption: 12,
 }
 
 const style = {
@@ -67,7 +68,7 @@ const style = {
   },
   captions: {
     fontFamily: type.body,
-    fontSize: size.h6
+    fontSize: size.caption,
   }
 }
 
