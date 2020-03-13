@@ -81,7 +81,6 @@ const ApplicationStyles = {
       borderWidth: 2,
       borderColor: Colors.white,
       overflow: 'hidden',
-      marginVertical: 6,
     },
     
     cardContentContainer: {
