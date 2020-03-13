@@ -7,7 +7,7 @@ import styles from './Styles/CampaignScreenStyle'
 
 export default CampaignScreen = ({navigation}) => {
 
-	const [campaigns, modifyCampaigns] = useState(true);
+	const [campaigns, modifyCampaigns] = useState({});
 	
 	useEffect(() => {
 		modifyCampaigns({
@@ -47,7 +47,7 @@ export default CampaignScreen = ({navigation}) => {
 				values: ['value1']
 			}]
 		});
-	});
+	}, []);
 
 	return (
 		<View style={styles.fullScreen}>

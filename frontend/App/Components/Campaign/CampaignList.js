@@ -41,22 +41,22 @@ const CampaignList = ({campaigns}) => {
            {campaignTypeSelected === campaignSections.PAST && <View style={{...styles.selectedBar, left: '51%'}} />}
            {campaignTypeSelected === campaignSections.CURRENT ? (
                 <View style={styles.campaigns}>
-                        <View style={styles.campaignMatches}>
+                       {campaignMatches && <View style={styles.campaignMatches}>
                             <Text style={styles.header}>Your Matches</Text>
-                            {campaignMatches && campaignMatches.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-                        </View>
-                        <View style={styles.campaignSavedForLater}>
+                            {campaignMatches.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                        </View>}
+                       {campaignSavedForLater && <View style={styles.campaignSavedForLater}>
                             <Text style={styles.header}>Saved for Later</Text>
-                            {campaignSavedForLater && campaignSavedForLater.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-                        </View>
-                        <View style={styles.campaignApplied}>
+                            {campaignSavedForLater.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                        </View>}
+                       {campaignApplied && <View style={styles.campaignApplied}>
                             <Text style={styles.header}>Applied</Text>
-                            {campaignApplied && campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-                        </View>
-                        <View style={styles.campaignActive}>
+                            {campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                        </View>}
+                       {campaignActive && <View style={styles.campaignActive}>
                             <Text style={styles.header}>Active</Text>
-                            {campaignActive && campaignActive.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-                        </View>
+                            {campaignActive.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                        </View>}
                 </View>
            ) : (
                <View style={styles.campaigns}>
