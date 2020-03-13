@@ -26,7 +26,7 @@ export default StyleSheet.create({
   },
 
   messageBoxRight: {
-    backgroundColor: '#269EC9',
+    backgroundColor: Colors.violet,
     borderBottomRightRadius: 3
   },
 

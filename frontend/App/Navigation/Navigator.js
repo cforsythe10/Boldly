@@ -10,6 +10,8 @@ import DashboardMissingCreator from '../Containers/DashboardMissingProfileElemen
 import DashboardMissingBrand from '../Containers/DashboardMissingProfileElementsBrand';
 
 import Messages from '../Containers/MessagesScreen';
+import DirectMessages from '../Containers/DirectMessages.js';
+
 import Campaign from '../Containers/CampaignScreen';
 import CampaignCreator from '../Containers/CampaignCreatorScreen';
 import Profile from '../Containers/ProfileScreen';
@@ -111,6 +113,9 @@ const Navigator = createStackNavigator(
         },
         Messages: {
             screen: Messages
+        },
+        DirectMessages: {
+        	screen: DirectMessages
         },
         Campaigns: {
             screen: Campaign
