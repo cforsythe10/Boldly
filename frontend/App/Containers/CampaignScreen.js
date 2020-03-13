@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View } from 'react-native';
 import Header from '../Components/Ui/Header';
 import { CampaignList, NoCampaigns } from '../Components/Campaign/index';
 
 import styles from './Styles/CampaignScreenStyle'
 
-export default CampaignScreen = ({navigation}) => {
 
+export default CampaignScreen = ({navigation}) => {
+	
 	const [campaigns, modifyCampaigns] = useState({});
+	const mockedProfileNavigation = useCallback(() => navigation.navigate('Profile'), []);
 	
 	useEffect(() => {
 		modifyCampaigns({
@@ -16,6 +18,7 @@ export default CampaignScreen = ({navigation}) => {
 				campaignName: 'Campaign 1',
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
 				values: ['value1', 'value2', 'value3']
 			}],
 			campaignSavedForLater: [{
@@ -23,6 +26,7 @@ export default CampaignScreen = ({navigation}) => {
 				campaignName: 'Campaign 2',
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
 				values: ['value1', 'value2', 'value3']
 			}],
 			campaignApplied: [{
@@ -30,6 +34,7 @@ export default CampaignScreen = ({navigation}) => {
 				campaignName: 'Campaign 3',
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
 				values: ['value1', 'value2']
 
 			}],
@@ -38,12 +43,14 @@ export default CampaignScreen = ({navigation}) => {
 				campaignName: 'Campaign 4',
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
 				values: ['value1', 'value2']
 			}, {
 				id: 'campaign5',
 				campaignName: 'Campaign 5',
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
 				values: ['value1']
 			}]
 		});
