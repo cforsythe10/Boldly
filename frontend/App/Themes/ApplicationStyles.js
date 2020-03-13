@@ -2,7 +2,8 @@ import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
 import colors from './Colors'
-import {vh} from '../Services/viewport-units';
+import {vh, vw} from '../Services/viewport-units';
+import { View } from 'react-native';
 // This file is for a reusable grouping of Theme items.
 // Similar to an XML fragment layout in Android
 
@@ -45,12 +46,41 @@ const ApplicationStyles = {
       elevation: 3
     },
 
+    mockTextArea: {
+      width: '100%',
+    height: 136,
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+    padding: 6,
+    marginVertical: 8,
+    },
+
+    mockTextField: {
+      width: '100%',
+      height: 37,  
+      borderRadius: 10,
+      opacity: 1.0,
+      marginVertical: 8,
+      paddingHorizontal: 6,
+      backgroundColor: Colors.white,
+    },
+
     coverImage: {
       width: '100%',
         height: 70*vh,
         alignSelf: 'center',
         borderRadius: 15,
         overflow: 'hidden'
+    },
+
+    profileImage: {
+      width: 104,
+      height: 104,
+      alignSelf: 'center',
+      borderRadius: 52,
+      borderWidth: 2,
+      borderColor: Colors.white,
+      overflow: 'hidden',
     },
     
     cardContentContainer: {
@@ -71,7 +101,7 @@ const ApplicationStyles = {
       paddingHorizontal: 0,
       paddingVertical: 12,
     },
-    
+
     centerContentContainer: {
       alignItems: 'center',
       flex: 3
@@ -147,6 +177,10 @@ const ApplicationStyles = {
       textTransform: 'capitalize'
       
     },
+    link: {
+      ...Fonts.style.link,
+      color: Colors.violet,
+    },
     valueDisplay: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -178,6 +212,9 @@ const ApplicationStyles = {
     scene: {
       flex: 1
     },
+    caption: {
+      ...Fonts.style.captions,
+    },
     buttonContainer: {
       flex: 3,
       flexDirection: 'row',
@@ -190,6 +227,39 @@ const ApplicationStyles = {
       justifyContent: 'space-between',
       paddingHorizontal: '8%'
     },
+
+    postRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      flex: 1,
+      marginVertical: 10
+    },
+    postThumb: {
+      width: 100,
+      height: 100,
+      alignSelf: 'center',
+      borderRadius: 10,
+      overflow: 'hidden',
+    },
+    postFeature: {
+      width: 90*vw,
+      height: 90*vw
+    },
+    blankThumb: {
+      width: 100,
+      height: 100,
+      alignSelf: 'center',
+      borderRadius: 10,
+      borderWidth: 2,
+      borderColor: Colors.white,
+      overflow: 'hidden',
+      backgroundColor: Colors.charcoal35,
+      alignItems: 'center',
+      alignContent: 'center',
+      flexDirection: 'column'
+    },
+
+
 
     background: {
       backgroundColor: Colors.violet,
