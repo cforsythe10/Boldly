@@ -4,10 +4,11 @@ defmodule BoldlyWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
     plug :fetch_session
+    # plug :conv_from_json
   end
 
   pipeline :api_auth do
-    plug :ensure_authenticated
+    # plug :ensure_authenticated
   end
 
   scope "/api", BoldlyWeb do
@@ -25,6 +26,15 @@ defmodule BoldlyWeb.Router do
     resources "/brands", BrandController, except: [:new, :edit]
     resources "/creators", CreatorController, except: [:new, :edit]
     resources "/campaigns", CampaignController, except: [:new, :edit]
+  end
+
+  defp conv_from_json(conn, _opts) do
+    string_key_map = conn.body_params
+
+
+    temp = for {key, val} <- string_key_map, into: %{}, do: {String.to_existing_atom(key), val}
+    # IO.puts( temp)
+    assign(conn, :body_params, temp)
   end
 
   defp ensure_authenticated(conn, _opts) do

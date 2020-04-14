@@ -15,6 +15,7 @@ config :boldly, BoldlyWeb.Endpoint,
 
 # Do not print debug messages in production
 config :logger, level: :info
+# config :logger, :console, format: "[$level] $message\n"
 
 # ## SSL Support
 #
