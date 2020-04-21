@@ -13,13 +13,13 @@ defmodule Boldly.MixProject do
       deps: deps(),
       docs: [
         groups_for_modules: [
-          "Controllers": [
+          Controllers: [
             BoldlyWeb.BrandController,
             BoldlyWeb.CreatorController,
             BoldlyWeb.CampaignController,
             BoldlyWeb.ParticipantController
           ],
-          "Views": [
+          Views: [
             BoldlyWeb.BrandView,
             BoldlyWeb.CreatorView,
             BoldlyWeb.CampaignView,

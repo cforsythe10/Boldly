@@ -56,7 +56,6 @@ defmodule BoldlyWeb.CreatorController do
     render(conn, "show.json", creator: creator)
   end
 
-
   @doc """
   Updates the Creator account with the desired attributes. The creator account's `id` should be at the top level of the JSON, and the updated attributes should be under a `creator` key at the top level of the JSON.
 
@@ -84,12 +83,11 @@ defmodule BoldlyWeb.CreatorController do
     end
   end
 
-
   @doc """
   Ensures that the email and password of the account are valid.
 
   If the account doesn't exist, sends 401 and sends error message.
-  
+
   Output fields can be seen in `BoldlyWeb.CreatorView.render/2`.
   """
   def sign_in(conn, %{"email" => email, "password" => password}) do

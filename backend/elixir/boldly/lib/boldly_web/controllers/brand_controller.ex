@@ -44,7 +44,6 @@ defmodule BoldlyWeb.BrandController do
     end
   end
 
-
   @doc """
   Returns the attributes of the desired brand if it exists.
 
