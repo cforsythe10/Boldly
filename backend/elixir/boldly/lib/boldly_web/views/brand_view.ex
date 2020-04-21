@@ -14,9 +14,16 @@ defmodule BoldlyWeb.BrandView do
   Renders data for a Brand account in JSON format
 
   Attribute fields (returned under a `data` field) are:
-
-  `uuid`, `id`, `ecommerce`, `location`, `industries`, `values`, `email`, `name`
-
+  ```
+  uuid,
+  id,
+  ecommerce,
+  location,
+  industries,
+  values,
+  email,
+  name
+  ```
   """
   def render("brand.json", %{brand: brand}) do
     %{

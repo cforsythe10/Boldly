@@ -29,8 +29,7 @@ defmodule BoldlyWeb.BrandController do
   industries: string
   location: string
   values: string
-  password: string, virtual: true
-  password_hash: string
+  password: string
   name: string
   ```
 

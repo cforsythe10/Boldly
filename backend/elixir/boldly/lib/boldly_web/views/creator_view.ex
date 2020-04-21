@@ -10,6 +10,23 @@ defmodule BoldlyWeb.CreatorView do
     %{data: render_one(creator, CreatorView, "creator.json")}
   end
 
+  @doc """
+  Returns data for a Creator in JSON format.
+
+  Attribute fields (returned under a `data` field) are:
+
+  ```
+  uuid,
+  name,
+  birthday,
+  values,
+  industry,
+  interests,
+  location,
+  email,
+  id
+  ```
+  """
   def render("creator.json", %{creator: creator}) do
     %{
       uuid: creator.uuid,
