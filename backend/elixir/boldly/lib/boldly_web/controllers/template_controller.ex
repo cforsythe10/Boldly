@@ -28,7 +28,8 @@ defmodule BoldlyWeb.TemplateController do
   def update(conn, %{"id" => id, "template" => template_params}) do
     template = ContractTemplate.get_template!(id)
 
-    with {:ok, %Template{} = template} <- ContractTemplate.update_template(template, template_params) do
+    with {:ok, %Template{} = template} <-
+           ContractTemplate.update_template(template, template_params) do
       render(conn, "show.json", template: template)
     end
   end

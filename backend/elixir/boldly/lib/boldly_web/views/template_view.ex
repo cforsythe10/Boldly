@@ -11,9 +11,6 @@ defmodule BoldlyWeb.TemplateView do
   end
 
   def render("template.json", %{template: template}) do
-    %{id: template.id,
-      file_path: template.file_path,
-      brand_uuid: template.brand_uuid
-    }
+    %{id: template.id, file_path: template.file_path, brand_uuid: template.brand_uuid}
   end
 end

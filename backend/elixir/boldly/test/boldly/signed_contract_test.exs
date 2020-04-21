@@ -139,7 +139,11 @@ defmodule Boldly.SignedContractTest do
       contract = contract_fixture()
 
       contr_attrs = %{
-        brand_uuid: contract.brand_uuid, campaing_uuid: contract.campaign_uuid, creator_uuid: contract.creator_uuid, file_path: "some other file_path", id: contract.id
+        brand_uuid: contract.brand_uuid,
+        campaing_uuid: contract.campaign_uuid,
+        creator_uuid: contract.creator_uuid,
+        file_path: "some other file_path",
+        id: contract.id
       }
 
       assert {:ok, %Contract{} = contract1} =

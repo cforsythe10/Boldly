@@ -10,7 +10,23 @@ defmodule Boldly.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      docs: [
+        groups_for_modules: [
+          "Controllers": [
+            BoldlyWeb.BrandController,
+            BoldlyWeb.CreatorController,
+            BoldlyWeb.CampaignController,
+            BoldlyWeb.ParticipantController
+          ],
+          "Views": [
+            BoldlyWeb.BrandView,
+            BoldlyWeb.CreatorView,
+            BoldlyWeb.CampaignView,
+            BoldlyWeb.ParticipantView
+          ]
+        ]
+      ]
     ]
   end
 
