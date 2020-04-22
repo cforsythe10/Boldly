@@ -1,4 +1,4 @@
-let url = 'https://localhost:4000/';
+let url = 'http://localhost:4000/';
 
 
 
@@ -8,7 +8,7 @@ export function makePost(endpoint, body){
   console.log(body);
   return fetch(thisurl, {
   	method: 'POST',
-  	headaers: {
+  	headers: {
   		Accept: 'application/json',
   		'Content-Type': 'application/json'
   	},

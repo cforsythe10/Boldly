@@ -46,7 +46,7 @@ export default class SurveyCreatorExtra2 extends Component {
               <TouchableHighlight onPress={() => this.props.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                   <BackButton height={20} width={20} stroke={Colors.white }/>
               </TouchableHighlight>
-              
+
               <Logo height={30} width={70}/>
 
               <View height={20} width={20} />
