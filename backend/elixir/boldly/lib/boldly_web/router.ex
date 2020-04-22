@@ -31,7 +31,6 @@ defmodule BoldlyWeb.Router do
   defp conv_from_json(conn, _opts) do
     string_key_map = conn.body_params
 
-
     temp = for {key, val} <- string_key_map, into: %{}, do: {String.to_existing_atom(key), val}
     # IO.puts( temp)
     assign(conn, :body_params, temp)

@@ -47,7 +47,7 @@ defmodule BoldlyWeb.ContractControllerTest do
     file_path: "some file_path"
   }
   @update_attrs %{
-    file_path: "some updated file_path",
+    file_path: "some updated file_path"
   }
   @invalid_attrs %{file_path: nil, id: nil}
 
@@ -119,7 +119,7 @@ defmodule BoldlyWeb.ContractControllerTest do
 
       assert %{
                "id" => id,
-               "file_path" => "some file_path",
+               "file_path" => "some file_path"
              } = json_response(conn, 200)["data"]
     end
 
@@ -132,7 +132,10 @@ defmodule BoldlyWeb.ContractControllerTest do
   describe "update contract" do
     setup [:create_contract]
 
-    test "renders contract when data is valid", %{conn: conn, contract: %Contract{id: id} = contract} do
+    test "renders contract when data is valid", %{
+      conn: conn,
+      contract: %Contract{id: id} = contract
+    } do
       conn = put(conn, Routes.contract_path(conn, :update, contract), contract: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
@@ -140,7 +143,7 @@ defmodule BoldlyWeb.ContractControllerTest do
 
       assert %{
                "id" => id,
-               "file_path" => "some updated file_path",
+               "file_path" => "some updated file_path"
              } = json_response(conn, 200)["data"]
     end
 

@@ -10,6 +10,16 @@ defmodule BoldlyWeb.ParticipantView do
     %{data: render_one(participant, ParticipantView, "participant.json")}
   end
 
+  @doc """
+  Renders the following in JSON, all under a `data` key:
+  ```
+  id
+  is_pending
+  is_active
+  campaign_uuid
+  creator_uuid
+  ```
+  """
   def render("participant.json", %{participant: participant}) do
     %{
       id: participant.id,

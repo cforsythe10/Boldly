@@ -5,6 +5,7 @@ defmodule Boldly.ContractTemplate.Template do
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "templates" do
     field :file_path, :string
+
     belongs_to :brands, Boldly.BrandAccount.Brand,
       foreign_key: :brand_uuid,
       references: :uuid,

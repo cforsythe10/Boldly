@@ -6,11 +6,31 @@ defmodule BoldlyWeb.ParticipantController do
 
   action_fallback BoldlyWeb.FallbackController
 
+  @doc """
+  Lists all campaign participants across all Campaigns.
+
+  Output fields can be seen in `BoldlyWeb.ParticipantView.render/2`.
+  """
   def index(conn, _params) do
     participants = CampaignPart.list_participants()
     render(conn, "index.json", participants: participants)
   end
 
+  @doc """
+  Creates a Participant for a Campaign given valid creation attributes.
+
+  Fields should be wrapped in a `participant` field at the top level of the JSON payload.
+
+  Fields should be:
+  ```
+  campaign_uuid: uuid of Campaign of which the creator is participating
+  creator_uuid: The uuid of the Creator participating in the Campaign
+  is_active: boolean, default: false
+  is_pending: boolean, default: false
+  ```
+
+  Output fields can be seen in `BoldlyWeb.ParticipantView.render/2`.
+  """
   def create(conn, %{"participant" => participant_params}) do
     with {:ok, %Participant{} = participant} <-
            CampaignPart.create_participant(participant_params) do
@@ -21,11 +41,21 @@ defmodule BoldlyWeb.ParticipantController do
     end
   end
 
+  @doc """
+  Displays the Campaign Participant info given a valid `id`.
+
+  Output fields can be seen in `BoldlyWeb.ParticipantView.render/2`.
+  """
   def show(conn, %{"id" => id}) do
     participant = CampaignPart.get_participant!(id)
     render(conn, "show.json", participant: participant)
   end
 
+  @doc """
+  Updates the Participant given a valid id under and `id` attribute and valid update attributes under a `participant` key.
+
+  Output fields can be seen in `BoldlyWeb.ParticipantView.render/2`.
+  """
   def update(conn, %{"id" => id, "participant" => participant_params}) do
     participant = CampaignPart.get_participant!(id)
 
@@ -35,6 +65,11 @@ defmodule BoldlyWeb.ParticipantController do
     end
   end
 
+  @doc """
+  Deletes a Campaign Participant given a valid id under and `id` key.
+
+  Sends an empty response.
+  """
   def delete(conn, %{"id" => id}) do
     participant = CampaignPart.get_participant!(id)
 
