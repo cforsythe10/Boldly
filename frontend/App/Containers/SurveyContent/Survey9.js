@@ -13,10 +13,8 @@ export default class Survey9 extends Component {
   		super(props);
   		console.log(props.navigation.state.params);
   		this.state = {
-  			email: props.navigation.state.params.email,
-  			password: props.navigation.state.params.password,
-  			showContinue: false
-  		}
+  			account: props.navigation.state.params.account
+  		};
   	}
 
   	/* WILL NEED THIS
@@ -37,7 +35,7 @@ export default class Survey9 extends Component {
 				<View style={styles.contentContainer}>
 					<Text style={ styles.text } >Connect your social media</Text>
 					<PrimaryButtonLarge text='Dummy Component' onPress={() => this.setState({...this.state, showContinue: !this.state.showContinue})} />
-					<Text style={ styles.link } onPress={() => this.props.navigation.navigate('Dashboard')} >Skip for now</ Text>
+					<Text style={ styles.link } onPress={() => this.props.navigation.navigate('Dashboard')} >this.state.account</ Text>
 				</View>
 
 				<View style={styles.continueContainer}>

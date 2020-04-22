@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import { makePost } from '../../Services/Apitemp.js';
 import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import TextFieldDarkBG from '../../Components/Ui/TextFieldDarkBG';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
@@ -39,9 +40,9 @@ export default class Survey7 extends Component {
 
   	buttonPressed(){
   		let accountInfo = {...this.state.currentState, password: this.state.password};
-  		console.log(accountInfo);
+  		let account = makePost('api/creators', JSON.stringify({ creator: accountInfo }));
   		//code for sending account info to backend
-  		this.props.navigation.navigate('Survey9', { email: accountInfo.email, password: accountInfo.password});
+  		this.props.navigation.navigate('Survey9', account);
   	}
 
     _renderHeader = () => {
