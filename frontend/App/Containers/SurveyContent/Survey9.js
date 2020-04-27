@@ -17,12 +17,6 @@ export default class Survey9 extends Component {
   		};
   	}
 
-  	/* WILL NEED THIS
-		login(){
-	
-		}
-  	*/
-
   	render() {
 		return (
 		<View style={ styles.fullScreen }>
@@ -35,12 +29,12 @@ export default class Survey9 extends Component {
 				<View style={styles.contentContainer}>
 					<Text style={ styles.text } >Connect your social media</Text>
 					<PrimaryButtonLarge text='Dummy Component' onPress={() => this.setState({...this.state, showContinue: !this.state.showContinue})} />
-					<Text style={ styles.link } onPress={() => this.props.navigation.navigate('Dashboard')} >this.state.account</ Text>
+					<Text style={ styles.link } onPress={() => this.props.navigation.navigate('Dashboard', this.state.account)} >Skip for now</ Text>
 				</View>
 
 				<View style={styles.continueContainer}>
 					{this.state.showContinue ?
-						<PrimaryButtonLarge text='Go to Dashboard' onPress={() => this.props.navigation.navigate('Dashboard')} /> : null
+						<PrimaryButtonLarge text='Go to Dashboard' onPress={() => this.props.navigation.navigate('Dashboard', this.state.account)} /> : null
 					}
 				</View>
 

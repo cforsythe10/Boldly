@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { makePost } from '../../Services/Apitemp.js';
+import { makePost } from '../../Services/Api.js';
+
 import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import TextFieldDarkBG from '../../Components/Ui/TextFieldDarkBG';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
@@ -25,7 +26,7 @@ export default class Survey7 extends Component {
   				name: props.navigation.state.params.name,
   				isECommerse: props.navigation.state.params.isECommerse,
   				location: props.navigation.state.params.location,
-  				industries: props.navigation.state.params.industries,
+  				industry: props.navigation.state.params.industries,
   				values: props.navigation.state.params.values,
   				interests: props.navigation.state.params.interests,
   				DOB: props.navigation.state.params.DOB,
@@ -40,9 +41,30 @@ export default class Survey7 extends Component {
 
   	buttonPressed(){
   		let accountInfo = {...this.state.currentState, password: this.state.password};
-  		let account = makePost('api/creators', JSON.stringify({ creator: accountInfo }));
-  		//code for sending account info to backend
-  		this.props.navigation.navigate('Survey9', account);
+
+      if(accountInfo.isCreator) makePost('api/creators', JSON.stringify({ creator: {
+        name: accountInfo.name,
+        email: accountInfo.email,
+        industry: accountInfo.industry,
+        interests: accountInfo.interests.toString(),
+        location: accountInfo.location,
+        values: accountInfo.values.toString(),
+        birthday: new Date(accountInfo.DOB).toISOString().substring(0,10),
+        password: accountInfo.password
+      }})).then( response => response.json())
+        .then(data => { if(!data.errors) this.props.navigation.navigate('Survey9', data) }
+      );
+      else makePost('api/brands', JSON.stringify({ brand: {
+        name: accountInfo.name,
+        ecommerce: accountInfo.isECommerse,
+        location: accountInfo.location,
+        industries: accountInfo.industry,
+        values: accountInfo.values.toString(),
+        email: accountInfo.email,
+        password: accountInfo.password
+      }})).then( response => response.json())
+        .then(data => { if(!data.errors) this.props.navigation.navigate('Survey9', data) }
+      );
   	}
 
     _renderHeader = () => {
