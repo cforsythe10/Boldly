@@ -1,5 +1,6 @@
 .PHONY: setup_dbs
 
+ELIXIR_BACKG_PROCESS = $(shell pgrep -f erlang)
 
 run: setup_dbs
 	mix phx.server
@@ -13,7 +14,7 @@ run-aws-detached: setup-aws-psql
 	elixir --erl "-detached" -S mix phx.server
 
 stop-aws-detached:
-	kill $(pgrep -f erlang)
+	$(shell kill $(ELIXIR_BACKG_PROCESS))
 
 aws-test: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
 aws-test: setup-aws-psql
