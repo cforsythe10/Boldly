@@ -6,7 +6,7 @@ import ToggleSwitch from 'toggle-switch-react-native'
 import Header from '../Components/Ui/Header';
 import BoldlyImage from '../Components/Ui/BoldlyImage';
 import SecondaryButtonMedium from '../Components/Ui/SecondaryButtonMedium';
-import Edit from '../Images/Icons/edit-icon.svg'
+import Edit from '../Images/Icons/edit.svg'
 import Email from '../Images/Icons/email.svg'
 import Forward from '../Images/Icons/forward.svg'
 import Password from '../Images/Icons/password.svg'

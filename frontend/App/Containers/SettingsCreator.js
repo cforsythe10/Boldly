@@ -6,12 +6,13 @@ import ToggleSwitch from 'toggle-switch-react-native'
 import Header from '../Components/Ui/Header';
 import BoldlyImage from '../Components/Ui/BoldlyImage';
 import SecondaryButtonMedium from '../Components/Ui/SecondaryButtonMedium';
-import Edit from '../Images/Icons/edit-icon.svg'
+import Edit from '../Images/Icons/edit.svg'
 import Forward from '../Images/Icons/forward.svg'
 import Email from '../Images/Icons/email.svg'
 import Password from '../Images/Icons/password.svg'
 
 import styles from './Styles/SettingsScreenStyle';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default class SettingsBrand extends Component {
 state = {
@@ -72,7 +73,7 @@ render(){
         <TouchableOpacity style={styles.settingsCard} onPress={() => this.props.navigation.navigate('SettingsPassword')}>
             <View style={styles.settingsContent}>
             <View style={styles.group}><Password height={16} width={16} /><Text style={styles.bodyText}>   ********  </Text></View>
-            <Edit height={16} width={16} />
+            <Edit height={16} width={16} stroke={Colors.charcoal65}/>
             </View>
         </TouchableOpacity>
 
