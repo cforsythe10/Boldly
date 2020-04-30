@@ -19,11 +19,11 @@ config :boldly,
   password: "postgres",
   hostname: hostn
 
-url_n = if db_host, do: "ec2-3-23-96-218.us-east-2.compute.amazonaws.com", else: "localhost"
+# url_n = if db_host, do: "ec2-3-23-96-218.us-east-2.compute.amazonaws.com", else: "localhost"
 
 # Configures the endpoint
 config :boldly, BoldlyWeb.Endpoint,
-  url: [host: url_n],
+  url: [host: "localhost"],
   secret_key_base: "iD1RirE9CFkDwO6DkAGd9q22tLVuylpfZA1RKQCVMLCG1VxzUuIs/bb3kLRRiwD0",
   render_errors: [view: BoldlyWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: Boldly.PubSub, adapter: Phoenix.PubSub.PG2]
