@@ -10,7 +10,7 @@ setup_dbs: get_deps
 
 run-aws: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
 run-aws: setup-aws-psql
-	mix phx.server
+	elixir --erl "-detached" -S mix phx.server
 
 setup-aws-psql: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
 setup-aws-psql: get_deps
