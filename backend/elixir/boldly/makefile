@@ -8,9 +8,13 @@ setup_dbs: get_deps
 	mix ecto.reset
 	MIX_ENV=test mix ecto.reset
 
-run-aws: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
-run-aws: setup-aws-psql
+run-aws-detached: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+run-aws-detached: setup-aws-psql
 	elixir --erl "-detached" -S mix phx.server
+
+aws-test: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+aws-test: setup-aws-psql
+	mix phx.server
 
 setup-aws-psql: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
 setup-aws-psql: get_deps
