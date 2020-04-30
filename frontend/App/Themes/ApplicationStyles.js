@@ -267,6 +267,12 @@ const ApplicationStyles = {
       height: '100%',
       flex: 1
     },
+
+    group: {
+      flexDirection:'row',
+      justifyContent:'center',
+      alignItems: 'center',
+    },
     fullScreen: {
       height: '100%',
       width: '100%',

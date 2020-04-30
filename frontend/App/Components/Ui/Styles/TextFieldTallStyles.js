@@ -7,6 +7,10 @@ export default StyleSheet.create({
     fontSize: 14,
     opacity: 0.5,
     fontFamily: Fonts.type.link,
+    paddingTop: 5,
+    paddingBottom: 0,
+    
+    alignItems: 'center',
   },
   BorderStyle: {
     width: '100%',
@@ -15,6 +19,9 @@ export default StyleSheet.create({
     opacity: 1.0,
     marginVertical: 8,
     paddingHorizontal: 6,
+    textAlignVertical: 'bottom',
+    paddingTop: 0,
+    paddingBottom: 0,
     backgroundColor: Colors.white,
   }
 })

@@ -94,7 +94,7 @@ const surveyNavigator = createStackNavigator(
 const Navigator = createStackNavigator(
 	{
 		Default: {
-			screen: Default
+			screen: Settings
 		},
 		Dashboard: {
 			screen: Dashboard
