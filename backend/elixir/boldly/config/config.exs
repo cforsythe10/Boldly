@@ -7,13 +7,17 @@
 # General application configuration
 use Mix.Config
 
+db_host = System.get_env("BOLDLY_POSTGRES_ENDPOINT", "localhost")
+
+IO.puts("\n\n#{db_host}\n\n")
+
 config :boldly,
   ecto_repos: [Boldly.Repo],
   migration_timestamps: [type: :utc_datetime_usec],
   database: "postgres",
   username: "postgres",
-  password: "",
-  hostname: "localhost"
+  password: "postgres",
+  hostname: db_host
 
 # Configures the endpoint
 config :boldly, BoldlyWeb.Endpoint,

@@ -1,11 +1,14 @@
 use Mix.Config
 
+db_host = System.get_env("BOLDLY_POSTGRES_ENDPOINT", "localhost")
+
+
 # Configure your database
 config :boldly, Boldly.Repo,
   username: "postgres",
   password: "postgres",
   database: "boldly_dev",
-  hostname: "localhost",
+  hostname: db_host,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
