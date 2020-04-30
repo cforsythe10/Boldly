@@ -5,6 +5,11 @@ ELIXIR_BACKG_PROCESS = $(shell pgrep -f erlang)
 run: setup_dbs
 	mix phx.server
 
+git-reset: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+git-reset: stop-aws-detached
+	mix ecto.drop
+
+
 setup_dbs: get_deps
 	mix ecto.reset
 	MIX_ENV=test mix ecto.reset
