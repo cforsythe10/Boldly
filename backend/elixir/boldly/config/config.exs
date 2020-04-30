@@ -8,6 +8,8 @@
 use Mix.Config
 
 db_host = System.get_env("BOLDLY_POSTGRES_ENDPOINT")
+hostn = if db_host, do: db_host, else: "localhost"
+
 
 config :boldly,
   ecto_repos: [Boldly.Repo],
@@ -15,7 +17,7 @@ config :boldly,
   database: "postgres",
   username: "postgres",
   password: "postgres",
-  hostname: if db_host, do: db_host, else: "localhost"
+  hostname: hostn
 
 # Configures the endpoint
 config :boldly, BoldlyWeb.Endpoint,
