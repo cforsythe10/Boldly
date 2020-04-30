@@ -12,6 +12,9 @@ run-aws-detached: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-e
 run-aws-detached: setup-aws-psql
 	elixir --erl "-detached" -S mix phx.server
 
+stop-aws-detached:
+	kill $(pgrep -f erlang)
+
 aws-test: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
 aws-test: setup-aws-psql
 	mix phx.server
