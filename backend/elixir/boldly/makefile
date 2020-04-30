@@ -9,13 +9,16 @@ setup_dbs: get_deps
 	MIX_ENV=test mix ecto.reset
 
 run-aws: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
-
 run-aws: setup-aws-psql
 	mix phx.server
 
 setup-aws-psql: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
 setup-aws-psql: get_deps
 	mix ecto.setup
+
+reset-aws-db: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+reset-aws-db:
+	mix ecto.reset
 
 contract_template_schema:
 	mix phx.gen.context ContractTemplate Template templates file_path:string
