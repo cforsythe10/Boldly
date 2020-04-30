@@ -15,6 +15,11 @@ defmodule Boldly.CreatorAccount.Creator do
     field :password_hash, :string
     field :uuid, Ecto.UUID, autogenerate: true
 
+    field :description, :string
+    field :picture, :string
+    field :web_link, :string
+    field :profile_visits, :integer, default: 0
+
     timestamps(type: :utc_datetime_usec)
   end
 
@@ -30,7 +35,12 @@ defmodule Boldly.CreatorAccount.Creator do
       :interests,
       :location,
       :email,
-      :password
+      :password,
+      
+      :description,
+      :picture,
+      :web_link,
+      :profile_visits
     ])
     |> validate_required([
       # :uuid,
