@@ -1,4 +1,4 @@
-let url = 'http://10.0.2.2:4000/';
+let url = 'http://3.133.225.22:4000/';
 
 
 
@@ -18,6 +18,6 @@ export function makeGet(endpoint, body){
 	let thisurl = url + endpoint;
 	return fetch(thisurl, {
     method: 'GET',
-    //finish this if needed
+    //finish this if needed 
   })
 }
