@@ -22,7 +22,7 @@ setup-aws-psql: get_deps
 
 reset-aws-db: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
 reset-aws-db:
-	mix ecto.reset
+	mix ecto.drop
 
 contract_template_schema:
 	mix phx.gen.context ContractTemplate Template templates file_path:string
