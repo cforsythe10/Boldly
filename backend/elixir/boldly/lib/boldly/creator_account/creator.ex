@@ -23,6 +23,43 @@ defmodule Boldly.CreatorAccount.Creator do
     timestamps(type: :utc_datetime_usec)
   end
 
+  def change_incr(creator, %{profile_visits: num_visits}) do
+    p_visits = creator.profile_visits + 1
+
+    creator
+    |> cast(
+      %{
+        birthday: creator.birthday,
+        email: creator.email,
+        industry: creator.industry,
+        interests: creator.interests,
+        location: creator.location,
+        name: creator.name,
+        values: creator.values,
+        uuid: creator.uuid,
+        description: creator.description,
+        picture: creator.picture,
+        web_link: creator.web_link,
+        profile_visits: p_visits
+      },
+      [
+        :uuid,
+        :name,
+        :birthday,
+        :values,
+        :industry,
+        :interests,
+        :location,
+        :email,
+        :password,
+        :description,
+        :picture,
+        :web_link,
+        :profile_visits
+      ]
+    )
+  end
+
   @doc false
   def changeset(creator, attrs) do
     creator
@@ -36,7 +73,6 @@ defmodule Boldly.CreatorAccount.Creator do
       :location,
       :email,
       :password,
-      
       :description,
       :picture,
       :web_link,

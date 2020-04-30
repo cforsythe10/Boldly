@@ -55,6 +55,19 @@ defmodule BoldlyWeb.CreatorControllerTest do
     password: "some current password"
   }
 
+  @increment_test_attr %{
+    birthday: ~D[2010-04-17],
+    email: "some email2",
+    industry: "some industry",
+    interests: "some interests",
+    location: "some location",
+    name: "some name",
+    values: "some values",
+    password: "some password",
+    description: "some descriptive text",
+    web_link: "www.google.com"
+  }
+
   def fixture(:creator) do
     {:ok, creator} = CreatorAccount.create_creator(@create_attrs)
     creator
@@ -68,6 +81,34 @@ defmodule BoldlyWeb.CreatorControllerTest do
   setup %{conn: conn} do
     {:ok, conn: conn, current_user: current_user} = setup_current_user(conn)
     {:ok, conn: put_req_header(conn, "accept", "application/json"), current_user: current_user}
+  end
+
+  describe "incrementing" do
+    test "increments once", %{conn: conn, current_user: current_user} do
+      conn = post(conn, Routes.creator_path(conn, :create), creator: @create_attrs)
+
+      assert %{"id" => id, "uuid" => uuid, "profile_visits" => 0} =
+               json_response(conn, 201)["data"]
+
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+
+      assert %{"profile_visits" => 1} = json_response(conn, 200)["data"]
+    end
+
+    test "increments 10 times", %{conn: conn, current_user: current_user} do
+      conn = post(conn, Routes.creator_path(conn, :create), creator: @create_attrs)
+
+      assert %{"id" => id, "uuid" => uuid, "profile_visits" => 0} =
+               json_response(conn, 201)["data"]
+
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+
+      assert %{"profile_visits" => 5} = json_response(conn, 200)["data"]
+    end
   end
 
   describe "index" do

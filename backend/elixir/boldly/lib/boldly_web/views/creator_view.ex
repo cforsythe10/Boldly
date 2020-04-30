@@ -42,7 +42,6 @@ defmodule BoldlyWeb.CreatorView do
       location: creator.location,
       email: creator.email,
       id: creator.id,
-
       description: creator.description,
       picture: creator.picture,
       web_link: creator.web_link,
@@ -63,7 +62,6 @@ defmodule BoldlyWeb.CreatorView do
           location: creator.location,
           email: creator.email,
           id: creator.id,
-
           description: creator.description,
           picture: creator.picture,
           web_link: creator.web_link,
