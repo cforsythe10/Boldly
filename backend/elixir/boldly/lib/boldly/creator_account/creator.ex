@@ -29,17 +29,6 @@ defmodule Boldly.CreatorAccount.Creator do
     creator
     |> cast(
       %{
-        birthday: creator.birthday,
-        email: creator.email,
-        industry: creator.industry,
-        interests: creator.interests,
-        location: creator.location,
-        name: creator.name,
-        values: creator.values,
-        uuid: creator.uuid,
-        description: creator.description,
-        picture: creator.picture,
-        web_link: creator.web_link,
         profile_visits: p_visits
       },
       [

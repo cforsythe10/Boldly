@@ -32,17 +32,6 @@ defmodule Boldly.BrandAccount.Brand do
     brand
     |> cast(
       %{
-        uuid: brand.uuid,
-        id: brand.id,
-        ecommerce: brand.ecommerce,
-        location: brand.location,
-        industries: brand.industries,
-        values: brand.values,
-        email: brand.email,
-        name: brand.name,
-        description: brand.description,
-        picture: brand.picture,
-        web_link: brand.web_link,
         profile_visits: p_visits
       },
       [
