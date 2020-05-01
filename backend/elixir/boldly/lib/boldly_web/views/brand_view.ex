@@ -34,7 +34,11 @@ defmodule BoldlyWeb.BrandView do
       industries: brand.industries,
       values: brand.values,
       email: brand.email,
-      name: brand.name
+      name: brand.name,
+      description: brand.description,
+      picture: brand.picture,
+      web_link: brand.web_link,
+      profile_visits: brand.profile_visits
     }
   end
 
@@ -49,7 +53,11 @@ defmodule BoldlyWeb.BrandView do
           industries: brand.industries,
           values: brand.values,
           email: brand.email,
-          name: brand.name
+          name: brand.name,
+          description: brand.description,
+          picture: brand.picture,
+          web_link: brand.web_link,
+          profile_visits: brand.profile_visits
         }
       }
     }

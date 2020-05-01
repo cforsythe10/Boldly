@@ -16,6 +16,7 @@ defmodule BoldlyWeb.Router do
     post "/creators/sign_in", CreatorController, :sign_in
     post "/users/sign_in", UserController, :sign_in
     post "/creators/increment", CreatorController, :increment_views
+    post "/brands/increment", BrandController, :increment_views
     resources "/campaign_participants", ParticipantController, except: [:new, :edit]
     resources "/contracts", ContractController, except: [:new, :edit]
     resources "/templates", TemplateController, except: [:new, :edit]
