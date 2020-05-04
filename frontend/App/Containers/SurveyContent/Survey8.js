@@ -85,7 +85,7 @@ export default class Survey7 extends Component {
 		return (
 		  <View style={ styles.fullScreen }>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-  				{this._renderHeader()}
+        <Header headerType='Survey' navigation={this.props.navigation}/>
           
           <View style={styles.subheaderContainer}>
             {this.state.isCreator ?

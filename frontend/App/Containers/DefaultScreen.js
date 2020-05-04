@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Logo from '../Images/Icons/logo-fog.svg';
 
 import PrimaryButtonLarge from '../Components/Ui/PrimaryButtonLarge';
-import PrimaryButtonSmall from '../Components/Ui/PrimaryButtonSmall';
+import PrimaryButtonXSmall from '../Components/Ui/PrimaryButtonXSmall';
 
 import styles from './Styles/DefaultScreenStyles';
 import { Colors } from '../Themes';
@@ -24,7 +24,7 @@ export default function DefaultScreen({ navigation }) {
 			</View>
 			<View style={styles.loginContainer}>
 				<Text style={ styles.smallText }>Already have an account?</ Text>
-				<PrimaryButtonSmall text='Log in' onPress = {() => navigation.navigate('Login')} />
+				<PrimaryButtonXSmall text='Log in' onPress = {() => navigation.navigate('Login')} />
 			</View>
 		</LinearGradient>
     </ View>

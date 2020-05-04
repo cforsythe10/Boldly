@@ -51,8 +51,8 @@ export default class Survey5 extends Component {
 		return (
 		  <View style={ styles.fullScreen } >
         <LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-          {this._renderHeader()}
-
+		<Header headerType='Survey' navigation={this.props.navigation}/>
+		<View style={{flex: 9}} >
           <View style={styles.contentContainer}>
             {nextSurveyState.isCreator ?
               <ProgressBar progress={4/10} /> :
@@ -67,7 +67,7 @@ export default class Survey5 extends Component {
   					 <PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey6', {...nextSurveyState})} /> : null
   				  }
           </View>
-
+					</View>
 			  </ LinearGradient>
 		  </ View>
 	  )

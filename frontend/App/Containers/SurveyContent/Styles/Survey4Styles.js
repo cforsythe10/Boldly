@@ -12,7 +12,7 @@ export default StyleSheet.create({
   	...Fonts.style.sh3,
   	color: Colors.fog,
     paddingTop: '2%',
-    paddingBottom: '10%'
+    paddingBottom: 10
   },
   back:{
   	...Fonts.style.h2,
@@ -20,7 +20,9 @@ export default StyleSheet.create({
   },
   contentContainer: {
   	flex: 1,
-  	alignItems: 'center'
+    alignItems: 'center',
+    
+    marginVertical: 16,
   },
   continueContainer: {
     flex: 1,
@@ -31,7 +33,8 @@ export default StyleSheet.create({
     backgroundColor: 'transparent'
   },
   locationContainer: {
-  	flex: 4,
+    flex: 1,
+    justifyContent: 'flex-start',
   	alignItems: 'center'
   }
 })

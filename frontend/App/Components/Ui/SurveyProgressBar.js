@@ -13,7 +13,7 @@ export default class SurveyProgressBar extends Component {
     return (
       <View>
       <ProgressBar progress={this.props.progress} width={328} height={5} 
-      color={Colors.white} unfilledColor={Colors.charcoal} borderWidth={0} />
+      color={Colors.white} unfilledColor={Colors.white35} borderWidth={0} />
       </View>
     )
   }

@@ -8,7 +8,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginVertical: Metrics.section,
     width: '47.5%',
-    height: 150,
+    height: 180,
     paddingVertical: 15.5,
     backgroundColor: Colors.white,
     shadowColor: '#C1C1C1',
@@ -60,8 +60,7 @@ export default StyleSheet.create({
   },
 
   buttonText: {
-      fontSize: Fonts.size.h6,
-      ...Fonts.style.captions,
+      ...Fonts.style.h6,
       color: Colors.charcoal,
       paddingTop: 16
   },
@@ -77,7 +76,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginVertical: Metrics.section,
     width: '47.5%',
-    height: 150,
+    height: 180,
     paddingVertical: 15.5,
     shadowColor: '#C1C1C1',
     shadowOffset: { width: 4, height: 3},

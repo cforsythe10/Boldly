@@ -69,8 +69,8 @@ export default class Survey4 extends Component {
       return (
       <KeyboardAvoidingView style={ styles.fullScreen }>
           <LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-          {this._renderHeader()}
-          
+          <Header headerType='Survey' navigation={this.props.navigation}/>
+          <View style={{flex: 9}} >
           <View style={styles.contentContainer}>
             {this.state.currentState.isCreator ?
               <ProgressBar progress={2/10} /> :
@@ -111,6 +111,7 @@ export default class Survey4 extends Component {
              (this.state.showLocation && this.state.currentState.location !== '') ?
               <PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey5', {...this.state.currentState})} /> : null
             }
+          </View>
           </View>
         </ LinearGradient>
       </ KeyboardAvoidingView>

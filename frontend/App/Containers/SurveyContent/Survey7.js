@@ -57,8 +57,8 @@ export default class Survey7 extends Component {
 		return (
 		  <KeyboardAvoidingView style={ styles.fullScreen }>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-  				{this._renderHeader()}
-          
+			<Header headerType='Survey' navigation={this.props.navigation}/>
+			<View style={{flex: 9}} >
           <View style={styles.contentContainer}>
             {nextSurveyState.isCreator ?
               <ProgressBar progress={8/10} />:
@@ -66,7 +66,7 @@ export default class Survey7 extends Component {
             }
     				<Text style={ styles.text1 } >Alright, you're almost there!</ Text>
     				<Text style={styles.text2 }>What email would you like to be associated with this account?</ Text>
-    				<TextFieldDarkBG placeholder='Email Address' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} />
+    				<TextFieldDarkBG placeholder='Email Address' keyboardType="email-address" autocompleteType="email" onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} />
           </View>
 
           <View style={styles.continueContainer}>
@@ -74,7 +74,7 @@ export default class Survey7 extends Component {
     					<PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey8', {...nextSurveyState})} /> : null
     				}
           </View>
-
+					</View>
 			 </ LinearGradient>
 		  </ KeyboardAvoidingView>
 	  )

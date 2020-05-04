@@ -32,7 +32,7 @@ export default class SurveyCreatorExtra2 extends Component {
   			},
   			showContinue: false,
   			setDate: new Date(),
-  			showDatePicker: true
+  			showDatePicker: false
   		}
   	}
 
@@ -54,7 +54,21 @@ export default class SurveyCreatorExtra2 extends Component {
       )
     }
 
+	delayScreen=(that)=>{
+ 
+		setTimeout(function(){
+	 
+		  //Put All Your Code Here, Which You Want To Execute After Some Delay Time.
+		  that.props.navigation.navigate('Survey4', {...that.state.currentState})
+	 
+		}, 1200);
+	 
+	 
+	}
+
   	render() {
+
+		//this.delayScreen(this);
   	const nextSurveyState = {...this.state.currentState};
 		const date = this.state.setDate;
 		return (
@@ -65,8 +79,12 @@ export default class SurveyCreatorExtra2 extends Component {
           <View style={styles.contentContainer}>
             <ProgressBar progress={7/10} />
     				{this.state.showDatePicker ?
-    					<DateTimePicker display={'spinner'} value={ date } onChange={(event, date) => this.dateChanged(date)} /> :
-    					<Text style={styles.text} >Birthday selected!</Text>
+    					<DateTimePicker display={'spinner'} mode={"date"} value={ date } onChange={(event, date) => this.dateChanged(date)} /> :
+    					<View style={styles.contentContainer}><Text style={styles.text} >What is your birthday?</Text>
+						{this.state.showContinue ?
+							<Text style={styles.text} >{this.state.setDate.toDateString()}</Text>: null
+	  					}
+						<PrimaryButtonLarge text='Set Birthday' onPress={() => this.setState({...this.state, showDatePicker: !this.state.showDatePicker})} /></View>
     				}
           </View>
 

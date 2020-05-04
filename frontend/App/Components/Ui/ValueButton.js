@@ -37,23 +37,23 @@ export default class ValueButton extends Component {
         const GetSvg = () => {
             switch(this.props.svgName) {
                 case('CommunityImage'):
-                    return <CommunityImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <CommunityImage height={30} width={30} strokeWidth={3} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('DiversityImage'): 
-                    return <DiversityImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <DiversityImage height={30} width={30} strokeWidth={2} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('EducationImage'):
-                    return <EducationImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <EducationImage height={30} width={30} strokeWidth={3} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('FamilyImage'): 
-                    return <FamilyImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <FamilyImage height={30} width={30} strokeWidth={3} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('InnovationImage'): 
-                    return <InnovationImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <InnovationImage height={30} width={30} strokeWidth={3} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('SpiritualityImage'): 
-                    return <SpiritualityImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <SpiritualityImage height={30} width={30} strokeWidth={3} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('SustainabilityImage'): 
-                    return <SustainabilityImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <SustainabilityImage height={30} width={30} strokeWidth={3} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('TraditionImage'): 
-                    return <TraditionImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <TraditionImage height={30} width={30} strokeWidth={3} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('WellnessImage'): 
-                    return <WellnessImage height={20} width={20} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <WellnessImage height={30} width={30} strokeWidth={3} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
             }
         }
 
