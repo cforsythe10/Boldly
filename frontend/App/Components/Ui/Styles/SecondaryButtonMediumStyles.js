@@ -4,7 +4,7 @@ import { Fonts, Colors, Metrics } from '../../../Themes/'
 export default StyleSheet.create({
   button: {
     height: 30,
-    width: 200,
+    width: '88%',
     borderRadius: 22.5,
     borderWidth: 2,
     borderColor: Colors.charcoal,
@@ -15,7 +15,7 @@ export default StyleSheet.create({
     color: Colors.charcoal,
     textAlign: 'center',
     fontWeight: 'normal',
-    fontSize: 14,
+    ...Fonts.style.h6,
     marginVertical: Metrics.baseMargin
   }
 })

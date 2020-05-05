@@ -5,9 +5,7 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
 
   headerText:{
-  	fontSize: 16,
-  	fontWeight: 'bold',
-  	color: Colors.text
+    ...Fonts.style.h5
   },
 
   bodyText:{
@@ -21,14 +19,20 @@ export default StyleSheet.create({
     flex: 0.8,
     marginHorizontal: 15,
     marginVertical: 10,
+    marginTop: 24,
     justifyContent: 'flex-end'
+  },
+
+  settingsScroll: {
+    marginHorizontal: '2%',
+      overflow: 'hidden',
   },
 
   settingsCard: {
     justifyContent: 'center',
     marginVertical: 5,
     marginHorizontal: 15,
-    flex: 0.8,
+    flex: 1,
     paddingVertical: 5,
     width: '88%',
     backgroundColor: Colors.white,
@@ -36,16 +40,34 @@ export default StyleSheet.create({
     borderRadius: 10
   },
 
-  settingsContent: {
-      justifyContent: 'center',
-      flex: 0.77,
-      paddingHorizontal: '4%',
+  invisibleSettingsCard: {
+    justifyContent: 'center',
+    marginHorizontal: 15,
+    flex: 0.8,
+    paddingVertical: 5,
+    width: '88%',
+    color: Colors.charcoal65,
   },
 
-  settingsInputCard: {
-      justifyContent: 'center',
-      flex: 0.7,
+  settingsContent: {
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      alignContent: 'center',
+      flex: 1,
       paddingHorizontal: '4%',
+      flexWrap: "nowrap",
+      flexDirection: "row"
+  },
+
+
+  settingsInputCard: {
+    justifyContent: 'space-between',
+    flex: 1,
+    paddingVertical: 5,
+    paddingHorizontal: '4%',
+    width: '100%',
+    
+    flexDirection: "row"
   },
 
   iconWithText: {
@@ -56,15 +78,17 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',
+    marginVertical: 12,
     marginHorizontal: 15,
     flex: 2.5,
-    paddingVertical: 3,
+    paddingVertical: 12,
     width: '88%',
     borderRadius: 10
   }, 
 
   deleteText:{
-	...Fonts.style.body,
+  ...Fonts.style.body,
+  marginTop: 8,
 	fontSize: 12,
 	color: '#848484',
 	textAlign: 'center',

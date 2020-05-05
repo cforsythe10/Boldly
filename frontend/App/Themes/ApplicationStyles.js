@@ -267,11 +267,18 @@ const ApplicationStyles = {
       height: '100%',
       flex: 1
     },
+
+    group: {
+      flexDirection:'row',
+      justifyContent:'center',
+      alignItems: 'center',
+    },
     fullScreen: {
       height: '100%',
       width: '100%',
       padding: 0,
-      margin: 0
+      margin: 0,
+      backgroundColor: Colors.fog,
     },
     headerContainer: {
       flex: 1,
