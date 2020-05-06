@@ -28,5 +28,21 @@ export const inputFieldDB = StyleSheet.create({
 });
 
 export const inputFieldLB = StyleSheet.create({
-
+  TextInputEmpty: {
+    fontSize: 18,
+    fontFamily: Fonts.type.body
+  },
+  TextInputFilled: {
+    fontSize: 18,
+    fontFamily: Fonts.type.body
+  },
+  BorderStyle: {
+    padding: 10, 
+    paddingBottom: 1,
+    width: 275, 
+    height: 55,  
+    borderRadius: 10,
+    borderBottomWidth: 1, 
+    borderColor: Colors.black,
+  }
 });
