@@ -6,7 +6,7 @@ defmodule Boldly.Repo.Migrations.CreateConversations do
       add :creator_id, references(:creators, null: false)
       add :brand_id, references(:brands, null: false)
 
-      tiestamps()
+      timestamps()
     end
 
     create unique_index(:conversations, [:creator_id, :brand_id], name: :sender)

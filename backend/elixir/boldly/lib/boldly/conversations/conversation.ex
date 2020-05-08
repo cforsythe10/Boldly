@@ -1,4 +1,4 @@
-defmodule Boldly.Conversations.Conversations do
+defmodule Boldly.Conversations.Conversation do
   use Ecto.Schema
   import Ecto.Changeset
 
