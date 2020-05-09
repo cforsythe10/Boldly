@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text, TextInput, Image, TouchableOpacity } from 'react-native';
+import DocumentPicker from 'react-native-document-picker';
+import * as RNFS from 'react-native-fs';
 
 import Header from '../Components/Ui/Header';
 import MessageBox from '../Components/Ui/MessageBox';
+import { makePost, uploadFile } from '../Services/Api.js';
 
 import Close from '../Images/Icons/close.svg';
 import Import from '../Images/Icons/import.svg';
@@ -25,6 +28,29 @@ export default class DirectMessages extends Component {
 		this.setState({ messages: [...this.state.messages, { text: this.state.currentMessage, fromUser: true }], currentMessage: '' });
 	}
 
+	async uploadClicked() {
+		try {
+		  	const res = await DocumentPicker.pick({
+		    	type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+		 	});
+
+			const split = res.uri.split('/');
+			const name = split.pop();
+			const inbox = split.pop();
+			const realPath = `${RNFS.TemporaryDirectoryPath}${inbox}/${name}`;
+
+			console.log(realPath);
+
+			uploadFile(res, 'fill with endpoint', realPath);
+		} catch (err) {
+		  if (DocumentPicker.isCancel(err)) {
+		    // User cancelled the picker, exit any dialogs or menus and move on
+		  } else {
+		    throw err;
+		  }
+		}
+	}
+
 	renderSend() {
 		return(
 			<TouchableOpacity onPress={() => this.sendText()}>
@@ -43,14 +69,11 @@ export default class DirectMessages extends Component {
 
 	renderOptions() {
 		return(
-			<View style={ styles.optionsContainer }>
+			<TouchableOpacity onPress={() => this.uploadClicked()}>
 				<View style={ styles.optionWrapper }>
 					<Import height={12} width={15} stroke={ Colors.fog } />
 				</View>
-				<TouchableOpacity style={ styles.optionWrapper } onPress={() => this.setState({ optionsOpened: false })}>
-					<Close height={10} width={10} stroke={ Colors.fog } />
-				</TouchableOpacity>
-			</View>
+			</TouchableOpacity>
 		)
 	}
 
@@ -65,8 +88,7 @@ export default class DirectMessages extends Component {
 					onSubmitEditing={() => this.sendText()}
 					value={ this.state.currentMessage }
 				/>
-				{this.state.currentMessage === '' && this.state.optionsOpened ? this.renderOptions() : null }
-				{this.state.currentMessage === '' && !this.state.optionsOpened ? this.renderPlusOption() : null }
+				{this.state.currentMessage === '' ? this.renderOptions() : null}
 				{this.state.currentMessage !== '' ? this.renderSend() : null }
 			</View>
 		)
