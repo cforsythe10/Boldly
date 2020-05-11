@@ -14,7 +14,7 @@ defmodule Boldly.Messages.Message do
 
   def changeset(changeset, params \\ %{}) do
     changeset
-    |> cast(params, [:sent_by, :conversation_id, :content, :date])
+    |> cast(params, [:sent_by_creator, :conversation_id, :content, :date])
     |> foreign_key_constraint(:conversation_id)
   end
 end
