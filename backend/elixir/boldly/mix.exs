@@ -51,7 +51,8 @@ defmodule Boldly.MixProject do
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:poison, "~> 3.1"},
-      {:distillery, "~> 2.0"}
+      {:distillery, "~> 2.0"},
+      {:stream_data, "~> 0.1", only: [:test, :dev]}
     ]
   end
 

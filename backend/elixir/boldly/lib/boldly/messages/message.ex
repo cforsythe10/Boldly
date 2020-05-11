@@ -4,8 +4,8 @@ defmodule Boldly.Messages.Message do
 
   schema "messages" do
     field :content, :string
-    field :date, :naive_datetime
-    field :sent_by, :string
+    field :date, :utc_datetime, default: DateTime.utc_now()
+    field :sent_by_creator, :boolean
 
     belongs_to :conversation, Boldly.Conversations.Conversation
 

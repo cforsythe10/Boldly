@@ -3,15 +3,14 @@ defmodule Boldly.Repo.Migrations.CreateMessages do
 
   def change do
     create table(:messages) do
-      add :sent_by, :string
+      add :sent_by_creator, :boolean
       add :conversation_id, references(:conversations, null: false)
       add :content, :string
-      add :date, :naive_datetime
+      add :date, :utc_datetime
 
       timestamps()
     end
 
-    create index(:messages, [:sent_by])
     create index(:messages, [:conversation_id])
   end
 end
