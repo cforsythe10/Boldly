@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { View, Text, TouchableHighlight } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { makePost } from '../../Services/Api.js';
+import * as LoginActionCreators from '../../Redux/loginActions';
 
 import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import TextFieldDarkBG from '../../Components/Ui/TextFieldDarkBG';
@@ -17,7 +20,7 @@ import Logo from '../../Images/Icons/logo-fog.svg';
 import styles from './Styles/Survey8Styles';
 import { Colors } from '../../Themes';
 
-export default class Survey7 extends Component {
+class Survey8 extends Component {
   	constructor(props){
   		super(props);
   		this.state = {
@@ -52,7 +55,10 @@ export default class Survey7 extends Component {
         birthday: new Date(accountInfo.DOB).toISOString().substring(0,10),
         password: accountInfo.password
       }})).then( response => response.json())
-        .then(data => { if(!data.errors) this.props.navigation.navigate('Survey9', data) }
+        .then(data => { if(!data.errors) {
+          this.props.login(data.data);
+          this.props.navigation.navigate('Survey9'); 
+        }}
       );
       else makePost('api/brands', JSON.stringify({ brand: {
         name: accountInfo.name,
@@ -63,7 +69,10 @@ export default class Survey7 extends Component {
         email: accountInfo.email,
         password: accountInfo.password
       }})).then( response => response.json())
-        .then(data => { if(!data.errors) this.props.navigation.navigate('Survey9', data) }
+        .then(data => { if(!data.errors) {
+          this.props.login(data.data);
+          this.props.navigation.navigate('Survey9'); 
+        }}
       );
   	}
 
@@ -121,3 +130,15 @@ export default class Survey7 extends Component {
 	  )
 	}
 }
+
+const mapStateToProps = function(state) {
+  return {
+    account: state.account
+  }
+}
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators(LoginActionCreators, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Survey8);

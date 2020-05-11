@@ -1,4 +1,6 @@
 import { createStore, combineReducers } from 'redux';
+
+import  loginReducer from './loginReducer';
 // import { inputReducer } from './Inputs/input-reducer'; Example of a import of a reducer file
 
 // FAKE ACTION
@@ -30,7 +32,9 @@ const test = (state = {}, action) => {
 }
 
 const rootReducer = combineReducers({
-    test
+    test,
+    loginReducer
+
 });
 
 const initStore = () => createStore(rootReducer, {}); // Second Param is the inital state of the whole store

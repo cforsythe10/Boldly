@@ -11,10 +11,6 @@ import { Colors, Fonts } from '../../Themes';
 export default class Survey9 extends Component {
 	constructor(props){
   		super(props);
-  		console.log(props.navigation.state.params);
-  		this.state = {
-  			account: props.navigation.state.params.account
-  		};
   	}
 
   	render() {
@@ -29,12 +25,12 @@ export default class Survey9 extends Component {
 				<View style={styles.contentContainer}>
 					<Text style={ styles.text } >Connect your social media</Text>
 					<PrimaryButtonLarge text='Dummy Component' onPress={() => this.setState({...this.state, showContinue: !this.state.showContinue})} />
-					<Text style={ styles.link } onPress={() => this.props.navigation.navigate('Dashboard', this.state.account)} >Skip for now</ Text>
+					<Text style={ styles.link } onPress={() => this.props.navigation.navigate('Dashboard')} >Skip for now</ Text>
 				</View>
 
 				<View style={styles.continueContainer}>
 					{this.state.showContinue ?
-						<PrimaryButtonLarge text='Go to Dashboard' onPress={() => this.props.navigation.navigate('Dashboard', this.state.account)} /> : null
+						<PrimaryButtonLarge text='Go to Dashboard' onPress={() => this.props.navigation.navigate('Dashboard')} /> : null
 					}
 				</View>
 
