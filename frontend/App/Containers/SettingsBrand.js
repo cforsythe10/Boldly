@@ -18,8 +18,7 @@ state = {
     isOnMatches: true,
     isOnMessages: true,
     isOnReminders: true,
-    isOnApplicants: true,
-    isOnInvisible: false
+    isOnApplicants: true
   };
 
 constructor(props){
