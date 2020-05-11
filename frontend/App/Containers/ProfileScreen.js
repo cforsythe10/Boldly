@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, KeyboardAvoidingView, Dimensions, ImageBackground } from 'react-native';
+import { useStore } from 'react-redux';
 
 import { Colors } from '../Themes';
 
@@ -18,180 +19,201 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import TextArea from '../Components/Ui/TextArea';
 import TextFieldTall from '../Components/Ui/TextFieldTall';
 
-const FirstRoute = () => (
-  <View style={[styles.scene, styles.Fog]} >
-    <View style={styles.profileScroll}>
-    <ScrollView style={styles.fullScreen} borderRadius={15} resizeMode="cover">
-    
-      <ImageBackground source={require('../Images/janessa.jpg')} style={styles.coverImage} >
-          <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={{flex: 1, justifyContent: 'flex-end'}}>
-            <View style={styles.profileHeader}>
-            <Text style={styles.h3}>
-              Natasha Johnson
-            </Text>
-            <Text style={styles.sh3}>
-              Health &amp; Wellness
-            </Text>
-            <Text style={styles.sh3}>
-              @natjohnson 4.1k
-            </Text>
-            </View>
-          </LinearGradient>
-          
-      </ImageBackground>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          My Values
-        </Text>
-        
-        <View style={styles.valueDisplay}>
-          <ColoredIcon svgName="DiversityImage" text="Diversity"/>
-          <ColoredIcon svgName="SpiritualityImage" text="Spirituality"/>
-          <ColoredIcon svgName="WellnessImage" text="Wellness"/>
-        </View>
-      </View>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          About Me
-        </Text>
-        
-        
-        <View style={styles.mockTextArea}>
-          <Text style={styles.body}> 
-          Authentically approaching wellness ✨ I am a meditation coach with a passion for content creation. I take clean images for the everyday woman and brands who wish to use them for marketing materials.
-          </Text>
-        </View>
-        <View style={styles.mockTextField}>
-          <Text style={styles.link}>
-          natashajohnson.com
-          </Text>
-        </View>
-      </View>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          My Location
-        </Text>
-        <View style={styles.mockTextField}>
-          <Text style={styles.body}>
-          Philadelphia, PA
-          </Text>
-        </View>
-      </View>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          My Featured Posts
-        </Text>
-        <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postFeature} />
-      </View>
-    </ScrollView>
-    </View>
-  </View>
-);
+const FirstRoute = () => {
+  const store = useStore();
+  const account = store.getState().loginReducer.loginReducer.account;
 
-const SecondRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#f7f7f7' }]} >
+  let values = account.values.split(',');
+  let isCreator = account.birthday;
 
-<View style={styles.profileScroll}>
-    <ScrollView style={styles.fullScreen} borderRadius={15} resizeMode="cover">
-    
-      <ImageBackground source={require('../Images/janessa.jpg')} style={styles.profileImage} >
-          
+  return(
+    <View style={[styles.scene, styles.Fog]} >
+      <View style={styles.profileScroll}>
+      <ScrollView style={styles.fullScreen} borderRadius={15} resizeMode="cover">
+      
+        <ImageBackground source={require('../Images/janessa.jpg')} style={styles.coverImage} >
+            <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={{flex: 1, justifyContent: 'flex-end'}}>
+              <View style={styles.profileHeader}>
+              <Text style={styles.h3}>
+                { account.name }
+              </Text>
+              <Text style={styles.sh3}>
+                { account.industry }
+              </Text>
+              <Text style={styles.sh3}>
+                Instagram info here
+              </Text>
+              </View>
+            </LinearGradient>
             
+        </ImageBackground>
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            {isCreator ? "My Values" : "Our Values"}
+          </Text>
           
-      </ImageBackground>
-      <View style={styles.cardContentContainer}>
-            <Text style={styles.h5}>
-              Natasha Johnson
+          <View style={styles.valueDisplay}>
+            <ColoredIcon svgName={values[0]} text={values[0]} />
+            <ColoredIcon svgName={values[1]} text={values[1]} />
+            <ColoredIcon svgName={values[2]} text={values[2]} />
+          </View>
+        </View>
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            { isCreator ? "About Me" : "About Us" }
+          </Text>
+          
+          
+          <View style={styles.mockTextArea}>
+            <Text style={styles.body}> 
+            Put about me here
             </Text>
-            <Text style={styles.body}>
-              @natjohnson
-            </Text>
+          </View>
+
+          <View style={styles.mockTextField}>
             <Text style={styles.link}>
-              natashajohnson.com
+            Put website here
             </Text>
-            
-            </View>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          My Values
-        </Text>
-        
-        <View style={styles.valueDisplay}>
-          <ColoredIcon svgName="DiversityImage" text="Diversity"/>
-          <ColoredIcon svgName="SpiritualityImage" text="Spirituality"/>
-          <ColoredIcon svgName="WellnessImage" text="Wellness"/>
+          </View>
         </View>
-      </View>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          My Industry
-        </Text>
-        <TextFieldTall placeholder="Health &amp; Wellness"/>
-      </View>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          About Me
-        </Text>
-        
-        
-        <TextArea />
-        <TextFieldTall placeholder="Your website"/>
-      </View>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          My Location
-        </Text>
-        <TextFieldTall placeholder="Philadelphia, PA"/>
-      </View>
-
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          My Featured Posts
-        </Text>
-        <View style={styles.postRow}>
-        <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postThumb} />
-        <ImageBackground source={require('../Images/Janessa2.jpg')} style={styles.postThumb} />
-        <ImageBackground source={require('../Images/Janessa3.jpg')} style={styles.postThumb} />
-        </View>
-        <View style={styles.postRow}>
-        <ImageBackground source={require('../Images/Janessa4.jpg')} style={styles.postThumb} />
-        <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postThumb} />
-        <View style={styles.blankThumb}>
-          <Text style={styles.scene, styles.h3}>+</Text>
-        </View>
-        
-        </View>
-      </View>
-      <View style={styles.cardContentContainer}>
-        <Text style={styles.caption}>
-            Hold and drag your photos to change the order
-        </Text>
-      </View>
-      <View style={styles.profileSection}>
-        <Text style={styles.h5}>
-          My Interests
-        </Text>
-        <TextFieldTall placeholder="Add or edit interests"/>
-        <View style={styles.mockTextField}>
-          <Text style={styles.body}>
-          Reiki Healing
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            { isCreator ? "My Location" : "Our Location" }
           </Text>
+          <View style={styles.mockTextField}>
+            <Text style={styles.body}>
+            { account.location }
+            </Text>
+          </View>
         </View>
-        <View style={styles.mockTextField}>
-          <Text style={styles.body}>
-          Tarot
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            { isCreator ? "My Featured Posts" : "Our Featured Posts" }
           </Text>
+          <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postFeature} />
         </View>
-        <View style={styles.mockTextField}>
-          <Text style={styles.body}>
-          Meditation
-          </Text>
-        </View>
+      </ScrollView>
       </View>
-    </ScrollView>
     </View>
-  </View>
-);
+  );
+}
+
+const SecondRoute = () => {
+  const store = useStore();
+  const account = store.getState().loginReducer.loginReducer.account;
+
+  let values = account.values.split(',');
+  let isCreator = account.birthday;
+
+  return(
+    <View style={[styles.scene, { backgroundColor: '#f7f7f7' }]} >
+
+  <View style={styles.profileScroll}>
+      <ScrollView style={styles.fullScreen} borderRadius={15} resizeMode="cover">
+      
+        <ImageBackground source={require('../Images/janessa.jpg')} style={styles.profileImage} >
+            
+              
+            
+        </ImageBackground>
+        <View style={styles.cardContentContainer}>
+              <Text style={styles.h5}>
+                { account.name }
+              </Text>
+              <Text style={styles.body}>
+                Instagram goes here
+              </Text>
+              <Text style={styles.link}>
+                Website goes here
+              </Text>
+                
+              </View>
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            { isCreator ? "My Values" : "Our Values" }
+          </Text>
+          
+          <View style={styles.valueDisplay}>
+            <ColoredIcon svgName={ values[0] } text={ values[0] } />
+            <ColoredIcon svgName={ values[1] } text={ values[1] } />
+            <ColoredIcon svgName={ values[2] } text={ values[2] } />
+          </View>
+        </View>
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            { isCreator ? "My Industry" : "Our Industry" }
+          </Text>
+          <TextFieldTall placeholder={ account.industry } />
+        </View>
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            { isCreator ? "About Me" : "About Us" }
+          </Text>
+          
+          
+          <TextArea />
+          <TextFieldTall placeholder="Your website"/>
+        </View>
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            { isCreator ? "My Location" : "Our Location" }
+          </Text>
+          <TextFieldTall placeholder={ account.location } />
+        </View>
+
+        <View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            { isCreator ? "My Featured Posts" : "Our Featured Posts" }
+          </Text>
+          <View style={styles.postRow}>
+          <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postThumb} />
+          <ImageBackground source={require('../Images/Janessa2.jpg')} style={styles.postThumb} />
+          <ImageBackground source={require('../Images/Janessa3.jpg')} style={styles.postThumb} />
+          </View>
+          <View style={styles.postRow}>
+          <ImageBackground source={require('../Images/Janessa4.jpg')} style={styles.postThumb} />
+          <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postThumb} />
+          <View style={styles.blankThumb}>
+            <Text style={styles.scene, styles.h3}>+</Text>
+          </View>
+          
+          </View>
+        </View>
+        <View style={styles.cardContentContainer}>
+          <Text style={styles.caption}>
+              Hold and drag your photos to change the order
+          </Text>
+        </View>
+        { isCreator ? _renderInterests() : null }
+      </ScrollView>
+      </View>
+    </View>
+  );
+}
+
+const _renderInterests = () => (
+<View style={styles.profileSection}>
+          <Text style={styles.h5}>
+            My Interests
+          </Text>
+          <TextFieldTall placeholder="Add or edit interests"/>
+          <View style={styles.mockTextField}>
+            <Text style={styles.body}>
+            Reiki Healing
+            </Text>
+          </View>
+          <View style={styles.mockTextField}>
+            <Text style={styles.body}>
+            Tarot
+            </Text>
+          </View>
+          <View style={styles.mockTextField}>
+            <Text style={styles.body}>
+            Meditation
+            </Text>
+          </View>
+        </View>
+)
 
 // This is our placeholder component for the tabs
 // This will be rendered when a tab isn't loaded yet
