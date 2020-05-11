@@ -31,5 +31,4 @@ defmodule Boldly.ConversationInfo do
   def change_conversation(%Conversation{} = conv) do
     Conversation.changeset(conv, %{})
   end
-
 end

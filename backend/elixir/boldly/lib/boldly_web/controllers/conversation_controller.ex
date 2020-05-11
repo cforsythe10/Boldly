@@ -20,14 +20,16 @@ defmodule BoldlyWeb.ConversationController do
     end
   end
 
-
   def show(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
     conv = Conversation.get_conversation!(creator_id, brand_id)
     render(conn, "show.json", conversation: conv)
   end
 
-
-  def update(conn, %{"creator_id" => creator_id, "brand_id" => brand_id, "conversation" => conv_params}) do
+  def update(conn, %{
+        "creator_id" => creator_id,
+        "brand_id" => brand_id,
+        "conversation" => conv_params
+      }) do
     conv = Conversation.get_conversation!(creator_id, brand_id)
 
     with {:ok, %Conversation{} = conv} <- ConversationInfo.update_conversation(conv, conv_params) do
@@ -42,9 +44,4 @@ defmodule BoldlyWeb.ConversationController do
       send_resp(conn, :no_content, "")
     end
   end
-
-
-
-
-
 end

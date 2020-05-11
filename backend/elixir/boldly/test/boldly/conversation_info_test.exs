@@ -51,6 +51,11 @@ defmodule Boldly.ConversationInfoTest do
       password: "some password2"
     }
 
+    @invalid_attrs %{
+      creator_id: nil,
+      brand_id: nil
+    }
+
     def brand_fixture1(attrs \\ %{}) do
       {:ok, brand} =
         attrs
@@ -79,14 +84,24 @@ defmodule Boldly.ConversationInfoTest do
         |> CreatorAccount.create_creator()
     end
 
-
     def create_conv(creator_id, brand_id) do
-      {:ok, conv} = ConversationInfo.create_conversation(%{creator_id: creator_id, brand_id: brand_id})
+      {:ok, conv} =
+        ConversationInfo.create_conversation(%{creator_id: creator_id, brand_id: brand_id})
+    end
+
+    def accounts_fixture() do
+      {:ok, b1} = brand_fixture1()
+      {:ok, b2} = brand_fixture2()
+
+      {:ok, c1} = creator_fixture1()
+      {:ok, c2} = creator_fixture2()
+
+      {b1, b2, c1, c2}
     end
 
     def convs_fixture() do
       {:ok, b1} = brand_fixture1()
-      {:ok, b2}= brand_fixture2()
+      {:ok, b2} = brand_fixture2()
 
       {:ok, c1} = creator_fixture1()
       {:ok, c2} = creator_fixture2()
@@ -94,17 +109,16 @@ defmodule Boldly.ConversationInfoTest do
       {:ok, conv1} = create_conv(c1.id, b1.id)
       {:ok, conv2} = create_conv(c1.id, b2.id)
       {:ok, conv3} = create_conv(c2.id, b1.id)
-      {:ok, conv4} = create_conv(c2.id,b2.id)
+      {:ok, conv4} = create_conv(c2.id, b2.id)
 
       {b1, b2, c1, c2, conv1, conv2, conv3, conv4}
-
     end
-
 
     test "list_conversations/0 returns all conversations" do
       {_, _, _, _, conv1, conv2, conv3, conv4} = convs_fixture()
 
-      assert Enum.sort(ConversationInfo.list_conversations()) == Enum.sort([conv1,conv2,conv3,conv4])
+      assert Enum.sort(ConversationInfo.list_conversations()) ==
+               Enum.sort([conv1, conv2, conv3, conv4])
     end
 
     # get_conversation!(creator_id, brand_id)
@@ -117,7 +131,60 @@ defmodule Boldly.ConversationInfoTest do
       assert ConversationInfo.get_conversation!(c2.id, b2.id) == conv4
     end
 
+    test "create_conversation/1 with valid data creates conversation" do
+      {b1, b2, c1, c2} = accounts_fixture()
 
+      assert {:ok, %Conversation{} = conv} =
+               ConversationInfo.create_conversation(%{brand_id: b1.id, creator_id: c1.id})
 
+      assert conv.creator_id == c1.id
+      assert conv.brand_id == b1.id
+    end
+
+    test "create_conversation/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = ConversationInfo.create_conversation(@invalid_attrs)
+    end
+
+    test "create_conversation/1 with invalid creator_id returns error changeset" do
+      {b1, b2, c1, c2} = accounts_fixture()
+      creators = CreatorAccount.list_creators()
+
+      for c <- creators do
+        CreatorAccount.delete_creator(c)
+      end
+
+      assert {:error, %Ecto.Changeset{}} =
+               ConversationInfo.create_conversation(%{creator_id: c1.id, brand_id: b1.id})
+
+      assert {:error, %Ecto.Changeset{}} =
+               ConversationInfo.create_conversation(%{creator_id: c1.id, brand_id: b2.id})
+
+      assert {:error, %Ecto.Changeset{}} =
+               ConversationInfo.create_conversation(%{creator_id: c2.id, brand_id: b1.id})
+
+      assert {:error, %Ecto.Changeset{}} =
+               ConversationInfo.create_conversation(%{creator_id: c2.id, brand_id: b2.id})
+    end
+
+    test "create_conversation/1 with invalid brand_id return error changeset" do
+      {b1, b2, c1, c2} = accounts_fixture()
+      brands = BrandAccount.list_brands()
+
+      for b <- brands do
+        BrandAccount.delete_brand(b)
+      end
+
+      assert {:error, %Ecto.Changeset{}} =
+               ConversationInfo.create_conversation(%{creator_id: c1.id, brand_id: b1.id})
+
+      assert {:error, %Ecto.Changeset{}} =
+               ConversationInfo.create_conversation(%{creator_id: c1.id, brand_id: b2.id})
+
+      assert {:error, %Ecto.Changeset{}} =
+               ConversationInfo.create_conversation(%{creator_id: c2.id, brand_id: b1.id})
+
+      assert {:error, %Ecto.Changeset{}} =
+               ConversationInfo.create_conversation(%{creator_id: c2.id, brand_id: b2.id})
+    end
   end
 end
