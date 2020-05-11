@@ -49,3 +49,4 @@ defmodule BoldlyWeb.Router do
       |> halt()
     end
   end
+end
