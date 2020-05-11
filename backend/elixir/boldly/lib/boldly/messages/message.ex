@@ -12,7 +12,6 @@ defmodule Boldly.Messages.Message do
     timestamps()
   end
 
-
   def changeset(changeset, params \\ %{}) do
     changeset
     |> cast(params, [:sent_by, :conversation_id, :content, :date])

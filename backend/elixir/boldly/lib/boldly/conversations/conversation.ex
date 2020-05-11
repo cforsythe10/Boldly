@@ -15,11 +15,11 @@ defmodule Boldly.Conversations.Conversation do
 
   def changeset(changeset, params \\ %{}) do
     changeset
-    |> cast(params, [:creator_id, :brand_id,]) #:status])
+    # :status])
+    |> cast(params, [:creator_id, :brand_id])
     |> validate_required([:creator_id, :brand_id])
     |> unique_constraint(:creator_brand, name: :sender)
     |> foreign_key_constraint(:creator_id)
     |> foreign_key_constraint(:brand_id)
   end
-
 end
