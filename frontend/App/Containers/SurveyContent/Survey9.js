@@ -11,6 +11,10 @@ import { Colors, Fonts } from '../../Themes';
 export default class Survey9 extends Component {
 	constructor(props){
   		super(props);
+
+  		this.state = {
+  			showContinue: false,
+  		}
   	}
 
   	render() {

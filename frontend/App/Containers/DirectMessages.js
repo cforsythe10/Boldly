@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 import * as RNFS from 'react-native-fs';
+import RNFetchBlob from 'react-native-fetch-blob';
 
 import Header from '../Components/Ui/Header';
 import MessageBox from '../Components/Ui/MessageBox';
@@ -34,14 +35,11 @@ export default class DirectMessages extends Component {
 		    	type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
 		 	});
 
-			const split = res.uri.split('/');
-			const name = split.pop();
-			const inbox = split.pop();
-			const realPath = `${RNFS.TemporaryDirectoryPath}${inbox}/${name}`;
-
-			console.log(realPath);
-
-			uploadFile(res, 'fill with endpoint', realPath);
+			RNFetchBlob.fs.readFile(res.uri, 'base64')
+				.then((data) => {
+					//use type and base 64 encoded data, will be able to convert back from anything
+					console.log({type: res.type, data: data});
+				});
 		} catch (err) {
 		  if (DocumentPicker.isCancel(err)) {
 		    // User cancelled the picker, exit any dialogs or menus and move on
