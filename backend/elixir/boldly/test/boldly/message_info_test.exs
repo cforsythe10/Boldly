@@ -206,5 +206,57 @@ defmodule Boldly.MessageInfoTest do
 
       assert Enum.count(db_messages) == n1 + n2 + n3 + n4
     end
+
+    test "get_messages!/1 returns all messages from the conversation" do
+      {b1, b2, cr1, cr2, conv1, conv2, conv3, conv4} = convs_fixture()
+
+      {[n1, n2, n3, n4], [mess1, mess2, mess3, mess4], [sb1, sb2, sb3, sb4], [d1, d2, d3, d4],
+       [co1, co2, co3, co4]} = messages_fixture({b1, b2, cr1, cr2, conv1, conv2, conv3, conv4})
+
+      m1 = MessageInfo.get_messages!(conv1.id)
+      m2 = MessageInfo.get_messages!(conv2.id)
+      m3 = MessageInfo.get_messages!(conv3.id)
+      m4 = MessageInfo.get_messages!(conv4.id)
+
+      assert Enum.sort(m1) == Enum.sort(co1)
+      assert Enum.sort(m2) == Enum.sort(co2)
+      assert Enum.sort(m3) == Enum.sort(co3)
+      assert Enum.sort(m4) == Enum.sort(co4)
+
+      assert Enum.all?(m1, fn x -> x.conversation_id == conv1.id end)
+      assert Enum.all?(m2, fn x -> x.conversation_id == conv2.id end)
+      assert Enum.all?(m3, fn x -> x.conversation_id == conv3.id end)
+      assert Enum.all?(m4, fn x -> x.conversation_id == conv4.id end)
+
+      assert Enum.count(m1) == n1
+      assert Enum.count(m2) == n2
+      assert Enum.count(m3) == n3
+      assert Enum.count(m4) == n4
+    end
+
+    test "create_message/1 with valid data creates a conversation" do
+      {b1, b2, cr1, cr2, conv1, conv2, conv3, conv4} = convs_fixture()
+
+      [content] =
+        Enum.take(StreamData.string(:alphanumeric, min_length: 100, max_length: 1000), 1)
+
+      [sent_by_creator] = Enum.take(StreamData.boolean(), 1)
+      date = DateTime.utc_now()
+
+      [conversation_id] =
+        Enum.take(StreamData.member_of([conv1.id, conv2.id, conv3.id, conv4.id]), 1)
+
+      attrs = %{
+        content: content,
+        sent_by_creator: sent_by_creator,
+        date: date,
+        conversation_id: conversation_id
+      }
+
+      assert {:ok, %Message{} = mess} = MessageInfo.create_message(attrs)
+      assert mess.content == content
+      assert mess.sent_by_creator == sent_by_creator
+      assert mess.conversation_id == conversation_id
+    end
   end
 end
