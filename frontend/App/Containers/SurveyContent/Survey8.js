@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { View, Text, TouchableHighlight } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+
+import { makePost } from '../../Services/Api.js';
+import * as LoginActionCreators from '../../Redux/loginActions';
 
 import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import TextFieldDarkBG from '../../Components/Ui/TextFieldDarkBG';
@@ -15,7 +20,7 @@ import Logo from '../../Images/Icons/logo-fog.svg';
 import styles from './Styles/Survey8Styles';
 import { Colors } from '../../Themes';
 
-export default class Survey7 extends Component {
+class Survey8 extends Component {
   	constructor(props){
   		super(props);
   		this.state = {
@@ -24,7 +29,7 @@ export default class Survey7 extends Component {
   				name: props.navigation.state.params.name,
   				isECommerse: props.navigation.state.params.isECommerse,
   				location: props.navigation.state.params.location,
-  				industries: props.navigation.state.params.industries,
+  				industry: props.navigation.state.params.industries,
   				values: props.navigation.state.params.values,
   				interests: props.navigation.state.params.interests,
   				DOB: props.navigation.state.params.DOB,
@@ -39,9 +44,36 @@ export default class Survey7 extends Component {
 
   	buttonPressed(){
   		let accountInfo = {...this.state.currentState, password: this.state.password};
-  		console.log(accountInfo);
-  		//code for sending account info to backend
-  		this.props.navigation.navigate('Survey9', { email: accountInfo.email, password: accountInfo.password});
+
+      if(accountInfo.isCreator) makePost('api/creators', JSON.stringify({ creator: {
+        name: accountInfo.name,
+        email: accountInfo.email,
+        industry: accountInfo.industry,
+        interests: accountInfo.interests.toString(),
+        location: accountInfo.location,
+        values: accountInfo.values.toString(),
+        birthday: new Date(accountInfo.DOB).toISOString().substring(0,10),
+        password: accountInfo.password
+      }})).then( response => response.json())
+        .then(data => { if(!data.errors) {
+          this.props.login(data.data);
+          this.props.navigation.navigate('Survey9'); 
+        }}
+      );
+      else makePost('api/brands', JSON.stringify({ brand: {
+        name: accountInfo.name,
+        ecommerce: accountInfo.isECommerse,
+        location: accountInfo.location,
+        industries: accountInfo.industry,
+        values: accountInfo.values.toString(),
+        email: accountInfo.email,
+        password: accountInfo.password
+      }})).then( response => response.json())
+        .then(data => { if(!data.errors) {
+          this.props.login(data.data);
+          this.props.navigation.navigate('Survey9'); 
+        }}
+      );
   	}
 
     _renderHeader = () => {
@@ -62,7 +94,7 @@ export default class Survey7 extends Component {
 		return (
 		  <View style={ styles.fullScreen }>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-  				{this._renderHeader()}
+        <Header headerType='Survey' navigation={this.props.navigation}/>
           
           <View style={styles.subheaderContainer}>
             {this.state.isCreator ?
@@ -98,3 +130,15 @@ export default class Survey7 extends Component {
 	  )
 	}
 }
+
+const mapStateToProps = function(state) {
+  return {
+    account: state.account
+  }
+}
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators(LoginActionCreators, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Survey8);

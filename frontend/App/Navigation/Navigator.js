@@ -4,10 +4,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Dashboard from '../Containers/DashboardScreen';
-import DashboardRegularC from '../Containers/DashboardScreenRegular';
-import DashboardRegularB from '../Containers/DashboardScreenRegularBrand';
-import DashboardMissingCreator from '../Containers/DashboardMissingProfileElements';
-import DashboardMissingBrand from '../Containers/DashboardMissingProfileElementsBrand';
 
 import Messages from '../Containers/MessagesScreen';
 import DirectMessages from '../Containers/DirectMessages.js';
@@ -99,18 +95,6 @@ const Navigator = createStackNavigator(
 		Dashboard: {
 			screen: Dashboard
 		},
-		DashboardRegularC: {
-            screen: DashboardRegularC
-        },
-        DashboardRegularB: {
-            screen: DashboardRegularB
-        },
-        DashboardMissingProfileB: {
-            screen: DashboardMissingBrand
-        },
-        DashboardMissingProfileC: {
-            screen: DashboardMissingCreator
-        },
         Messages: {
             screen: Messages
         },

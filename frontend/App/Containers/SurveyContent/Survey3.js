@@ -46,17 +46,32 @@ export default class Survey3 extends Component {
       )
     }
 
+	delayScreen=(that)=>{
+ 
+		setTimeout(function(){
+	 
+		  //Put All Your Code Here, Which You Want To Execute After Some Delay Time.
+		  that.props.navigation.navigate('Survey4', {...that.state.currentState})
+	 
+		}, 1200);
+	 
+	 
+	}
+
   	render() {
+
+		this.delayScreen(this);
 		return (
 		  <View style={ styles.fullScreen } onResponderGrant={(event) => this.props.navigation.navigate('Survey4', {...this.state.currentState})} onStartShouldSetResponder={ (event) => [true|false]}>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-          {this._renderHeader()}
-
+			<Header headerType='Survey' navigation={this.props.navigation}/>
+			<View style={{flex: 9}} >
           <View style={styles.contentContainer}>
             <Text style={ styles.text1 } >It's nice to meet you,</Text>
   				  <Text style={ styles.text2 } >{this.state.currentState.name}!</Text>
 				    <Happy height={60} width={60} stroke={Colors.fog} />
 			    </View>
+				</View>
         </ LinearGradient>
 		  </ View>
 	  )

@@ -11,6 +11,15 @@ export default StyleSheet.create({
     borderBottomWidth: 0,
     backgroundColor: Colors.magenta
   },
+  xsbutton: {
+    width: 75,
+    height: 30,
+    marginVertical: 5,
+    borderTopWidth: 0,
+    borderRadius: 20,
+    borderBottomWidth: 0,
+    backgroundColor: Colors.magenta
+  },
   buttonText: {
     marginVertical: 5,
     margin: 5,

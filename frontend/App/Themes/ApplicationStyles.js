@@ -221,7 +221,8 @@ const ApplicationStyles = {
       flexDirection: 'row',
       justifyContent: 'space-between',
       height: '100%',
-      paddingVertical: '17%'
+      paddingVertical: '17%',
+      marginHorizontal: '6%'
     },
     valueButtonRow: {
       flexDirection: 'row',
