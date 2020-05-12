@@ -22,7 +22,11 @@ defmodule BoldlyWeb.BrandView do
   industries,
   values,
   email,
-  name
+  name,
+  description,
+  picture,
+  web_link,
+  profile_visits
   ```
   """
   def render("brand.json", %{brand: brand}) do
