@@ -45,13 +45,13 @@ defmodule BoldlyWeb.ParticipantControllerTest do
 
   @create_attrs %{
     is_active: true,
-    is_pending: true
+    is_deleted: true
   }
   @update_attrs %{
     is_active: false,
-    is_pending: false
+    is_deleted: false
   }
-  @invalid_attrs %{is_active: nil, is_pending: nil}
+  @invalid_attrs %{is_active: nil, is_deleted: nil}
 
   def fixture(:setup_part) do
     {:ok, brand} = %{} |> Enum.into(@valid_brand_attrs) |> Boldly.BrandAccount.create_brand()
@@ -88,7 +88,7 @@ defmodule BoldlyWeb.ParticipantControllerTest do
 
     part_attrs = %{
       is_active: true,
-      is_pending: false,
+      is_deleted: false,
       creator_uuid: creator.uuid,
       campaign_uuid: campaign.uuid
     }
@@ -127,7 +127,7 @@ defmodule BoldlyWeb.ParticipantControllerTest do
       assert %{
                "id" => id,
                "is_active" => true,
-               "is_pending" => false
+               "is_deleted" => false
              } = json_response(conn, 200)["data"]
     end
 
@@ -154,7 +154,7 @@ defmodule BoldlyWeb.ParticipantControllerTest do
       assert %{
                "id" => id,
                "is_active" => false,
-               "is_pending" => false
+               "is_deleted" => false
              } = json_response(conn, 200)["data"]
     end
 

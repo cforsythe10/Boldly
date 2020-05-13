@@ -14,7 +14,7 @@ defmodule BoldlyWeb.ParticipantView do
   Renders the following in JSON, all under a `data` key:
   ```
   id
-  is_pending
+  is_deleted
   is_active
   campaign_uuid
   creator_uuid
@@ -23,7 +23,7 @@ defmodule BoldlyWeb.ParticipantView do
   def render("participant.json", %{participant: participant}) do
     %{
       id: participant.id,
-      is_pending: participant.is_pending,
+      is_deleted: participant.is_deleted,
       is_active: participant.is_active,
       campaign_uuid: participant.campaign_uuid,
       creator_uuid: participant.creator_uuid

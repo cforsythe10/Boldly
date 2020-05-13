@@ -14,11 +14,41 @@ defmodule Boldly.BrandAccount.Brand do
     field :name, :string
     field :uuid, Ecto.UUID, autogenerate: true
 
+    field :description, :string
+    field :picture, :string
+    field :web_link, :string
+    field :profile_visits, :integer, default: 0
+
     has_many :campaigns, Boldly.CampaignInfo.Campaign,
       foreign_key: :launched_by,
       references: :uuid
 
     timestamps(type: :utc_datetime_usec)
+  end
+
+  def change_incr(brand, %{profile_visits: num_visits}) do
+    p_visits = brand.profile_visits + 1
+
+    brand
+    |> cast(
+      %{
+        profile_visits: p_visits
+      },
+      [
+        :uuid,
+        :ecommerce,
+        :location,
+        :industries,
+        :values,
+        :email,
+        :password,
+        :name,
+        :description,
+        :picture,
+        :web_link,
+        :profile_visits
+      ]
+    )
   end
 
   @doc false
@@ -32,7 +62,11 @@ defmodule Boldly.BrandAccount.Brand do
       :values,
       :email,
       :password,
-      :name
+      :name,
+      :description,
+      :picture,
+      :web_link,
+      :profile_visits
     ])
     |> validate_required([
       # :uuid,

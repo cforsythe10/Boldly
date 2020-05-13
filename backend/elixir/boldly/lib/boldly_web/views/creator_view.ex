@@ -24,7 +24,11 @@ defmodule BoldlyWeb.CreatorView do
   interests,
   location,
   email,
-  id
+  id,
+  description,
+  picture,
+  web_link,
+  profile_visits
   ```
   """
   def render("creator.json", %{creator: creator}) do
@@ -37,7 +41,11 @@ defmodule BoldlyWeb.CreatorView do
       interests: creator.interests,
       location: creator.location,
       email: creator.email,
-      id: creator.id
+      id: creator.id,
+      description: creator.description,
+      picture: creator.picture,
+      web_link: creator.web_link,
+      profile_visits: creator.profile_visits
     }
   end
 
@@ -53,7 +61,11 @@ defmodule BoldlyWeb.CreatorView do
           interests: creator.interests,
           location: creator.location,
           email: creator.email,
-          id: creator.id
+          id: creator.id,
+          description: creator.description,
+          picture: creator.picture,
+          web_link: creator.web_link,
+          profile_visits: creator.profile_visits
         }
       }
     }

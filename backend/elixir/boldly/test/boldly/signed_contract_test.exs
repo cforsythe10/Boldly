@@ -86,7 +86,7 @@ defmodule Boldly.SignedContractTest do
 
       part_attrs = %{
         is_active: true,
-        is_pending: false,
+        is_deleted: false,
         creator_uuid: creator.uuid,
         campaign_uuid: campaign.uuid
       }

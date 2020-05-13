@@ -49,9 +49,9 @@ defmodule Boldly.CampaignPartTest do
       launched_by: "7488a646-e31f-11e4-aace-600308960660"
     }
 
-    @valid_attrs %{is_active: true, is_pending: true}
-    @update_attrs %{is_active: false, is_pending: false}
-    @invalid_attrs %{is_active: nil, is_pending: nil}
+    @valid_attrs %{is_active: true, is_deleted: true}
+    @update_attrs %{is_active: false, is_deleted: false}
+    @invalid_attrs %{is_active: nil, is_deleted: nil}
 
     def participant_fixture(attrs \\ %{}) do
       {:ok, brand} = attrs |> Enum.into(@valid_brand_attrs) |> Boldly.BrandAccount.create_brand()
@@ -89,7 +89,7 @@ defmodule Boldly.CampaignPartTest do
 
       part_attrs = %{
         is_active: true,
-        is_pending: false,
+        is_deleted: false,
         creator_uuid: creator.uuid,
         campaign_uuid: campaign.uuid
       }
@@ -115,7 +115,7 @@ defmodule Boldly.CampaignPartTest do
     test "create_participant/1 with valid data creates a participant" do
       assert %Participant{} = participant = participant_fixture()
       assert participant.is_active == true
-      assert participant.is_pending == false
+      assert participant.is_deleted == false
     end
 
     test "create_participant/1 with invalid data returns error changeset" do
@@ -129,7 +129,7 @@ defmodule Boldly.CampaignPartTest do
                CampaignPart.update_participant(participant, @update_attrs)
 
       assert participant.is_active == false
-      assert participant.is_pending == false
+      assert participant.is_deleted == false
     end
 
     test "update_participant/2 with invalid data returns error changeset" do

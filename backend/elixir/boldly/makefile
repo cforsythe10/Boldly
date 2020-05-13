@@ -1,12 +1,37 @@
 .PHONY: setup_dbs
 
+ELIXIR_BACKG_PROCESS = $(shell pgrep -f erlang)
 
 run: setup_dbs
 	mix phx.server
 
+git-reset: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+git-reset: stop-aws-detached
+	mix ecto.drop
+
+
 setup_dbs: get_deps
 	mix ecto.reset
 	MIX_ENV=test mix ecto.reset
+
+run-aws-detached: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+run-aws-detached: setup-aws-psql
+	elixir --erl "-detached" -S mix phx.server
+
+stop-aws-detached:
+	$(shell kill $(ELIXIR_BACKG_PROCESS))
+
+aws-test: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+aws-test: setup-aws-psql
+	mix phx.server
+
+setup-aws-psql: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+setup-aws-psql: get_deps
+	mix ecto.setup
+
+reset-aws-db: export BOLDLY_POSTGRES_ENDPOINT = boldy-base.cmnonc0gggxh.us-east-2.rds.amazonaws.com
+reset-aws-db:
+	mix ecto.drop
 
 contract_template_schema:
 	mix phx.gen.context ContractTemplate Template templates file_path:string
@@ -21,10 +46,10 @@ signed_contract_endpoint:
 	mix phx.gen.json SignedContract Contract contracts id:uuid file_path:string --no-context --no-schema
 
 campaign_participant_schema:
-	mix phx.gen.context CampaignPart Participant participants is_pending:boolean is_active:boolean
+	mix phx.gen.context CampaignPart Participant participants is_deleted:boolean is_active:boolean
 
 campaign_participant_endpoint:
-	mix phx.gen.json CampaignPart Participant participants is_pending:boolean is_active:boolean --no-context --no-schema
+	mix phx.gen.json CampaignPart Participant participants is_deleted:boolean is_active:boolean --no-context --no-schema
 
 creator_schema:
 	mix phx.gen.context CreatorAccount Creator creators id:uuid:unique name:string birthday:date values:string industry:string interests:string location:string email:string:unique
