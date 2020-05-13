@@ -137,6 +137,18 @@ defmodule BoldlyWeb.ConversationControllerTest do
         "id" => id
       } == json_response(conn, 200)["data"]
     end
+
+    test "renders error when data is invlaid", %{conn: conn, b1: b1, b2: b2, c1: c1, c2: c2} do
+      BrandAccount.delete_brand(b1)
+      CreatorAccount.delete_creator(c1)
+
+      conn =
+        post(conn, Routes.conversation_path(conn, :create),
+          conversation: %{brand_id: b1.id, creator_id: b2.id}
+        )
+
+      assert json_response(conn, 422)["errors"] != %{}
+    end
   end
 
   defp setup_users(conn) do
