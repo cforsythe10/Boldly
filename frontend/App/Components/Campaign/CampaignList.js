@@ -1,14 +1,10 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import styles from './Styles/CampaignStyles';
 import Card from '../Ui/Card';
 import { ScrollView } from 'react-native-gesture-handler';
 
-// const campaignSections = {
-//     CURRENT: 'CURRENT',
-//     PAST: 'PAST'
-// }
 
 const CurrentCampaign = ({styles, campaignMatches, campaignSavedForLater, campaignApplied, campaignActive}) => {
     return (
@@ -43,63 +39,6 @@ const PastCampaign = ({styles, campaignApplied}) => {
     );
 }
 
-// const CampaignList = ({campaigns}) => {
-//     const [campaignTypeSelected, setCampaignType] = useState(campaignSections.CURRENT);
-//     const {
-//         campaignMatches,
-//         campaignSavedForLater,
-//         campaignApplied,
-//         campaignActive
-//     } = campaigns;
-
-//     return (
-//         <ScrollView>
-//            <View style={styles.campaignTypeBar}>
-//                 <TouchableOpacity
-//                     style={styles.campaignTypeButton}
-//                     key={campaignSections.CURRENT}
-//                     onPress={() => setCampaignType(campaignSections.CURRENT)}
-//                 >
-//                     <Text style={styles.campaignTypeText}>Current</Text>
-//                 </TouchableOpacity>
-//                 <TouchableOpacity
-//                     style={styles.campaignTypeButton}
-//                     key={campaignSections.PAST}
-//                     onPress={() => setCampaignType(campaignSections.PAST)}
-//                 >
-//                     <Text style={styles.campaignTypeText}>Past</Text>
-//                 </TouchableOpacity>
-//            </View>
-//            {campaignTypeSelected === campaignSections.CURRENT && <View style={styles.selectedBar} />}
-//            {campaignTypeSelected === campaignSections.PAST && <View style={{...styles.selectedBar, left: '51%'}} />}
-//            {campaignTypeSelected === campaignSections.CURRENT ? (
-//                 <View style={styles.campaigns}>
-//                        {campaignMatches && <View style={styles.campaignMatches}>
-//                             <Text style={styles.header}>Your Matches</Text>
-//                             {campaignMatches.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-//                         </View>}
-//                        {campaignSavedForLater && <View style={styles.campaignSavedForLater}>
-//                             <Text style={styles.header}>Saved for Later</Text>
-//                             {campaignSavedForLater.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-//                         </View>}
-//                        {campaignApplied && <View style={styles.campaignApplied}>
-//                             <Text style={styles.header}>Applied</Text>
-//                             {campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-//                         </View>}
-//                        {campaignActive && <View style={styles.campaignActive}>
-//                             <Text style={styles.header}>Active</Text>
-//                             {campaignActive.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-//                         </View>}
-//                 </View>
-//            ) : (
-//                <View style={styles.campaigns}>
-//                     {campaignApplied && campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-//                </View>
-//            )}
-//         </ScrollView>
-//     );
-// }
-
 // This is our placeholder component for the tabs
 // This will be rendered when a tab isn't loaded yet
 // You could also customize it to render different content depending on the route
@@ -120,35 +59,31 @@ const renderTabBar = props => (
 	/>
 );
 
-class CampaignList extends Component {
-    state = {
-        index: 0,
-        routes: [
-            { key: 'first', title: 'Current' },
-            { key: 'second', title: 'Past' }
-        ]
-    };
+const CampaignList = () => {
+    const [index, setIndex] = useState(0);
+    const [routes] = useState([
+        { key: 'first', title: 'Current' },
+        { key: 'second', title: 'Past' }
+    ]);
 
-    _handleIndexChange = index => this.setState({ index });
+    const renderScene = SceneMap({
+		first: CurrentCampaign,
+		second: PastCampaign,
+	});
 
-    _renderLazyPlaceholder = ({ route }) => <LazyPlaceholder route={route} />;
+    const renderLazyPlaceholder = ({ route }) => <LazyPlaceholder route={route} />;
 
-    render() {
-        return (
-			<TabView
-				lazy
-				navigationState={this.state}
-				renderScene={SceneMap({
-					first: CurrentCampaign,
-					second: PastCampaign,
-				})}
-				renderTabBar={renderTabBar}
-				renderLazyPlaceholder={this._renderLazyPlaceholder}
-				onIndexChange={this._handleIndexChange}
-				initialLayout={{ width: Dimensions.get('window').width }}
-				style={styles.fullScreen}
-			/>
-		);
-    }
+    return (
+        <TabView
+            lazy
+            navigationState={{index, routes}}
+            renderScene={renderScene}
+            renderTabBar={renderTabBar}
+            renderLazyPlaceholder={renderLazyPlaceholder}
+            onIndexChange={setIndex}
+            initialLayout={{ width: Dimensions.get('window').width }}
+            style={styles.fullScreen}
+        />
+    );
 }
 export default CampaignList;
