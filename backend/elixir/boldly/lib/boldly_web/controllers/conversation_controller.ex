@@ -7,7 +7,7 @@ defmodule BoldlyWeb.ConversationController do
   action_fallback BoldlyWeb.FallbackController
 
   def index(conn, _params) do
-    conversations = Conversation.list_conversations()
+    conversations = ConversationInfo.list_conversations()
     render(conn, "index.json", conversations: conversations)
   end
 
@@ -21,7 +21,7 @@ defmodule BoldlyWeb.ConversationController do
   end
 
   def show(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
-    conv = Conversation.get_conversation!(creator_id, brand_id)
+    conv = ConversationInfo.get_conversation!(creator_id, brand_id)
     render(conn, "show.json", conversation: conv)
   end
 
@@ -30,7 +30,7 @@ defmodule BoldlyWeb.ConversationController do
         "brand_id" => brand_id,
         "conversation" => conv_params
       }) do
-    conv = Conversation.get_conversation!(creator_id, brand_id)
+    conv = ConversationInfo.get_conversation!(creator_id, brand_id)
 
     with {:ok, %Conversation{} = conv} <- ConversationInfo.update_conversation(conv, conv_params) do
       render(conn, "show.json", conversation: conv)
@@ -38,7 +38,7 @@ defmodule BoldlyWeb.ConversationController do
   end
 
   def delete(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
-    conv = Conversation.get_conversation!(creator_id, brand_id)
+    conv = ConversationInfo.get_conversation!(creator_id, brand_id)
 
     with {:ok, %Conversation{}} <- ConversationInfo.delete_conversation(conv) do
       send_resp(conn, :no_content, "")

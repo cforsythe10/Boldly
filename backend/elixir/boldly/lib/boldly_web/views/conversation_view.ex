@@ -2,9 +2,8 @@ defmodule BoldlyWeb.ConversationView do
   use BoldlyWeb, :view
   alias BoldlyWeb.ConversationView
 
-
-  def render("index.json", %{conversation: conversation}) do
-    %{data: render_many(conversation, ConversationView, "conversation.json")}
+  def render("index.json", %{conversations: conversations}) do
+    %{data: render_many(conversations, ConversationView, "conversation.json")}
   end
 
   def render("show.json", %{conversation: conversation}) do
