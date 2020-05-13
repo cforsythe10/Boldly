@@ -10,6 +10,33 @@ defmodule BoldlyWeb.CampaignView do
     %{data: render_one(campaign, CampaignView, "campaign.json")}
   end
 
+  @doc """
+  Renders campaign(s) attributes.
+
+  The fields, all wrapped under a `data` field, are:
+
+  ```
+  id
+  uuid
+  name
+  start_date
+  end_date
+  photo_reference
+  description
+  values
+  creator_responsibilities
+  age_range
+  compensation
+  desired_engagement_rate
+  perks
+  industry
+  interests
+  location
+  specific_to_location
+  is_draft
+  launched_by
+  ```
+  """
   def render("campaign.json", %{campaign: campaign}) do
     %{
       id: campaign.id,

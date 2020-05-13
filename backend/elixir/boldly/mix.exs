@@ -10,7 +10,13 @@ defmodule Boldly.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      docs: [
+        groups_for_modules: [
+          Controllers: ~r"/*Controller",
+          Views: ~r"/*View"
+        ]
+      ]
     ]
   end
 

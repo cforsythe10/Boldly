@@ -13,6 +13,7 @@ import BackButton from '../../Images/Icons/back.svg';
 import styles from './Styles/Survey1Styles';
 import { Colors } from '../../Themes';
 
+
 export default class Survey1 extends Component {
 	constructor(props){
 		super(props);
@@ -71,8 +72,8 @@ export default class Survey1 extends Component {
 		return (
 		<View style={ styles.fullScreen }>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-				{this._renderHeader()}
-          		
+				<Header headerType='Survey' navigation={this.props.navigation}/>
+				<View style={{flex: 9}} >
 				<View style={styles.contentContainer}>
           			<ProgressBar progress={1/9} />
 					<Text style={ styles.text }>Are you a...</Text>
@@ -90,6 +91,7 @@ export default class Survey1 extends Component {
 							this.props.navigation.navigate('Survey2', {...nextSurveyState} );
 						}} /> : null
 					}
+				</View>
 				</View>
 			</ LinearGradient>
 		</ View>

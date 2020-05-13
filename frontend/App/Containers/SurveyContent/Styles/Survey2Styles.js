@@ -10,7 +10,8 @@ export default StyleSheet.create({
   text: {
   	...Fonts.style.h3,
   	color: Colors.fog,
-    paddingTop: '14%'
+    paddingTop: '14%',
+    marginBottom: 16,
   },
   subtext: {
   	...Fonts.style.sh3,

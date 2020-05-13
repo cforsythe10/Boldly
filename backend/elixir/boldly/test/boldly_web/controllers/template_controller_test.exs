@@ -73,7 +73,10 @@ defmodule BoldlyWeb.TemplateControllerTest do
   describe "update template" do
     setup [:create_template]
 
-    test "renders template when data is valid", %{conn: conn, template: %Template{id: id} = template} do
+    test "renders template when data is valid", %{
+      conn: conn,
+      template: %Template{id: id} = template
+    } do
       conn = put(conn, Routes.template_path(conn, :update, template), template: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

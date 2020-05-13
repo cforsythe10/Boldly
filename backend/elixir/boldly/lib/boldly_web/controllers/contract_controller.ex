@@ -28,7 +28,8 @@ defmodule BoldlyWeb.ContractController do
   def update(conn, %{"id" => id, "contract" => contract_params}) do
     contract = SignedContract.get_contract!(id)
 
-    with {:ok, %Contract{} = contract} <- SignedContract.update_contract(contract, contract_params) do
+    with {:ok, %Contract{} = contract} <-
+           SignedContract.update_contract(contract, contract_params) do
       render(conn, "show.json", contract: contract)
     end
   end

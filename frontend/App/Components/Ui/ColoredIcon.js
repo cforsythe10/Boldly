@@ -36,23 +36,23 @@ export default class ColoredIcon extends Component {
 
         const GetSvg = () => {
             switch(this.props.svgName) {
-                case('CommunityImage'):
+                case('Community'):
                     return <CommunityImage height={48} width={48} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('DiversityImage'): 
+                case('Diversity'): 
                     return <DiversityImage height={48} width={48} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('EducationImage'):
+                case('Education'):
                     return <EducationImage height={48} width={48} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('FamilyImage'): 
+                case('Family'): 
                     return <FamilyImage height={48} width={48} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('InnovationImage'): 
+                case('Innovation'): 
                     return <InnovationImage height={48} width={48} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('SpiritualityImage'): 
+                case('Spirituality'): 
                     return <SpiritualityImage height={48} width={48} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('SustainabilityImage'): 
+                case('Sustainability'): 
                     return <SustainabilityImage height={48} width={48} stro ke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('TraditionImage'): 
+                case('Tradition'): 
                     return <TraditionImage height={48} width={48} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
-                case('WellnessImage'): 
+                case('Wellness'): 
                     return <WellnessImage height={48} width={48} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
             }
         }

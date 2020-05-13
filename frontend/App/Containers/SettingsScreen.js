@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
+import { useStore } from 'react-redux';
 import { Text, View } from 'react-native';
 
 import Header from '../Components/Ui/Header'
 import PrimaryButtonLarge from '../Components/Ui/PrimaryButtonLarge';
 
+import SettingsCreator from './SettingsCreator';
+import SettingsBrand from './SettingsBrand';
+
 import styles from './Styles/DashboardScreenStyle';
 import { Fonts, Colors } from '../Themes';
-// import { testActionCreator } from '../Redux/createStore'; // Importing the neccassary action creators, ideally in one file
-// import { connect } from 'react-redux'; // Import the connect function to connect your component/screen to redux state
 
-// const DashboardScreen = ({someActionCreator}) => {
-//     someActionCreator('data');
-class DashboardScreen extends Component {
-    render() {
-      return (
-      <View style={styles.fullScreen}>
-        <Header headerType='MenuProfile' navigation={this.props.navigation}/>
-          
-          <View style={{...styles.centerContentContainer, flex: 9}}>
+const SettingsScreen = ({navigation}) => {
+    const store = useStore();
+    const account = store.getState().loginReducer.loginReducer.account;
+    return (
+    <View style={styles.fullScreen}>
+        {account.birthday ? <SettingsCreator navigation={navigation} /> : null }
+        {!account.birthday ? <SettingsBrand navigation={navigation} /> : null }
+    </View>
+    )
+}
+
+/*
+<View style={{...styles.centerContentContainer, flex: 9}}>
               <View style={styles.cardContainer}>
                   <View style={styles.cardContentContainer}>
                       <Text style={{...styles.darkText, textAlign: 'center'}}>Temporary settings page to show page disambiguation.</Text>
@@ -28,19 +34,6 @@ class DashboardScreen extends Component {
                   </View>
               </View>
           </View>
-      </View>
-      )
-  }
-}
+*/
 
-// const mapStateToProps = state => ({ // Will return all of state to props, don't do this, grab exactly what you need
-//     state
-//   });
-  
-//   const mapDispatchToProps = dispatch => ({ // This can be grabbed from the DashboardScreen props as this.props.someActionCreator
-//     someActionCreator: (someData) => dispatch(testActionCreator(someData))
-//   });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen);
-
-export default DashboardScreen;
+export default SettingsScreen;

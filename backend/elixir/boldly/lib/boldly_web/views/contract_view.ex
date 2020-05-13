@@ -11,7 +11,8 @@ defmodule BoldlyWeb.ContractView do
   end
 
   def render("contract.json", %{contract: contract}) do
-    %{id: contract.id,
+    %{
+      id: contract.id,
       file_path: contract.file_path,
       brand_uuid: contract.brand_uuid,
       creator_uuid: contract.creator_uuid,

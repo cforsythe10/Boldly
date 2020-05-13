@@ -5,7 +5,8 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   bigText: {
   	...Fonts.style.h2,
-  	color: Colors.fog
+	  color: Colors.fog,
+	  marginBottom: 16,
   },
   smallText: {
   	...Fonts.style.h5,
@@ -34,7 +35,7 @@ export default StyleSheet.create({
   	height: '11%',
   	flexDirection: 'row',
     justifyContent: 'center',
-  	width: '100%',
+  	width: '88%',
   	backgroundColor: 'transparent',
   }
 })

@@ -38,6 +38,7 @@ const colors = {
   
   fog : '#F7F7F7',
   white : '#FFFFFF',
+  white35 : 'rgba(255,255,255,0.35)',
   black : '#000000',
 
   transparent : 'rgba(0,0,0,0)'

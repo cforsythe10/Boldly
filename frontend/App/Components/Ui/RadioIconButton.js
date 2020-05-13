@@ -34,9 +34,9 @@ export default class RadioIconButton extends Component {
         const GetSvg = () => {
             switch(this.props.svgName) {
                 case('BrandImage'):
-                    return <BrandImage height={60} width={60} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
+                    return <BrandImage height={80} width={80} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>
                 case('CreatorImage'): 
-                    return <CreatorImage height={60} width={60} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>   
+                    return <CreatorImage height={80} width={80} stroke={this.state.greenButtonState ? Colors.white : Colors.black }/>   
             }
         }
 

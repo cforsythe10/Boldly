@@ -36,15 +36,15 @@ export default class Survey4 extends Component {
     }
 
     callbackBnM = (data) => {
-      this.setState({showLocation: data});
-      if(data && this.state.currentState.isECommerse === null) this.setState({currentState: {...this.currentState, isECommerse: false}});
-      if(data && this.state.currentState.isECommerse && this.state.currentState.location === '') this.setState({showContinue: false});
+      this.setState({currentState: {...this.state.currentState}, showLocation: data});
+      if(data && this.state.currentState.isECommerse === null) this.setState({currentState: {...this.state.currentState, isECommerse: false}});
+      if(data && this.state.currentState.isECommerse && this.state.currentState.location === '') this.setState({currentState: {...this.state.currentState, isECommerse: data}, showContinue: false});
       if(!data) this.setState({currentState: {...this.state.currentState, location: ''}});
     } 
 
     callbackECom = (data) => {
       this.setState({ currentState: {...this.state.currentState, isECommerse: data}});
-      if(data && !this.state.showLocation) this.setState({showContinue: true});
+      if(data && !this.state.showLocation) this.setState({currentState: {...this.state.currentState, isECommerse: data} , showContinue: true});
     }
 
     _textChanged(text){
@@ -66,26 +66,25 @@ export default class Survey4 extends Component {
     }
 
     render() {
-      const nextSurveyState = {...this.state.currentState};
       return (
       <KeyboardAvoidingView style={ styles.fullScreen }>
           <LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-          {this._renderHeader()}
-          
+          <Header headerType='Survey' navigation={this.props.navigation}/>
+          <View style={{flex: 9}} >
           <View style={styles.contentContainer}>
-            {nextSurveyState.isCreator ?
+            {this.state.currentState.isCreator ?
               <ProgressBar progress={2/10} /> :
               <ProgressBar progress={2/8} />
             }
             
             <Text style={styles.text}>
-              {!nextSurveyState.isCreator ?
+              {!this.state.currentState.isCreator ?
                 'Is your company...' :
                 'Where are you located?'
               }
             </Text>
             <Text style={styles.subtext}>
-              {!nextSurveyState.isCreator ?
+              {!this.state.currentState.isCreator ?
                 'Please select all that apply' :
                 null
               }
@@ -93,10 +92,10 @@ export default class Survey4 extends Component {
           </View>
 
           <View style={styles.buttonContainer}>
-          {!nextSurveyState.isCreator ?
+          {!this.state.currentState.isCreator ?
             <IconButton svgName='BrickAndMortarImage' text='Brick & Mortar' callback={this.callbackBnM} /> : null
           }
-          {!nextSurveyState.isCreator ?
+          {!this.state.currentState.isCreator ?
             <IconButton svgName='ECommerceImage' text='E-Commerce' callback={this.callbackECom} /> : null 
           }
           </View>
@@ -108,10 +107,11 @@ export default class Survey4 extends Component {
           </View>
           
           <View style={styles.continueContainer}>
-            {(nextSurveyState.isECommerse && !this.state.showLocation) ||
-             (this.state.showLocation && nextSurveyState.location !== '') ?
-              <PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey5', {...nextSurveyState})} /> : null
+            {(this.state.currentState.isECommerse && !this.state.showLocation) ||
+             (this.state.showLocation && this.state.currentState.location !== '') ?
+              <PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey5', {...this.state.currentState})} /> : null
             }
+          </View>
           </View>
         </ LinearGradient>
       </ KeyboardAvoidingView>

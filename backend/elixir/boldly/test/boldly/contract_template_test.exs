@@ -27,11 +27,11 @@ defmodule Boldly.ContractTemplateTest do
         file_path: @valid_attrs.file_path,
         brand_uuid: brand.uuid
       }
-
     end
 
     def template_fixture(attrs \\ %{}) do
       temp_attrs = brand_fixture()
+
       {:ok, template} =
         attrs
         |> Enum.into(temp_attrs)
@@ -62,13 +62,19 @@ defmodule Boldly.ContractTemplateTest do
 
     test "update_template/2 with valid data updates the template" do
       template = template_fixture()
-      assert {:ok, %Template{} = template} = ContractTemplate.update_template(template, @update_attrs)
+
+      assert {:ok, %Template{} = template} =
+               ContractTemplate.update_template(template, @update_attrs)
+
       assert template.file_path == "some updated file_path"
     end
 
     test "update_template/2 with invalid data returns error changeset" do
       template = template_fixture()
-      assert {:error, %Ecto.Changeset{}} = ContractTemplate.update_template(template, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               ContractTemplate.update_template(template, @invalid_attrs)
+
       assert template == ContractTemplate.get_template!(template.id)
     end
 
