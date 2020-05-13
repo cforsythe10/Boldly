@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import axios from 'axios';
+import { View, Text } from 'react-native';
 import styles from './Styles/CampaignStyles';
 import Card from '../Ui/Card';
 import { ScrollView } from 'react-native-gesture-handler';
 
-
-const CurrentCampaign = ({styles, campaignMatches, campaignSavedForLater, campaignApplied, campaignActive}) => {
+const CurrentCampaign = ({campaignMatches, campaignSavedForLater, campaignApplied, campaignActive}) => {
     return (
         <View style={styles.campaigns}>
             {campaignMatches && <View style={styles.campaignMatches}>
@@ -29,7 +27,7 @@ const CurrentCampaign = ({styles, campaignMatches, campaignSavedForLater, campai
     );
 }
 
-const PastCampaign = ({styles, campaignApplied}) => {
+const PastCampaign = ({campaignApplied}) => {
     return (
         <ScrollView>
             <View style={styles.campaigns}>
@@ -66,10 +64,16 @@ const CampaignList = () => {
         { key: 'second', title: 'Past' }
     ]);
 
-    const renderScene = SceneMap({
-		first: CurrentCampaign,
-		second: PastCampaign,
-	});
+    const renderScene = ({ route }) => {
+        switch (route.key) {
+            case 'first':
+                return (<CurrentCampaign campaignMatches = {campaignMatches} campaignSavedForLater={campaignSavedForLater} campaignApplied={campaignApplied} campaignActive={campaignActive} />)
+            case 'second':
+                return (<PastCampaign campaignApplied={campaignApplied} />)
+            default:
+                return null;
+        }
+    }
 
     const renderLazyPlaceholder = ({ route }) => <LazyPlaceholder route={route} />;
 

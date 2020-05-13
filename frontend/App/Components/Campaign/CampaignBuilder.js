@@ -1,16 +1,14 @@
-import React, { Component, useState, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { View, Text, ScrollView, Dimensions } from 'react-native'
 import styles from './Styles/CampaignBuilderStyle'
 import TextFieldWide from '../Ui/TextFieldWide'
-import TextArea from '../Ui/TextArea'
 import PrimaryButtonLarge from '../Ui/PrimaryButtonLarge'
-import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
+import { TabBar, TabView } from 'react-native-tab-view'
 import TextField from '../Ui/InputFields/InputField'
 import LocationInputField from '../Ui/InputFields/LocationInputField'
-import axios from 'axios'
-import { sendCampaignData } from '../../Redux/campaignBuilder/campaignBuilderActions'
+import { addCampaignData, sendCampaignData } from '../../Redux/campaignBuilder/campaignBuilderActions'
 
-const ViewRoute = ({currCampaign}) => {
+const ViewRoute = ({currentCampaign}) => {
 	return (
 		<ScrollView>
 			{/** Insert "campaignView" Component with currCampaign info to render view */}
@@ -18,7 +16,7 @@ const ViewRoute = ({currCampaign}) => {
 	);
 };
 
-const EditRoute = ({currCampaign, addCampaignData, sendCampaignData}) => (
+const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => (
 	<ScrollView style={styles.container}>
 		{/* <View style={styles.container}> */}
 			<View style={styles.inputContainer} >
@@ -112,7 +110,7 @@ const renderTabBar = props => (
 	/>
   );
 
-const CampaignBuilder = ({currCampaign, addCampaignData, sendCampaignData}) => {
+const CampaignBuilder = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 	const [index, setIndex] = useState(0);
 	const [routes] = useState([
 		{ key: 'first', title: 'View' },
@@ -122,9 +120,9 @@ const CampaignBuilder = ({currCampaign, addCampaignData, sendCampaignData}) => {
 	const renderScene = ({ route }) => {
 		switch (route.key) {
 			case 'first':
-				return <ViewRoute currCampaign={currCampaign} />
+				return <ViewRoute currentCampaign={currentCampaign} />
 			case 'second':
-				return <EditRoute currCampaign={currCampaign} addCampaignData={addCampaignData} sendCampaignData={sendCampaignData} />
+				return <EditRoute currCamcurrentCampaignpaign={currentCampaign} addCampaignData={addCampaignData} sendCampaignData={sendCampaignData} />
 			default:
 				return null;
 		}
@@ -147,12 +145,12 @@ const CampaignBuilder = ({currCampaign, addCampaignData, sendCampaignData}) => {
 }
 
 const mapStateToProps = state => ({
-	currCampaign: state.campaignBuilder.currCampaign
+	currentCampaign: state.campaignBuilder.currentCampaign
 });
 
 const mapDispatchToProps = dispatch => ({
 	addCampaignData: (dataKey, data) => dispatch(addCampaignData(dataKey, data)),
-	sendCampaignData = campaignData => dispatch(sendCampaignData(campaignData))
+	sendCampaignData: campaignData => dispatch(sendCampaignData(campaignData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CampaignBuilder);

@@ -24,7 +24,7 @@ const initialState = {
     }
 }
 
-const campaignBuilderReducer = (state = initialState, action) => {
+const campaignBuilder = (state = initialState, action) => {
     switch(action.type) {
         case campaignsTypes.CAMPAIGN_ADD_DATA:
             return {
@@ -56,7 +56,9 @@ const campaignBuilderReducer = (state = initialState, action) => {
                     err: action.data
                 }
             }
+        default:
+            return state;
     }
 }
 
-export default campaignBuilderReducer;
+export default campaignBuilder;
