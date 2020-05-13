@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useCallback } from 'react'
 import { View, Text, ScrollView, Dimensions } from 'react-native'
 import styles from './Styles/CampaignBuilderStyle'
 import TextFieldWide from '../Ui/TextFieldWide'
@@ -6,6 +6,7 @@ import TextArea from '../Ui/TextArea'
 import PrimaryButtonLarge from '../Ui/PrimaryButtonLarge'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 import TextField from '../Ui/InputFields/InputField'
+import axios from 'axios'
 
 const ViewRoute = () => {
 	return (
@@ -16,12 +17,30 @@ const ViewRoute = () => {
 };
 
 const EditRoute = () => {
+	const [campaignData, setCampaignData] = useState({});
+	const [campaignSetSuccess, setcampaignSetSuccess] = useState(false);
+	
+	const addCampaignData = (dataKey, data) => {
+		setCampaignData({
+			...campaignData,
+			[dataKey]: data 
+		})};
+	
+	const sendCampaignData = async () => {
+		console.log(campaignData); // For testing
+		const res = await axios.post("Insert post");
+		if (res === 200) {
+			setcampaignSetSuccess(true);
+		}
+		setcampaignSetSuccess(false);
+	}
+
 	return (
 		<ScrollView style={styles.container}>
 			{/* <View style={styles.container}> */}
 				<View style={styles.inputContainer} >
 					<Text style={styles.inputTitleText}>Name</Text>
-					<TextField placeholder="Enter Name" />
+					<TextField placeholder="Enter Name" onChangeText={data => addCampaignData("name", data)} />
 				</View>
 
 				<View style={styles.inputContainer} >
@@ -30,7 +49,7 @@ const EditRoute = () => {
 
 				<View style={styles.inputContainer} >
 					<Text style={styles.inputTitleText}>Description</Text>
-					<TextArea placeholder="" />
+					<TextField placeholder="" onChangeText={data=> addCampaignData("description", data)} />
 				</View>
 
 				<View style={styles.inputContainer} >
@@ -39,44 +58,44 @@ const EditRoute = () => {
 				</View>
 
 				<View style={styles.inputContainer}>
-					<Text style={styles.inputTitleText}>Duration</Text>
+					<Text style={styles.inputTitleText} onChangeText={text => addCampaignData("duration", text)}>Duration</Text>
 				</View>
 
 				<View style={styles.inputContainer}>
 					<Text style={styles.inputTitleText}>Creator Responsibilities</Text>
-					<TextFieldWide placeholder="Enter Name" />
+					<TextFieldWide placeholder="Enter Name" onChangeText={text => addCampaignData({creatorResponsibilities: text})} />
 				</View>
 
 				<View style={styles.inputContainer}>
 					<Text style={styles.inputTitleText}>Compensation</Text>
-					<TextFieldWide placeholder="Enter Name" />
+					<TextFieldWide placeholder="Enter Name" onChangeText={text => addCampaignData({compensation: text})} />
 				</View>
 
 				<View style={styles.inputContainer}>
 					<Text style={styles.inputTitleText}>Perks of the Program</Text>
-					<TextFieldWide placeholder="Enter Name" />
+					<TextFieldWide placeholder="Enter Name" onChangeText={text => addCampaignData({perks: text})} />
 				</View>
 
 				<Text style={styles.header}>Participant Information</Text>
 
 				<View style={styles.inputContainer}>
-					<Text style={styles.inputTitleText}>Industry</Text>
+					<Text style={styles.inputTitleText} onChangeText={text => addCampaignData({industry: text})} >Industry</Text>
 				</View>
 
 				<View style={styles.inputContainer}>
-					<Text style={styles.inputTitleText}>Follower Count</Text>
+					<Text style={styles.inputTitleText} onChangeText={text => addCampaignData({followerCount: text})}>Follower Count</Text>
 				</View>
 
 				<View style={styles.inputContainer}>
-					<Text style={styles.inputTitleText}>Engagement Rate</Text>
+					<Text style={styles.inputTitleText} onChangeText={text => addCampaignData({engagementRate: text})}>Engagement Rate</Text>
 				</View>
 
 				<View style={styles.inputContainer}>
-					<Text style={styles.inputTitleText}>Interests</Text>
+					<Text style={styles.inputTitleText} onChangeText={text => addCampaignData({interests: text})}>Interests</Text>
 				</View>
 
 				<View style={styles.inputContainer}>
-					<Text style={styles.inputTitleText}>Age Range</Text>
+					<Text style={styles.inputTitleText} onChangeText={text => addCampaignData({ageRange: text})}>Age Range</Text>
 				</View>
 
 				<View style={styles.inputContainer}>
@@ -84,7 +103,7 @@ const EditRoute = () => {
 				</View>
 
 				<View style={styles.submitButtonContainer}>
-					<PrimaryButtonLarge text="Save & publish" onPress={() => {}}/>
+					<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData}/>
 				</View>
 			{/* </View> */}
 		</ScrollView>

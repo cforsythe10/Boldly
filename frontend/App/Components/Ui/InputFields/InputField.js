@@ -1,5 +1,4 @@
-import React, {useState, useCallback, useMemo, useEffect } from 'react'
-import PropTypes from 'prop-types';
+import React, {useState, useCallback } from 'react'
 import { View, TextInput } from 'react-native'
 import { inputFieldDB, InputFieldLB, inputFieldLB } from '../Styles/InputFieldStyles'
 
@@ -11,7 +10,9 @@ const THEME = {
 	} 
 };
 
-const TextField = ({style = '', placeholder='Insert Placeholder'}) => {
+const TextField = props => {
+	// TODO: Implement style picker for different types of inputs
+	const {style = '', placeholder = 'Insert Placeholder' } = props;
 	const [text, changeText] = useState('');
 	const [styleType, setStyleType] = useState('TextInputEmpty');
 	const [type, setType] = useState('light');
@@ -20,13 +21,13 @@ const TextField = ({style = '', placeholder='Insert Placeholder'}) => {
 
 	const handleTextChange = useCallback(text => {
 		changeText(text);
-		console.log(text);
 		text.length ? setStyleType('TextInputFilled') : setStyleType('TextInputEmpty');
 	}, [text]);
 
 	return (
 		<View style={inputFieldLB.BorderStyle}>
 			<TextInput
+				props
 				// secureTextEntry={( this.state.text <= 0 && this.state.emailStatus!='onFocus' ) ? true : false }
 				placeholder={placeholder}
 				style={inputFieldLB[styleType]}
