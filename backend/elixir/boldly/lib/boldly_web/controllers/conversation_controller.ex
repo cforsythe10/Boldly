@@ -25,6 +25,11 @@ defmodule BoldlyWeb.ConversationController do
     render(conn, "show.json", conversation: conv)
   end
 
+  def show_conv(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
+    conv = ConversationInfo.get_conversation!(creator_id, brand_id)
+    render(conn, "show.json", conversation: conv)
+  end
+
   def update(conn, %{
         "creator_id" => creator_id,
         "brand_id" => brand_id,

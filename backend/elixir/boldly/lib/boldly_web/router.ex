@@ -21,6 +21,9 @@ defmodule BoldlyWeb.Router do
     resources "/contracts", ContractController, except: [:new, :edit]
     resources "/templates", TemplateController, except: [:new, :edit]
     resources "/conversations", ConversationController, except: [:new, :edit]
+
+    post "/conversation", ConversationController, :show_conv
+
   end
 
   scope "/api", BoldlyWeb do

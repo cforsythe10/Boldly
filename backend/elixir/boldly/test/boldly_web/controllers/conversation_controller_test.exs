@@ -98,18 +98,44 @@ defmodule BoldlyWeb.ConversationControllerTest do
 
   describe "index" do
     test "list all conversations", %{conn: conn, b1: b1, b2: b2, c1: c1, c2: c2} do
-      [c_id] = Enum.take(StreamData.member_of([c1.id, c2.id]),1)
-      [b_id] = Enum.take(StreamData.member_of([b1.id, b2.id]),1)
+      [c_id] = Enum.take(StreamData.member_of([c1.id, c2.id]), 1)
+      [b_id] = Enum.take(StreamData.member_of([b1.id, b2.id]), 1)
       {:ok, conv} = create_conv(c_id, b_id)
       conn = get(conn, Routes.conversation_path(conn, :index))
 
-      assert json_response(conn,200)["data"] == [
-        %{
-          "id" => conv.id,
-          "creator_id" => conv.creator_id,
-          "brand_id" => conv.brand_id
-        }
-      ]
+      assert json_response(conn, 200)["data"] == [
+               %{
+                 "id" => conv.id,
+                 "creator_id" => conv.creator_id,
+                 "brand_id" => conv.brand_id
+               }
+             ]
+    end
+  end
+
+  describe "create conversation" do
+    test "renders conversation when data is valid", %{conn: conn, b1: b1, b2: b2, c1: c1, c2: c2} do
+      [c_id] = Enum.take(StreamData.member_of([c1.id, c2.id]), 1)
+      [b_id] = Enum.take(StreamData.member_of([b1.id, b2.id]), 1)
+
+      conn =
+        post(conn, Routes.conversation_path(conn, :create),
+          conversation: %{brand_id: b_id, creator_id: c_id}
+        )
+
+      params = %{creator_id: c_id, brand_id: b_id}
+
+      assert %{
+               "id" => id
+             } = json_response(conn, 201)["data"]
+
+      conn = post(conn, Routes.conversation_path(conn, :show_conv, creator_id: c_id, brand_id: b_id))
+
+      assert %{
+        "brand_id" => b_id,
+        "creator_id" => c_id,
+        "id" => id
+      } == json_response(conn, 200)["data"]
     end
   end
 
