@@ -29,3 +29,4 @@ boldly-*.tar
 
 
 # Ignore mix.lock
+mix.lock
