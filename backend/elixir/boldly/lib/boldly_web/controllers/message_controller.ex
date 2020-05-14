@@ -5,7 +5,6 @@ defmodule BoldlyWeb.MessageController do
 
   action_fallback BoldlyWeb.FallbackController
 
-
   def index(conn, _params) do
     messages = MessageInfo.list_messages()
     render(conn, "index.json", messages: messages)
@@ -20,16 +19,21 @@ defmodule BoldlyWeb.MessageController do
     end
   end
 
-  def show(conn, %{"conversation_id" => conv_id}) do
-    messages = MesssageInfo.get_messages!(conv_id)
+  def show(conn, %{"id" => id}) do
+    message = MessageInfo.get_message!(id)
+    render(conn, "show.json", message: message)
+  end
+
+  def show_conv(conn, %{"conversation_id" => conv_id}) do
+    messages = MessageInfo.get_messages!(conv_id)
     render(conn, "index.json", messages: messages)
   end
 
   def delete(conn, %{"id" => id}) do
     message = MessageInfo.get_message!(id)
+
     with {:ok, %Message{}} <- MessageInfo.delete_message(message) do
       send_resp(conn, :no_content, "")
     end
   end
-
 end

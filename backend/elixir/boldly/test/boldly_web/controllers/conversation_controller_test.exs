@@ -129,13 +129,14 @@ defmodule BoldlyWeb.ConversationControllerTest do
                "id" => id
              } = json_response(conn, 201)["data"]
 
-      conn = post(conn, Routes.conversation_path(conn, :show_conv, creator_id: c_id, brand_id: b_id))
+      conn =
+        post(conn, Routes.conversation_path(conn, :show_conv, creator_id: c_id, brand_id: b_id))
 
       assert %{
-        "brand_id" => b_id,
-        "creator_id" => c_id,
-        "id" => id
-      } == json_response(conn, 200)["data"]
+               "brand_id" => b_id,
+               "creator_id" => c_id,
+               "id" => id
+             } == json_response(conn, 200)["data"]
     end
 
     test "renders error when data is invlaid", %{conn: conn, b1: b1, b2: b2, c1: c1, c2: c2} do

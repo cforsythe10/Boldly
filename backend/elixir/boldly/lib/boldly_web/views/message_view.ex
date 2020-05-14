@@ -2,7 +2,6 @@ defmodule BoldlyWeb.MessageView do
   use BoldlyWeb, :view
   alias BoldlyWeb.MessageView
 
-
   def render("index.json", %{messages: messages}) do
     %{data: render_many(messages, MessageView, "message.json")}
   end
@@ -16,7 +15,8 @@ defmodule BoldlyWeb.MessageView do
       conversation_id: message.conversation_id,
       content: message.content,
       date: message.date,
-      sent_by_creator: message.sent_by_creator
+      sent_by_creator: message.sent_by_creator,
+      id: message.id
     }
   end
 end
