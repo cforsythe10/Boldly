@@ -53,6 +53,15 @@ defmodule Boldly.MessageInfo do
 
 
   @doc """
+  Creates a message.
+
+  ## Examples
+
+    iex> create_message(%{field: value})
+    {:ok, %Message{}}
+
+    iex> create_message(%{field: bad_value})
+    {:error, %Ecto.Changeset{}}
 
   """
   def create_message(attrs \\ %{}) do
@@ -67,6 +76,14 @@ defmodule Boldly.MessageInfo do
     |> Repo.update()
   end
 
+  @doc """
+  Deletes a message.
+
+  ## Examples
+
+    iex> delete_message(message)
+    {:ok, %Message{}}
+  """
   def delete_message(%Message{} = mess) do
     Repo.delete(mess)
   end
