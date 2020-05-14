@@ -58,7 +58,7 @@ Run `make stop-aws-detached` if you just wish to stop the process from running w
 
 ## Conversations/Messaging API instructions
 
-**READ THE FOLLOWING CAREFULLY**. Note the difference when the endpoint is **plural** vs **singular**.
+__READ THE FOLLOWING CAREFULLY__. Note the difference when the endpoint is *plural* vs *singular*.
 
 ### Creating a Conversation
 `endpoint: /api/conversations`
