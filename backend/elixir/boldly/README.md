@@ -36,6 +36,71 @@ Run `make stop-aws-detached` if you just wish to stop the process from running w
 
 `make reset-aws-db` - runs `mix ecto.drop` to delete all the tables and their associated data. *Do not run when the process is running in the background*
 
+
+## Conversations/Messaging API instructions ##
+**READ THE FOLLOWING CAREFULLY**. Note the difference when the endpoint is **plural** vs **singular**.
+
+### Creating a Conversation ###
+`endpoint: /api/conversations`
+
+`Request Type: POST`
+
+JSON Payload:
+```json
+{
+  "conversation": {
+    "brand_id": 1,
+    "creator_id": 1
+  }
+}
+```
+
+
+### Get Conversation ###
+`endpoint: /api/conversation`
+
+`Request Type: POST`
+
+JSON Payload:
+```json
+{
+  "brand_id": 1,
+  "creator_id": 1
+}
+```
+
+### Create Message ###
+`endpoint: /api/messages`
+
+`Request Type: POST`
+
+JSON Payload:
+```json
+{
+  "message": {
+    "content": "message_content",
+    "date": "2000-01-01 12:00:00Z",
+    "sent_by_creator": true,
+    "conversation_id": 1
+  }
+}
+
+```
+
+### Get all messages in a conversation ###
+`endpoint: /api/message`
+
+`Request Type: POST`
+
+JSON Payload:
+```json
+{
+  "conversation_id": 1
+}
+```
+
+It will return all messages in descending order by date (newest first)
+
 ## Learn more
 
   * Official website: http://www.phoenixframework.org/
