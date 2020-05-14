@@ -1,4 +1,20 @@
-# Boldly
+# Boldly #
+<!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
+- [Boldly #](#boldly-)
+  - [Makefile ##](#makefile-)
+  - [Operating on AWS ##](#operating-on-aws-)
+    - [Updating Tables/Schemas ###](#updating-tablesschemas-)
+    - [Stopping the Background Process ###](#stopping-the-background-process-)
+    - [Other Commands ###](#other-commands-)
+  - [Conversations/Messaging API instructions ##](#conversationsmessaging-api-instructions-)
+    - [Creating a Conversation ###](#creating-a-conversation-)
+    - [Get Conversation ###](#get-conversation-)
+    - [Create Message ###](#create-message-)
+    - [Get all messages in a conversation ###](#get-all-messages-in-a-conversation-)
+  - [Learn more](#learn-more)
+<!-- TOC END -->
+
+
 
 To start your Phoenix server:
 
