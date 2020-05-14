@@ -12,6 +12,16 @@ defmodule Boldly.ConversationInfo do
     Repo.one(query)
   end
 
+  def get_creator_conversations(creator_id) do
+    query = from c in Conversation, where: c.creator_id == ^creator_id
+    Repo.all(query)
+  end
+
+  def get_brand_conversations(brand_id) do
+    query = from c in Conversation, where: c.brand_id == ^brand_id
+    Repo.all(query)
+  end
+
   def create_conversation(attrs \\ %{}) do
     %Conversation{}
     |> Conversation.changeset(attrs)

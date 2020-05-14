@@ -90,6 +90,30 @@ JSON Payload:
 }
 ```
 
+### Getting all conversations of a user
+
+`endpoint: /api/conversations/all`
+
+`Request Type: POST`
+
+JSON Payload:
+
+1)
+```json
+{
+  "brand_id": 1
+}
+```
+
+__OR__
+
+2)
+```json
+{
+  "creator_id": 1
+}
+```
+
 ### Create Message
 
 `endpoint: /api/messages`
