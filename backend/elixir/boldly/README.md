@@ -6,9 +6,11 @@
     - [Updating Tables/Schemas](#updating-tablesschemas)
     - [Stopping the Background Process](#stopping-the-background-process)
     - [Other Commands](#other-commands)
+  - [Campaign creation](#campaign-creation)
   - [Conversations/Messaging API instructions](#conversationsmessaging-api-instructions)
     - [Creating a Conversation](#creating-a-conversation)
     - [Get Conversation](#get-conversation)
+    - [Getting all conversations of a user](#getting-all-conversations-of-a-user)
     - [Create Message](#create-message)
     - [Get all messages in a conversation](#get-all-messages-in-a-conversation)
   - [Learn more](#learn-more)
@@ -55,6 +57,11 @@ Run `make stop-aws-detached` if you just wish to stop the process from running w
 
 `make reset-aws-db` - runs `mix ecto.drop` to delete all the tables and their associated data. *Do not run when the process is running in the background*
 
+
+## Campaign creation
+
+`endpoint: /api/campaigns`
+The following is an example payload to create a campaign
 
 ## Conversations/Messaging API instructions
 
