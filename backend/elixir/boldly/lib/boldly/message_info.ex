@@ -8,6 +8,10 @@ defmodule Boldly.MessageInfo do
     Repo.all(Message)
   end
 
+  def get_message!(id) do
+    Repo.one(from m in Message, where: m.id == ^id)
+  end
+
   def get_messages!(conv_id) do
     query = from m in Message, where: m.conversation_id == ^conv_id, order_by: [desc: m.date]
     Repo.all(query)
