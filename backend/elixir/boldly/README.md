@@ -63,6 +63,30 @@ Run `make stop-aws-detached` if you just wish to stop the process from running w
 `endpoint: /api/campaigns`
 The following is an example payload to create a campaign
 
+```json
+{
+	"campaign": {
+		"age_range": "18-45",
+		"compensation": "$400",
+		"creator_responsibilities": "don't fucking die - get moolah for me",
+		"description": "fool the sheep into joining the klimmek",
+		"desired_engagement_rate": 55,
+		"start_date": "2020-06-01",
+		"end_date": "2020-07-01",
+		"industry": "test",
+		"interests": "public toilet",
+		"is_draft": false,
+		"location": "everywhere",
+		"name": "Sam's Favorite Campaign",
+		"perks": "Juggernaut?",
+		"photo_reference": "not_implemented_yet",
+		"specific_to_location": false,
+		"values": "val1,val2",
+		"launched_by": 1
+	}
+}
+```
+
 ## Conversations/Messaging API instructions
 
 __*READ THE FOLLOWING CAREFULLY*__. Note the difference when the endpoint is *plural* vs *singular*.
