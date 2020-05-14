@@ -1,16 +1,16 @@
 # Boldly #
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
 - [Boldly #](#boldly-)
-  - [Makefile ##](#makefile-)
-  - [Operating on AWS ##](#operating-on-aws-)
-    - [Updating Tables/Schemas ###](#updating-tablesschemas-)
-    - [Stopping the Background Process ###](#stopping-the-background-process-)
-    - [Other Commands ###](#other-commands-)
-  - [Conversations/Messaging API instructions ##](#conversationsmessaging-api-instructions-)
-    - [Creating a Conversation ###](#creating-a-conversation-)
-    - [Get Conversation ###](#get-conversation-)
-    - [Create Message ###](#create-message-)
-    - [Get all messages in a conversation ###](#get-all-messages-in-a-conversation-)
+  - [Makefile](#makefile)
+  - [Operating on AWS](#operating-on-aws)
+    - [Updating Tables/Schemas](#updating-tablesschemas)
+    - [Stopping the Background Process](#stopping-the-background-process)
+    - [Other Commands](#other-commands)
+  - [Conversations/Messaging API instructions](#conversationsmessaging-api-instructions)
+    - [Creating a Conversation](#creating-a-conversation)
+    - [Get Conversation](#get-conversation)
+    - [Create Message](#create-message)
+    - [Get all messages in a conversation](#get-all-messages-in-a-conversation)
   - [Learn more](#learn-more)
 <!-- TOC END -->
 
@@ -24,39 +24,39 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-## Makefile ##
+## Makefile
 
 `PLEASE` do not run anything aside from the following commands unless you know what you're doing (these commands should be prefaced with the word `make` from the command line).
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
 
-## Operating on AWS ##
+## Operating on AWS
 
 The following are instructions on what `MAKE` commands to run for the server and when.
 
 All commands should be run from `Boldly/backend/elixir/boldly`.
 
-### Updating Tables/Schemas ###
+### Updating Tables/Schemas
 **Before you pull from github**, make sure you run this command: `make git-reset`. **THIS WILL DELETE ALL DATA IN THE DATABASE**
 
 Then, once the latest schemas/migrations have been pulled from github, test it with `make aws-test` and make a few API calls to ensure everything is working.
 
 If everything is fine, run `make run-aws-detached`. This will run it as a background process, and you can exit your shell without worry.
 
-### Stopping the Background Process ###
+### Stopping the Background Process
 Run `make stop-aws-detached` if you just wish to stop the process from running without deleting anything from the database. This will find the process and kill it automatically.
 
-### Other Commands ###
+### Other Commands
 `make setup-aws-psql` - runs `mix ecto.setup` to setup the DB with the appropriate tables and fields. *Do not run when the process is running in the background*
 
 `make reset-aws-db` - runs `mix ecto.drop` to delete all the tables and their associated data. *Do not run when the process is running in the background*
 
 
-## Conversations/Messaging API instructions ##
+## Conversations/Messaging API instructions
 **READ THE FOLLOWING CAREFULLY**. Note the difference when the endpoint is **plural** vs **singular**.
 
-### Creating a Conversation ###
+### Creating a Conversation
 `endpoint: /api/conversations`
 
 `Request Type: POST`
@@ -72,7 +72,7 @@ JSON Payload:
 ```
 
 
-### Get Conversation ###
+### Get Conversation
 `endpoint: /api/conversation`
 
 `Request Type: POST`
@@ -85,7 +85,7 @@ JSON Payload:
 }
 ```
 
-### Create Message ###
+### Create Message
 `endpoint: /api/messages`
 
 `Request Type: POST`
@@ -103,7 +103,7 @@ JSON Payload:
 
 ```
 
-### Get all messages in a conversation ###
+### Get all messages in a conversation
 `endpoint: /api/message`
 
 `Request Type: POST`
