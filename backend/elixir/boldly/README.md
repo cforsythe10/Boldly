@@ -38,6 +38,7 @@ The following are instructions on what `MAKE` commands to run for the server and
 All commands should be run from `Boldly/backend/elixir/boldly`.
 
 ### Updating Tables/Schemas
+
 **Before you pull from github**, make sure you run this command: `make git-reset`. **THIS WILL DELETE ALL DATA IN THE DATABASE**
 
 Then, once the latest schemas/migrations have been pulled from github, test it with `make aws-test` and make a few API calls to ensure everything is working.
@@ -45,15 +46,18 @@ Then, once the latest schemas/migrations have been pulled from github, test it w
 If everything is fine, run `make run-aws-detached`. This will run it as a background process, and you can exit your shell without worry.
 
 ### Stopping the Background Process
+
 Run `make stop-aws-detached` if you just wish to stop the process from running without deleting anything from the database. This will find the process and kill it automatically.
 
 ### Other Commands
+
 `make setup-aws-psql` - runs `mix ecto.setup` to setup the DB with the appropriate tables and fields. *Do not run when the process is running in the background*
 
 `make reset-aws-db` - runs `mix ecto.drop` to delete all the tables and their associated data. *Do not run when the process is running in the background*
 
 
 ## Conversations/Messaging API instructions
+
 **READ THE FOLLOWING CAREFULLY**. Note the difference when the endpoint is **plural** vs **singular**.
 
 ### Creating a Conversation
@@ -73,6 +77,7 @@ JSON Payload:
 
 
 ### Get Conversation
+
 `endpoint: /api/conversation`
 
 `Request Type: POST`
@@ -86,6 +91,7 @@ JSON Payload:
 ```
 
 ### Create Message
+
 `endpoint: /api/messages`
 
 `Request Type: POST`
@@ -104,6 +110,7 @@ JSON Payload:
 ```
 
 ### Get all messages in a conversation
+
 `endpoint: /api/message`
 
 `Request Type: POST`
