@@ -61,6 +61,9 @@ Run `make stop-aws-detached` if you just wish to stop the process from running w
 ## Campaign creation
 
 `endpoint: /api/campaigns`
+
+`Request Type: POST`
+
 The following is an example payload to create a campaign
 
 ```json
