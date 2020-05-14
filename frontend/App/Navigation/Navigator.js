@@ -90,7 +90,7 @@ const surveyNavigator = createStackNavigator(
 const Navigator = createStackNavigator(
 	{
 		Default: {
-			screen: CampaignCreator
+			screen: Default
 		},
 		Dashboard: {
 			screen: Dashboard
@@ -103,6 +103,9 @@ const Navigator = createStackNavigator(
         },
         Campaigns: {
             screen: Campaign
+        },
+        CampaignCreator: {
+        	screen: CampaignCreator
         },
         Settings: {
             screen: Settings

@@ -7,6 +7,8 @@ import TextFieldDarkBG from '../../Components/Ui/TextFieldDarkBG';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
 import Header from '../../Components/Ui/Header';
 import ProgressBar from '../../Components/Ui/SurveyProgressBar';
+import LocationInputField from '../../Components/Ui/InputFields/LocationInputField';
+
 
 import BackButton from '../../Images/Icons/back.svg';
 import Logo from '../../Images/Icons/logo-fog.svg';
@@ -47,8 +49,9 @@ export default class Survey4 extends Component {
       if(data && !this.state.showLocation) this.setState({currentState: {...this.state.currentState, isECommerse: data} , showContinue: true});
     }
 
-    _textChanged(text){
-      this.setState({currentState: {...this.state.currentState, location: text}, showContinue: true});
+    _textChanged(location){
+      console.log(location.description);
+      this.setState({currentState: {...this.state.currentState, location: location.description}, showContinue: true});
     }
 
     _renderHeader = () => {
@@ -64,6 +67,13 @@ export default class Survey4 extends Component {
           </View>
       )
     }
+
+    _renderButtons = () => (
+      <View style={styles.buttonContainer}>
+        <IconButton svgName='BrickAndMortarImage' text='Brick & Mortar' callback={this.callbackBnM} />
+        <IconButton svgName='ECommerceImage' text='E-Commerce' callback={this.callbackECom} />
+      </View>
+    );
 
     render() {
       return (
@@ -91,18 +101,12 @@ export default class Survey4 extends Component {
             </Text>
           </View>
 
-          <View style={styles.buttonContainer}>
-          {!this.state.currentState.isCreator ?
-            <IconButton svgName='BrickAndMortarImage' text='Brick & Mortar' callback={this.callbackBnM} /> : null
-          }
-          {!this.state.currentState.isCreator ?
-            <IconButton svgName='ECommerceImage' text='E-Commerce' callback={this.callbackECom} /> : null 
-          }
-          </View>
+
+          {!this.state.currentState.isCreator ? this._renderButtons() : null}
 
           <View style={styles.locationContainer}>
             {this.state.showLocation ?
-              <TextFieldDarkBG placeholder='Location' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} /> : null
+              <LocationInputField callback={text => this._textChanged(text)} /> : null
             }
           </View>
           
