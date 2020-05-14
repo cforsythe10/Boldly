@@ -3,6 +3,14 @@ defmodule Boldly.ConversationInfo do
   alias Boldly.Repo
   alias Boldly.Conversations.Conversation
 
+  @doc """
+  Returns the list of all conversations.
+
+  ## Examples
+
+    iex> list_conversations()
+    [%Conversation{}, ...]
+  """
   def list_conversations() do
     Repo.all(Conversation)
   end
