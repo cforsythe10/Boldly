@@ -16,7 +16,7 @@ defmodule BoldlyWeb.MessageView do
       conversation_id: message.conversation_id,
       content: message.content,
       date: message.date,
-      sent_by_creator: messsage.sent_by_creator
+      sent_by_creator: message.sent_by_creator
     }
   end
 end
