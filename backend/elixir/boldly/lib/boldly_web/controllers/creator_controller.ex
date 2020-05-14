@@ -83,6 +83,15 @@ defmodule BoldlyWeb.CreatorController do
     end
   end
 
+  def increment_views(conn, %{"id" => id}) do
+    creator = CreatorAccount.get_creator!(id)
+
+    with {:ok, %Creator{} = creator} <-
+           CreatorAccount.incr_view(creator) do
+      render(conn, "show.json", creator: creator)
+    end
+  end
+
   @doc """
   Ensures that the email and password of the account are valid.
 

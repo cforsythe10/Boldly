@@ -84,6 +84,15 @@ defmodule BoldlyWeb.BrandController do
     end
   end
 
+  def increment_views(conn, %{"id" => id}) do
+    brand = BrandAccount.get_brand!(id)
+
+    with {:ok, %Brand{} = brand} <-
+           BrandAccount.incr_view(brand) do
+      render(conn, "show.json", brand: brand)
+    end
+  end
+
   @doc """
   Ensures that the login information is correct.
 

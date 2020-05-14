@@ -1,11 +1,15 @@
 use Mix.Config
 
+db_host = System.get_env("BOLDLY_POSTGRES_ENDPOINT")
+
+hostn = if db_host, do: db_host, else: "localhost"
+
 # Configure your database
 config :boldly, Boldly.Repo,
   username: "postgres",
   password: "postgres",
   database: "boldly_dev",
-  hostname: "localhost",
+  hostname: hostn,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -52,6 +56,8 @@ config :logger, :console, format: "[$level] $message\n"
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
+
+# config :phoenix, :serve_endpoints, true
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime

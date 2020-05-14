@@ -15,7 +15,38 @@ defmodule Boldly.CreatorAccount.Creator do
     field :password_hash, :string
     field :uuid, Ecto.UUID, autogenerate: true
 
+    field :description, :string
+    field :picture, :string
+    field :web_link, :string
+    field :profile_visits, :integer, default: 0
+
     timestamps(type: :utc_datetime_usec)
+  end
+
+  def change_incr(creator, %{profile_visits: num_visits}) do
+    p_visits = creator.profile_visits + 1
+
+    creator
+    |> cast(
+      %{
+        profile_visits: p_visits
+      },
+      [
+        :uuid,
+        :name,
+        :birthday,
+        :values,
+        :industry,
+        :interests,
+        :location,
+        :email,
+        :password,
+        :description,
+        :picture,
+        :web_link,
+        :profile_visits
+      ]
+    )
   end
 
   @doc false
@@ -30,7 +61,11 @@ defmodule Boldly.CreatorAccount.Creator do
       :interests,
       :location,
       :email,
-      :password
+      :password,
+      :description,
+      :picture,
+      :web_link,
+      :profile_visits
     ])
     |> validate_required([
       # :uuid,
