@@ -85,10 +85,12 @@ The following is an example payload to create a campaign
 		"photo_reference": "not_implemented_yet",
 		"specific_to_location": false,
 		"values": "val1,val2",
-		"launched_by": 1
+		"launched_by": "7488a646-e31f-11e4-aace-600308960668"
 	}
 }
 ```
+
+`launched_by` is the UUID of whatever brand is launching the campaign
 
 ## Conversations/Messaging API instructions
 

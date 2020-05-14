@@ -23,7 +23,8 @@ defmodule Boldly.CampaignInfo.Campaign do
 
     belongs_to :brands, Boldly.BrandAccount.Brand,
       foreign_key: :launched_by,
-      references: :id
+      references: :uuid,
+      type: Ecto.UUID
 
     timestamps()
   end
