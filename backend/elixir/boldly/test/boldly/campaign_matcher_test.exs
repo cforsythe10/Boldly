@@ -353,7 +353,7 @@ defmodule Boldly.CampaignMatcherTest do
         |> create_users_with_attributes(10)
 
       d_not2 = Date.utc_today()
-      d_not1 = Date.add(d_not2, (-365) * (begin_age - 3))
+      d_not1 = Date.add(d_not2, -365 * (begin_age - 3))
 
       b_c5 =
         %{

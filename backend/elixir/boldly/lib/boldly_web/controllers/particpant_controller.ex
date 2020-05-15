@@ -24,15 +24,23 @@ defmodule BoldlyWeb.ParticipantController do
 
     matches = CampaignMatcher.match(camp_id)
 
-    Enum.map(matches, fn m ->
-      cr_uuid = m.uuid
-      %{
-        is_active: false,
-        is_deleted: false,
-        creator_uuid: cr_uuid,
-        campaign_uuid: ca_uuid
-      }
-    end)
+    participants =
+      Enum.map(matches, fn m ->
+        cr_uuid = m.uuid
+
+        {:ok, %Participant{} = participant} =
+          %{
+            is_active: false,
+            is_deleted: false,
+            creator_uuid: cr_uuid,
+            campaign_uuid: ca_uuid
+          }
+          |> CampaignPart.create_participant()
+
+        participant
+      end)
+
+    render(conn, "index.json", participants: participants)
   end
 
   @doc """
