@@ -45,11 +45,12 @@ defmodule Boldly.SignedContractTest do
       values: "some values"
     }
 
-    @valid_attrs %{file_path: "some file_path"}
+    @valid_attrs %{file_path: "some file_path", document: "base_64_encoded_document"}
     @update_attrs %{
-      file_path: "some updated file_path"
+      file_path: "some updated file_path",
+      document: "base64_updated_document"
     }
-    @invalid_attrs %{file_path: nil}
+    @invalid_attrs %{file_path: nil, creator_uuid: nil, brand_uuid: nil, contract_uuid: nil}
 
     def pre_contract_fixture(attrs \\ %{}) do
       {:ok, brand} = attrs |> Enum.into(@valid_brand_attrs) |> Boldly.BrandAccount.create_brand()
@@ -100,7 +101,9 @@ defmodule Boldly.SignedContractTest do
         brand_uuid: brand.uuid,
         campaign_uuid: campaign.uuid,
         creator_uuid: creator.uuid,
-        file_path: "some file_path"
+        document: @valid_attrs.document
+        # file_path: "some file_path"
+
       }
     end
 
@@ -117,18 +120,19 @@ defmodule Boldly.SignedContractTest do
 
     test "list_contracts/0 returns all contracts" do
       contract = contract_fixture()
-      assert SignedContract.list_contracts() == [contract]
+      assert SignedContract.list_contracts() == [Map.replace(contract, :document, nil)]
     end
 
     test "get_contract!/1 returns the contract with given id" do
       contract = contract_fixture()
-      assert SignedContract.get_contract!(contract.id) == contract
+      assert SignedContract.get_contract!(contract.id) == Map.replace(contract, :document, nil)
     end
 
     test "create_contract/1 with valid data creates a contract" do
       contr_attrs = pre_contract_fixture()
       assert {:ok, %Contract{} = contract} = SignedContract.create_contract(contr_attrs)
-      assert contract.file_path == "some file_path"
+      reg_ex = ~r"#{contract.campaign_uuid}-#{contract.brand_uuid}-#{contract.creator_uuid}"
+      assert String.match?(contract.file_path, reg_ex)
     end
 
     test "create_contract/1 with invalid data returns error changeset" do
@@ -159,7 +163,7 @@ defmodule Boldly.SignedContractTest do
       assert {:error, %Ecto.Changeset{}} =
                SignedContract.update_contract(contract, @invalid_attrs)
 
-      assert contract == SignedContract.get_contract!(contract.id)
+      assert Map.replace(contract, :document, nil) == SignedContract.get_contract!(contract.id)
     end
 
     test "delete_contract/1 deletes the contract" do
