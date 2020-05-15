@@ -16,6 +16,10 @@ defmodule Boldly.CampaignMatcher do
     |> Repo.all()
   end
 
+  def match_test(query) do
+    Repo.all(query)
+  end
+
   def compose_query(camp) do
     {start_date, end_date} = get_age_range(camp.age_range)
     industry = camp.industry
@@ -27,12 +31,12 @@ defmodule Boldly.CampaignMatcher do
 
     # date_query = where([c], c.birthday >= ^start_date and c.birthday <= ^end_date)
 
-    q_base = from(c in subquery(interests_query), select: c)
+    q_base = from(c in subquery(interests_query))
 
     q_base
-    |> where([c], c.industry == ^industry)
-    |> where([c], c.birthday <= ^start_date and c.birthday >= ^end_date)
+    |> where([c], c.industry == ^industry and c.birthday <= ^start_date and c.birthday >= ^end_date)
     |> location_query(camp.location, camp.specific_to_location)
+    # |> IO.puts()
   end
 
   def get_age_range(age_range \\ "18-50") do
@@ -58,7 +62,7 @@ defmodule Boldly.CampaignMatcher do
   def int_query(query, interests) do
     Enum.reduce(interests, query, fn int, qt ->
       q_t = "%#{int}%"
-      from m in qt, or_where: like(m.interests, ^q_t)
+      from m in qt, or_where: ilike(m.interests, ^q_t)
     end)
   end
 
@@ -67,7 +71,7 @@ defmodule Boldly.CampaignMatcher do
   def vals_query(query, val_list) do
     Enum.reduce(val_list, query, fn val, qt ->
       q_t = "%#{val}%"
-      from m in qt, or_where: like(m.values, ^q_t)
+      from m in qt, or_where: ilike(m.values, ^q_t)
     end)
   end
 
