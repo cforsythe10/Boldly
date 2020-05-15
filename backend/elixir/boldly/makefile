@@ -79,7 +79,7 @@ interests_schema:
 
 interests_endpoint:
 	mix phx.gen.json InterestInfo Interest interests \
-	interest:string categories:string
+	interest:string categories:string --no-context --no-schema
 
 campaign_schema:
 	mix phx.gen.context CampaignInfo Campaign campaigns uuid:uuid:unique launched_by:references:brands \
