@@ -3,6 +3,8 @@ defmodule BoldlyWeb.ParticipantController do
 
   alias Boldly.CampaignPart
   alias Boldly.CampaignPart.Participant
+  alias Boldly.CampaignMatcher
+  alias Boldly.CampaignInfo
 
   action_fallback BoldlyWeb.FallbackController
 
@@ -14,6 +16,23 @@ defmodule BoldlyWeb.ParticipantController do
   def index(conn, _params) do
     participants = CampaignPart.list_participants()
     render(conn, "index.json", participants: participants)
+  end
+
+  def match_creators(conn, %{"campaign_id" => camp_id}) do
+    campaign = CampaignInfo.get_campaign!(camp_id)
+    ca_uuid = campaign.uuid
+
+    matches = CampaignMatcher.match(camp_id)
+
+    Enum.map(matches, fn m ->
+      cr_uuid = m.uuid
+      %{
+        is_active: false,
+        is_deleted: false,
+        creator_uuid: cr_uuid,
+        campaign_uuid: ca_uuid
+      }
+    end)
   end
 
   @doc """

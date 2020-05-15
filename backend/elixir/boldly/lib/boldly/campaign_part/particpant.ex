@@ -5,7 +5,7 @@ defmodule Boldly.CampaignPart.Participant do
   schema "participants" do
     field :is_active, :boolean, default: false
     field :is_deleted, :boolean, default: false
-    field :score, :integer
+    field :score, :integer, default: 0
 
     belongs_to :creators, Boldly.CreatorAccount.Creator,
       foreign_key: :creator_uuid,

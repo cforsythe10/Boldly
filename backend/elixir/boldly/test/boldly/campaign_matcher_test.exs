@@ -321,7 +321,7 @@ defmodule Boldly.CampaignMatcherTest do
         industry: industry
       }
 
-      c_num = 500
+      c_num = 50
       match_creators = create_users_with_attributes(match_usr_attrs, c_num)
 
       b_c1 =
