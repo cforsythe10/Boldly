@@ -48,7 +48,6 @@ defmodule Boldly.ConversationInfo do
     Repo.all(query)
   end
 
-
   @doc """
   Gets all conversations that the Brand is a part of.
 

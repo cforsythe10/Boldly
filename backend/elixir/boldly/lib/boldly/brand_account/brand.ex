@@ -94,8 +94,9 @@ defmodule Boldly.BrandAccount.Brand do
 
   defp put_password_hash(changeset), do: changeset
 
-
-  defp store_image(%Ecto.Changeset{valid?: true, changes: %{picture: picture, name: name}} = changeset) do
+  defp store_image(
+         %Ecto.Changeset{valid?: true, changes: %{picture: picture, name: name}} = changeset
+       ) do
     f_uuid = UUID.uuid4(:hex)
 
     unique_filename = "#{f_uuid}-#{name}"
@@ -104,11 +105,12 @@ defmodule Boldly.BrandAccount.Brand do
 
     img =
       ExAws.S3.put_object(bucket_name, unique_filename, picture)
-      |> ExAws.request!
-
+      |> ExAws.request!()
 
     img_url = "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
 
-    change(changeset, %{picture: img_url})
+    change(changeset, %{picture: unique_filename})
   end
+
+  defp store_image(changeset), do: changeset
 end

@@ -37,7 +37,6 @@ defmodule BoldlyWeb.ConversationController do
     end
   end
 
-
   # def show(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
   #   conv = ConversationInfo.get_conversation!(creator_id, brand_id)
   #   render(conn, "show.json", conversation: conv)
@@ -77,7 +76,6 @@ defmodule BoldlyWeb.ConversationController do
     conv = ConversationInfo.get_brand_conversations(brand_id)
     render(conn, "index.json", conversations: conv)
   end
-
 
   @doc """
   Not yet implemented.
