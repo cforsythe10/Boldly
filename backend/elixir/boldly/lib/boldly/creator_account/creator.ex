@@ -82,6 +82,7 @@ defmodule Boldly.CreatorAccount.Creator do
     |> unique_constraint(:uuid)
     |> unique_constraint(:email)
     |> put_password_hash()
+    |> store_image()
   end
 
   defp put_password_hash(
@@ -91,4 +92,24 @@ defmodule Boldly.CreatorAccount.Creator do
   end
 
   defp put_password_hash(changeset), do: changeset
+
+  defp store_image(
+         %Ecto.Changeset{valid?: true, changes: %{picture: picture, name: name}} = changeset
+       ) do
+    f_uuid = UUID.uuid4(:hex)
+
+    unique_filename = "#{f_uuid}-#{name}"
+    bucket_name = System.get_env("BUCKET_NAME")
+    IO.puts(bucket_name)
+
+    img =
+      ExAws.S3.put_object(bucket_name, unique_filename, picture)
+      |> ExAws.request!()
+
+    img_url = "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
+
+    change(changeset, %{picture: unique_filename})
+  end
+
+  defp store_image(changeset), do: changeset
 end
