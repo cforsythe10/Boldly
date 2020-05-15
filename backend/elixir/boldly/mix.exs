@@ -52,7 +52,11 @@ defmodule Boldly.MixProject do
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:poison, "~> 3.1"},
       {:distillery, "~> 2.0"},
-      {:stream_data, "~> 0.1", only: [:test, :dev]}
+      {:stream_data, "~> 0.1", only: [:test, :dev]},
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~>2.0"},
+      {:hackney, "~> 1.6"},
+      {:uuid, "~> 1.1" }
     ]
   end
 
