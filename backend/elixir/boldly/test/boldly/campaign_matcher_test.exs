@@ -360,7 +360,7 @@ defmodule Boldly.CampaignMatcherTest do
           date_range: Date.range(d_not1, d_not2)
         }
         |> Enum.into(match_usr_attrs)
-        |> create_users_with_attributes(100)
+        |> create_users_with_attributes(10)
 
       matches = CampaignMatcher.match(camp.id)
 
