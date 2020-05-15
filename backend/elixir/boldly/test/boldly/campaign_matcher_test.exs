@@ -170,7 +170,7 @@ defmodule Boldly.CampaignMatcherTest do
     age_range = "#{begin_age}-#{stop_age}"
 
     camp_attrs = %{
-      age_rang: age_range,
+      age_range: age_range,
       specific_to_location: specific_loc,
       interests: ints,
       location: loc,
@@ -193,30 +193,9 @@ defmodule Boldly.CampaignMatcherTest do
       assert res == [c1]
     end
 
-    test "vals_query/2 returns correct applicants when location is specified" do
-      # begin_age = 10
-      # stop_age = 80
-      #
-      # vals = "v1,v2,v3,v6,v22,h68,n954"
-      # ints = "int11,int22,int3,int4,int8,int69"
-      # specific_loc = true
-      # loc = "NY,NY"
-      # industry = "ind1"
-      # age_range = "#{begin_age}-#{stop_age}"
-      #
-      # camp_attrs = %{
-      #   age_rang: age_range,
-      #   specific_to_location: specific_loc,
-      #   interests: ints,
-      #   location: loc,
-      #   industry: industry,
-      #   values: vals
-      # }
-      #
-      # {camp, creator1, creator2} = campaign_fixture(camp_attrs)
-      {camp, vals, ints, specific_loc, loc, industry, vals, begin_age, stop_age} = fixture(:camp_attrs)
-
-      # IO.puts(camp)
+    test "vals_query/2 returns correct applicants" do
+      {camp, vals, ints, specific_loc, loc, industry, vals, begin_age, stop_age} =
+        fixture(:camp_attrs)
 
       d1 = Date.add(Date.utc_today(), -365 * stop_age)
       d2 = Date.add(Date.utc_today(), -365 * begin_age)
@@ -240,7 +219,6 @@ defmodule Boldly.CampaignMatcherTest do
         }
         |> Enum.into(match_usr_attrs)
 
-
       match_creators = create_users_with_attributes(match_usr_attrs, 10)
       bad_creators = create_users_with_attributes(bad_usr_attrs, 10)
 
@@ -248,6 +226,146 @@ defmodule Boldly.CampaignMatcherTest do
 
       assert matches == match_creators
       assert Enum.count(matches) == 10
+    end
+
+    test "int_query/2 returns correct applicants" do
+      {camp, vals, ints, specific_loc, loc, industry, vals, begin_age, stop_age} =
+        fixture(:camp_attrs)
+
+      d1 = Date.add(Date.utc_today(), -365 * stop_age)
+      d2 = Date.add(Date.utc_today(), -365 * begin_age)
+
+      values = String.split(vals, ",")
+      interests = String.split(ints, ",")
+
+      match_usr_attrs = %{
+        date_range: Date.range(d1, d2),
+        location: loc,
+        vals: values,
+        interests: interests,
+        max_num_vals: Enum.count(values),
+        max_num_int: Enum.count(interests),
+        industry: industry
+      }
+
+      bad_usr_attrs =
+        %{
+          interests: ["nonesense", "nonesense2"]
+        }
+        |> Enum.into(match_usr_attrs)
+
+      match_creators = create_users_with_attributes(match_usr_attrs, 10)
+      bad_creators = create_users_with_attributes(bad_usr_attrs, 10)
+
+      matches = CampaignMatcher.int_query(Creator, interests) |> CampaignMatcher.match_test()
+
+      assert matches == match_creators
+      assert Enum.count(matches) == 10
+    end
+
+    test "vals_query/2 |> int_query/2 works" do
+      {camp, vals, ints, specific_loc, loc, industry, vals, begin_age, stop_age} =
+        fixture(:camp_attrs)
+
+      d1 = Date.add(Date.utc_today(), -365 * stop_age)
+      d2 = Date.add(Date.utc_today(), -365 * begin_age)
+
+      values = String.split(vals, ",")
+      interests = String.split(ints, ",")
+
+      match_usr_attrs = %{
+        date_range: Date.range(d1, d2),
+        location: loc,
+        vals: values,
+        interests: interests,
+        max_num_vals: Enum.count(values),
+        max_num_int: Enum.count(interests),
+        industry: industry
+      }
+
+      bad_usr_attrs =
+        %{
+          interests: ["nonesense", "nonesense2"]
+        }
+        |> Enum.into(match_usr_attrs)
+
+      match_creators = create_users_with_attributes(match_usr_attrs, 10)
+      bad_creators = create_users_with_attributes(bad_usr_attrs, 10)
+
+      matches =
+        from(c in subquery(CampaignMatcher.vals_query(Creator, values)))
+        |> CampaignMatcher.int_query(interests)
+        |> CampaignMatcher.match_test()
+
+      assert matches == match_creators
+      assert Enum.count(matches) == 10
+    end
+
+    test "match/1 returns correct creators" do
+      {camp, vals, ints, specific_loc, loc, industry, vals, begin_age, stop_age} =
+        fixture(:camp_attrs)
+
+      d1 = Date.add(Date.utc_today(), -365 * stop_age)
+      d2 = Date.add(Date.utc_today(), -365 * begin_age)
+
+      values = String.split(vals, ",")
+      interests = String.split(ints, ",")
+
+      match_usr_attrs = %{
+        date_range: Date.range(d1, d2),
+        location: loc,
+        vals: values,
+        interests: interests,
+        max_num_vals: Enum.count(values),
+        max_num_int: Enum.count(interests),
+        industry: industry
+      }
+
+      c_num = 500
+      match_creators = create_users_with_attributes(match_usr_attrs, c_num)
+
+      b_c1 =
+        %{
+          interests: ["nonesense", "nonesense2"]
+        }
+        |> Enum.into(match_usr_attrs)
+        |> create_users_with_attributes(10)
+
+      b_c2 =
+        %{
+          location: "not correct"
+        }
+        |> Enum.into(match_usr_attrs)
+        |> create_users_with_attributes(10)
+
+      b_c3 =
+        %{
+          vals: ["not correct", "notCorrect 2"]
+        }
+        |> Enum.into(match_usr_attrs)
+        |> create_users_with_attributes(10)
+
+      b_c4 =
+        %{
+          industry: "not correct"
+        }
+        |> Enum.into(match_usr_attrs)
+        |> create_users_with_attributes(10)
+
+      d_not2 = Date.utc_today()
+      d_not1 = Date.add(d_not2, (-365) * (begin_age - 3))
+
+      b_c5 =
+        %{
+          date_range: Date.range(d_not1, d_not2)
+        }
+        |> Enum.into(match_usr_attrs)
+        |> create_users_with_attributes(100)
+
+      matches = CampaignMatcher.match(camp.id)
+
+      assert matches == match_creators
+      assert Enum.count(matches) == c_num
     end
   end
 end

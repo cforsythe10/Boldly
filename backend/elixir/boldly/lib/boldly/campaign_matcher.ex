@@ -34,8 +34,12 @@ defmodule Boldly.CampaignMatcher do
     q_base = from(c in subquery(interests_query))
 
     q_base
-    |> where([c], c.industry == ^industry and c.birthday <= ^start_date and c.birthday >= ^end_date)
+    |> where(
+      [c],
+      c.industry == ^industry and c.birthday <= ^start_date and c.birthday >= ^end_date
+    )
     |> location_query(camp.location, camp.specific_to_location)
+
     # |> IO.puts()
   end
 
