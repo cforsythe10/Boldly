@@ -160,13 +160,22 @@ const ApplicationStyles = {
       marginTop: 4,
       
     },
+    h4: {
+      ...Fonts.style.h4,
+      color: Colors.charcoal,
+      marginTop: 4,
+    },
     h5: {
-      ...Fonts.style.h5,
+      ...Fonts.style.h4,
       color: Colors.charcoal,
       marginTop: 4,
       marginBottom: 8,
-      flex:0.88,
-      paddingHorizontal: '6%',
+    },
+    sh6: {
+      ...Fonts.style.body,
+      color: Colors.charcoal65,
+      marginTop: 4,
+      marginBottom: 8,
     },
     sh3: {
       ...Fonts.style.sh3,
@@ -298,6 +307,16 @@ const ApplicationStyles = {
       paddingHorizontal: '4%',
       backgroundColor: 'transparent',
       alignItems: 'center'
+    },
+    mainModal: {
+      height: '89%',
+      width: '88%',
+      borderTopLeftRadius: 15,
+      borderTopRightRadius: 15,
+      backgroundColor: Colors.fog,
+      margin: 0,
+      alignItems: 'center',
+      paddingVertical: 24
     },
     hamburgerMenu: {
       height: '100%',

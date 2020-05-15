@@ -73,6 +73,12 @@ const style = {
   captions: {
     fontFamily: type.body,
     fontSize: size.caption,
+  },
+  avenir: {
+    fontFamily: type.body
+  },
+  ginger: {
+    fontFamily: type.header
   }
 }
 
