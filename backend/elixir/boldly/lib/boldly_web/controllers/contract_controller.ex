@@ -14,6 +14,7 @@ defmodule BoldlyWeb.ContractController do
   def create(conn, %{"contract" => contract_params}) do
     with {:ok, %Contract{} = contract_d} <- SignedContract.create_contract(contract_params) do
       contract = contract_d |> get_documents()
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.contract_path(conn, :show, contract))

@@ -11,8 +11,6 @@ defmodule BoldlyWeb.InterestView do
   end
 
   def render("interest.json", %{interest: interest}) do
-    %{id: interest.id,
-      interest: interest.interest,
-      categories: interest.categories}
+    %{id: interest.id, interest: interest.interest, categories: interest.categories}
   end
 end

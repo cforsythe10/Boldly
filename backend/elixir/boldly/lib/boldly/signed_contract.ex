@@ -37,7 +37,6 @@ defmodule Boldly.SignedContract do
   """
   def get_contract!(id), do: Repo.get!(Contract, id)
 
-
   def get_all_brands_contracts(b_uuid) do
     query = from c in Contract, where: c.brand_uuid == ^b_uuid
     Repo.all(query)

@@ -8,6 +8,5 @@ defmodule Boldly.Repo.Migrations.CreateInterests do
 
       timestamps()
     end
-
   end
 end

@@ -103,7 +103,6 @@ defmodule Boldly.SignedContractTest do
         creator_uuid: creator.uuid,
         document: @valid_attrs.document
         # file_path: "some file_path"
-
       }
     end
 

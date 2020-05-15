@@ -26,9 +26,10 @@ defmodule BoldlyWeb.InterestControllerTest do
   describe "index" do
     test "lists all interests", %{conn: conn} do
       conn = get(conn, Routes.interest_path(conn, :index))
+
       assert Enum.all?(json_response(conn, 200)["data"], fn interest ->
-        Map.has_key?(interest, "interest") and Map.has_key?(interest, "categories")
-      end)
+               Map.has_key?(interest, "interest") and Map.has_key?(interest, "categories")
+             end)
     end
   end
 
@@ -55,7 +56,10 @@ defmodule BoldlyWeb.InterestControllerTest do
   describe "update interest" do
     setup [:create_interest]
 
-    test "renders interest when data is valid", %{conn: conn, interest: %Interest{id: id} = interest} do
+    test "renders interest when data is valid", %{
+      conn: conn,
+      interest: %Interest{id: id} = interest
+    } do
       conn = put(conn, Routes.interest_path(conn, :update, interest), interest: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

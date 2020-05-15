@@ -12,11 +12,15 @@
 alias Boldly.InterestInfo
 # InterestInfo.create_interest(%{interest: interest, categories: categories})
 
-
 f_name = "../../interests.csv"
 
-f_name |> Path.expand(__DIR__) |> File.stream! |> CSV.decode!(headers: true) |> Enum.each(fn interest -> InterestInfo.create_interest(%{
-  interest: interest["interest"],
-  categories: interest["categories"]
+f_name
+|> Path.expand(__DIR__)
+|> File.stream!()
+|> CSV.decode!(headers: true)
+|> Enum.each(fn interest ->
+  InterestInfo.create_interest(%{
+    interest: interest["interest"],
+    categories: interest["categories"]
   })
 end)

@@ -8,8 +8,6 @@ defmodule Boldly.CampaignMatcher do
   alias Boldly.CampaignInfo
   alias Boldly.CreatorAccount
 
-
-
   def match(campaign_id) do
     campaign = CampaignInfo.get_campaign!(campaign_id)
 
@@ -42,8 +40,8 @@ defmodule Boldly.CampaignMatcher do
     s_i = String.to_integer(s)
     e_i = String.to_integer(e)
 
-    start_date = Date.add(Date.utc_today(), (-365) * s_i)
-    end_date = Date.add(Date.utc_today(), (-365) * e_i)
+    start_date = Date.add(Date.utc_today(), -365 * s_i)
+    end_date = Date.add(Date.utc_today(), -365 * e_i)
 
     {start_date, end_date}
   end
@@ -64,8 +62,6 @@ defmodule Boldly.CampaignMatcher do
     end)
   end
 
-
-
   def vals_query(query, [""]), do: query
 
   def vals_query(query, val_list) do
@@ -76,6 +72,5 @@ defmodule Boldly.CampaignMatcher do
   end
 
   defp get_scores(creators) when is_list(creators) do
-
   end
 end
