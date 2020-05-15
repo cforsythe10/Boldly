@@ -205,7 +205,8 @@ defmodule BoldlyWeb.MessageControllerTest do
         )
 
       assert %{
-               "id" => id, "date" => date
+               "id" => id,
+               "date" => date
              } = json_response(conn, 201)["data"]
 
       conn = get(conn, Routes.message_path(conn, :show, id))

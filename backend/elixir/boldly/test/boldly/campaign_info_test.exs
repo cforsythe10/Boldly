@@ -134,7 +134,7 @@ defmodule Boldly.CampaignInfoTest do
       assert campaign.location == "some location"
       assert campaign.name == "some name"
       assert campaign.perks == "some perks"
-      assert campaign.photo_reference == "some photo_reference"
+      assert String.match?(campaign.photo_reference, ~r"#{@valid_attrs.name}")
       assert campaign.specific_to_location == true
       assert campaign.start_date == ~D[2010-04-17]
       assert campaign.uuid == "7488a646-e31f-11e4-aace-600308960662"
@@ -161,7 +161,7 @@ defmodule Boldly.CampaignInfoTest do
       assert campaign.location == "some updated location"
       assert campaign.name == "some updated name"
       assert campaign.perks == "some updated perks"
-      assert campaign.photo_reference == "some updated photo_reference"
+      assert String.match?(campaign.photo_reference, ~r"#{@update_attrs.name}")
       assert campaign.specific_to_location == false
       assert campaign.start_date == ~D[2011-05-18]
       assert campaign.uuid == "7488a646-e31f-11e4-aace-600308960668"

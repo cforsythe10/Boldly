@@ -83,6 +83,7 @@ defmodule Boldly.BrandAccount.Brand do
     |> unique_constraint(:email)
     # |> cast_assoc(:campaigns)
     |> put_password_hash()
+    |> store_image()
   end
 
   defp put_password_hash(
@@ -92,4 +93,23 @@ defmodule Boldly.BrandAccount.Brand do
   end
 
   defp put_password_hash(changeset), do: changeset
+
+  defp store_image(
+         %Ecto.Changeset{valid?: true, changes: %{picture: picture, name: name}} = changeset
+       ) do
+    f_uuid = UUID.uuid4(:hex)
+
+    unique_filename = "#{f_uuid}-#{name}"
+    bucket_name = System.get_env("BUCKET_NAME")
+
+    img =
+      ExAws.S3.put_object(bucket_name, unique_filename, picture)
+      |> ExAws.request!()
+
+    img_url = "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
+
+    change(changeset, %{picture: unique_filename})
+  end
+
+  defp store_image(changeset), do: changeset
 end

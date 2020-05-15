@@ -6,11 +6,28 @@ defmodule BoldlyWeb.ConversationController do
 
   action_fallback BoldlyWeb.FallbackController
 
+  @doc """
+  Lists all Conversations.
+
+  Returns a JSON list of all conversations. Output fields can be seen in `BoldlyWeb.ConversationView.render/2`.
+
+  """
   def index(conn, _params) do
     conversations = ConversationInfo.list_conversations()
     render(conn, "index.json", conversations: conversations)
   end
 
+  @doc """
+  Creates a Conversation between a brand and a creator. The attributes for the desired conversation should be wrapped in `conversation` key at the top level of the JSON load.
+
+  Input fields are:
+  ```
+  brand_id: id,
+  creator_id: id
+  ```
+
+  Output fields can be seen in `BoldlyWeb.ConversationView.render/2`.
+  """
   def create(conn, %{"conversation" => conv_params}) do
     with {:ok, %Conversation{} = conv} <- ConversationInfo.create_conversation(conv_params) do
       conn
@@ -20,16 +37,36 @@ defmodule BoldlyWeb.ConversationController do
     end
   end
 
-  def show(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
-    conv = ConversationInfo.get_conversation!(creator_id, brand_id)
-    render(conn, "show.json", conversation: conv)
-  end
+  # def show(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
+  #   conv = ConversationInfo.get_conversation!(creator_id, brand_id)
+  #   render(conn, "show.json", conversation: conv)
+  # end
 
+  @doc """
+  Returns the Conversation information of the brand and creator's conversation.
+
+  JSON payload should have, at the top level:
+  ```
+  brand_id: id,
+  creator_id: id
+  ```
+
+  Output fields can be seen in `BoldlyWeb.ConversationView.render/2`.
+
+  """
   def show_conv(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
     conv = ConversationInfo.get_conversation!(creator_id, brand_id)
     render(conn, "show.json", conversation: conv)
   end
 
+  @doc """
+  Returns all Conversations that the Creator or brand is a part of.
+
+  The payload for Creators should be `{creator_id: id}`, and for Brands should be `{brand_id: id}`.
+
+  Output fields can be seen in `BoldlyWeb.ConversationView.render/2`.
+
+  """
   def get_conversations(conn, %{"creator_id" => creator_id}) do
     conv = ConversationInfo.get_creator_conversations(creator_id)
     render(conn, "index.json", conversations: conv)
@@ -40,6 +77,9 @@ defmodule BoldlyWeb.ConversationController do
     render(conn, "index.json", conversations: conv)
   end
 
+  @doc """
+  Not yet implemented.
+  """
   def update(conn, %{
         "creator_id" => creator_id,
         "brand_id" => brand_id,
@@ -52,6 +92,9 @@ defmodule BoldlyWeb.ConversationController do
     end
   end
 
+  @doc """
+  Not yet implemented.
+  """
   def delete(conn, %{"creator_id" => creator_id, "brand_id" => brand_id}) do
     conv = ConversationInfo.get_conversation!(creator_id, brand_id)
 

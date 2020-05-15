@@ -51,7 +51,6 @@ defmodule Boldly.MessageInfo do
     Repo.all(query)
   end
 
-
   @doc """
   Creates a message.
 

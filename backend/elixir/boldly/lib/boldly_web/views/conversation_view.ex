@@ -2,6 +2,15 @@ defmodule BoldlyWeb.ConversationView do
   use BoldlyWeb, :view
   alias BoldlyWeb.ConversationView
 
+  @doc """
+  Returns a JSON object which is either a list or a single item which is composed of the following fields:
+
+  Attribute fields (returned under a `data` field) are:
+
+  creator_id,
+  brand_id,
+  id
+  """
   def render("index.json", %{conversations: conversations}) do
     %{data: render_many(conversations, ConversationView, "conversation.json")}
   end

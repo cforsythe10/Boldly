@@ -12,7 +12,7 @@ defmodule BoldlyWeb.CampaignController do
   Output is a list of brands containing the fields listed in `BoldlyWeb.CampaignView.render/2`.
   """
   def index(conn, _params) do
-    campaigns = CampaignInfo.list_campaigns()
+    campaigns = CampaignInfo.list_campaigns() |> get_pictures()
     render(conn, "index.json", campaigns: campaigns)
   end
 
@@ -45,7 +45,8 @@ defmodule BoldlyWeb.CampaignController do
   Output fields can be seen in `BoldlyWeb.CampaignView.render/2`.
   """
   def create(conn, %{"campaign" => campaign_params}) do
-    with {:ok, %Campaign{} = campaign} <- CampaignInfo.create_campaign(campaign_params) do
+    with {:ok, %Campaign{} = campaign_p} <- CampaignInfo.create_campaign(campaign_params) do
+      campaign = campaign_p |> get_pictures()
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.campaign_path(conn, :show, campaign))
@@ -61,7 +62,7 @@ defmodule BoldlyWeb.CampaignController do
   """
   def show(conn, %{"id" => id}) do
     campaign = CampaignInfo.get_campaign!(id)
-    render(conn, "show.json", campaign: campaign)
+    render(conn, "show.json", campaign: campaign |> get_pictures())
   end
 
   @doc """
@@ -76,7 +77,7 @@ defmodule BoldlyWeb.CampaignController do
     campaign = CampaignInfo.get_campaign!(id)
 
     with {:ok, %Campaign{} = campaign} <- CampaignInfo.update_campaign(campaign, campaign_params) do
-      render(conn, "show.json", campaign: campaign)
+      render(conn, "show.json", campaign: campaign |> get_pictures())
     end
   end
 
@@ -92,4 +93,21 @@ defmodule BoldlyWeb.CampaignController do
       send_resp(conn, :no_content, "")
     end
   end
+
+
+  def get_pictures(campaigns) when is_list(campaigns) do
+    Enum.map(campaigns, fn campaign ->
+      get_pictures(campaign)
+    end)
+  end
+
+  def get_pictures(campaigns) do
+    if campaigns.photo_reference do
+      bucket_name = System.get_env("BUCKET_NAME")
+      pic_base64 = ExAws.S3.get_object(bucket_name, campaigns.photo_reference) |> ExAws.request!
+      Map.replace!(campaigns, :photo_reference, pic_base64.body)
+    else
+      campaigns
+    end
+end
 end
