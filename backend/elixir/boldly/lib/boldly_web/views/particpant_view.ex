@@ -26,7 +26,8 @@ defmodule BoldlyWeb.ParticipantView do
       is_deleted: participant.is_deleted,
       is_active: participant.is_active,
       campaign_uuid: participant.campaign_uuid,
-      creator_uuid: participant.creator_uuid
+      creator_uuid: participant.creator_uuid,
+      score: participant.score
     }
   end
 end
