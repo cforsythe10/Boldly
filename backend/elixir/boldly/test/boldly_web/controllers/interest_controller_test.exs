@@ -26,7 +26,9 @@ defmodule BoldlyWeb.InterestControllerTest do
   describe "index" do
     test "lists all interests", %{conn: conn} do
       conn = get(conn, Routes.interest_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
+      assert Enum.all?(json_response(conn, 200)["data"], fn interest ->
+        Map.has_key?(interest, "interest") and Map.has_key?(interest, "categories")
+      end)
     end
   end
 

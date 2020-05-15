@@ -21,7 +21,9 @@ defmodule Boldly.InterestInfoTest do
 
     test "list_interests/0 returns all interests" do
       interest = interest_fixture()
-      assert InterestInfo.list_interests() == [interest]
+      assert Enum.all?(InterestInfo.list_interests(), fn interest ->
+        Map.has_key?(interest, :interest) and Map.has_key?(interest, :categories)
+      end)
     end
 
     test "get_interest!/1 returns the interest with given id" do
