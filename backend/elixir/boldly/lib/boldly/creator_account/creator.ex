@@ -100,7 +100,6 @@ defmodule Boldly.CreatorAccount.Creator do
 
     unique_filename = "#{f_uuid}-#{name}"
     bucket_name = System.get_env("BUCKET_NAME")
-    IO.puts(bucket_name)
 
     img =
       ExAws.S3.put_object(bucket_name, unique_filename, picture)
