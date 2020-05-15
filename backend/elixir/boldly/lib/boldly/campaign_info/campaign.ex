@@ -57,7 +57,7 @@ defmodule Boldly.CampaignInfo.Campaign do
       :name,
       :start_date,
       :end_date,
-      :photo_reference,
+      # :photo_reference,
       :description,
       :values,
       :creator_responsibilities,
@@ -73,5 +73,26 @@ defmodule Boldly.CampaignInfo.Campaign do
       :launched_by
     ])
     |> unique_constraint(:uuid)
+    |> store_image()
   end
+
+  defp store_image(
+         %Ecto.Changeset{valid?: true, changes: %{photo_reference: picture, name: name}} = changeset
+       ) do
+    f_uuid = UUID.uuid4(:hex)
+
+    unique_filename = "#{f_uuid}-#{name}"
+    bucket_name = System.get_env("BUCKET_NAME")
+    IO.puts(bucket_name)
+
+    img =
+      ExAws.S3.put_object(bucket_name, unique_filename, picture)
+      |> ExAws.request!()
+
+    # img_url = "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
+
+    change(changeset, %{photo_reference: unique_filename})
+  end
+
+  defp store_image(changeset), do: changeset
 end
