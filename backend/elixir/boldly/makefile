@@ -73,6 +73,14 @@ remove_creator_schema:
 	rm -rf priv/repo/migrations/*creators*
 	rm -rf test/boldly/*creator*
 
+interests_schema:
+	mix phx.gen.context InterestInfo Interest interests \
+	interest:string categories:string
+
+interests_endpoint:
+	mix phx.gen.json InterestInfo Interest interests \
+	interest:string categories:string
+
 campaign_schema:
 	mix phx.gen.context CampaignInfo Campaign campaigns uuid:uuid:unique launched_by:references:brands \
 	name:string start_date:date end_date:date photo_reference:string \
