@@ -141,6 +141,38 @@ Example:
 ```
 
 
+## Matches for Campaigns
+
+### To generate matches for a single campaign
+Do this whenever you feel it is appropriate.
+`endpoint: /api/campaigns/match`
+
+`Request Type: POST`
+
+Example payload:
+
+```json
+
+{
+  "campaign_id": 1
+}
+```
+
+### To get list of all participants in a single campaign
+`endpoint: /api/campaigns/matches`
+
+`Request Type: POST`
+
+Example Payload:
+```json
+{
+  "campaign_uuid": "b2ff4102-bf59-4641-a815-00353fad5657"
+}
+```
+
+
+It will return a list of participant attributes. Under the `creator` key for each item in the list will be the profile information for the associated creator. 
+
 ## Conversations/Messaging API instructions
 
 __*READ THE FOLLOWING CAREFULLY*__. Note the difference when the endpoint is *plural* vs *singular*.

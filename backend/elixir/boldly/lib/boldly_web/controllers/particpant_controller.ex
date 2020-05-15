@@ -18,6 +18,11 @@ defmodule BoldlyWeb.ParticipantController do
     render(conn, "index.json", participants: participants)
   end
 
+  def get_creators_in_campaign(conn, %{"campaign_uuid" => c_uuid}) do
+    participants = CampaignPart.get_creators_in_campaign(c_uuid)
+    render(conn, "get_creators.json", participants: participants)
+  end
+
   def match_creators(conn, %{"campaign_id" => camp_id}) do
     campaign = CampaignInfo.get_campaign!(camp_id)
     ca_uuid = campaign.uuid

@@ -323,6 +323,69 @@ defmodule BoldlyWeb.ParticipantControllerTest do
 
       assert Enum.count(json_response(conn, 200)["data"]) == c_num
     end
+
+    test "get participants in a campaign", %{conn: conn} do
+      {camp, vals, ints, specific_loc, loc, industry, vals, begin_age, stop_age} =
+        fixture(:camp_attrs)
+
+      d1 = Date.add(Date.utc_today(), -365 * stop_age)
+      d2 = Date.add(Date.utc_today(), -365 * begin_age)
+
+      values = String.split(vals, ",")
+      interests = String.split(ints, ",")
+
+      match_usr_attrs = %{
+        date_range: Date.range(d1, d2),
+        location: loc,
+        vals: values,
+        interests: interests,
+        max_num_vals: Enum.count(values),
+        max_num_int: Enum.count(interests),
+        industry: industry
+      }
+
+      c_num = 50
+      match_creators = create_users_with_attributes(match_usr_attrs, c_num)
+
+      %{
+        interests: ["nonesense", "nonesense2"]
+      }
+      |> Enum.into(match_usr_attrs)
+      |> create_users_with_attributes(10)
+
+      %{
+        location: "not correct"
+      }
+      |> Enum.into(match_usr_attrs)
+      |> create_users_with_attributes(10)
+
+      %{
+        vals: ["not correct", "notCorrect 2"]
+      }
+      |> Enum.into(match_usr_attrs)
+      |> create_users_with_attributes(10)
+
+      %{
+        industry: "not correct"
+      }
+      |> Enum.into(match_usr_attrs)
+      |> create_users_with_attributes(10)
+
+      d_not2 = Date.utc_today()
+      d_not1 = Date.add(d_not2, -365 * (begin_age - 3))
+
+      %{
+        date_range: Date.range(d_not1, d_not2)
+      }
+      |> Enum.into(match_usr_attrs)
+      |> create_users_with_attributes(10)
+
+      conn = post(conn, Routes.participant_path(conn, :match_creators, campaign_id: camp.id))
+
+      conn = post(conn, Routes.participant_path(conn, :get_creators_in_campaign, campaign_uuid: camp.uuid))
+
+      assert Enum.count(json_response(conn, 200)["data"]) == c_num
+    end
   end
 
   describe "index" do

@@ -32,6 +32,7 @@ defmodule BoldlyWeb.Router do
     post "/contract", ContractController, :get_all_contracts
 
     post "/campaigns/match", ParticipantController, :match_creators
+    post "/campaigns/matches", ParticipantController, :get_creators_in_campaign
   end
 
   scope "/api", BoldlyWeb do

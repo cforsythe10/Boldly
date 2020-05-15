@@ -8,6 +8,11 @@ defmodule Boldly.CampaignPart do
 
   alias Boldly.CampaignPart.Participant
 
+
+  def get_creators_in_campaign(c_uuid) do
+    Repo.all(from(c in Participant, where: c.campaign_uuid == ^c_uuid, preload: [:creators]))
+  end
+
   @doc """
   Returns the list of participants.
 
