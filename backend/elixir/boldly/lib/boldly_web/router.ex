@@ -27,6 +27,7 @@ defmodule BoldlyWeb.Router do
     post "/message", MessageController, :show_conv
     post "/conversation", ConversationController, :show_conv
     post "/conversations/all", ConversationController, :get_conversations
+    post "/contract", ContractController, :get_all_contracts
   end
 
   scope "/api", BoldlyWeb do

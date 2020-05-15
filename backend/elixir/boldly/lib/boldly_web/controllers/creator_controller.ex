@@ -126,12 +126,10 @@ defmodule BoldlyWeb.CreatorController do
   def get_pictures(creators) do
     if creators.picture do
       bucket_name = System.get_env("BUCKET_NAME")
-      pic_base64 = ExAws.S3.get_object(bucket_name, creators.picture) |> ExAws.request!
+      pic_base64 = ExAws.S3.get_object(bucket_name, creators.picture) |> ExAws.request!()
       Map.replace!(creators, :picture, pic_base64.body)
     else
       creators
     end
-end
-
-
+  end
 end

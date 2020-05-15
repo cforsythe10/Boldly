@@ -77,7 +77,8 @@ defmodule Boldly.CampaignInfo.Campaign do
   end
 
   defp store_image(
-         %Ecto.Changeset{valid?: true, changes: %{photo_reference: picture, name: name}} = changeset
+         %Ecto.Changeset{valid?: true, changes: %{photo_reference: picture, name: name}} =
+           changeset
        ) do
     f_uuid = UUID.uuid4(:hex)
 

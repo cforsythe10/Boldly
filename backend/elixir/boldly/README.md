@@ -92,6 +92,55 @@ The following is an example payload to create a campaign
 
 `launched_by` is the UUID of whatever brand is launching the campaign
 
+## Contracts API Instructions
+
+### Creating a Contract
+`endpoit: /api/contracts`
+
+`Request Type: POST`
+
+JSON Payload:
+
+```json
+{
+	"contract": {
+		"creator_uuid": "a2ff4102-bf59-4641-a815-00353fad5657",
+		"brand_uuid": "e7e18afb-cf8a-46da-bbff-92646bf8a097",
+		"campaign_uuid": "bbf023e1-5dd0-4aba-86c4-428f82c34a48",
+		"document": "base64_encoded_document"
+	}
+}
+```
+
+Example return (note that `document` is converted to `file_path`):
+```json
+{
+    "data": {
+        "brand_uuid": "e7e18afb-cf8a-46da-bbff-92646bf8a097",
+        "campaign_uuid": "bbf023e1-5dd0-4aba-86c4-428f82c34a48",
+        "creator_uuid": "a2ff4102-bf59-4641-a815-00353fad5657",
+        "file_path": "doc_goes_here",
+        "id": "465557e4-6282-4da2-945e-fe4732233b1d"
+    }
+}
+```
+
+### Getting all documents for a campaign, creator, or brand
+`endpoint: /api/contract`
+
+`Request Type: POST`
+
+The top level key should be either `campaign_uuid`, `creator_uuid` or `brand_uuid`, and should contain the relevant UUID as the value.
+
+Example:
+
+```json
+{
+	"creator_uuid": "a2ff4102-bf59-4641-a815-00353fad5657"
+}
+```
+
+
 ## Conversations/Messaging API instructions
 
 __*READ THE FOLLOWING CAREFULLY*__. Note the difference when the endpoint is *plural* vs *singular*.
