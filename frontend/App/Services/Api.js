@@ -16,11 +16,14 @@ export function makePost(endpoint, body){
   })
 }
 
-export function makeGet(endpoint, body){
-	let thisurl = url + endpoint;
+export function makeGet(endpoint, parameter, body){
+  let thisurl = url + endpoint + '?' + parameter + '=${' + encodeURIComponent(body) + '}';
 	return fetch(thisurl, {
     method: 'GET',
-    //finish this if needed 
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
   })
 }
 

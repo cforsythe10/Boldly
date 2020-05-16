@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { StatusBar, TouchableOpacity } from 'react-native'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { View, Text, TouchableHighlight, Button, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
@@ -16,10 +18,12 @@ import Close from '../../Images/Icons/close.svg'
 import Search from '../../Images/Icons/search.svg'
 import Ellipses from '../../Images/Icons/ellipses.svg'
 
+import * as MessagesActionCreators from '../../Redux/Messages/MessagesActions';
+
 import { Colors } from '../../Themes/';
 import Modal from "react-native-modal";
 
-export default class Header extends Component {
+class Header extends Component {
 
     constructor(props) {
         super(props)
@@ -62,7 +66,6 @@ export default class Header extends Component {
     
 
     render() {
-
         const MenuHTML = (
             <Modal 
             isVisible={this.state.isModalVisible} 
@@ -90,7 +93,7 @@ export default class Header extends Component {
                             <TouchableHighlight onPress={() => {this.navigation.navigate('Dashboard'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                                 <Text style={styles.menuItem}>Dashboard</Text>
                             </TouchableHighlight>
-                            <TouchableHighlight onPress={() => {this.navigation.navigate('Messages'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                            <TouchableHighlight onPress={() => {this.props.goToMessages(this.props); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                                 <Text style={styles.menuItem}>Messages</Text>
                             </TouchableHighlight>
                                 <TouchableHighlight onPress={() => {this.navigation.navigate('Campaigns'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
@@ -102,7 +105,7 @@ export default class Header extends Component {
                         </View>
 
                         <View>
-                            <Text style={styles.menuItemSmall}>Sign Out</Text>
+                            <Text style={styles.menuItemSmall} onPress={() => {this.navigation.navigate('Default'); this.close()}}>Sign Out</Text>
                         </View>
                     </View>
                     </LinearGradient>
@@ -235,7 +238,7 @@ export default class Header extends Component {
         const BackEllipsesOtherProfile = (
             <View style={styles.headerContainer}>
                 <StatusBar backgroundColor={Colors.fog} translucent={false} barStyle="dark-content" />
-                <TouchableHighlight onPress={() => this.navigation.goBack()} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
+                <TouchableHighlight onPress={() => this.props.goToMessages(this.props)} activeOpacity={ 0.8 } underlayColor={ Colors.fog}>
                     <BackButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
@@ -401,3 +404,12 @@ export default class Header extends Component {
     }
 
 }
+
+
+const mapStateToProps = state => ({...state});
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators(MessagesActionCreators, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
