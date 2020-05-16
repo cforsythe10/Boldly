@@ -39,7 +39,7 @@ const rootReducer = combineReducers({
     test,
     loginReducer,
     settingsReducer,
-    MessagesReducer
+    MessagesReducer,
     campaignBuilder
 });
 
