@@ -122,19 +122,19 @@ defmodule BoldlyWeb.BrandController do
     end
   end
 
-    def get_pictures(brands) when is_list(brands) do
-      Enum.map(brands, fn brand ->
-        get_pictures(brand)
-      end)
-    end
+  def get_pictures(brands) when is_list(brands) do
+    Enum.map(brands, fn brand ->
+      get_pictures(brand)
+    end)
+  end
 
-    def get_pictures(brands) do
-      if brands.picture do
-        bucket_name = System.get_env("BUCKET_NAME")
-        pic_base64 = ExAws.S3.get_object(bucket_name, brands.picture) |> ExAws.request!
-        Map.replace!(brands, :picture, pic_base64.body)
-      else
-        brands
-      end
+  def get_pictures(brands) do
+    if brands.picture do
+      bucket_name = System.get_env("BUCKET_NAME")
+      pic_base64 = ExAws.S3.get_object(bucket_name, brands.picture) |> ExAws.request!()
+      Map.replace!(brands, :picture, pic_base64.body)
+    else
+      brands
+    end
   end
 end

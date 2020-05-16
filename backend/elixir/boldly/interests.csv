@@ -1,0 +1,539 @@
+interest,categories
+3D printing,"Indoors, Media, Art, Craft"
+Acrobatics,"Indoors, Sports"
+Acting,Indoors
+Amateur radio,Indoors
+Animation,"Indoors, Art, Media"
+Anime,Indoors
+Aquascaping,Indoors
+Astrology,Indoors
+Astronomy,"Indoors, Science"
+Baking,"Indoors, Food"
+Baton twirling,Indoors
+Beer,"Indoors, Food"
+Blogging,Indoors
+Building,"Indoors, Outdoors, Craft"
+Board/tabletop games,"Indoors, Games"
+Book discussion clubs,"Indoors, Books"
+Book restoration,"Indoors, Craft, Books"
+Bowling,Indoors
+Brazilian jiu-jitsu,Indoors
+Breadmaking,"Indoors, Food"
+Bullet journaling,Indoors
+Cabaret,Indoors
+Calligraphy,"Indoors, Art"
+Candle making,"Indoors, Craft"
+Candy making,"Indoors, Food"
+Car fixing & building,Indoors
+Card games,Indoors
+Cheesemaking,"Indoors, Food"
+Cleaning,Indoors
+Clothesmaking,"Indoors, Craft"
+Coffee roasting,"Indoors, Food"
+Collecting,Indoors
+Coloring,Indoors
+Computer programming,Indoors
+Confectionery,"Indoors, Food"
+Cooking,"Indoors, Food"
+Cosplaying,"Indoors, Craft"
+Couponing,Indoors
+Craft,"Indoors, Craft"
+Creative writing,Indoors
+Crocheting,"Indoors, Craft"
+Cross-stitch,"Indoors, Craft"
+Crossword puzzles,Indoors
+Cryptography,Indoors
+Cue sports,"Indoors, Sports"
+Dance,"Indoors, Sports"
+Digital arts,"Indoors, Art"
+Distro Hopping,Indoors
+DJing,"Indoors, Music, Media"
+Do it yourself,Indoors
+Drama,Indoors
+Drawing,"Indoors, Art"
+Drink mixing,"Indoors, Food"
+Electronic games,"Indoors, Media"
+Electronics,Indoors
+Embroidery,Indoors
+Experimenting,Indoors
+Fantasy sports,"Indoors, Sports"
+Fashion,"Indoors, Fashion"
+Fashion design,"Indoors, Art, Fashion"
+Fishkeeping,"Indoors, Pets"
+Flower arranging,"Indoors, Gardening"
+Fly tying,Indoors
+Foreign language learning,Indoors
+Furniture building,Indoors
+Tabletop games and role-playing games,Indoors
+Genealogy,Indoors
+Gingerbread house making,"Indoors, Food"
+Glassblowing,Indoors
+Graphic design,"Indoors, Art"
+Gunsmithing,"Indoors, Craft"
+Gymnastics,"Indoors, Sports"
+Hacking,Indoors
+Herp keeping,"Indoors, Gardening"
+Home improvement,"Indoors, Craft"
+Homebrewing,Indoors
+Houseplant care,"Indoors, Gardening"
+Hula hooping,Indoors
+Hydroponics,"Indoors, Gardening"
+Ice skating,"Indoors, Sports"
+Jewelry making,"Indoors, Craft"
+Jigsaw puzzles,Indoors
+Journaling,Indoors
+Juggling,Indoors
+Karaoke,Indoors
+Karate,Indoors
+Kendama,Indoors
+Knife making,"Indoors, Craft"
+Knitting,"Indoors, Craft"
+Knot tying,Indoors
+Kombucha brewing,"Indoors, Food"
+Lace making,"Indoors, Craft"
+Lapidary,Indoors
+Lawn Chair Repurposing,Indoors
+Learning a language,Indoors
+Leather crafting,"Indoors, Craft"
+Lego building,Indoors
+Lock picking,Indoors
+Listening to music,"Indoors, Media, Music"
+Listening to podcasts,"Indoors, Media"
+Machining,Indoors
+Macrame,Indoors
+Magic,Indoors
+Makeup,"Indoors, Art, Beauty"
+Mazes,"Indoors, Outdoors"
+Metalworking,Indoors
+Model building,"Indoors, Craft"
+Model engineering,Indoors
+Nail art,"Indoors, Art, Beauty"
+Needlepoint,"Indoors, Craft"
+Origami,"Indoors, Craft"
+Painting,"Indoors, Craft"
+Palmistry,Indoors
+Pet adoption & fostering,"Indoors, Pets"
+Philately,Indoors
+Photography,"Indoors, Outdoors, Art, Media"
+Practical jokes,Indoors
+Pressed flower craft,"Indoors, Craft, Gardening"
+Playing musical instruments,"Indoors, Music"
+Poi,Indoors
+Pottery,"Indoors, Craft"
+Powerlifting,"Indoors, Sports, Fitness"
+Puzzles,Indoors
+Quilling,Indoors
+Quilting,"Indoors, Craft"
+Quizzes,Indoors
+Rail transport modeling,Indoors
+Rapping,"Indoors, Music"
+Reading,"Indoors, Books"
+Refinishing,Indoors
+Reiki,Indoors
+Robot combat,Indoors
+Rubik's Cube,Indoors
+Scrapbooking,"Indoors, Craft"
+Sculpting,"Indoors, Art"
+Sewing,"Indoors, Craft"
+Shoemaking,"Indoors, Craft"
+Singing,"Indoors, Music"
+Sketching,"Indoors, Art"
+Soapmaking,"Indoors, Craft"
+Social media,"Indoors, Media"
+Stand-up comedy,"Indoors, Media"
+Stamp collecting,"Indoors, Craft"
+Table tennis,"Indoors, Sports"
+Tarot,Indoors
+Taxidermy,"Indoors, Craft"
+Thrifting,Indoors
+Video editing,"Indoors, Media"
+Video game developing,"Indoors, Media"
+Video gaming,"Indoors, Media"
+Watching movies,"Indoors, Media"
+Watching television,"Indoors, Media"
+Weaving,"Indoors, Craft"
+Weight training,"Indoors, Fitness"
+Welding,"Indoors, Craft"
+Whittling,"Indoors, Craft"
+Wikipedia editing,Indoors
+Winemaking,"Indoors, Food"
+Wood carving,"Indoors, Craft"
+Woodworking,"Indoors, Craft"
+Worldbuilding,Indoors
+Writing,Indoors
+Word searches,Indoors
+Yo-yoing,Indoors
+Yoga,Indoors
+Outdoors,Outdoors
+Air sports,"Outdoors, Sports"
+Airsoft,"Outdoors, Sports"
+Archery,"Outdoors, Sports"
+Astronomy,Outdoors
+Backpacking,Outdoors
+BASE jumping,"Outdoors, Sports"
+Baseball,"Outdoors, Sports"
+Basketball,"Outdoors, Sports"
+Beekeeping,Outdoors
+Birdwatching,Outdoors
+Blacksmithing,"Outdoors, Craft"
+BMX,"Outdoors, Sports"
+Board sports,"Outdoors, Sports"
+Bodybuilding,"Outdoors, Indoors, Sports, Fitness"
+Bonsai,"Outdoors, Gardening"
+Butterfly watching,Outdoors
+Camping,Outdoors
+Canoeing,"Outdoors, Sports"
+Canyoning,Outdoors
+Caving,Outdoors
+Composting,Outdoors
+Cycling,"Outdoors, Sports"
+Dowsing,Outdoors
+Driving,"Outdoors, Sports"
+Fishing,"Outdoors, Sports"
+Flag football,"Outdoors, Sports"
+Flower growing,"Outdoors, Gardening"
+Flying,Outdoors
+Flying disc,"Outdoors, Sports"
+Foraging,Outdoors
+Fossicking,Outdoors
+Freestyle football,"Outdoors, Sports"
+Gardening,"Outdoors, Gardening"
+Geocaching,Outdoors
+Ghost hunting,"Outdoors, Indoors"
+Gold prospecting,Outdoors
+Graffiti,Outdoors
+Handball,Outdoors
+Herbalism,"Outdoors, Gardening"
+Herping,Outdoors
+High-power rocketry,Outdoors
+Hiking,"Outdoors, Sports"
+Hobby horsing,"Outdoors, Sports"
+Hooping,Outdoors
+Horseback riding,"Outdoors, Sports"
+Hunting,"Outdoors, Sports"
+Inline skating,"Outdoors, Sports"
+Jogging,"Outdoors, Sports"
+Kayaking,"Outdoors, Sports"
+Kite flying,Outdoors
+Kitesurfing,"Outdoors, Sports"
+Lacrosse,"Outdoors, Sports"
+LARPing,Outdoors
+Letterboxing,Outdoors
+Longboarding,"Outdoors, Sports"
+Martial arts,"Outdoors, Sports"
+Metal detecting,Outdoors
+Meteorology,Outdoors
+Motor sports,"Outdoors, Sports"
+Mountain biking,"Outdoors, Sports"
+Mountaineering,Outdoors
+Mushroom hunting/mycology,Outdoors
+Netball,"Outdoors, Sports"
+Nordic skating,"Outdoors, Sports"
+Orienteering,Outdoors
+Paintball,"Outdoors, Sports"
+Parkour,"Outdoors, Sports"
+Photography,Outdoors
+Podcast hosting,Outdoors
+Sports,"Outdoors, Sports"
+Polo,"Outdoors, Sports"
+Rafting,"Outdoors, Sports"
+Rappelling,"Outdoors, Sports"
+Road biking,"Outdoors, Sports"
+Rock climbing,"Outdoors, Sports"
+Roller skating,"Outdoors, Sports"
+Rugby,"Outdoors, Sports"
+Running,"Outdoors, Sports"
+Sailing,"Outdoors, Sports"
+Sand art,"Outdoors, Sports"
+Scouting,"Outdoors, Sports"
+Scuba diving,"Outdoors, Sports"
+Sculling or rowing,"Outdoors, Sports"
+Shooting,"Outdoors, Sports"
+Shopping,Outdoors
+Shuffleboard,"Outdoors, Sports"
+Skateboarding,"Outdoors, Sports"
+Skiing,"Outdoors, Sports"
+Skimboarding,"Outdoors, Sports"
+Skydiving,"Outdoors, Sports"
+Slacklining,"Outdoors, Sports"
+Snowboarding,"Outdoors, Sports"
+Snowmobiling,"Outdoors, Sports"
+Snowshoeing,"Outdoors, Sports"
+Soccer,"Outdoors, Sports"
+Stone skipping,Outdoors
+Sun bathing,Outdoors
+Surfing,"Outdoors, Sports"
+Survivalism,Outdoors
+Swimming,"Outdoors, Sports"
+Taekwondo,"Outdoors, Sports"
+Tai chi,"Outdoors, Sports"
+Topiary,Outdoors
+Thru-hiking,Outdoors
+Travel,Outdoors
+Urban exploration,Outdoors
+Vacation,Outdoors
+Vegetable farming,"Outdoors, Gardening"
+Vehicle restoration,Outdoors
+Walking,Outdoors
+Water sports,"Outdoors, Sports"
+Collection hobbies,Indoors
+Indoors,Indoors
+Action figure,Indoors
+Antiquing,Indoors
+Art collecting,Indoors
+Book collecting,Indoors
+Button collecting,Indoors
+Cartophily (card collecting),Indoors
+Coin collecting,Indoors
+Comic book collecting,Indoors
+Deltiology (postcard collecting),Indoors
+Die-cast toy,Indoors
+Dolls,Indoors
+Element collecting,Indoors
+Ephemera collecting,Indoors
+Fusilately (phonecard collecting),Indoors
+Knife collecting,Indoors
+Lotology (lottery ticket collecting),Indoors
+Movie and movie memorabilia collecting,"Indoors, Media"
+Perfume,Indoors
+Phillumeny,Indoors
+Pin (lapel),Indoors
+Rail transport modelling,Indoors
+Record collecting,Indoors
+Rock tumbling,Indoors
+Scutelliphily,Indoors
+Shoes,"Indoors, Fashion"
+Sports memorabilia,"Indoors, Sports"
+Stamp collecting,Indoors
+Stuffed toy collecting,Indoors
+Tea bag collecting,Indoors
+Ticket collecting,Indoors
+Toys,Indoors
+Video game collecting,Indoors
+Vintage cars,Indoors
+Vintage clothing,Indoors
+Vinyl Records,Indoors
+Public Toilet,"Indoors, Outdoors, Sports"
+Antiquities,Indoors
+Auto audiophilia,Indoors
+Flower collecting and pressing,"Indoors, Gardening"
+Fossil hunting,Indoors
+Insect collecting,Indoors
+Magnet fishing,Indoors
+Metal detecting,Indoors
+Mineral collecting,Indoors
+Rock balancing,Indoors
+Sea glass collecting,Indoors
+Seashell collecting,Indoors
+Stone collecting,Indoors
+Competitive hobbies,Indoors
+Animals,"Indoors, Outdoors"
+Axe throwing,"Indoors, Sports"
+Backgammon,"Indoors, Sports"
+Badminton,"Indoors, Sports"
+Baton twirling,"Indoors, Sports"
+Beauty pageants,"Indoors, Sports"
+Billiards,"Indoors, Sports"
+Bowling,"Indoors, Sports"
+Boxing,"Indoors, Sports"
+Bridge,"Indoors, Sports"
+Checkers,"Indoors, Sports"
+Cheerleading,"Indoors, Sports"
+Chess,"Indoors, Sports"
+Color guard,"Indoors, Sports"
+Cribbage,"Indoors, Sports"
+Curling,"Indoors, Sports"
+Dancing,"Indoors, Sports"
+Darts,"Indoors, Sports"
+Debate,"Indoors, Sports"
+Dominoes,"Indoors, Sports"
+Eating,"Indoors, Sports"
+Esports,"Indoors, Sports"
+Fencing,"Indoors, Sports"
+Go,"Indoors, Sports"
+Gymnastics,"Indoors, Sports"
+Ice hockey,"Indoors, Sports"
+Ice skating,"Indoors, Sports"
+Judo,"Indoors, Sports"
+Jujitsu,"Indoors, Sports"
+Kabaddi,"Indoors, Sports"
+Knowledge/word games,"Indoors, Sports"
+Laser tag,"Indoors, Sports"
+Longboarding,"Indoors, Sports"
+Mahjong,"Indoors, Sports"
+Marbles,"Indoors, Sports"
+Martial arts,"Indoors, Sports"
+Model racing,"Indoors, Sports"
+Model United Nations,"Indoors, Sports"
+Poker,"Indoors, Sports"
+Pool,"Indoors, Sports"
+Role-playing games,"Indoors, Sports"
+Shogi,"Indoors, Sports"
+Slot car racing,"Indoors, Sports"
+Speedcubing,"Indoors, Sports"
+Sport stacking,"Indoors, Sports"
+Table football,"Indoors, Sports"
+Table tennis,"Indoors, Sports"
+Volleyball,"Indoors, Sports"
+Weightlifting,"Indoors, Sports"
+Wrestling,"Indoors, Sports"
+Airsoft,"Outdoors, Sports"
+American football,"Outdoors, Sports"
+Archery,"Outdoors, Sports"
+Association football,"Outdoors, Sports"
+Australian rules football,"Outdoors, Sports"
+Auto racing,"Outdoors, Sports"
+Baseball,"Outdoors, Sports"
+Beach volleyball,"Outdoors, Sports"
+Breakdancing,"Outdoors, Sports"
+Climbing,"Outdoors, Sports"
+Cricket,"Outdoors, Sports"
+Croquet,"Outdoors, Sports"
+Cycling,"Outdoors, Sports"
+Disc golf,"Outdoors, Sports"
+Dog sport,"Outdoors, Sports"
+Equestrianism,"Outdoors, Sports"
+Exhibition drill,"Outdoors, Sports"
+Field hockey,"Outdoors, Sports"
+Figure skating,"Outdoors, Sports"
+Fishing,"Outdoors, Sports"
+Footbag,"Outdoors, Sports"
+Frisbee,"Outdoors, Sports"
+Golfing,"Outdoors, Sports"
+Handball,"Outdoors, Sports"
+Horseback riding,"Outdoors, Sports"
+Horseshoes,"Outdoors, Sports"
+Iceboat racing,"Outdoors, Sports"
+Jukskei,"Outdoors, Sports"
+Kart racing,"Outdoors, Sports"
+Knife throwing,"Outdoors, Sports"
+Lacrosse,"Outdoors, Sports"
+Longboarding,"Outdoors, Sports"
+Long-distance running,"Outdoors, Sports"
+Marching band,"Outdoors, Sports"
+Model aircraft,"Outdoors, Sports"
+Orienteering,"Outdoors, Sports"
+Powerboat racing,"Outdoors, Sports"
+Race walking,"Outdoors, Sports"
+Racquetball,"Outdoors, Sports"
+Radio-controlled car racing,"Outdoors, Sports"
+Roller derby,"Outdoors, Sports"
+Rugby league football,"Outdoors, Sports"
+Sculling or rowing,"Outdoors, Sports"
+Shooting sport,"Outdoors, Sports"
+Skateboarding,"Outdoors, Sports"
+Softball,"Outdoors, Sports"
+Speed skating,"Outdoors, Sports"
+Squash,"Outdoors, Sports"
+Surfing,"Outdoors, Sports"
+Swimming,"Outdoors, Sports"
+Table tennis,"Outdoors, Sports"
+Tennis,"Outdoors, Sports"
+Tennis polo,"Outdoors, Sports"
+Tether car,"Outdoors, Sports"
+Tour skating,"Outdoors, Sports"
+Trapshooting,"Outdoors, Sports"
+Triathlon,"Outdoors, Sports"
+Ultimate frisbee,"Outdoors, Sports"
+Volleyball,"Outdoors, Sports"
+Water polo,"Indoors, Outdoors, Sports"
+Observation hobbies,Indoors
+Fishkeeping,Indoors
+Learning,Indoors
+Meditation,Indoors
+Microscopy,Indoors
+Reading,"Indoors, Books"
+Shortwave listening,Indoors
+Audiophile,Indoors
+Videophilia,Indoors
+Aircraft spotting,Outdoors
+Amateur astronomy,Outdoors
+Birdwatching,Outdoors
+Bus spotting,Outdoors
+Geocaching,Outdoors
+Gongoozling,Outdoors
+Herping,Outdoors
+Hiking/backpacking,Outdoors
+Meteorology,Outdoors
+Photography,Outdoors
+Satellite watching,Outdoors
+Trainspotting,Outdoors
+Traveling,"Outdoors, Travel"
+Whale watching,Outdoors
+Religion,Studies
+Accounting,Studies
+Animation & Visual Effects,"Studies, Media, Games, Art"
+Architectural Engineering,Studies
+Architecture,Studies
+Art History,"Studies, Art, History"
+Behavioral Health Counseling,"Studies, Health"
+Biological Sciences,"Studies, Science"
+Biomedical Engineering,"Studies, Science"
+Business Analytics,Studies
+Business and Engineering,Studies
+Chemical Engineering,"Studies, Science"
+Chemistry,"Studies, Science"
+Civil Engineering,"Studies, Science"
+Communication,Studies
+Computer Engineering,"Studies, Science"
+Computer Science,"Studies, Science"
+Computing and Security Technology,"Studies, Science"
+Construction Management,Studies
+Criminology and Justice Studies,"Studies, Science"
+Culinary Arts and Science,"Studies, Science"
+Data Science,"Studies, Science"
+Design & Merchandising,Studies
+Economics,Studies
+Education: Non-Certification,Studies
+Electrical Engineering,"Studies, Science"
+Elementary Education,Studies
+Engineering Technology,"Studies, Science"
+English,Studies
+Entertainment & Arts Management,Studies
+Entrepreneurship and Innovation,Studies
+Environmental Engineering,"Studies, Science"
+Environmental Science,"Studies, Science"
+Environmental Studies and Sustainability,Studies
+Fashion Design,Studies
+Film & Television,"Studies, Media, Indoors"
+Finance,Studies
+Game Design & Production,"Studies, Media, Games"
+General Business,Studies
+General Studies,Studies
+Geoscience,"Studies, Science"
+Global Studies,Studies
+Graphic Design,Studies
+Health Sciences,"Studies, Science, Health"
+Health Services Administration,"Studies, Health"
+History,"Studies, History"
+Hospitality Management,Studies
+Information Systems,"Studies, Science"
+Interactive Digital Media,"Studies, Media, Games"
+Interior Design,Studies
+International Business,Studies
+Legal Studies,Studies
+Management Information Systems,Studies
+Marketing,Studies
+Materials Science and Engineering,"Studies, Science"
+Mathematics,Studies
+Mechanical Engineering,"Studies, Science"
+Music Industry,Studies
+Nursing,"Studies, Health"
+Nutrition and Foods,"Studies, Health, Food"
+Operations and Supply Chain Management,Studies
+Organizational Management,Studies
+Philosophy,Studies
+"Philosophy, Politics & Economics",Studies
+Physics,"Studies, Science"
+Political Science,"Studies, Science"
+Product Design,"Studies, Craft"
+Psychology,"Studies, Science"
+Public Health,"Studies, Health"
+Real Estate Management and Development,Studies
+Screenwriting and Playwriting,Studies
+Secondary Education,Studies
+Sociology,"Studies, Science"
+Software Engineering,"Studies, Science"
+Sport Business,"Studies, Sports"
+Technology Innovation Management,"Studies, Science"
+Virtual Reality & Immersive Media,"Studies, Media, Games"

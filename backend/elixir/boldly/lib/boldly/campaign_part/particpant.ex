@@ -5,6 +5,7 @@ defmodule Boldly.CampaignPart.Participant do
   schema "participants" do
     field :is_active, :boolean, default: false
     field :is_deleted, :boolean, default: false
+    field :score, :integer, default: 0
 
     belongs_to :creators, Boldly.CreatorAccount.Creator,
       foreign_key: :creator_uuid,
@@ -22,7 +23,7 @@ defmodule Boldly.CampaignPart.Participant do
   @doc false
   def changeset(participant, attrs) do
     participant
-    |> cast(attrs, [:is_deleted, :is_active, :creator_uuid, :campaign_uuid])
+    |> cast(attrs, [:is_deleted, :score, :is_active, :creator_uuid, :campaign_uuid])
     |> assoc_constraint(:creators, name: :creator_uuid)
     |> assoc_constraint(:campaigns, name: :campaign_uuid)
     |> validate_required([:is_deleted, :is_active, :creator_uuid, :campaign_uuid])

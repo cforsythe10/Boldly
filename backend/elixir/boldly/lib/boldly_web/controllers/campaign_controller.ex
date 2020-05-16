@@ -47,6 +47,7 @@ defmodule BoldlyWeb.CampaignController do
   def create(conn, %{"campaign" => campaign_params}) do
     with {:ok, %Campaign{} = campaign_p} <- CampaignInfo.create_campaign(campaign_params) do
       campaign = campaign_p |> get_pictures()
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.campaign_path(conn, :show, campaign))
@@ -94,7 +95,6 @@ defmodule BoldlyWeb.CampaignController do
     end
   end
 
-
   def get_pictures(campaigns) when is_list(campaigns) do
     Enum.map(campaigns, fn campaign ->
       get_pictures(campaign)
@@ -104,10 +104,10 @@ defmodule BoldlyWeb.CampaignController do
   def get_pictures(campaigns) do
     if campaigns.photo_reference do
       bucket_name = System.get_env("BUCKET_NAME")
-      pic_base64 = ExAws.S3.get_object(bucket_name, campaigns.photo_reference) |> ExAws.request!
+      pic_base64 = ExAws.S3.get_object(bucket_name, campaigns.photo_reference) |> ExAws.request!()
       Map.replace!(campaigns, :photo_reference, pic_base64.body)
     else
       campaigns
     end
-end
+  end
 end

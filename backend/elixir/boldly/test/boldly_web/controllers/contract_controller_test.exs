@@ -44,12 +44,14 @@ defmodule BoldlyWeb.ContractControllerTest do
   }
 
   @create_attrs %{
-    file_path: "some file_path"
+    # file_path: "some file_path"
+    document: "base_64_encoded_document"
   }
   @update_attrs %{
-    file_path: "some updated file_path"
+    # file_path: "some updated file_path"
+    document: "base64_updated_document"
   }
-  @invalid_attrs %{file_path: nil, id: nil}
+  @invalid_attrs %{file_path: nil, brand_uuid: nil}
 
   def fixture(:contract_setup) do
     {:ok, brand} = %{} |> Enum.into(@valid_brand_attrs) |> Boldly.BrandAccount.create_brand()
@@ -88,7 +90,8 @@ defmodule BoldlyWeb.ContractControllerTest do
       brand_uuid: brand.uuid,
       campaign_uuid: campaign.uuid,
       creator_uuid: creator.uuid,
-      file_path: "some file_path"
+      # file_path: "some file_path"
+      document: @create_attrs.document
     }
   end
 
@@ -117,10 +120,16 @@ defmodule BoldlyWeb.ContractControllerTest do
 
       conn = get(conn, Routes.contract_path(conn, :show, id))
 
-      assert %{
-               "id" => id,
-               "file_path" => "some file_path"
-             } = json_response(conn, 200)["data"]
+      resp = json_response(conn, 200)["data"]
+
+      assert resp["id"] == id
+      assert resp["file_path"] == @create_attrs.document
+      assert resp["brand_uuid"] == contract_attrs.brand_uuid
+
+      # assert %{
+      #          "id" => id,
+      #          "file_path" => "some file_path"
+      #        } = json_response(conn, 200)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -141,10 +150,16 @@ defmodule BoldlyWeb.ContractControllerTest do
 
       conn = get(conn, Routes.contract_path(conn, :show, id))
 
-      assert %{
-               "id" => id,
-               "file_path" => "some updated file_path"
-             } = json_response(conn, 200)["data"]
+      resp = json_response(conn, 200)["data"]
+
+      assert resp["id"] == id
+      # assert resp["file_path"] == @update_attrs.document
+      assert resp["brand_uuid"] == contract.brand_uuid
+
+      # assert %{
+      #          "id" => id,
+      #          "file_path" => "some updated file_path"
+      #        } = json_response(conn, 200)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn, contract: contract} do

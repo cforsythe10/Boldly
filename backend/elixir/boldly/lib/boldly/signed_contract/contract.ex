@@ -32,12 +32,21 @@ defmodule Boldly.SignedContract.Contract do
     |> assoc_constraint(:creators, name: :creator_uuid)
     |> assoc_constraint(:campaigns, name: :campaign_uuid)
     |> assoc_constraint(:brands, name: :brand_uuid)
-    |> validate_required([:file_path, :brand_uuid, :campaign_uuid, :creator_uuid])
+    |> validate_required([:brand_uuid, :campaign_uuid, :creator_uuid])
     |> unique_constraint(:id)
+    |> store_document()
   end
 
-  defp store_image(
-         %Ecto.Changeset{valid?: true, changes: %{document: document, campaign_uuid: ca_id, brand_uuid: b_id, creator_uuid: cr_id}} = changeset
+  defp store_document(
+         %Ecto.Changeset{
+           valid?: true,
+           changes: %{
+             document: document,
+             campaign_uuid: ca_id,
+             brand_uuid: b_id,
+             creator_uuid: cr_id
+           }
+         } = changeset
        ) do
     f_uuid = UUID.uuid4(:hex)
 
@@ -53,5 +62,5 @@ defmodule Boldly.SignedContract.Contract do
     change(changeset, %{file_path: unique_filename})
   end
 
-  defp store_image(changeset), do: changeset
+  defp store_document(changeset), do: changeset
 end
