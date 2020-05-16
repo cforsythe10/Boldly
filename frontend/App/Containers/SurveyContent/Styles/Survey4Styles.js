@@ -33,7 +33,7 @@ export default StyleSheet.create({
     backgroundColor: 'transparent'
   },
   locationContainer: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'flex-start',
   	alignItems: 'center'
   }

@@ -99,11 +99,7 @@ defmodule Boldly.MessageInfoTest do
 
     # Returns: {b1, b2, c1, c2, conv1, conv2, conv3, conv4}
     def convs_fixture() do
-      {:ok, b1} = brand_fixture1()
-      {:ok, b2} = brand_fixture2()
-
-      {:ok, c1} = creator_fixture1()
-      {:ok, c2} = creator_fixture2()
+      {b1, b2, c1, c2} = accounts_fixture()
 
       {:ok, conv1} = create_conv(c1.id, b1.id)
       {:ok, conv2} = create_conv(c1.id, b2.id)
