@@ -3,6 +3,8 @@ import { createStore, combineReducers } from 'redux';
 import loginReducer from './loginReducer';
 import settingsReducer from './settingsReducer';
 import MessagesReducer from './Messages/MessagesReducer';
+import campaignBuilder from './campaignBuilder/campaignBuilderReducer';
+
 // import { inputReducer } from './Inputs/input-reducer'; Example of a import of a reducer file
 
 // FAKE ACTION
@@ -38,6 +40,7 @@ const rootReducer = combineReducers({
     loginReducer,
     settingsReducer,
     MessagesReducer
+    campaignBuilder
 });
 
 const initStore = () => createStore(rootReducer, {}); // Second Param is the inital state of the whole store

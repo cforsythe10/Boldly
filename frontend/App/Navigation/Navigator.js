@@ -104,6 +104,9 @@ const Navigator = createStackNavigator(
         Campaigns: {
             screen: Campaign
         },
+        CampaignCreator: {
+        	screen: CampaignCreator
+        },
         Settings: {
             screen: Settings
         },
