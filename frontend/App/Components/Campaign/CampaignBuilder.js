@@ -114,7 +114,6 @@ let valuesSelected = {
 };
 
 const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
-
 	const flip = () => {
 		toggleState = !toggleState;
 		addCampaignData("local", toggleState);
@@ -170,9 +169,12 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
   		addCampaignData('values', getValues(values));
   	}
 
+  	const store = useStore();
+    const account = store.getState().loginReducer.loginReducer.account;
+
   	const saveDraft = () => {
   		addCampaignData('isDraft', true);
-  		sendCampaignData(currentCampaign);
+  		sendCampaignData({...currentCampaign, account: account});
   	}
 
 	return(
@@ -261,7 +263,7 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 			<View style={styles.submitButtonContainer}>
 				{/** Needs to be some type of error handling if user doesn't fill everything out **/} 
 				<Text style={styles.link} onPress={() => saveDraft()}> Save as draft</Text>
-				<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(currentCampaign)}/>
+				<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(account)}/>
 			</View>
 	</ScrollView>
 );}

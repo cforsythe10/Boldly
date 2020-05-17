@@ -1,4 +1,5 @@
 import * as campaignsTypes from './campaignBuilderTypes';
+import { makePost } from '../../Services/Api';
 
 const initialState = {
     campaigns: [],
@@ -34,18 +35,39 @@ const campaignBuilder = (state = initialState, action) => {
             return {
                 ...state,
                 currentCampaign: {
+                    ...state.currentCampaign,
                     ...action.data
                 }
             }
         case campaignsTypes.CAMPAIGN_SENDING:
-            
+            console.log(state);
+            let currCampaign = state.currentCampaign;
+                console.log();
 
-            return {
-                ...state,
-                currentCampaignRes : {
-                    sending: true
-                }
-            }
+                makePost('api/campaigns',JSON.stringify({
+                    campaign: {
+                        age_range: currCampaign.ageRange,
+                        compensation: currCampaign.compensation,
+                        creator_responsibilities: currCampaign.creatorResponsibilities,
+                        description: currCampaign.description,
+                        desired_engagement_rate: parseInt(currCampaign.engagementRate, 10),
+                        start_date: new Date(currCampaign.startDate).toISOString().substring(0,10),
+                        end_date: new Date(currCampaign.endDate).toISOString().substring(0,10),
+                        industry: currCampaign.industry,
+                        interests: currCampaign.interests,
+                        is_draft: currCampaign.isDraft,
+                        location: currCampaign.location,
+                        name: currCampaign.name,
+                        perks: currCampaign.perks,
+                        photo_reference: currCampaign.photoRef,
+                        specific_to_location: currCampaign.local,
+                        values: currCampaign.values,
+                        launched_by: action.data.account.uuid
+                    }
+                }) ).then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                });
         case campaignsTypes.CAMPAIGN_SENT_SUCCESS:
             return {
                 ...state,
