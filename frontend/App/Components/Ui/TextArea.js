@@ -29,25 +29,15 @@ export default class TextArea extends Component {
               multiline={true}
               placeholderTextColor= '#C1C1C1'
               theme={{ fonts: { regular: 'AvenirNext-Medium' } }}
-              onChangeText={(text) => {
-                if(text === '') {
+              onChange={() => {
                   this.setState({
-                    text: text,
-                    style: {
-                      ...styles.TextInput,
-                      opacity: 0.7,
-                    }
-                }); 
-                } else {
-                  this.setState({
-                    text: text,
                     style: {
                       ...styles.TextInput,
                       opacity: 1.0
                     }
                 });
               }
-            }}
+            }
             />
           </View>
     )
