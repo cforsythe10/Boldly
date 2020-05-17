@@ -30,7 +30,7 @@ export default StyleSheet.create({
   },
 
   calendarContainer: {
-      width:'50%',
+    width:'100%',
     backgroundColor: Colors.white,
     borderRadius: 10,
     padding: 6,
