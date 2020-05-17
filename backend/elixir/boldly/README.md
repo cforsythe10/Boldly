@@ -94,7 +94,6 @@ The following is an example payload to create a campaign
 
 `launched_by` is the UUID of whatever brand is launching the campaign
 
-
 ## Campaign Participants
 
 ### Apply to a campaign
@@ -193,6 +192,42 @@ Example Payload:
 
 
 It will return a list of participant attributes. Under the `creator` key for each item in the list will be the profile information for the associated creator.
+
+
+## Contracts
+
+### Uploading a contract
+`endpoint: /api/contracts`
+
+`Request Type: POST`
+
+
+Example:
+
+```json
+{
+	"contract": {
+		"creator_uuid": "a2ff4102-bf59-4641-a815-00353fad5657",
+		"brand_uuid": "e7e18afb-cf8a-46da-bbff-92646bf8a097",
+		"campaign_uuid": "bbf023e1-5dd0-4aba-86c4-428f82c34a48",
+		"document": "base64_encoded_document"
+	}
+}
+```
+
+
+### Getting a Contract
+`endpoint: /api/contracts`
+
+`Request Type: GET`
+
+Example payload:
+
+```json
+{
+  "id": 1
+}
+```
 
 ## Conversations/Messaging API instructions
 

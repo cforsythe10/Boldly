@@ -37,6 +37,21 @@ defmodule Boldly.CampaignInfo do
     |> Repo.all()
   end
 
+  def get_past_campaigns_and_parts(brand_uuid) do
+    d = Date.utc_today()
+
+    parts = from(p in Participant, where: p.is_active == true or p.has_applied == true)
+
+    from(c in Campaign,
+      where: c.launched_by == ^brand_uuid and c.end_date < ^d,
+      left_join: p in ^parts,
+      on: [campaign_uuid: c.uuid],
+      select: {c},
+      preload: [participants: p]
+    )
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single campaign.
 
