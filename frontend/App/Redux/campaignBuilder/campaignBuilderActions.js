@@ -1,15 +1,10 @@
 import * as campaignTypes from './campaignBuilderTypes';
 import axios from 'axios';
 
-export const sendCampaignData = campaignData => async dispatch => {
-    dispatch(campaignSending());
-    try {
-        const res = await axios.post("Insert post", campaignData);
-        dispatch(campaignSentSuccess(res));
-    } catch (err) {
-        dispatch(campaignSentError(err));
-    }
-}
+export const sendCampaignData = campaignData => ({
+    type: campaignTypes.CAMPAIGN_SENDING,
+    data: campaignData
+})
 
 export const addCampaignData = (dataKey, data) => ({
     type: campaignTypes.CAMPAIGN_ADD_DATA,

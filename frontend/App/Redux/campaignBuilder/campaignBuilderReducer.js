@@ -5,19 +5,21 @@ const initialState = {
     currentCampaign: {
         name: '',
         description: '',
-        values: [],
+        values: 'Community,Diversity,Education',
         startDate: '',
         endDate: '',
         creatorResponsibilities: '',
-        compensation: 0,
+        compensation: '',
         perks: '',
         industry: '',
-        followerCount: 0,
-        engagementRate: 0,
-        interests: [],
+        followerCount: '',
+        engagementRate: '',
+        interests: '',
         ageRange: '',
         location: '',
-        local: false
+        local: false,
+        photoRef: '',
+        isDraft: false,
     },
     currentCampaignRes: {
         sending: false,
@@ -36,6 +38,8 @@ const campaignBuilder = (state = initialState, action) => {
                 }
             }
         case campaignsTypes.CAMPAIGN_SENDING:
+            
+
             return {
                 ...state,
                 currentCampaignRes : {

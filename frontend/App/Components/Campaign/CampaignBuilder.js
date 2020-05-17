@@ -11,6 +11,9 @@ import LocationInputField from '../Ui/InputFields/LocationInputField'
 import { addCampaignData, sendCampaignData } from '../../Redux/campaignBuilder/campaignBuilderActions';
 import TextArea from '../Ui/TextArea';
 import Calendar from '../Ui/Calendar';
+import ValuesModal from '../Ui/ValuesModal';
+import DocumentPicker from 'react-native-document-picker';
+import RNFetchBlob from 'react-native-fetch-blob';
 
 import ToggleSwitch from 'toggle-switch-react-native';
 
@@ -98,6 +101,17 @@ const ViewRoute = ({currentCampaign}) => {
 
 let toggleState = false;
 let photoSelected = false;
+let valuesSelected = {
+	communitySelected: true,
+	diversitySelected: true,
+	educationSelected: true,
+	familySelected: false,
+	innovationSelected: false,
+	spiritualitySelected: false,
+	sustainabilitySelected: false,
+	traditionSelected: false,
+	wellnessSelected: false
+};
 
 const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 
@@ -115,9 +129,51 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
         }
     }
 
-    const selectPhoto = () => {
+    const selectPhoto = async () => {
+		try {
+		  	const res = await DocumentPicker.pick({
+		    	type: [DocumentPicker.types.images],
+		 	});
 
-    }
+			RNFetchBlob.fs.readFile(res.uri, 'base64')
+				.then((data) => {
+					//use type and base 64 encoded data, will be able to convert back from anything
+					addCampaignData('photoRef', data);
+				});
+		} catch (err) {
+		  if (DocumentPicker.isCancel(err)) {
+		    // User cancelled the picker, exit any dialogs or menus and move on
+		  } else {
+		    throw err;
+		  }
+		}
+	}
+
+
+    const getValues = (values) => {
+  		let arr = [];
+  		if(values.communitySelected) arr.push('Community');
+  		if(values.diversitySelected) arr.push('Diversity');
+  		if(values.educationSelected) arr.push('Education');
+  		if(values.familySelected) arr.push('Family');
+  		if(values.innovationSelected) arr.push('Innovation');
+  		if(values.spiritualitySelected) arr.push('Spirituality');
+  		if(values.sustainabilitySelected) arr.push('Sustainability');
+  		if(values.traditionSelected) arr.push('Tradition');
+  		if(values.wellnessSelected) arr.push('Wellness');
+
+  		return arr.join(',');
+  	}
+
+  	const valuesCallback = (values) => {
+  		valuesSelected = values;
+  		addCampaignData('values', getValues(values));
+  	}
+
+  	const saveDraft = () => {
+  		addCampaignData('isDraft', true);
+  		sendCampaignData(currentCampaign);
+  	}
 
 	return(
 	<ScrollView style={styles.container}>
@@ -141,7 +197,7 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 
 			<View style={styles.inputContainer} >
 				<Text style={styles.inputTitleText}>Values</Text>
-
+				<ValuesModal values={['Community', 'Diversity', 'Education']} callback={valuesCallback} />
 			</View>
 
 			<View style={styles.inputContainer}>
@@ -169,7 +225,7 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 
 			<View style={styles.inputContainer}>
 				<Text style={styles.inputTitleText}>Location</Text>
-				<LocationInputField callback={text => addCampaignData("location", text)} darkBg={false} />
+				<LocationInputField callback={text => addCampaignData("location", text.description)} darkBg={false} />
 			</View>
 
 			<View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
@@ -204,6 +260,7 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 
 			<View style={styles.submitButtonContainer}>
 				{/** Needs to be some type of error handling if user doesn't fill everything out **/} 
+				<Text style={styles.link} onPress={() => saveDraft()}> Save as draft</Text>
 				<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(currentCampaign)}/>
 			</View>
 	</ScrollView>

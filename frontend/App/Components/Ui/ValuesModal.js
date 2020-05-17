@@ -17,6 +17,7 @@ export default class ValuesModal extends Component {
     static propTypes = {
         range: PropTypes.bool,
         values: PropTypes.array,
+        callback: PropTypes.func
     }
 
     constructor(props) {
@@ -44,7 +45,6 @@ export default class ValuesModal extends Component {
     }
 
     readValuesArray = (arr) => {
-        console.log(arr);
         arr.forEach(element => {
             switch(element) {
                 case('Community'):
@@ -87,6 +87,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, communitySelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     } 
 
     callback1 = (data) => {
@@ -94,6 +95,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, diversitySelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     }
 
     callback2 = (data) => {
@@ -101,6 +103,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, educationSelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     }
 
     callback3 = (data) => {
@@ -108,6 +111,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, familySelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     }
 
     callback4 = (data) => {
@@ -115,6 +119,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, innovationSelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     }
 
     callback5 = (data) => {
@@ -122,6 +127,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, spiritualitySelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     }
 
     callback6 = (data) => {
@@ -129,6 +135,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, sustainabilitySelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     }
 
     callback7 = (data) => {
@@ -136,6 +143,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, traditionSelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     }
 
     callback8 = (data) => {
@@ -143,6 +151,7 @@ export default class ValuesModal extends Component {
         if(data) iter += 1;
         else iter -= 1;
         this.setState({...this.state, wellnessSelected: data, selectedCount: this.state.selectedCount + iter},console.log(this.state));
+        this.props.callback(this.state);
     }
 
     setValuesArray(){
@@ -156,7 +165,7 @@ export default class ValuesModal extends Component {
         if(this.state.sustainabilitySelected) arr.push('Sustainability');
         if(this.state.traditionSelected) arr.push('Tradition');
         if(this.state.wellnessSelected) arr.push('Wellness');
-        console.log(arr);
+
         return arr;
     }
 
@@ -167,8 +176,7 @@ export default class ValuesModal extends Component {
     };
 
     saveValues = () => {
-        this.setState({ values: this.setValuesArray() },
-        console.log(this.state),    
+        this.setState({ values: this.setValuesArray() },    
         this.close()
         );
         

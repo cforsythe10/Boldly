@@ -13,7 +13,9 @@ export default StyleSheet.create({
   inputTitleText: {
     color: Colors.black,
     fontFamily: Fonts.style.body.fontFamily,
-    fontSize: Fonts.style.body.fontSize
+    fontSize: Fonts.style.body.fontSize,
+    marginBottom: '2%',
+    marginLeft: '6%'
   },
   header: {
     marginLeft: 10,
@@ -34,7 +36,8 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: '10%',
+    paddingLeft: '5%',
+    paddingRight: '5%',
     marginHorizontal: '5%'
   },
   photoInputFull: {
