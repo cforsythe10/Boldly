@@ -5,6 +5,7 @@ defmodule Boldly.Repo.Migrations.CreateParticipants do
     create table(:participants) do
       add :is_deleted, :boolean, default: false, null: false
       add :is_active, :boolean, default: false, null: false
+      add :has_applied, :boolean, default: false
       add :score, :integer
 
       add :creator_uuid,

@@ -32,7 +32,8 @@ defmodule BoldlyWeb.ParticipantView do
       is_active: participant.is_active,
       campaign_uuid: participant.campaign_uuid,
       creator_uuid: participant.creator_uuid,
-      score: participant.score
+      score: participant.score,
+      has_applied: participant.has_applied
     }
   end
 
@@ -44,6 +45,7 @@ defmodule BoldlyWeb.ParticipantView do
       campaign_uuid: participant.campaign_uuid,
       creator_uuid: participant.creator_uuid,
       score: participant.score,
+      has_applied: participant.has_applied,
       creator: render_one(participant.creators, CreatorView, "creator.json")
     }
   end
