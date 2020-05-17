@@ -25,11 +25,12 @@ export default StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     paddingVertical: '12%',
-    paddingHorizontal: 0
+    paddingHorizontal: 0,
+    margin: 0
   },
 
   calendarContainer: {
-      width:'50%',
+    width:'100%',
     backgroundColor: Colors.white,
     borderRadius: 10,
     padding: 6,

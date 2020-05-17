@@ -28,25 +28,13 @@ export default class TextFieldTall extends Component {
               style={this.state.style}
               placeholderTextColor= '#C1C1C1'
               theme={{ fonts: { regular: 'AvenirNext-Medium' } }}
-              onChangeText={(text) => {
-                if(text === '') {
-                  this.setState({
-                    text: text,
-                    style: {
-                      ...styles.TextInput,
-                      opacity: 0.5,
-                    }
-                }); 
-                } else {
-                  this.setState({
-                    text: text,
-                    style: {
-                      ...styles.TextInput,
-                      opacity: 1.0
-                    }
-                });
-              }
-            }}
+              onChange={() => {
+                this.setState({
+                  style: {
+                    ...styles.TextInput,
+                    opacity: 1.0,
+                  }
+                });}}
             />
           </View>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, TouchableHighlight } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './Styles/IconButtonStyles'
 import CommunityImage from '../../Images/Icons/community.svg'
 import DiversityImage from '../../Images/Icons/diversity.svg'
@@ -17,19 +17,30 @@ import { Colors } from '../../Themes';
 
 export default class ValueButton extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            greenButtonState: false, 
-            BackgroundColor: Colors.white
-        };
-    }
+    
 
     static propTypes = {
         text: PropTypes.string,
         svgName: PropTypes.string,
-        callback: PropTypes.func
+        callback: PropTypes.func,
+        whiteBG: PropTypes.bool,
+        disabled: PropTypes.bool,
+        selected: PropTypes.bool
+    }
+
+    constructor(props) {
+        super(props);
+
+        if (this.props.selected) {
+            this.state = {
+            greenButtonState: true, 
+        };
+        } else {
+            this.state = {
+                greenButtonState: false, 
+                BackgroundColor: Colors.white
+            };
+        }
     }
 
     render() {
@@ -60,7 +71,7 @@ export default class ValueButton extends Component {
         return (
             
             <View style={styles.valueButtonAlignment}>
-                <TouchableHighlight onPress={() => {
+                <TouchableOpacity onPress={() => {
                     if(!this.props.disabled || this.state.greenButtonState){
                         this.setState({greenButtonState: !this.state.greenButtonState});
                         this.props.callback(!this.state.greenButtonState);
@@ -68,13 +79,13 @@ export default class ValueButton extends Component {
                 }} style={this.state.greenButtonState ? styles.greenValueButton : styles.valueButton} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
                     
                         <View
-                            style={styles.valueButtonContainer}
+                            style={styles.valueButtonContainer} shouldRasterizeIOS={true} renderToHardwareTextureAndroid={true}
                         >
                             <GetSvg />
                         </View>
                     
-                </TouchableHighlight>
-                <Text style={{ ...styles.buttonTextWhite }} >{this.props.text}</ Text>
+                </TouchableOpacity>
+                <Text style={this.props.whiteBG ? { ...styles.buttonTextCharcoal } : { ...styles.buttonTextWhite }} >{this.props.text}</ Text>
             </ View>
         )
     }

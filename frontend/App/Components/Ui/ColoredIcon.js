@@ -60,12 +60,7 @@ export default class ColoredIcon extends Component {
         return (
             
             <View style={styles.valueButtonAlignment}>
-                <TouchableHighlight onPress={() => {
-                    // if(!this.props.disabled || this.state.greenButtonState){
-                    //     this.setState({greenButtonState: !this.state.greenButtonState});
-                    //     this.props.callback(!this.state.greenButtonState);
-                    // }
-                }} style={this.state.greenButtonState ? styles.greenValueButton : styles.coloredValue} activeOpacity={ 0.5 } underlayColor={ Colors.pear35}> 
+                <View style={styles.coloredValue}> 
                     
                         <View
                             style={styles.valueButtonContainer}
@@ -73,7 +68,7 @@ export default class ColoredIcon extends Component {
                             <GetSvg />
                         </View>
                     
-                </TouchableHighlight>
+                </View>
                 <Text style={{ ...styles.buttonText }} >{this.props.text}</ Text>
             </ View>
         )

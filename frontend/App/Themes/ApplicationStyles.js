@@ -236,7 +236,8 @@ const ApplicationStyles = {
     valueButtonRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingHorizontal: '8%'
+      paddingHorizontal: 0,
+      marginBottom: 16,
     },
 
     postRow: {
@@ -309,11 +310,11 @@ const ApplicationStyles = {
       alignItems: 'center'
     },
     mainModal: {
-      height: '89%',
+      height: '75%',
       width: '88%',
       borderTopLeftRadius: 15,
       borderTopRightRadius: 15,
-      backgroundColor: Colors.fog,
+      backgroundColor: Colors.white,
       margin: 0,
       alignItems: 'center',
       paddingVertical: 24

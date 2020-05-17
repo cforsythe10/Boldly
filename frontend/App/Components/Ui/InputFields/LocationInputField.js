@@ -83,10 +83,10 @@ const GooglePlacesAutocompleteStyles = {
 		borderTopWidth: 0,
 		borderBottomWidth: 1.5,
 		borderBottomColor: Colors.fog,
-		backgroundColor: Colors.transparent,
+		backgroundColor: Colors.white,
 	},
 	textInput: {
-		backgroundColor: Colors.transparent,
+		backgroundColor: Colors.white,
 		color: Colors.fog,
 	},
 	container: {

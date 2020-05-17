@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
-import * as RNFS from 'react-native-fs';
 import RNFetchBlob from 'react-native-fetch-blob';
 
 import Header from '../Components/Ui/Header';
