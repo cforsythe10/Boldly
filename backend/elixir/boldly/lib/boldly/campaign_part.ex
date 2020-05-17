@@ -7,10 +7,30 @@ defmodule Boldly.CampaignPart do
   alias Boldly.Repo
 
   alias Boldly.CampaignPart.Participant
-
+  alias Boldly.CreatorAccount
+  alias Boldly.CampaignInfo
 
   def get_creators_in_campaign(c_uuid) do
     Repo.all(from(c in Participant, where: c.campaign_uuid == ^c_uuid, preload: [:creators]))
+  end
+
+  def apply_to_campaign(creator_id, campaign_id) do
+    cre = CreatorAccount.get_creator!(creator_id)
+    camp = CampaignInfo.get_campaign!(campaign_id)
+
+    creator_uuid = cre.uuid
+    campaign_uuid = camp.uuid
+
+    part =
+      Repo.one(
+        from(c in Participant,
+          where: c.campaign_uuid == ^campaign_uuid and c.creator_uuid == ^creator_uuid
+        )
+      )
+
+    part
+    |> Participant.apply()
+    |> Repo.update()
   end
 
   @doc """

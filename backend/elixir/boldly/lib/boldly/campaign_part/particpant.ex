@@ -29,4 +29,19 @@ defmodule Boldly.CampaignPart.Participant do
     |> assoc_constraint(:campaigns, name: :campaign_uuid)
     |> validate_required([:is_deleted, :is_active, :creator_uuid, :campaign_uuid])
   end
+
+  def apply(participant) do
+    participant
+    |> cast(%{has_applied: true}, [
+      :is_deleted,
+      :score,
+      :is_active,
+      :creator_uuid,
+      :campaign_uuid,
+      :has_applied
+    ])
+    |> assoc_constraint(:creators, name: :creator_uuid)
+    |> assoc_constraint(:campaigns, name: :campaign_uuid)
+    |> validate_required([:is_deleted, :is_active, :creator_uuid, :campaign_uuid])
+  end
 end

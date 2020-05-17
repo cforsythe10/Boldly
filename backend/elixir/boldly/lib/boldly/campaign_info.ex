@@ -7,6 +7,7 @@ defmodule Boldly.CampaignInfo do
   alias Boldly.Repo
 
   alias Boldly.CampaignInfo.Campaign
+  alias Boldly.CampaignPart.Participant
 
   @doc """
   Returns the list of campaigns.
@@ -19,6 +20,21 @@ defmodule Boldly.CampaignInfo do
   """
   def list_campaigns do
     Repo.all(Campaign)
+  end
+
+  def get_curr_campaigns_and_parts(brand_uuid) do
+    d = Date.utc_today()
+
+    parts = from(p in Participant, where: p.has_applied == true or p.is_active == true)
+
+    from(c in Campaign,
+      where: c.launched_by == ^brand_uuid and c.start_date <= ^d and c.end_date >= ^d,
+      left_join: p in ^parts,
+      on: [campaign_uuid: c.uuid],
+      select: {c},
+      preload: [participants: p]
+    )
+    |> Repo.all()
   end
 
   @doc """

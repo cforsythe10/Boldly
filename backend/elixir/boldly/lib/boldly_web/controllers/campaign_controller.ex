@@ -16,7 +16,6 @@ defmodule BoldlyWeb.CampaignController do
     render(conn, "index.json", campaigns: campaigns)
   end
 
-
   @doc """
   Creates a Campaign given the attributes are valid.
 

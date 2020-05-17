@@ -143,7 +143,6 @@ defmodule BoldlyWeb.ParticipantControllerTest do
     {:ok, brand} = @valid_brand_attrs |> Boldly.BrandAccount.create_brand()
     # IO.puts(attrs)
 
-
     {:ok, campaign} =
       attrs
       |> Enum.into(Map.put(@valid_campaign_attrs, :launched_by, brand.uuid))
@@ -252,7 +251,6 @@ defmodule BoldlyWeb.ParticipantControllerTest do
       industry: industry,
       values: vals
     }
-
 
     camp = campaign_fixture(cam_attrs)
     {camp, vals, ints, specific_loc, loc, industry, vals, begin_age, stop_age}
@@ -382,7 +380,11 @@ defmodule BoldlyWeb.ParticipantControllerTest do
 
       conn = post(conn, Routes.participant_path(conn, :match_creators, campaign_id: camp.id))
 
-      conn = post(conn, Routes.participant_path(conn, :get_creators_in_campaign, campaign_uuid: camp.uuid))
+      conn =
+        post(
+          conn,
+          Routes.participant_path(conn, :get_creators_in_campaign, campaign_uuid: camp.uuid)
+        )
 
       assert Enum.count(json_response(conn, 200)["data"]) == c_num
     end

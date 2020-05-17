@@ -23,6 +23,11 @@ defmodule BoldlyWeb.ParticipantController do
     render(conn, "get_creators.json", participants: participants)
   end
 
+  def apply_to_campaign(conn, %{"campaign_id" => ca_uuid, "creator_id" => cr_uuid}) do
+    {:ok, part} = CampaignPart.apply_to_campaign(cr_uuid, ca_uuid)
+    render(conn, "show.json", participant: part)
+  end
+
   def match_creators(conn, %{"campaign_id" => camp_id}) do
     campaign = CampaignInfo.get_campaign!(camp_id)
     ca_uuid = campaign.uuid

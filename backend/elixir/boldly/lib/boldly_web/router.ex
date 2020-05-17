@@ -33,6 +33,8 @@ defmodule BoldlyWeb.Router do
 
     post "/campaigns/match", ParticipantController, :match_creators
     post "/campaigns/matches", ParticipantController, :get_creators_in_campaign
+
+    post "/campaign/apply", ParticipantController, :apply_to_campaign
   end
 
   scope "/api", BoldlyWeb do

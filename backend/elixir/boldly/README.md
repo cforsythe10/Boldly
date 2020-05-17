@@ -58,8 +58,10 @@ Run `make stop-aws-detached` if you just wish to stop the process from running w
 `make reset-aws-db` - runs `mix ecto.drop` to delete all the tables and their associated data. *Do not run when the process is running in the background*
 
 
-## Campaign creation
+## Campaigns
 
+
+### Creation
 `endpoint: /api/campaigns`
 
 `Request Type: POST`
@@ -91,6 +93,25 @@ The following is an example payload to create a campaign
 ```
 
 `launched_by` is the UUID of whatever brand is launching the campaign
+
+
+## Campaign Participants
+
+### Apply to a campaign
+`endpoint: /api/campaign/apply`
+
+`Request Type: POST`
+
+
+Example:
+
+```json
+{
+  "campaign_id": 1,
+  "creator_id": 1
+}
+
+```
 
 ## Contracts API Instructions
 
@@ -171,7 +192,7 @@ Example Payload:
 ```
 
 
-It will return a list of participant attributes. Under the `creator` key for each item in the list will be the profile information for the associated creator. 
+It will return a list of participant attributes. Under the `creator` key for each item in the list will be the profile information for the associated creator.
 
 ## Conversations/Messaging API instructions
 
