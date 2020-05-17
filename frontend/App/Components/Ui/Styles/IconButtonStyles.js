@@ -28,7 +28,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: 48,
     height: 48,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.fog,
     shadowColor: '#C1C1C1',
     shadowOffset: { width: 4, height: 3},
     shadowRadius: 4,
@@ -51,7 +51,9 @@ export default StyleSheet.create({
   },
 
   valueButtonAlignment: {
-    alignItems: 'center'
+    alignItems: 'center',
+    width: 96,
+    overflow: "visible",
   },
 
   valueButtonContainer: {
@@ -69,6 +71,13 @@ export default StyleSheet.create({
     fontSize: Fonts.size.h6,
     ...Fonts.style.h6,
     color: Colors.white,
+    paddingTop: 16
+  },
+
+  buttonTextCharcoal: {
+    fontSize: Fonts.size.h6,
+    ...Fonts.style.h6,
+    color: Colors.charcoal,
     paddingTop: 16
   },
 
