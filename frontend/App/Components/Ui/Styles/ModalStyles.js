@@ -25,7 +25,8 @@ export default StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     paddingVertical: '12%',
-    paddingHorizontal: 0
+    paddingHorizontal: 0,
+    margin: 0
   },
 
   calendarContainer: {
