@@ -6,16 +6,18 @@ const initialState = {
         name: '',
         description: '',
         values: [],
-        duration: '',
+        startDate: '',
+        endDate: '',
         creatorResponsibilities: '',
         compensation: 0,
-        perks: [],
+        perks: '',
         industry: '',
         followerCount: 0,
         engagementRate: 0,
         interests: [],
         ageRange: '',
-        location: {}
+        location: '',
+        local: false
     },
     currentCampaignRes: {
         sending: false,

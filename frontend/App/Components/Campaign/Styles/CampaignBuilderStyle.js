@@ -23,5 +23,21 @@ export default StyleSheet.create({
   },
   submitButtonContainer: {
 
+  },
+  photoInputEmpty: {
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: Colors.black,
+    borderRadius: 22.5,
+    minHeight: 40,
+    minWidth: '90%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: '10%',
+    marginHorizontal: '5%'
+  },
+  photoInputFull: {
+    backgroundColor: Colors.pear
   }
 })

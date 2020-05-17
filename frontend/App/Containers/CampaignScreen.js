@@ -97,7 +97,6 @@ export default CampaignScreen = ({navigation}) => {
     		<Header headerType='MenuProfileTitle' title="Campaigns" navigation={navigation}/>
 			<View style={{...styles.centerContentContainer, flex: 9}}>
 				{campaigns ? <CampaignList campaigns={campaigns} navigation={navigation} /> : <NoCampaigns navigation={navigation} />}
-				{!account.birthday ? <PrimaryButtonPlus onPress={() => navigation.navigate('CampaignCreator')} /> : null}
 			</View>
     	</ScrollView>
 	);

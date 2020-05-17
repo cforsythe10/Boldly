@@ -5,8 +5,10 @@ import { View, Text, Dimensions } from 'react-native';
 import styles from './Styles/CampaignStyles';
 import Card from '../Ui/Card';
 import { ScrollView } from 'react-native-gesture-handler';
+import PrimaryButtonPlus from '../Ui/PrimaryButtonPlus';
 
-const CurrentCampaign = ({campaignMatches, campaignSavedForLater, campaignApplied, campaignActive, campaignPublished, campaignDraft}) => {
+
+const CurrentCampaign = ({campaignMatches, campaignSavedForLater, campaignApplied, campaignActive, campaignPublished, campaignDraft, navigation}) => {
     const store = useStore();
     const account = store.getState().loginReducer.loginReducer.account;
 
@@ -36,6 +38,7 @@ const CurrentCampaign = ({campaignMatches, campaignSavedForLater, campaignApplie
                 <Text style={styles.header}>Drafts</Text>
                 {campaignDraft.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
             </View>}
+            {!account.birthday ? <PrimaryButtonPlus onPress={() => navigation.navigate('CampaignCreator')} /> : null}
         </View>
     );
 }
@@ -70,7 +73,7 @@ const renderTabBar = props => (
 	/>
 );
 
-const CampaignList = ({campaigns}) => {
+const CampaignList = ({campaigns, navigation}) => {
     const { campaignMatches, campaignSavedForLater, campaignApplied, campaignActive, campaignPublished, campaignDraft } = campaigns;
     const [index, setIndex] = useState(0);
     const [routes] = useState([
@@ -81,7 +84,7 @@ const CampaignList = ({campaigns}) => {
     const renderScene = ({ route }) => {
         switch (route.key) {
             case 'first':
-                return (<CurrentCampaign campaignMatches = {campaignMatches} campaignSavedForLater={campaignSavedForLater} campaignApplied={campaignApplied} campaignActive={campaignActive} campaignPublished={campaignPublished} campaignDraft={campaignDraft} />)
+                return (<CurrentCampaign navigation={navigation} campaignMatches = {campaignMatches} campaignSavedForLater={campaignSavedForLater} campaignApplied={campaignApplied} campaignActive={campaignActive} campaignPublished={campaignPublished} campaignDraft={campaignDraft} />)
             case 'second':
                 return (<PastCampaign campaignApplied={campaignApplied} />)
             default:

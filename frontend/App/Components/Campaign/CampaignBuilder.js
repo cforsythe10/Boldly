@@ -1,14 +1,19 @@
 import React, { useState, useCallback } from 'react'
-import { View, Text, ScrollView, Dimensions, ImageBackground } from 'react-native'
+import { View, Text, ScrollView, Dimensions, ImageBackground, TouchableOpacity } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import { connect, useStore } from 'react-redux'
 import styles from './Styles/CampaignBuilderStyle'
-import TextFieldWide from '../Ui/TextFieldWide'
+import TextFieldTall from '../Ui/TextFieldTall'
 import PrimaryButtonLarge from '../Ui/PrimaryButtonLarge'
 import { TabBar, TabView } from 'react-native-tab-view'
 import TextField from '../Ui/InputFields/InputField'
 import LocationInputField from '../Ui/InputFields/LocationInputField'
-import { addCampaignData, sendCampaignData } from '../../Redux/campaignBuilder/campaignBuilderActions'
+import { addCampaignData, sendCampaignData } from '../../Redux/campaignBuilder/campaignBuilderActions';
+import TextArea from '../Ui/TextArea';
+import Calendar from '../Ui/Calendar';
+
+import ToggleSwitch from 'toggle-switch-react-native';
+
 
 import ColoredIcon from '../Ui/ColoredIcon';
 
@@ -91,21 +96,47 @@ const ViewRoute = ({currentCampaign}) => {
 	);
 };
 
-const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => (
+let toggleState = false;
+let photoSelected = false;
+
+const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
+
+	const flip = () => {
+		toggleState = !toggleState;
+		addCampaignData("local", toggleState);
+	};
+
+	const calendarCallback = (getDate,dateType) => {
+        //sets start date or end date in state based on type
+        if (dateType === 'END_DATE' ) {
+            addCampaignData('endDate', getDate);
+        } else {
+            addCampaignData('startDate', getDate);
+        }
+    }
+
+    const selectPhoto = () => {
+
+    }
+
+	return(
 	<ScrollView style={styles.container}>
-		{/* <View style={styles.container}> */}
 			<View style={styles.inputContainer} >
 				<Text style={styles.inputTitleText}>Name</Text>
-				<TextField placeholder="Enter Name" onChangeText={data => addCampaignData("name", data)} />
+				<TextFieldTall placeholder="Enter Name" onChangeText={data => addCampaignData("name", data)} />
 			</View>
 
 			<View style={styles.inputContainer} >
 				<Text style={styles.inputTitleText}>Photo</Text>
+				<TouchableOpacity style={photoSelected ? styles.photoInputFull : styles.photoInputEmpty} onPress={() => selectPhoto()}>
+					<Text style={styles.inputTitleText}>+</Text>
+					<Text style={styles.inputTitleText}>Upload your campaign photo</Text>
+				</TouchableOpacity>
 			</View>
 
 			<View style={styles.inputContainer} >
 				<Text style={styles.inputTitleText}>Description</Text>
-				<TextField placeholder="" onChangeText={data=> addCampaignData("description", data)} />
+				<TextArea placeholder="" onChangeText={data=> addCampaignData("description", data)} />
 			</View>
 
 			<View style={styles.inputContainer} >
@@ -114,58 +145,69 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => (
 			</View>
 
 			<View style={styles.inputContainer}>
-				<Text style={styles.inputTitleText} onChangeText={text => addCampaignData("duration", text)}>Duration</Text>
+				<Text style={styles.inputTitleText}>Duration</Text>
 			</View>
+			<Calendar range={true} callback={calendarCallback} />
 
 			<View style={styles.inputContainer}>
 				<Text style={styles.inputTitleText}>Creator Responsibilities</Text>
-				<TextFieldWide placeholder="Enter Name" onChangeText={text => addCampaignData("creatorResponsibilities", text)} />
+				<TextArea placeholder="Post requirements, accounts to tag, hashtags to use, additional requirements (such as sending content for approval)" onChangeText={text => addCampaignData("creatorResponsibilities", text)} />
 			</View>
 
 			<View style={styles.inputContainer}>
 				<Text style={styles.inputTitleText}>Compensation</Text>
-				<TextFieldWide placeholder="Enter Name" onChangeText={text => addCampaignData("compensation", text)} />
+				<TextFieldTall placeholder="Dolar amount to be recieved in compensation" onChangeText={text => addCampaignData("compensation", text)} />
 			</View>
 
 			<View style={styles.inputContainer}>
 				<Text style={styles.inputTitleText}>Perks of the Program</Text>
-				<TextFieldWide placeholder="Enter Name" onChangeText={text => addCampaignData("perks", text)} />
+				<TextArea placeholder="Any extra perks for the participants? This includes exposure, swag, etc." onChangeText={text => addCampaignData("perks", text)} />
 			</View>
 
 			<Text style={styles.header}>Participant Information</Text>
 
-			<View style={styles.inputContainer}>
-				<Text style={styles.inputTitleText} onChangeText={text => addCampaignData("industry", text)} >Industry</Text>
-			</View>
-
-			<View style={styles.inputContainer}>
-				<Text style={styles.inputTitleText} onChangeText={text => addCampaignData("followerCount", text)}>Follower Count</Text>
-			</View>
-
-			<View style={styles.inputContainer}>
-				<Text style={styles.inputTitleText} onChangeText={text => addCampaignData("engagementRate", text)}>Engagement Rate</Text>
-			</View>
-
-			<View style={styles.inputContainer}>
-				<Text style={styles.inputTitleText} onChangeText={text => addCampaignData("interests", text)}>Interests</Text>
-			</View>
-
-			<View style={styles.inputContainer}>
-				<Text style={styles.inputTitleText} onChangeText={text => addCampaignData("ageRange", text)}>Age Range</Text>
-			</View>
 
 			<View style={styles.inputContainer}>
 				<Text style={styles.inputTitleText}>Location</Text>
 				<LocationInputField callback={text => addCampaignData("location", text)} darkBg={false} />
 			</View>
 
+			<View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+				<ToggleSwitch isOn={toggleState} onToggle={() => flip()} />
+				<Text style={styles.inputTitleText}>This campaign is specific to this location</Text>
+			</View>
+
+			<View style={styles.inputContainer}>
+				<Text style={styles.inputTitleText}>Industry</Text>
+				<TextFieldTall placeholder="Select industry" onChangeText={text => addCampaignData("industry", text)} /> 
+			</View>
+
+			<View style={styles.inputContainer}>
+				<Text style={styles.inputTitleText}>Follower Count</Text>
+				<TextFieldTall placeholder="Minimum # of followers" onChangeText={text => addCampaignData("followerCount", text)} /> 
+			</View>
+
+			<View style={styles.inputContainer}>
+				<Text style={styles.inputTitleText}>Engagement Rate</Text>
+				<TextFieldTall placeholder="Minimum % of engagement" onChangeText={text => addCampaignData("engagementRate", text)} />
+			</View>
+
+			<View style={styles.inputContainer}>
+				<Text style={styles.inputTitleText}>Interests</Text>
+				<TextFieldTall placeholder="Select interests" onChangeText={text => addCampaignData("interests", text)} />
+			</View>
+
+			<View style={styles.inputContainer}>
+				<Text style={styles.inputTitleText}>Age Range</Text>
+				<TextFieldTall placeholder="Select age range" onChangeText={text => addCampaignData("ageRange", text)} /> 
+			</View>
+
 			<View style={styles.submitButtonContainer}>
-				{/** Needs to be some type of error handling if user doesn't fill everything out */} 
+				{/** Needs to be some type of error handling if user doesn't fill everything out **/} 
 				<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(currentCampaign)}/>
 			</View>
-		{/* </View> */}
 	</ScrollView>
-);
+);}
 
 
 const LazyPlaceholder = ({ route }) => (
