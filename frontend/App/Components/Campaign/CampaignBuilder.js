@@ -27,6 +27,12 @@ const ViewRoute = ({currentCampaign}) => {
 
     let values = account.values.split(',');
     let isCreator = account.birthday;
+
+    const saveDraft = () => {
+  		addCampaignData('isDraft', true);
+  		sendCampaignData(account);
+  	}
+
 	return (
 		<ScrollView style={styles.fullScreen}>
 			<View style={styles.profileScroll}>
@@ -226,7 +232,7 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 
   	const saveDraft = () => {
   		addCampaignData('isDraft', true);
-  		sendCampaignData({...currentCampaign, account: account});
+  		sendCampaignData(account);
   	}
 
 	return(

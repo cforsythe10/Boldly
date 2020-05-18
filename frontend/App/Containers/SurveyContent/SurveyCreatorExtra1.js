@@ -47,7 +47,7 @@ export default class SurveyCreatorExtra1 extends Component {
     }
 
   	render() {
-  		const nextSurveyState = {...this.state.currentState, interests: ['test1', 'test2', 'test3']};
+  		const nextSurveyState = {...this.state.currentState, interests: ['test', 'test1', 'test2', 'test3']};
 		return (
 		  <View style={ styles.fullScreen } >
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >

@@ -36,7 +36,7 @@ const CampaignView = ({currentCampaign}) => {
                     { account.industry }
                   </Text>
                   <Text style={styles.sh3}>
-                    Instagram info here
+                      Test
                   </Text>
                   </View>
                 </LinearGradient>
