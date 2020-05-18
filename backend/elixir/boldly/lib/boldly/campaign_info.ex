@@ -8,6 +8,7 @@ defmodule Boldly.CampaignInfo do
 
   alias Boldly.CampaignInfo.Campaign
   alias Boldly.CampaignPart.Participant
+  alias Boldly.BrandAccount
 
   @doc """
   Returns the list of campaigns.
@@ -20,6 +21,16 @@ defmodule Boldly.CampaignInfo do
   """
   def list_campaigns do
     Repo.all(Campaign)
+  end
+
+  def get_all_brand_camps_and_parts(brand_id) do
+    brand = BrandAccount.get_brand!(brand_id)
+
+    uuid = brand.uuid
+    curr = get_curr_campaigns_and_parts(uuid)
+    past = get_past_campaigns_and_parts(uuid)
+
+    {curr, past}
   end
 
   def get_curr_campaigns_and_parts(brand_uuid) do

@@ -94,6 +94,23 @@ The following is an example payload to create a campaign
 
 `launched_by` is the UUID of whatever brand is launching the campaign
 
+
+### Getting all Campaigns and Participants for a Brand/Creator
+NOTE: Creator is not implemented yet.
+
+This returns past and present campaigns for Brands/Creators
+`endpoint: /api/campaigns/all`
+
+`request type: POST`
+
+Example:
+
+```json
+{
+	"brand_id": 1
+}
+```
+
 ## Campaign Participants
 
 ### Apply to a campaign

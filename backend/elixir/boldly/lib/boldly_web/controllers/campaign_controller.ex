@@ -16,6 +16,12 @@ defmodule BoldlyWeb.CampaignController do
     render(conn, "index.json", campaigns: campaigns)
   end
 
+  def get_camps_and_parts(conn, %{"brand_id" => b_id}) do
+    {curr, past} = CampaignInfo.get_all_brand_camps_and_parts(b_id)
+    # IO.puts(curr)
+    render(conn, "brands_index.json", %{current: curr, past: past})
+  end
+
   @doc """
   Creates a Campaign given the attributes are valid.
 

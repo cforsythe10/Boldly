@@ -35,6 +35,9 @@ defmodule BoldlyWeb.Router do
     post "/campaigns/matches", ParticipantController, :get_creators_in_campaign
 
     post "/campaign/apply", ParticipantController, :apply_to_campaign
+
+    # Use different key to indicate creator or brand
+    post "/campaigns/all", CampaignController, :get_camps_and_parts
   end
 
   scope "/api", BoldlyWeb do
