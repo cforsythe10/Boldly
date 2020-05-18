@@ -38,6 +38,9 @@ defmodule BoldlyWeb.Router do
 
     # Use different key to indicate creator or brand
     post "/campaigns/all", CampaignController, :get_camps_and_parts
+
+    post "/campaign/activate", ParticipantController, :activate_creator
+    post "/campaign/deactivate", ParticipantController, :deactivate_creator
   end
 
   scope "/api", BoldlyWeb do

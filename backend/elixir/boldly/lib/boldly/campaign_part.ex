@@ -39,6 +39,46 @@ defmodule Boldly.CampaignPart do
     |> Repo.update()
   end
 
+  def activate_for_campaign(creator_id, campaign_id) do
+    cre = CreatorAccount.get_creator!(creator_id)
+    camp = CampaignInfo.get_campaign!(campaign_id)
+
+    creator_uuid = cre.uuid
+    campaign_uuid = camp.uuid
+
+
+    part =
+      Repo.one(
+        from(c in Participant,
+          where: c.campaign_uuid == ^campaign_uuid and c.creator_uuid == ^creator_uuid
+        )
+      )
+
+    part
+    |> Participant.activate()
+    |> Repo.update()
+  end
+
+  def deactivate_for_campaign(creator_id, campaign_id) do
+    cre = CreatorAccount.get_creator!(creator_id)
+    camp = CampaignInfo.get_campaign!(campaign_id)
+
+    creator_uuid = cre.uuid
+    campaign_uuid = camp.uuid
+
+
+    part =
+      Repo.one(
+        from(c in Participant,
+          where: c.campaign_uuid == ^campaign_uuid and c.creator_uuid == ^creator_uuid
+        )
+      )
+
+    part
+    |> Participant.deactivate()
+    |> Repo.update()
+  end
+
   @doc """
   Returns the list of participants.
 

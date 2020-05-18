@@ -28,6 +28,18 @@ defmodule BoldlyWeb.ParticipantController do
     render(conn, "show.json", participant: part)
   end
 
+  def activate_creator(conn, %{"creator_id" => cr_id, "campaign_id" => ca_id}) do
+    {:ok, part} = CampaignPart.activate_for_campaign(cr_id, ca_id)
+
+    render(conn, "show.json", participant: part)
+  end
+
+  def deactivate_creator(conn, %{"creator_id" => cr_id, "campaign_id" => ca_id}) do
+    {:ok, part} = CampaignPart.deactivate_for_campaign(cr_id, ca_id)
+
+    render(conn, "show.json", participant: part)
+  end
+
   def match_creators(conn, %{"campaign_id" => camp_id}) do
     campaign = CampaignInfo.get_campaign!(camp_id)
     ca_uuid = campaign.uuid
@@ -60,7 +72,7 @@ defmodule BoldlyWeb.ParticipantController do
       participants
     end
 
-    
+
     render(conn, "index.json", participants: participants)
   end
 

@@ -131,6 +131,38 @@ Example:
 
 ```
 
+
+### Accept Creator application
+`endpoint: /api/campaign/activate`
+
+`Request Type: POST`
+
+Example:
+
+```json
+{
+  "campaign_id": 1,
+  "creator_id": 1
+}
+```
+
+
+
+### Deny application from creator
+`endpoint: /api/campaign/deactivate`
+
+`Request Type: POST`
+
+Example:
+
+```json
+{
+  "campaign_id": 1,
+  "creator_id": 1
+}
+
+```
+
 ## Contracts API Instructions
 
 ### Creating a Contract
