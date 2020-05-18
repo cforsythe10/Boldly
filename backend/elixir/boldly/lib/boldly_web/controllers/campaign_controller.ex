@@ -17,9 +17,9 @@ defmodule BoldlyWeb.CampaignController do
   end
 
   def get_camps_and_parts(conn, %{"brand_id" => b_id}) do
-    {curr, past} = CampaignInfo.get_all_brand_camps_and_parts(b_id)
+    {fut, curr, past} = CampaignInfo.get_all_brand_camps_and_parts(b_id)
     # IO.puts(curr)
-    render(conn, "brands_index.json", %{current: curr, past: past})
+    render(conn, "brands_index.json", %{current: curr, past: past, future: fut})
   end
 
   def get_camps_and_parts(conn, %{"creator_id" => c_id}) do

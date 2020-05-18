@@ -13,7 +13,8 @@ defmodule BoldlyWeb.CampaignView do
       data: %{
         current:
           render_many(assigns.current, CampaignView, "campaign_with_parts.json", as: :campaign),
-        past: render_many(assigns.past, CampaignView, "campaign_with_parts.json", as: :campaign)
+        past: render_many(assigns.past, CampaignView, "campaign_with_parts.json", as: :campaign),
+        future: render_many(assigns.future, CampaignView, "campaign_with_parts.json", as: :campaign)
       }
     }
   end
