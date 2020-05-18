@@ -14,8 +14,20 @@ defmodule Boldly.CampaignPart do
     Repo.all(from(c in Participant, where: c.campaign_uuid == ^c_uuid, preload: [:creators]))
   end
 
+  def get_apps_to_campaign(c_uuid) do
+    from(c in Participant,
+      where:
+        c.campaign_uuid == ^c_uuid and c.has_applied == true and c.is_deleted == false and
+          c.is_active == false,
+      preload: [:creators]
+    )
+    |> Repo.all()
+  end
+
   def is_not_participating(creator_uuid, camp_uuid) do
-    from(c in Participant, where: c.creator_uuid == ^creator_uuid and c.campaign_uuid == ^camp_uuid)
+    from(c in Participant,
+      where: c.creator_uuid == ^creator_uuid and c.campaign_uuid == ^camp_uuid
+    )
     |> Repo.all()
     |> Enum.empty?()
   end
@@ -46,7 +58,6 @@ defmodule Boldly.CampaignPart do
     creator_uuid = cre.uuid
     campaign_uuid = camp.uuid
 
-
     part =
       Repo.one(
         from(c in Participant,
@@ -65,7 +76,6 @@ defmodule Boldly.CampaignPart do
 
     creator_uuid = cre.uuid
     campaign_uuid = camp.uuid
-
 
     part =
       Repo.one(

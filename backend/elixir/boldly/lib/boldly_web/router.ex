@@ -41,6 +41,7 @@ defmodule BoldlyWeb.Router do
 
     post "/campaign/activate", ParticipantController, :activate_creator
     post "/campaign/deactivate", ParticipantController, :deactivate_creator
+    post "/campaign/applicants", ParticipantController, :get_applicants_to_campaign
   end
 
   scope "/api", BoldlyWeb do

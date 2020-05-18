@@ -115,6 +115,20 @@ Example:
 
 ## Campaign Participants
 
+
+### Get Applicants for a campaign
+`endpoint /api/campaign/applicants`
+
+`Request Type: POST`
+
+
+```json
+{
+  "campaign_uuid": "a1skd91-asd2jfadsf-1sfjsja"
+}
+
+```
+
 ### Apply to a campaign
 `endpoint: /api/campaign/apply`
 

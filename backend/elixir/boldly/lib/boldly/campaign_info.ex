@@ -109,7 +109,10 @@ defmodule Boldly.CampaignInfo do
   def get_future_campaigns_and_parts(brand_uuid) do
     d = Date.utc_today()
 
-    parts = from(p in Participant, where: (p.is_active == true or p.has_applied == true) and p.is_deleted == false)
+    parts =
+      from(p in Participant,
+        where: (p.is_active == true or p.has_applied == true) and p.is_deleted == false
+      )
 
     from(c in Campaign,
       where: c.launched_by == ^brand_uuid and c.start_date > ^d,
@@ -121,11 +124,13 @@ defmodule Boldly.CampaignInfo do
     |> Repo.all()
   end
 
-
   def get_past_campaigns_and_parts(brand_uuid) do
     d = Date.utc_today()
 
-    parts = from(p in Participant, where: (p.is_active == true or p.has_applied == true) and p.is_deleted == false)
+    parts =
+      from(p in Participant,
+        where: (p.is_active == true or p.has_applied == true) and p.is_deleted == false
+      )
 
     from(c in Campaign,
       where: c.launched_by == ^brand_uuid and c.end_date < ^d,

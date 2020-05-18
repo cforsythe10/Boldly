@@ -18,6 +18,11 @@ defmodule BoldlyWeb.ParticipantController do
     render(conn, "index.json", participants: participants)
   end
 
+  def get_applicants_to_campaign(conn, %{"campaign_uuid" => c_uuid}) do
+    parts = CampaignPart.get_apps_to_campaign(c_uuid)
+    render(conn, "get_creators.json", participants: parts)
+  end
+
   def get_creators_in_campaign(conn, %{"campaign_uuid" => c_uuid}) do
     participants = CampaignPart.get_creators_in_campaign(c_uuid)
     render(conn, "get_creators.json", participants: participants)
@@ -51,27 +56,25 @@ defmodule BoldlyWeb.ParticipantController do
         cr_uuid = m.uuid
 
         if CampaignPart.is_not_participating(cr_uuid, ca_uuid) do
+          {:ok, %Participant{} = participant} =
+            %{
+              is_active: false,
+              is_deleted: false,
+              creator_uuid: cr_uuid,
+              campaign_uuid: ca_uuid
+            }
+            |> CampaignPart.create_participant()
 
-        {:ok, %Participant{} = participant} =
-          %{
-            is_active: false,
-            is_deleted: false,
-            creator_uuid: cr_uuid,
-            campaign_uuid: ca_uuid
-          }
-          |> CampaignPart.create_participant()
-
-        participant
-      end
+          participant
+        end
       end)
 
     participants =
-    if Enum.all?(participants, fn p -> p == nil end ) do
-      []
-    else
-      participants
-    end
-
+      if Enum.all?(participants, fn p -> p == nil end) do
+        []
+      else
+        participants
+      end
 
     render(conn, "index.json", participants: participants)
   end
