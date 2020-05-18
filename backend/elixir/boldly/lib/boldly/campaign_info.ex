@@ -8,7 +8,7 @@ defmodule Boldly.CampaignInfo do
 
   alias Boldly.CampaignInfo.Campaign
   alias Boldly.CampaignPart.Participant
-  alias Boldly.BrandAccount
+  alias Boldly.{BrandAccount, CreatorAccount}
 
   @doc """
   Returns the list of campaigns.
@@ -33,10 +33,67 @@ defmodule Boldly.CampaignInfo do
     {curr, past}
   end
 
+  def get_all_creator_camps_and_parts(c_id) do
+    creator = CreatorAccount.get_creator!(c_id)
+
+    uuid = creator.uuid
+
+    matched = get_matched(uuid)
+    applied = get_applied(uuid)
+    active = get_active(uuid)
+
+    {matched, applied, active}
+  end
+
+  def get_matched(c_uuid) do
+    d = Date.utc_today()
+
+    parts =
+      from(p in Participant,
+        where:
+          p.has_applied == false and p.creator_uuid == ^c_uuid and p.is_active == false and
+            p.is_deleted == false
+      )
+
+    from(c in Campaign, join: p in ^parts, on: [campaign_uuid: c.uuid])
+    |> Repo.all()
+  end
+
+  def get_applied(c_uuid) do
+    d = Date.utc_today()
+
+    parts =
+      from(p in Participant,
+        where:
+          p.has_applied == true and p.is_active == false and p.creator_uuid == ^c_uuid and
+            p.is_deleted == false
+      )
+
+    from(c in Campaign, join: p in ^parts, on: [campaign_uuid: c.uuid])
+    |> Repo.all()
+  end
+
+  def get_active(c_uuid) do
+    d = Date.utc_today()
+
+    parts =
+      from(p in Participant,
+        where:
+          p.has_applied == true and p.is_active == true and p.creator_uuid == ^c_uuid and
+            p.is_deleted == false
+      )
+
+    from(c in Campaign, join: p in ^parts, on: [campaign_uuid: c.uuid])
+    |> Repo.all()
+  end
+
   def get_curr_campaigns_and_parts(brand_uuid) do
     d = Date.utc_today()
 
-    parts = from(p in Participant, where: p.has_applied == true or p.is_active == true)
+    parts =
+      from(p in Participant,
+        where: (p.has_applied == true or p.is_active == true) and p.is_deleted == false
+      )
 
     from(c in Campaign,
       where: c.launched_by == ^brand_uuid and c.start_date <= ^d and c.end_date >= ^d,

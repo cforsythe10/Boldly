@@ -38,6 +38,8 @@ defmodule BoldlyWeb.ParticipantController do
       Enum.map(matches, fn m ->
         cr_uuid = m.uuid
 
+        if CampaignPart.is_not_participating(cr_uuid, ca_uuid) do
+
         {:ok, %Participant{} = participant} =
           %{
             is_active: false,
@@ -48,8 +50,17 @@ defmodule BoldlyWeb.ParticipantController do
           |> CampaignPart.create_participant()
 
         participant
+      end
       end)
 
+    participants =
+    if Enum.all?(participants, fn p -> p == nil end ) do
+      []
+    else
+      participants
+    end
+
+    
     render(conn, "index.json", participants: participants)
   end
 

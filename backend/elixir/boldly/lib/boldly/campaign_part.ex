@@ -14,6 +14,12 @@ defmodule Boldly.CampaignPart do
     Repo.all(from(c in Participant, where: c.campaign_uuid == ^c_uuid, preload: [:creators]))
   end
 
+  def is_not_participating(creator_uuid, camp_uuid) do
+    from(c in Participant, where: c.creator_uuid == ^creator_uuid and c.campaign_uuid == ^camp_uuid)
+    |> Repo.all()
+    |> Enum.empty?()
+  end
+
   def apply_to_campaign(creator_id, campaign_id) do
     cre = CreatorAccount.get_creator!(creator_id)
     camp = CampaignInfo.get_campaign!(campaign_id)

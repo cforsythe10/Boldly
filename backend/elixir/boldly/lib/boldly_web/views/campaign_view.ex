@@ -3,7 +3,6 @@ defmodule BoldlyWeb.CampaignView do
   alias BoldlyWeb.CampaignView
   alias BoldlyWeb.ParticipantView
 
-
   def render("index.json", %{campaigns: campaigns}) do
     %{data: render_many(campaigns, CampaignView, "campaign.json")}
   end
@@ -12,8 +11,20 @@ defmodule BoldlyWeb.CampaignView do
     # IO.puts(curr)
     %{
       data: %{
-        current: render_many(assigns.current, CampaignView, "campaign_with_parts.json", as: :campaign),
+        current:
+          render_many(assigns.current, CampaignView, "campaign_with_parts.json", as: :campaign),
         past: render_many(assigns.past, CampaignView, "campaign_with_parts.json", as: :campaign)
+      }
+    }
+  end
+
+  def render("creators_index.json", assigns) do
+    %{
+      data: %{
+        matched_with: render_many(assigns.matched, CampaignView, "campaign.json", as: :campaign),
+        applied_to: render_many(assigns.applied, CampaignView, "campaign.json", as: :campaign),
+        currently_active:
+          render_many(assigns.active, CampaignView, "campaign.json", as: :campaign)
       }
     }
   end
@@ -39,7 +50,8 @@ defmodule BoldlyWeb.CampaignView do
       specific_to_location: campaign.specific_to_location,
       is_draft: campaign.is_draft,
       launched_by: campaign.launched_by,
-      participants: render_many(campaign.participants, ParticipantView, "participant.json", as: :participant)
+      participants:
+        render_many(campaign.participants, ParticipantView, "participant.json", as: :participant)
     }
   end
 
