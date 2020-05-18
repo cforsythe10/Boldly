@@ -96,9 +96,10 @@ The following is an example payload to create a campaign
 
 
 ### Getting all Campaigns and Participants for a Brand/Creator
-NOTE: Creator is not implemented yet.
 
 This returns past and present campaigns for Brands/Creators
+
+The return structure is different depending on whether `creator_id` or `brand_id` is passed to it.
 
 `endpoint: /api/campaigns/all`
 
