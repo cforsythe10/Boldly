@@ -9,8 +9,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderTopWidth: 1,
-    borderRadius: 96,
+    borderRadius: 28,
     borderBottomWidth: 1,
+    borderColor: Colors.black,
+    borderWidth: 1,
     backgroundColor: Colors.magenta
   },
   buttonText: {

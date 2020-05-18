@@ -22,77 +22,134 @@ import ColoredIcon from '../Ui/ColoredIcon';
 
 const ViewRoute = ({currentCampaign}) => {
 	const store = useStore();
-     const account = store.getState().loginReducer.loginReducer.account;
+    const account = store.getState().loginReducer.loginReducer.account;
+    const currCampaign = store.getState().campaignBuilder.currentCampaign;
 
     let values = account.values.split(',');
     let isCreator = account.birthday;
 
+    const saveDraft = () => {
+  		addCampaignData('isDraft', true);
+  		sendCampaignData(account);
+  	}
+
 	return (
-		<ScrollView>
+		<ScrollView style={styles.fullScreen}>
 			<View style={styles.profileScroll}>
-          	<ScrollView style={styles.fullScreen} borderRadius={15} resizeMode="cover">
+          	<ScrollView  borderRadius={15} resizeMode="cover">
           
-            <ImageBackground source={require('../../Images/janessa.jpg')} style={styles.coverImage} >
+            <ImageBackground source={null} style={styles.coverImage} >
                 <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={{flex: 1, justifyContent: 'flex-end'}}>
                   <View style={styles.profileHeader}>
-                  <Text style={styles.h3}>
-                    { account.name }
-                  </Text>
-                  <Text style={styles.sh3}>
-                    { account.industry }
-                  </Text>
-                  <Text style={styles.sh3}>
-                    Instagram info here
-                  </Text>
+	                  <Text style={styles.h3}>
+	                    { currCampaign.name }
+	                  </Text>
+	                  <Text style={styles.sh3}>
+	                    { currCampaign.industry }
+	                  </Text>
                   </View>
                 </LinearGradient>
                 
             </ImageBackground>
+
             <View style={styles.profileSection}>
               <Text style={styles.h5}>
-                {isCreator ? "My Values" : "Our Values"}
+               	Campaign Values
               </Text>
               
               <View style={styles.valueDisplay}>
-                <ColoredIcon svgName={values[0]} text={values[0]} />
-                <ColoredIcon svgName={values[1]} text={values[1]} />
-                <ColoredIcon svgName={values[2]} text={values[2]} />
+                {currCampaign.values.split(',').length > 0 ? <ColoredIcon svgName={currCampaign.values.split(',')[0]} text={currCampaign.values.split(',')[0]} /> : null}
+                {currCampaign.values.split(',').length > 1 ? <ColoredIcon svgName={currCampaign.values.split(',')[1]} text={currCampaign.values.split(',')[1]} /> : null}
+                {currCampaign.values.split(',').length > 2 ? <ColoredIcon svgName={currCampaign.values.split(',')[2]} text={currCampaign.values.split(',')[2]} /> : null}
               </View>
             </View>
-            <View style={styles.profileSection}>
-              <Text style={styles.h5}>
-                { isCreator ? "About Me" : "About Us" }
-              </Text>
-              
-              
-              <View style={styles.mockTextArea}>
-                <Text style={styles.body}> 
-                Put about me here
-                </Text>
-              </View>
 
-              <View style={styles.mockTextField}>
-                <Text style={styles.link}>
-                Put website here
+            <View style={styles.profileSection}>
+                <Text style={styles.h5}>
+                    Description
+                </Text>             
+                <View style={styles.mockTextArea}>
+                <Text style={styles.body}> 
+                	{currCampaign.description}
                 </Text>
-              </View>
+             	</View>
             </View>
+
             <View style={styles.profileSection}>
               <Text style={styles.h5}>
-                { isCreator ? "My Location" : "Our Location" }
+                Duration
               </Text>
               <View style={styles.mockTextField}>
                 <Text style={styles.body}>
-                { account.location }
+                { currCampaign.startDate.substring(0,15) + ' - ' + currCampaign.endDate.substring(0,15) }
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.profileSection}>
+
+              <Text style={styles.h5}>
+                Compensation
+              </Text>
+               <View style={styles.mockTextField}>
+                <Text style={styles.body}>
+                { currCampaign.compensation }
+                </Text>
+              </View>
+            </View>
+			
+            <View style={styles.profileSection}>
+
+              <Text style={styles.h5}>
+                Creator Responsibilities
+              </Text>
+               <View style={styles.mockTextArea}>
+                <Text style={styles.body}>
+                { currCampaign.creatorResponsibilities }
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.profileSection}>
+
+              <Text style={styles.h5}>
+                Perks of the Program
+              </Text>
+               <View style={styles.mockTextArea}>
+                <Text style={styles.body}>
+                { currCampaign.perks }
+                </Text>
+              </View>
+               <View style={styles.submitButtonContainer}>
+					{/** Needs to be some type of error handling if user doesn't fill everything out **/} 
+					<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(account)}/>
+					<Text style={styles.link} onPress={() => saveDraft()}> Save as draft</Text>
+				</View>
+            </View>
+
+            <View style={styles.profileSection}>
+
+              <Text style={styles.h5}>
+                Creator Responsibilities
+              </Text>
+               <View style={styles.mockTextField}>
+                <Text style={styles.body}>
+                { currCampaign.creatorResponsibilities }
                 </Text>
               </View>
             </View>
             <View style={styles.profileSection}>
+
               <Text style={styles.h5}>
-                { isCreator ? "My Featured Posts" : "Our Featured Posts" }
+                Creator Responsibilities
               </Text>
-              <ImageBackground source={require('../../Images/Janessa1.jpg')} style={styles.postFeature} />
+               <View style={styles.mockTextArea}>
+                <Text style={styles.body}>
+                { currCampaign.creatorResponsibilities }
+                </Text>
+              </View>
             </View>
+
           </ScrollView>
           </View>
 		</ScrollView>
@@ -138,6 +195,7 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 				.then((data) => {
 					//use type and base 64 encoded data, will be able to convert back from anything
 					addCampaignData('photoRef', data);
+					photoSelected = !photoSelected;
 				});
 		} catch (err) {
 		  if (DocumentPicker.isCancel(err)) {
@@ -174,7 +232,7 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 
   	const saveDraft = () => {
   		addCampaignData('isDraft', true);
-  		sendCampaignData({...currentCampaign, account: account});
+  		sendCampaignData(account);
   	}
 
 	return(
@@ -187,8 +245,8 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 			<View style={styles.inputContainer} >
 				<Text style={styles.inputTitleText}>Photo</Text>
 				<TouchableOpacity style={photoSelected ? styles.photoInputFull : styles.photoInputEmpty} onPress={() => selectPhoto()}>
-					<Text style={styles.inputTitleText}>+</Text>
-					<Text style={styles.inputTitleText}>Upload your campaign photo</Text>
+					{photoSelected ? null : <Text style={styles.inputTitleText}>+</Text> }
+					<Text style={styles.inputTitleText}>{photoSelected ? 'Change your campaign photo' : 'Upload your campaign photo' }</Text>
 				</TouchableOpacity>
 			</View>
 
@@ -261,9 +319,9 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 			</View>
 
 			<View style={styles.submitButtonContainer}>
-				{/** Needs to be some type of error handling if user doesn't fill everything out **/} 
+				{/** Needs to be some type of error handling if user doesn't fill everything out **/}
+				<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(account)}/> 
 				<Text style={styles.link} onPress={() => saveDraft()}> Save as draft</Text>
-				<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(account)}/>
 			</View>
 	</ScrollView>
 );}

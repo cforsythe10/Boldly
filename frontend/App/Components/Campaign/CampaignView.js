@@ -16,17 +16,17 @@ import ColoredIcon from '../Ui/ColoredIcon'
 
 const CampaignView = ({currentCampaign}) => {
 	const store = useStore();
-    const account = store.getState().loginReducer.loginReducer.account;
+  const account = store.getState().loginReducer.loginReducer.account;
 
-    let values = account.values.split(',');
-    let isCreator = account.birthday;
+  let values = account.values.split(',');
+  let isCreator = account.birthday;
 
 	return (
 		<ScrollView>
 			<View style={styles.profileScroll}>
           	<ScrollView style={styles.fullScreen} borderRadius={15} resizeMode="cover">
           
-            <ImageBackground source={require('../../Images/janessa.jpg')} style={styles.coverImage} >
+            <ImageBackground source={currentCampaign.photoRef} style={styles.coverImage} >
                 <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={{flex: 1, justifyContent: 'flex-end'}}>
                   <View style={styles.profileHeader}>
                   <Text style={styles.h3}>
@@ -36,7 +36,7 @@ const CampaignView = ({currentCampaign}) => {
                     { account.industry }
                   </Text>
                   <Text style={styles.sh3}>
-                    Instagram info here
+                      Test
                   </Text>
                   </View>
                 </LinearGradient>

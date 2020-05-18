@@ -19,6 +19,7 @@ import Search from '../../Images/Icons/search.svg'
 import Ellipses from '../../Images/Icons/ellipses.svg'
 
 import * as MessagesActionCreators from '../../Redux/Messages/MessagesActions';
+import * as CampaignActionCreators from '../../Redux/campaignBuilder/campaignBuilderActions';
 
 import { Colors } from '../../Themes/';
 import Modal from "react-native-modal";
@@ -96,7 +97,7 @@ class Header extends Component {
                             <TouchableHighlight onPress={() => {this.props.goToMessages(this.props); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                                 <Text style={styles.menuItem}>Messages</Text>
                             </TouchableHighlight>
-                                <TouchableHighlight onPress={() => {this.navigation.navigate('Campaigns'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
+                                <TouchableHighlight onPress={() => {this.props.getCampaigns(this.props); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
                             <Text style={styles.menuItem}>Campaigns</Text>
                                 </TouchableHighlight>
                             <TouchableHighlight onPress={() => {this.navigation.navigate('Settings'); this.close()}} activeOpacity={ 0.9 } underlayColor={ Colors.cobalt}>
@@ -409,7 +410,7 @@ class Header extends Component {
 const mapStateToProps = state => ({...state});
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators(MessagesActionCreators, dispatch)
+  bindActionCreators({...MessagesActionCreators, ...CampaignActionCreators}, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

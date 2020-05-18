@@ -11,83 +11,8 @@ import styles from './Styles/CampaignScreenStyle'
 
 export default CampaignScreen = ({navigation}) => {
 	
-	const [campaigns, modifyCampaigns] = useState({});
+	const [modifyCampaigns] = useState({});
 	const mockedProfileNavigation = useCallback(() => navigation.navigate('Profile'), []);
-	
-	useEffect(() => {
-		modifyCampaigns({
-			campaignMatches: [{ // Mocked
-				id: 'campaign1',
-				campaignName: 'Campaign 1',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: '../../Images/Janessa2.jpg',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2', 'value3']
-			}],
-			campaignSavedForLater: [{
-				id: 'campaign2',
-				campaignName: 'Campaign 2',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2', 'value3']
-			}],
-			campaignApplied: [{
-				id: 'campaign3',
-				campaignName: 'Campaign 3',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2']
-
-			}],
-			campaignActive: [{
-				id: 'campaign4',
-				campaignName: 'Campaign 4',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2']
-			}, {
-				id: 'campaign5',
-				campaignName: 'Campaign 5',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1']
-			}],
-			campaignPublished: [{
-				id: 'campaign6',
-				campaignName: 'Campaign 6',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2']
-			}, {
-				id: 'campaign5',
-				campaignName: 'Campaign 5',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1']
-			}],
-			campaignDraft: [{
-				id: 'campaign7',
-				campaignName: 'Campaign 4',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2']
-			}, {
-				id: 'campaign8',
-				campaignName: 'Campaign 5',
-				campaignDescription: 'Through 1 to 2',
-				campaignImageSource: 'https://via.placeholder.com/150x100',
-				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1']
-			}]
-		});
-	}, []);
 
 	const store = useStore();
 	const account = store.getState().loginReducer.loginReducer.account;
@@ -96,7 +21,9 @@ export default CampaignScreen = ({navigation}) => {
 		<ScrollView style={styles.fullScreen}>
     		<Header headerType='MenuProfileTitle' title="Campaigns" navigation={navigation}/>
 			<View style={{...styles.centerContentContainer, flex: 9}}>
-				{campaigns ? <CampaignList campaigns={campaigns} navigation={navigation} /> : <NoCampaigns navigation={navigation} />}
+				{(navigation.state.params.current || navigation.state.params.past) && !account.birthday ? <CampaignList campaigns={{current: navigation.state.params.current, past: navigation.state.params.past}} navigation={navigation} isCreator={false} /> : null}
+				{(!navigation.state.params.current && !navigation.state.params.past) && !account.birthday ? <NoCampaigns navigation={navigation} /> : null}
+				{(navigation.state.params.matched_with || navigation.state.params.currently_active || navigation.state.params.applied_to) && account.birthday ? <CampaignList isCreator={true} campaigns={{applied_to: navigation.state.params.applied_to, currently_active: navigation.state.params.currently_active, matched_with: navigation.state.params.matched_with}} navigation={navigation} /> : null}
 			</View>
     	</ScrollView>
 	);

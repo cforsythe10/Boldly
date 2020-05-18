@@ -8,46 +8,53 @@ import { ScrollView } from 'react-native-gesture-handler';
 import PrimaryButtonPlus from '../Ui/PrimaryButtonPlus';
 
 
-const CurrentCampaign = ({campaignMatches, campaignSavedForLater, campaignApplied, campaignActive, campaignPublished, campaignDraft, navigation}) => {
+/*
+
+
+*/
+
+const CurrentCampaign = ({current, navigation}) => {
     const store = useStore();
     const account = store.getState().loginReducer.loginReducer.account;
 
+    let campaignPublished = [];
+    let campaignDraft = [];
+    if(!account.birthday) current.map(campaign => {if(!campaign.isDraft) campaignPublished.push(campaign); else campaignDraft.push(campaign)});
+
     return (
         <View style={styles.campaigns}>
-            {account.birthday && campaignMatches && <View style={styles.campaignMatches}>
+            {account.birthday && current.matched_with.length > 0 && <View style={styles.campaignMatches}>
                 <Text style={styles.header}>Your Matches</Text>
-                {campaignMatches.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {current.matched_with.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
             </View>}
-            {account.birthday && campaignSavedForLater && <View style={styles.campaignSavedForLater}>
-                <Text style={styles.header}>Saved for Later</Text>
-                {campaignSavedForLater.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
-            </View>}
-            {account.birthday && campaignApplied && <View style={styles.campaignApplied}>
+            {account.birthday && current.applied_to.length > 0 && <View style={styles.campaignApplied}>
                 <Text style={styles.header}>Applied</Text>
-                {campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {current.applied_to.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
             </View>}
-            {account.birthday && campaignActive && <View style={styles.campaignActive}>
+            {account.birthday && current.currently_active.length > 0 && <View style={styles.campaignActive}>
                 <Text style={styles.header}>Active</Text>
-                {campaignActive.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {current.currently_active.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
             </View>}
-            {!account.birthday && campaignPublished && <View style={styles.campaignPublished}>
+            {!account.birthday && campaignPublished.length > 0 && <View style={styles.campaignPublished}>
                 <Text style={styles.header}>Published</Text>
-                {campaignPublished.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {campaignPublished.map(campaignProps => <Card key={campaignProps.id} campaign={campaignProps} navigation={navigation} isCreator={false} />)}
             </View>}
-            {!account.birthday && campaignDraft && <View style={styles.campaignDraft}>
+            {!account.birthday && campaignDraft.length > 0 && <View style={styles.campaignDraft}>
                 <Text style={styles.header}>Drafts</Text>
-                {campaignDraft.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {campaignDraft.map(campaignProps => <Card key={campaignProps.id} campaign={campaignProps} navigation={navigation} isCreator={false} />)}
             </View>}
-            {!account.birthday ? <PrimaryButtonPlus onPress={() => navigation.navigate('CampaignCreator')} /> : null}
+            <View style={styles.newCampaignContainer}>
+                {!account.birthday ? <PrimaryButtonPlus onPress={() => navigation.navigate('CampaignCreator')} /> : null}
+            </View>
         </View>
     );
 }
 
-const PastCampaign = ({campaignApplied}) => {
+const PastCampaign = ({past, navigation}) => {
     return (
         <ScrollView>
             <View style={styles.campaigns}>
-                {campaignApplied && campaignApplied.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {past && past.map(campaignProps => <Card key={campaignProps.id} campaign={campaignProps} navigation={navigation} link={false} />)}
             </View>
         </ScrollView>
     );
@@ -73,8 +80,10 @@ const renderTabBar = props => (
 	/>
 );
 
-const CampaignList = ({campaigns, navigation}) => {
-    const { campaignMatches, campaignSavedForLater, campaignApplied, campaignActive, campaignPublished, campaignDraft } = campaigns;
+const CampaignList = ({campaigns, navigation, isCreator}) => {
+    console.log(campaigns);
+    const { current, past } = campaigns;
+    
     const [index, setIndex] = useState(0);
     const [routes] = useState([
         { key: 'first', title: 'Current' },
@@ -84,9 +93,10 @@ const CampaignList = ({campaigns, navigation}) => {
     const renderScene = ({ route }) => {
         switch (route.key) {
             case 'first':
-                return (<CurrentCampaign navigation={navigation} campaignMatches = {campaignMatches} campaignSavedForLater={campaignSavedForLater} campaignApplied={campaignApplied} campaignActive={campaignActive} campaignPublished={campaignPublished} campaignDraft={campaignDraft} />)
+                if(!isCreator) return (<CurrentCampaign navigation={navigation} current={campaigns.current} />)
+                else return (<CurrentCampaign navigation={navigation} current={campaigns} />)
             case 'second':
-                return (<PastCampaign campaignApplied={campaignApplied} />)
+                return (<PastCampaign navigation={navigation} past={campaigns.past} />)
             default:
                 return null;
         }

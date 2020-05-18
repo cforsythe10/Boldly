@@ -1,9 +1,9 @@
 import * as campaignTypes from './campaignBuilderTypes';
 import axios from 'axios';
 
-export const sendCampaignData = campaignData => ({
+export const sendCampaignData = (account) => ({
     type: campaignTypes.CAMPAIGN_SENDING,
-    data: campaignData
+    data: {account: account}
 })
 
 export const addCampaignData = (dataKey, data) => ({
@@ -11,6 +11,11 @@ export const addCampaignData = (dataKey, data) => ({
     data: {
         [dataKey]: data 
     }
+});
+
+export const getCampaigns = (account) => ({
+    type: campaignTypes.GET_CAMPAIGNS,
+    data: account
 });
 
 const campaignSending = () => ({

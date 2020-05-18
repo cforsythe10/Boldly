@@ -40,10 +40,7 @@ const campaignBuilder = (state = initialState, action) => {
                 }
             }
         case campaignsTypes.CAMPAIGN_SENDING:
-            console.log(state);
             let currCampaign = state.currentCampaign;
-                console.log();
-
                 makePost('api/campaigns',JSON.stringify({
                     campaign: {
                         age_range: currCampaign.ageRange,
@@ -67,7 +64,32 @@ const campaignBuilder = (state = initialState, action) => {
                 }) ).then(response => response.json())
                 .then(data => {
                     console.log(data);
+                    return{...state};
                 });
+        case campaignsTypes.GET_CAMPAIGNS:
+            if(action.data.loginReducer && action.data.loginReducer.loginReducer.account.birthday){
+                makePost('api/campaigns/all', JSON.stringify({
+                    creator_id: action.data.loginReducer.loginReducer.account.id
+                })).then(response => response.json())
+                .then(data => {
+                    action.data.navigation.navigate('Campaigns', data.data);
+                    return{
+                        ...state,
+                        campaigns: data
+                    }
+                }); 
+            }else if(action.data.loginReducer) {
+                makePost('api/campaigns/all', JSON.stringify({
+                    brand_id: action.data.loginReducer.loginReducer.account.id
+                })).then(response => response.json())
+                .then(data => {
+                    action.data.navigation.navigate('Campaigns', data.data);
+                    return{
+                        ...state,
+                        campaigns: data
+                    }
+                });
+            }
         case campaignsTypes.CAMPAIGN_SENT_SUCCESS:
             return {
                 ...state,

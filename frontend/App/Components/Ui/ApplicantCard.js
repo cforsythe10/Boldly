@@ -13,7 +13,7 @@ import TraditionImage from '../../Images/Icons/tradition-color.svg'
 import WellnessImage from '../../Images/Icons/wellness-color.svg'
 
 import Colors from '../../Themes/Colors';
-import styles from './Styles/CardStyles';
+import styles from './Styles/ApplicantCardStyles';
 
 const GetSvg = (value) => {
     switch(value) {
@@ -38,16 +38,16 @@ const GetSvg = (value) => {
     }
 }
 
-const Card = ({campaign, navigation, isCreator, link=true}) => {
+const ApplicantCard = ({applicant, navigation}) => {
     if(link){
         return (
-            <TouchableOpacity style={styles.cardContainer} onPress={() => {if(isCreator) navigation.navigate('CampaignViewCreator', {campaign: campaign}); else navigation.navigate('CampaignViewBrand', {campaign: campaign})}}>
+            <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('nowhere', {applicant: applicant})}>
                 <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={styles.backgroundImage}>
-                    <Text style={styles.header}>{campaign.name}</Text>
+                    <Text style={styles.header}>{applicant.name}</Text>
                     <View style={styles.otherCardInfo}>
-                        <Text style={styles.description}>{campaign.description}</Text>
+                        <Text style={styles.description}>{applicant.description}</Text>
                         <View style={styles.values}>
-                            {campaign.values && campaign.values.split(',').map(value => 
+                            {applicant.values && applicant.values.split(',').map(value => 
                                 <View key={value} >
                                     <View style={styles.value}> 
                                         <View style={styles.valueButtonContainer}>
@@ -86,4 +86,4 @@ const Card = ({campaign, navigation, isCreator, link=true}) => {
     }
 }
 
-export default Card;
+export default ApplicantCard;
