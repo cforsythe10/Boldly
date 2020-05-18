@@ -177,6 +177,7 @@ export default class ValuesModal extends Component {
 
     saveValues = () => {
         this.setState({ values: this.setValuesArray() },    
+        this.props.callback(this.state),
         this.close()
         );
         
