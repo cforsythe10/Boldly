@@ -26,6 +26,10 @@ defmodule Boldly.CampaignInfo.Campaign do
       references: :uuid,
       type: Ecto.UUID
 
+    has_many :participants, Boldly.CampaignPart.Participant,
+      foreign_key: :campaign_uuid,
+      references: :uuid
+
     timestamps()
   end
 

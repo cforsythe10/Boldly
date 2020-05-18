@@ -23,6 +23,23 @@ defmodule BoldlyWeb.ParticipantController do
     render(conn, "get_creators.json", participants: participants)
   end
 
+  def apply_to_campaign(conn, %{"campaign_id" => ca_uuid, "creator_id" => cr_uuid}) do
+    {:ok, part} = CampaignPart.apply_to_campaign(cr_uuid, ca_uuid)
+    render(conn, "show.json", participant: part)
+  end
+
+  def activate_creator(conn, %{"creator_id" => cr_id, "campaign_id" => ca_id}) do
+    {:ok, part} = CampaignPart.activate_for_campaign(cr_id, ca_id)
+
+    render(conn, "show.json", participant: part)
+  end
+
+  def deactivate_creator(conn, %{"creator_id" => cr_id, "campaign_id" => ca_id}) do
+    {:ok, part} = CampaignPart.deactivate_for_campaign(cr_id, ca_id)
+
+    render(conn, "show.json", participant: part)
+  end
+
   def match_creators(conn, %{"campaign_id" => camp_id}) do
     campaign = CampaignInfo.get_campaign!(camp_id)
     ca_uuid = campaign.uuid
@@ -32,6 +49,8 @@ defmodule BoldlyWeb.ParticipantController do
     participants =
       Enum.map(matches, fn m ->
         cr_uuid = m.uuid
+
+        if CampaignPart.is_not_participating(cr_uuid, ca_uuid) do
 
         {:ok, %Participant{} = participant} =
           %{
@@ -43,7 +62,16 @@ defmodule BoldlyWeb.ParticipantController do
           |> CampaignPart.create_participant()
 
         participant
+      end
       end)
+
+    participants =
+    if Enum.all?(participants, fn p -> p == nil end ) do
+      []
+    else
+      participants
+    end
+
 
     render(conn, "index.json", participants: participants)
   end
