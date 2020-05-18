@@ -23,10 +23,15 @@ const CampaignApplicant = ({navigation, applicant}) => {
 
   let showButtons = true;
 
-  const denyCampaign = () => {
+  const store = useStore();
+  const account = store.getState().loginReducer.loginReducer.account;
+
+  const declineApplicant = () => {
     makePost('/api/campaign/deactivate', JSON.stringify({
-      campaign_id: currCampaign.id,
-      creator_id: applicant.id
+      conversation: {
+        campaign_id: currCampaign.id,
+        creator_id: applicant.id
+      }
     })).then(response => response.json())
     .then(data => {
       console.log(data);
@@ -34,13 +39,20 @@ const CampaignApplicant = ({navigation, applicant}) => {
     });
   };
 
-  const applyToCampaign = () => {
+  const acceptApplicant = () => {
     makePost('/api/campaign/activate', JSON.stringify({
       campaign_id: currCampaign.id,
       creator_id: applicant.id
     })).then(response => response.json())
     .then(data => {
       console.log(data);
+      makePost('/api/conversations', JSON.stringify({
+        brand_id: account.id,
+        creator_id: applicant.id
+      })).then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
       showButtons = false;
     });
   };
@@ -50,7 +62,7 @@ const CampaignApplicant = ({navigation, applicant}) => {
       <View style={styles.profileScroll}>
       <ScrollView style={styles.fullScreen} borderRadius={15} resizeMode="cover">
       
-        <ImageBackground source={require('../Images/janessa.jpg')} style={styles.coverImage} >
+        <ImageBackground source={null} style={styles.coverImage} >
             <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={{flex: 1, justifyContent: 'flex-end'}}>
               <View style={styles.profileHeader}>
               <Text style={styles.h3}>
@@ -112,8 +124,8 @@ const CampaignApplicant = ({navigation, applicant}) => {
           <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postFeature} />
         </View>
         {showButtons && <View style={{...styles.submitButtonContainer, flexDirection: 'row'}}>
-          <PrimaryButtonMedium text="Decline" onPress={() => denyCampaign()}/>
-          <PrimaryButtonMedium text="Apply" onPress={() => applyToCampaign()}/>
+          <PrimaryButtonMedium text="Decline" onPress={() => declineApplicant()}/>
+          <PrimaryButtonMedium text="Apply" onPress={() => acceptApplicant()}/>
         </View>}
       </ScrollView>
       </View>
