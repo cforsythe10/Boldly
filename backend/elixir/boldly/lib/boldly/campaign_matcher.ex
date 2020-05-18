@@ -9,6 +9,7 @@ defmodule Boldly.CampaignMatcher do
   alias Boldly.CreatorAccount
 
   def match(campaign_id) do
+    IO.puts(campaign_id)
     campaign = CampaignInfo.get_campaign!(campaign_id)
 
     campaign

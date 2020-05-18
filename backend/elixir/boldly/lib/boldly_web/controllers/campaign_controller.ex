@@ -3,6 +3,10 @@ defmodule BoldlyWeb.CampaignController do
 
   alias Boldly.CampaignInfo
   alias Boldly.CampaignInfo.Campaign
+  alias Boldly.CampaignPart
+  alias Boldly.CampaignPart.Participant
+  alias Boldly.CampaignMatcher
+  alias Boldly.CampaignInfo
 
   action_fallback BoldlyWeb.FallbackController
 
@@ -14,6 +18,32 @@ defmodule BoldlyWeb.CampaignController do
   def index(conn, _params) do
     campaigns = CampaignInfo.list_campaigns() |> get_pictures()
     render(conn, "index.json", campaigns: campaigns)
+  end
+
+  def match_all_campaigns(conn, _params) do
+    CampaignInfo.list_campaigns()
+    |> Enum.each(fn c ->
+      matches = CampaignMatcher.match(c.id)
+
+      participants =
+        Enum.map(matches, fn m ->
+          cr_uuid = m.uuid
+
+          if CampaignPart.is_not_participating(cr_uuid, c.uuid) do
+            {:ok, %Participant{} = participant} =
+              %{
+                is_active: false,
+                is_deleted: false,
+                creator_uuid: cr_uuid,
+                campaign_uuid: c.uuid
+              }
+              |> CampaignPart.create_participant()
+
+            participant
+          end
+        end)
+    end)
+    send_resp(conn, :no_content, "")
   end
 
   def get_camps_and_parts(conn, %{"brand_id" => b_id}) do

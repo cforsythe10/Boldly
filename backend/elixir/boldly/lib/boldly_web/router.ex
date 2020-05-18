@@ -37,6 +37,7 @@ defmodule BoldlyWeb.Router do
     post "/campaign/apply", ParticipantController, :apply_to_campaign
 
     # Use different key to indicate creator or brand
+    get "/campaigns/match_all", CampaignController, :match_all_campaigns
     post "/campaigns/all", CampaignController, :get_camps_and_parts
 
     post "/campaign/activate", ParticipantController, :activate_creator
