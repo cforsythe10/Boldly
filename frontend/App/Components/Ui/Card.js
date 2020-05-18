@@ -12,6 +12,8 @@ import SustainabilityImage from '../../Images/Icons/sustainability-color.svg'
 import TraditionImage from '../../Images/Icons/tradition-color.svg'
 import WellnessImage from '../../Images/Icons/wellness-color.svg'
 
+import { makePost } from '../../Services/Api';
+
 import Colors from '../../Themes/Colors';
 import styles from './Styles/CardStyles';
 
@@ -36,12 +38,22 @@ const GetSvg = (value) => {
         case('Wellness'): 
             return <WellnessImage height={20} width={20} stroke={Colors.black}/>
     }
-}
+};
+
+const goToView = (campaign, navigation) => {
+    makePost('api/campaign/applicants', JSON.stringify({
+        campaign_uuid: campaign.uuid
+    })).then(response => response.json())
+    .then(data => {
+        console.log(data);
+        navigation.navigate('CampaignViewBrand', {campaign: campaign, applicants: data.data});
+    });
+};
 
 const Card = ({campaign, navigation, isCreator, link=true}) => {
     if(link){
         return (
-            <TouchableOpacity style={styles.cardContainer} onPress={() => {if(isCreator) navigation.navigate('CampaignViewCreator', {campaign: campaign}); else navigation.navigate('CampaignViewBrand', {campaign: campaign})}}>
+            <TouchableOpacity style={styles.cardContainer} onPress={() => {if(isCreator) navigation.navigate('CampaignViewCreator', {campaign: campaign}); else goToView(campaign, navigation)}}>
                 <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={styles.backgroundImage}>
                     <Text style={styles.header}>{campaign.name}</Text>
                     <View style={styles.otherCardInfo}>

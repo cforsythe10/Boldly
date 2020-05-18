@@ -36,6 +36,8 @@ target 'Boldly' do
 
   pod 'react-native-geolocation', path: '../node_modules/@react-native-community/geolocation'
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'BoldlyTests' do
     inherit! :search_paths
     # Pods for testing
