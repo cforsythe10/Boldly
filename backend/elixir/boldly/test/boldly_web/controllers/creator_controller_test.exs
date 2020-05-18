@@ -13,7 +13,9 @@ defmodule BoldlyWeb.CreatorControllerTest do
     location: "some location",
     name: "some name",
     values: "some values",
-    password: "some password"
+    password: "some password",
+    description: "some descriptive text",
+    web_link: "www.google.com"
   }
   @update_attrs %{
     birthday: ~D[2011-05-18],
@@ -23,7 +25,9 @@ defmodule BoldlyWeb.CreatorControllerTest do
     location: "some updated location",
     name: "some updated name",
     values: "some updated values",
-    password: "some other password"
+    password: "some other password",
+    description: "some updated descriptive text",
+    web_link: "www.bing.com"
   }
   @invalid_attrs %{
     birthday: nil,
@@ -35,7 +39,9 @@ defmodule BoldlyWeb.CreatorControllerTest do
     location: nil,
     name: nil,
     values: nil,
-    password: nil
+    password: nil,
+    description: nil,
+    web_link: nil
   }
 
   @current_user_attrs %{
@@ -47,6 +53,19 @@ defmodule BoldlyWeb.CreatorControllerTest do
     name: "some name",
     values: "some updated values",
     password: "some current password"
+  }
+
+  @increment_test_attr %{
+    birthday: ~D[2010-04-17],
+    email: "some email2",
+    industry: "some industry",
+    interests: "some interests",
+    location: "some location",
+    name: "some name",
+    values: "some values",
+    password: "some password",
+    description: "some descriptive text",
+    web_link: "www.google.com"
   }
 
   def fixture(:creator) do
@@ -64,6 +83,34 @@ defmodule BoldlyWeb.CreatorControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json"), current_user: current_user}
   end
 
+  describe "incrementing" do
+    test "increments once", %{conn: conn, current_user: current_user} do
+      conn = post(conn, Routes.creator_path(conn, :create), creator: @create_attrs)
+
+      assert %{"id" => id, "uuid" => uuid, "profile_visits" => 0} =
+               json_response(conn, 201)["data"]
+
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+
+      assert %{"profile_visits" => 1} = json_response(conn, 200)["data"]
+    end
+
+    test "increments 10 times", %{conn: conn, current_user: current_user} do
+      conn = post(conn, Routes.creator_path(conn, :create), creator: @create_attrs)
+
+      assert %{"id" => id, "uuid" => uuid, "profile_visits" => 0} =
+               json_response(conn, 201)["data"]
+
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.creator_path(conn, :increment_views), id: id)
+
+      assert %{"profile_visits" => 5} = json_response(conn, 200)["data"]
+    end
+  end
+
   describe "index" do
     test "lists all creators", %{conn: conn, current_user: current_user} do
       conn = get(conn, Routes.creator_path(conn, :index))
@@ -78,7 +125,11 @@ defmodule BoldlyWeb.CreatorControllerTest do
                  "location" => current_user.location,
                  "name" => current_user.name,
                  "values" => current_user.values,
-                 "id" => current_user.id
+                 "id" => current_user.id,
+                 "description" => current_user.description,
+                 "web_link" => current_user.web_link,
+                 "picture" => current_user.picture,
+                 "profile_visits" => current_user.profile_visits
                }
              ]
     end
@@ -100,7 +151,11 @@ defmodule BoldlyWeb.CreatorControllerTest do
                "interests" => "some interests",
                "location" => "some location",
                "name" => "some name",
-               "values" => "some values"
+               "values" => "some values",
+               "web_link" => "www.google.com",
+               "description" => "some descriptive text",
+               "picture" => nil,
+               "profile_visits" => 0
              } = json_response(conn, 200)["data"]
     end
 
@@ -173,7 +228,11 @@ defmodule BoldlyWeb.CreatorControllerTest do
                  "interests" => current_user.interests,
                  "location" => current_user.location,
                  "name" => current_user.name,
-                 "values" => current_user.values
+                 "values" => current_user.values,
+                 "description" => current_user.description,
+                 "web_link" => current_user.web_link,
+                 "picture" => current_user.picture,
+                 "profile_visits" => current_user.profile_visits
                }
              }
     end

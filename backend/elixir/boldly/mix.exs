@@ -50,7 +50,13 @@ defmodule Boldly.MixProject do
       {:bcrypt_elixir, "~> 2.0"},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:distillery, "~> 2.0"},
+      {:stream_data, "~> 0.1", only: [:test, :dev]},
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~>2.0"},
+      {:hackney, "~> 1.6"},
+      {:uuid, "~> 1.1"}
     ]
   end
 

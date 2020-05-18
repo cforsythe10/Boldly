@@ -16,9 +16,17 @@ defmodule BoldlyWeb.Router do
     post "/brands/sign_in", BrandController, :sign_in
     post "/creators/sign_in", CreatorController, :sign_in
     post "/users/sign_in", UserController, :sign_in
+    post "/creators/increment", CreatorController, :increment_views
+    post "/brands/increment", BrandController, :increment_views
     resources "/campaign_participants", ParticipantController, except: [:new, :edit]
     resources "/contracts", ContractController, except: [:new, :edit]
     resources "/templates", TemplateController, except: [:new, :edit]
+    resources "/conversations", ConversationController, except: [:new, :edit]
+    resources "/messages", MessageController, except: [:new, :edit, :update]
+
+    post "/message", MessageController, :show_conv
+    post "/conversation", ConversationController, :show_conv
+    post "/conversations/all", ConversationController, :get_conversations
   end
 
   scope "/api", BoldlyWeb do

@@ -3,7 +3,7 @@ defmodule Boldly.Repo.Migrations.CreateParticipants do
 
   def change do
     create table(:participants) do
-      add :is_pending, :boolean, default: false, null: false
+      add :is_deleted, :boolean, default: false, null: false
       add :is_active, :boolean, default: false, null: false
 
       add :creator_uuid,

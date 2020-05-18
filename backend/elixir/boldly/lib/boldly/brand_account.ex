@@ -89,6 +89,12 @@ defmodule Boldly.BrandAccount do
     Repo.delete(brand)
   end
 
+  def incr_view(%Brand{} = brand) do
+    brand
+    |> Brand.change_incr(%{profile_visits: 1})
+    |> Repo.update()
+  end
+
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking brand changes.
 

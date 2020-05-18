@@ -15,7 +15,38 @@ defmodule Boldly.CreatorAccount.Creator do
     field :password_hash, :string
     field :uuid, Ecto.UUID, autogenerate: true
 
+    field :description, :string
+    field :picture, :string
+    field :web_link, :string
+    field :profile_visits, :integer, default: 0
+
     timestamps(type: :utc_datetime_usec)
+  end
+
+  def change_incr(creator, %{profile_visits: num_visits}) do
+    p_visits = creator.profile_visits + 1
+
+    creator
+    |> cast(
+      %{
+        profile_visits: p_visits
+      },
+      [
+        :uuid,
+        :name,
+        :birthday,
+        :values,
+        :industry,
+        :interests,
+        :location,
+        :email,
+        :password,
+        :description,
+        :picture,
+        :web_link,
+        :profile_visits
+      ]
+    )
   end
 
   @doc false
@@ -30,7 +61,11 @@ defmodule Boldly.CreatorAccount.Creator do
       :interests,
       :location,
       :email,
-      :password
+      :password,
+      :description,
+      :picture,
+      :web_link,
+      :profile_visits
     ])
     |> validate_required([
       # :uuid,
@@ -47,6 +82,7 @@ defmodule Boldly.CreatorAccount.Creator do
     |> unique_constraint(:uuid)
     |> unique_constraint(:email)
     |> put_password_hash()
+    |> store_image()
   end
 
   defp put_password_hash(
@@ -56,4 +92,23 @@ defmodule Boldly.CreatorAccount.Creator do
   end
 
   defp put_password_hash(changeset), do: changeset
+
+  defp store_image(
+         %Ecto.Changeset{valid?: true, changes: %{picture: picture, name: name}} = changeset
+       ) do
+    f_uuid = UUID.uuid4(:hex)
+
+    unique_filename = "#{f_uuid}-#{name}"
+    bucket_name = System.get_env("BUCKET_NAME")
+
+    img =
+      ExAws.S3.put_object(bucket_name, unique_filename, picture)
+      |> ExAws.request!()
+
+    img_url = "https://#{bucket_name}.s3.amazonaws.com/#{bucket_name}/#{unique_filename}"
+
+    change(changeset, %{picture: unique_filename})
+  end
+
+  defp store_image(changeset), do: changeset
 end

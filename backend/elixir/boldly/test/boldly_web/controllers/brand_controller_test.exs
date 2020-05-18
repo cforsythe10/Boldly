@@ -13,7 +13,9 @@ defmodule BoldlyWeb.BrandControllerTest do
     location: "some location",
     values: "some values",
     password: "some password",
-    name: "some name"
+    name: "some name",
+    description: "some descriptive text",
+    web_link: "www.google.com"
   }
   @update_attrs %{
     ecommerce: false,
@@ -23,7 +25,9 @@ defmodule BoldlyWeb.BrandControllerTest do
     location: "some updated location",
     values: "some updated values",
     password: "some updated password",
-    name: "some updated name"
+    name: "some updated name",
+    description: "some other descriptive text",
+    web_link: "www.bing.com"
   }
   @invalid_attrs %{
     ecommerce: nil,
@@ -64,6 +68,34 @@ defmodule BoldlyWeb.BrandControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json"), current_user: current_user}
   end
 
+  describe "incrementing" do
+    test "increments once", %{conn: conn, current_user: current_user} do
+      conn = post(conn, Routes.brand_path(conn, :create), brand: @create_attrs)
+
+      assert %{"id" => id, "uuid" => uuid, "profile_visits" => 0} =
+               json_response(conn, 201)["data"]
+
+      conn = post(conn, Routes.brand_path(conn, :increment_views), id: id)
+
+      assert %{"profile_visits" => 1} = json_response(conn, 200)["data"]
+    end
+
+    test "increments 10 times", %{conn: conn, current_user: current_user} do
+      conn = post(conn, Routes.brand_path(conn, :create), brand: @create_attrs)
+
+      assert %{"id" => id, "uuid" => uuid, "profile_visits" => 0} =
+               json_response(conn, 201)["data"]
+
+      conn = post(conn, Routes.brand_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.brand_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.brand_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.brand_path(conn, :increment_views), id: id)
+      conn = post(conn, Routes.brand_path(conn, :increment_views), id: id)
+
+      assert %{"profile_visits" => 5} = json_response(conn, 200)["data"]
+    end
+  end
+
   describe "index" do
     test "lists all brands", %{conn: conn, current_user: current_user} do
       conn = get(conn, Routes.brand_path(conn, :index))
@@ -77,7 +109,11 @@ defmodule BoldlyWeb.BrandControllerTest do
                  "industries" => current_user.industries,
                  "location" => current_user.location,
                  "values" => current_user.values,
-                 "name" => current_user.name
+                 "name" => current_user.name,
+                 "description" => current_user.description,
+                 "picture" => current_user.picture,
+                 "profile_visits" => current_user.profile_visits,
+                 "web_link" => current_user.web_link
                }
              ]
     end
@@ -167,7 +203,11 @@ defmodule BoldlyWeb.BrandControllerTest do
                  "industries" => current_user.industries,
                  "location" => current_user.location,
                  "name" => current_user.name,
-                 "values" => current_user.values
+                 "values" => current_user.values,
+                 "description" => current_user.description,
+                 "picture" => current_user.picture,
+                 "profile_visits" => current_user.profile_visits,
+                 "web_link" => current_user.web_link
                }
              }
     end
@@ -176,7 +216,7 @@ defmodule BoldlyWeb.BrandControllerTest do
       conn =
         post(
           conn,
-          Routes.creator_path(conn, :sign_in, %{
+          Routes.brand_path(conn, :sign_in, %{
             email: "doesn't f*cking exist",
             password: "bippittyboppitty"
           })

@@ -89,6 +89,12 @@ defmodule Boldly.CreatorAccount do
     Repo.delete(creator)
   end
 
+  def incr_view(%Creator{} = creator) do
+    creator
+    |> Creator.change_incr(%{profile_visits: 1})
+    |> Repo.update()
+  end
+
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking creator changes.
 

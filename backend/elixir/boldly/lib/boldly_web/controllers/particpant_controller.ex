@@ -26,7 +26,7 @@ defmodule BoldlyWeb.ParticipantController do
   campaign_uuid: uuid of Campaign of which the creator is participating
   creator_uuid: The uuid of the Creator participating in the Campaign
   is_active: boolean, default: false
-  is_pending: boolean, default: false
+  is_deleted: boolean, default: false
   ```
 
   Output fields can be seen in `BoldlyWeb.ParticipantView.render/2`.

@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { View } from 'react-native';
+import React, { useState, useEffect, useCallback, TouchableOpacity, Text } from 'react';
+import { useStore } from 'react-redux';
+import { ScrollView, View } from 'react-native';
+
+import PrimaryButtonPlus from '../Components/Ui/PrimaryButtonPlus';
 import Header from '../Components/Ui/Header';
 import { CampaignList, NoCampaigns } from '../Components/Campaign/index';
 
@@ -52,16 +55,50 @@ export default CampaignScreen = ({navigation}) => {
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
 				values: ['value1']
+			}],
+			campaignPublished: [{
+				id: 'campaign6',
+				campaignName: 'Campaign 6',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
+				values: ['value1', 'value2']
+			}, {
+				id: 'campaign5',
+				campaignName: 'Campaign 5',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
+				values: ['value1']
+			}],
+			campaignDraft: [{
+				id: 'campaign7',
+				campaignName: 'Campaign 4',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
+				values: ['value1', 'value2']
+			}, {
+				id: 'campaign8',
+				campaignName: 'Campaign 5',
+				campaignDescription: 'Through 1 to 2',
+				campaignImageSource: 'https://via.placeholder.com/150x100',
+				navigateToCampaignProfiles: mockedProfileNavigation,
+				values: ['value1']
 			}]
 		});
 	}, []);
 
+	const store = useStore();
+	const account = store.getState().loginReducer.loginReducer.account;
+
 	return (
-		<View style={styles.fullScreen}>
+		<ScrollView style={styles.fullScreen}>
     		<Header headerType='MenuProfileTitle' title="Campaigns" navigation={navigation}/>
 			<View style={{...styles.centerContentContainer, flex: 9}}>
 				{campaigns ? <CampaignList campaigns={campaigns} navigation={navigation} /> : <NoCampaigns navigation={navigation} />}
+				{!account.birthday ? <PrimaryButtonPlus onPress={() => navigation.navigate('CampaignCreator')} /> : null}
 			</View>
-    	</View>
+    	</ScrollView>
 	);
 };
