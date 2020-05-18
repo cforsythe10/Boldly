@@ -52,6 +52,7 @@ export default StyleSheet.create({
 
   valueButtonAlignment: {
     alignItems: 'center',
+    justifyContent: 'center',
     width: 96,
     overflow: "visible",
   },

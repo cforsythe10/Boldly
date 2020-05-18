@@ -38,7 +38,9 @@ const CurrentCampaign = ({campaignMatches, campaignSavedForLater, campaignApplie
                 <Text style={styles.header}>Drafts</Text>
                 {campaignDraft.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
             </View>}
-            {!account.birthday ? <PrimaryButtonPlus onPress={() => navigation.navigate('CampaignCreator')} /> : null}
+            <View style={styles.newCampaignContainer}>
+                {!account.birthday ? <PrimaryButtonPlus onPress={() => navigation.navigate('CampaignCreator')} /> : null}
+            </View>
         </View>
     );
 }

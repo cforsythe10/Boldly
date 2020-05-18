@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { Fonts } from '../../../Themes'
+import { Fonts, Colors } from '../../../Themes'
+import styles from './IconButtonStyles';
 
 export default StyleSheet.create({
+    ...styles,
     cardContainer: {
         width: '90%',
         marginTop: 15,
@@ -15,10 +17,12 @@ export default StyleSheet.create({
         marginTop: 50,
         marginLeft: 10,
         fontFamily: Fonts.type.header,
+        color: Colors.white,
         fontSize: Fonts.size.h1
     },
     description: {
         fontFamily: Fonts.type.header,
+        color: Colors.white,
         marginLeft: 10,
         marginBottom: 10
     },
@@ -31,16 +35,20 @@ export default StyleSheet.create({
         position: 'absolute',
         bottom: 10,
         right: 30,
+        width: '30%',
         flexDirection: 'row',
-        alignContent: 'space-between',
+        alignContent: 'flex-end',
     },
     value: {
         height: 35,
         width: 35,
         borderRadius: 35/2,
         backgroundColor: 'white',
-        marginLeft: 10,
-        fontFamily: Fonts.style.captions.fontFamily,
-        fontSize: Fonts.style.captions.fontSize,
-    }
+        justifyContent: 'center',
+        backgroundColor: Colors.white,
+        borderRadius: 35 / 2 ,
+        borderColor: Colors.charcoal,
+        borderWidth: 1,
+        marginLeft: 5
+    },
 });

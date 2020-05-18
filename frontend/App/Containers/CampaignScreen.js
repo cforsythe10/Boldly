@@ -22,7 +22,7 @@ export default CampaignScreen = ({navigation}) => {
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: '../../Images/Janessa2.jpg',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2', 'value3']
+				values: ['Community', 'Education', 'Innovation']
 			}],
 			campaignSavedForLater: [{
 				id: 'campaign2',
@@ -30,7 +30,7 @@ export default CampaignScreen = ({navigation}) => {
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2', 'value3']
+				values: ['Community', 'Education', 'Innovation']
 			}],
 			campaignApplied: [{
 				id: 'campaign3',
@@ -38,7 +38,7 @@ export default CampaignScreen = ({navigation}) => {
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2']
+				values: ['Community', 'Education']
 
 			}],
 			campaignActive: [{
@@ -47,14 +47,14 @@ export default CampaignScreen = ({navigation}) => {
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2']
+				values: ['Community', 'Education']
 			}, {
 				id: 'campaign5',
 				campaignName: 'Campaign 5',
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1']
+				values: ['Community']
 			}],
 			campaignPublished: [{
 				id: 'campaign6',
@@ -62,14 +62,14 @@ export default CampaignScreen = ({navigation}) => {
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2']
+				values: ['Community', 'Education']
 			}, {
 				id: 'campaign5',
 				campaignName: 'Campaign 5',
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1']
+				values: ['Community']
 			}],
 			campaignDraft: [{
 				id: 'campaign7',
@@ -77,14 +77,14 @@ export default CampaignScreen = ({navigation}) => {
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1', 'value2']
+				values: ['Community', 'Education', 'Innovation']
 			}, {
 				id: 'campaign8',
 				campaignName: 'Campaign 5',
 				campaignDescription: 'Through 1 to 2',
 				campaignImageSource: 'https://via.placeholder.com/150x100',
 				navigateToCampaignProfiles: mockedProfileNavigation,
-				values: ['value1']
+				values: ['Community']
 			}]
 		});
 	}, []);

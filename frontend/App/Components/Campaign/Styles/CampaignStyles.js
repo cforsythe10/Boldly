@@ -60,4 +60,8 @@ export default StyleSheet.create({
   campaignActive: {
     margin: 10
   },
+  newCampaignContainer: {
+    paddingLeft: '80%',
+    paddingBottom: 10
+  }
 })

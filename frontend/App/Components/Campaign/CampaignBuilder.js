@@ -116,8 +116,8 @@ const ViewRoute = ({currentCampaign}) => {
               </View>
                <View style={styles.submitButtonContainer}>
 					{/** Needs to be some type of error handling if user doesn't fill everything out **/} 
-					<Text style={styles.link} onPress={() => saveDraft()}> Save as draft</Text>
 					<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(account)}/>
+					<Text style={styles.link} onPress={() => saveDraft()}> Save as draft</Text>
 				</View>
             </View>
 
@@ -313,9 +313,9 @@ const EditRoute = ({currentCampaign, addCampaignData, sendCampaignData}) => {
 			</View>
 
 			<View style={styles.submitButtonContainer}>
-				{/** Needs to be some type of error handling if user doesn't fill everything out **/} 
+				{/** Needs to be some type of error handling if user doesn't fill everything out **/}
+				<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(account)}/> 
 				<Text style={styles.link} onPress={() => saveDraft()}> Save as draft</Text>
-				<PrimaryButtonLarge text="Save & publish" onPress={() => sendCampaignData(account)}/>
 			</View>
 	</ScrollView>
 );}
