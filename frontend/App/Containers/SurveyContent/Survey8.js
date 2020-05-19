@@ -57,7 +57,7 @@ class Survey8 extends Component {
       }})).then( response => response.json())
         .then(data => { if(!data.errors) {
           this.props.login(data.data);
-          this.props.navigation.navigate('Survey9'); 
+          this.props.navigation.navigate('Dashboard'); 
         }}
       );
       else makePost('api/brands', JSON.stringify({ brand: {
@@ -71,7 +71,7 @@ class Survey8 extends Component {
       }})).then( response => response.json())
         .then(data => { if(!data.errors) {
           this.props.login(data.data);
-          this.props.navigation.navigate('Survey9'); 
+          this.props.navigation.navigate('Dashboard'); 
         }}
       );
   	}

@@ -1,5 +1,5 @@
 import * as campaignsTypes from './campaignBuilderTypes';
-import { makePost } from '../../Services/Api';
+import { makePost, makeGet } from '../../Services/Api';
 
 const initialState = {
     campaigns: [],
@@ -68,16 +68,19 @@ const campaignBuilder = (state = initialState, action) => {
                 });
         case campaignsTypes.GET_CAMPAIGNS:
             if(action.data.loginReducer && action.data.loginReducer.loginReducer.account.birthday){
-                makePost('api/campaigns/all', JSON.stringify({
-                    creator_id: action.data.loginReducer.loginReducer.account.id
-                })).then(response => response.json())
-                .then(data => {
-                    action.data.navigation.navigate('Campaigns', data.data);
-                    return{
-                        ...state,
-                        campaigns: data
-                    }
-                }); 
+                makeGet('api/campaigns/match_all', 'smile', 'more')
+                    .then(() => {
+                        makePost('api/campaigns/all', JSON.stringify({
+                            creator_id: action.data.loginReducer.loginReducer.account.id
+                        })).then(response => response.json())
+                        .then(data => {
+                            action.data.navigation.navigate('Campaigns', data.data);
+                            return{
+                                ...state,
+                                campaigns: data
+                            }
+                        });
+                    }); 
             }else if(action.data.loginReducer) {
                 makePost('api/campaigns/all', JSON.stringify({
                     brand_id: action.data.loginReducer.loginReducer.account.id

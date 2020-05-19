@@ -21,13 +21,14 @@ export default class DirectMessages extends Component {
 			conversationId: props.navigation.state.params.user.conversationId,
 			currentMessage: '',
 			optionsOpened: false,
+			isCreator: props.navigation.state.params.isCreator
 		}
 		this.inputRef = React.createRef();
 	}
 
 	sendText() {
 		const date = new Date();
-		let message = { content: this.state.currentMessage, sent_by_creator: this.props.navigation.state.params.user.birthday, conversation_id: this.state.conversationId, date: date };
+		let message = { content: this.state.currentMessage, sent_by_creator: this.state.isCreator, conversation_id: this.state.conversationId, date: date };
 		this.setState({ messages: [ message, ...this.state.messages], currentMessage: '' });
 		makePost('/api/messages', JSON.stringify({
 			message: {
@@ -107,6 +108,7 @@ export default class DirectMessages extends Component {
 
 	renderMessage(message, i) {
 		let messageSide = '';
+		console.log(this.state.isCreator);
 		if((message.sent_by_creator && this.state.isCreator) || (!message.sent_by_creator && !this.state.isCreator)) messageSide = 'sent';
 		else messageSide = 'received';
 		return <MessageBox key={i} text={message.content} styles={messageSide} />

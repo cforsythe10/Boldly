@@ -38,52 +38,28 @@ const GetSvg = (value) => {
     }
 }
 
-const ApplicantCard = ({applicant, navigation}) => {
-    if(link){
-        return (
-            <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('nowhere', {applicant: applicant})}>
-                <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={styles.backgroundImage}>
-                    <Text style={styles.header}>{applicant.name}</Text>
-                    <View style={styles.otherCardInfo}>
-                        <Text style={styles.description}>{applicant.description}</Text>
-                        <View style={styles.values}>
-                            {applicant.values && applicant.values.split(',').map(value => 
-                                <View key={value} >
-                                    <View style={styles.value}> 
-                                        <View style={styles.valueButtonContainer}>
-                                            {GetSvg(value)}
-                                        </View>
-                                    </ View>
-                                </View>
-                            )}
-                        </View>
+const ApplicantCard = ({applicant, navigation, campaign}) => {
+    return (
+        <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('CampaignApplicant', {campaign: campaign, applicant: applicant.creator})}>
+            <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={styles.backgroundImage}>
+                <Text style={styles.header}>{applicant.creator.name}</Text>
+                <View style={styles.otherCardInfo}>
+                    <Text style={{...styles.description, marginBottom: 30}}>{applicant.creator.industry}{applicant.creator.description}</Text>
+                    <View style={styles.values}>
+                        {applicant.creator.values && applicant.creator.values.split(',').map(value => 
+                            <View key={value} >
+                                <View style={styles.value}> 
+                                    <View style={styles.valueButtonContainer}>
+                                        {GetSvg(value)}
+                                    </View>
+                                </ View>
+                            </View>
+                        )}
                     </View>
-                </LinearGradient>
-            </TouchableOpacity>
-        );
-    } else {
-        return (
-            <View style={styles.cardContainer}>
-                <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={styles.backgroundImage}>
-                    <Text style={styles.header}>{campaign.name}</Text>
-                    <View style={styles.otherCardInfo}>
-                        <Text style={styles.description}>{campaign.description}</Text>
-                        <View style={styles.values}>
-                            {campaign.values && campaign.values.split(',').map(value => 
-                                <View key={value} >
-                                    <View style={styles.value}> 
-                                        <View style={styles.valueButtonContainer}>
-                                            {GetSvg(value)}
-                                        </View>
-                                    </ View>
-                                </View>
-                            )}
-                        </View>
-                    </View>
-                </LinearGradient>
-            </View>
+                </View>
+            </LinearGradient>
+        </TouchableOpacity>
     );
-    }
 }
 
 export default ApplicantCard;
