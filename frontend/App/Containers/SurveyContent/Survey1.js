@@ -72,7 +72,7 @@ export default class Survey1 extends Component {
 		return (
 		<View style={ styles.fullScreen }>
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
-				<Header headerType='Survey' navigation={this.props.navigation}/>
+				{this._renderHeader()}
 				<View style={{flex: 9}} >
 				<View style={styles.contentContainer}>
           			<ProgressBar progress={1/9} />
