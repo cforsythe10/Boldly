@@ -14,12 +14,11 @@ export default StyleSheet.create({
         borderRadius: 10,
     },
     header: {
-        marginTop: 30,
+        marginTop: 50,
         marginLeft: 10,
         fontFamily: Fonts.type.header,
         color: Colors.white,
-        fontSize: Fonts.size.h1,
-        marginBottom: 20
+        fontSize: Fonts.size.h1
     },
     description: {
         fontFamily: Fonts.type.header,

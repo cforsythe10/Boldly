@@ -1,6 +1,6 @@
 import React from 'react';
 import { combineReducers } from 'redux';
-import { LOGIN } from './types';
+import { LOGIN, LOGOUT } from './types';
 
 const INITIAL_STATE = {
 	account: {
@@ -11,12 +11,13 @@ const INITIAL_STATE = {
 const loginReducer = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
 		case LOGIN:
-			const newState = {
+			return {
 				...state,
 				account: action.payload,
 			};
 
-			return newState;
+		case LOGOUT:
+			return {...INITIAL_STATE};
  
 		default:
 

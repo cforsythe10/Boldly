@@ -24,9 +24,25 @@ defmodule BoldlyWeb.Router do
     resources "/conversations", ConversationController, except: [:new, :edit]
     resources "/messages", MessageController, except: [:new, :edit, :update]
 
+    resources "/interests", InterestController, except: [:new, :edit]
+
     post "/message", MessageController, :show_conv
     post "/conversation", ConversationController, :show_conv
     post "/conversations/all", ConversationController, :get_conversations
+    post "/contract", ContractController, :get_all_contracts
+
+    post "/campaigns/match", ParticipantController, :match_creators
+    post "/campaigns/matches", ParticipantController, :get_creators_in_campaign
+
+    post "/campaign/apply", ParticipantController, :apply_to_campaign
+
+    # Use different key to indicate creator or brand
+    get "/campaigns/match_all", CampaignController, :match_all_campaigns
+    post "/campaigns/all", CampaignController, :get_camps_and_parts
+
+    post "/campaign/activate", ParticipantController, :activate_creator
+    post "/campaign/deactivate", ParticipantController, :deactivate_creator
+    post "/campaign/applicants", ParticipantController, :get_applicants_to_campaign
   end
 
   scope "/api", BoldlyWeb do

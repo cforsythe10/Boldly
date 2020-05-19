@@ -1,4 +1,5 @@
 export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 export const UPDATE_MATCHES = 'UPDATE_MATCHES';
 export const UPDATE_MESSAGES = 'UPDATE_MESSAGES';
 export const UPDATE_REMINDERS = 'UPDATE_REMINDERS';

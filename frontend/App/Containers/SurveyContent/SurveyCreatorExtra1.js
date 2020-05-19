@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
 import Header from '../../Components/Ui/Header';
+import TextFieldDarkBG from '../../Components/Ui/TextFieldDarkBG';
 
 import BackButton from '../../Images/Icons/back.svg';
 import Logo from '../../Images/Icons/logo-fog.svg';
@@ -46,8 +47,11 @@ export default class SurveyCreatorExtra1 extends Component {
       )
     }
 
+    _textChanged(val) {
+      this.setState({currentState: {...this.state.currentState, interests: val.trim()}});
+    }
+
   	render() {
-  		const nextSurveyState = {...this.state.currentState, interests: ['test1', 'test2', 'test3']};
 		return (
 		  <View style={ styles.fullScreen } >
     		<LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
@@ -56,12 +60,12 @@ export default class SurveyCreatorExtra1 extends Component {
           <View style={styles.contentContainer}>
             <ProgressBar progress={6/10} />
     				<Text style={ styles.text } >What are your interests?</Text>
-    				<Text>Interests selection will be implemented when designs/data are ready</Text>
+    				<TextFieldDarkBG placeholder='Interests' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} />
   				</View>
 
           <View style={styles.continueContainer}>
             {this.state.showContinue ?
-    					<PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('SurveyCreatorExtra2', {...nextSurveyState})} /> : null
+    					<PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('SurveyCreatorExtra2', {...this.state.currentState})} /> : null
     				}
           </View>
           

@@ -58,8 +58,10 @@ Run `make stop-aws-detached` if you just wish to stop the process from running w
 `make reset-aws-db` - runs `mix ecto.drop` to delete all the tables and their associated data. *Do not run when the process is running in the background*
 
 
-## Campaign creation
+## Campaigns
 
+
+### Creation
 `endpoint: /api/campaigns`
 
 `Request Type: POST`
@@ -91,6 +93,206 @@ The following is an example payload to create a campaign
 ```
 
 `launched_by` is the UUID of whatever brand is launching the campaign
+
+
+### Getting all Campaigns and Participants for a Brand/Creator
+
+This returns past and present campaigns for Brands/Creators
+
+The return structure is different depending on whether `creator_id` or `brand_id` is passed to it.
+
+`endpoint: /api/campaigns/all`
+
+`request type: POST`
+
+Example:
+
+```json
+{
+	"brand_id": 1
+}
+```
+
+## Campaign Participants
+
+
+### Get Applicants for a campaign
+`endpoint /api/campaign/applicants`
+
+`Request Type: POST`
+
+
+```json
+{
+  "campaign_uuid": "a1skd91-asd2jfadsf-1sfjsja"
+}
+
+```
+
+### Apply to a campaign
+`endpoint: /api/campaign/apply`
+
+`Request Type: POST`
+
+
+Example:
+
+```json
+{
+  "campaign_id": 1,
+  "creator_id": 1
+}
+
+```
+
+
+### Accept Creator application
+`endpoint: /api/campaign/activate`
+
+`Request Type: POST`
+
+Example:
+
+```json
+{
+  "campaign_id": 1,
+  "creator_id": 1
+}
+```
+
+
+
+### Deny application from creator
+`endpoint: /api/campaign/deactivate`
+
+`Request Type: POST`
+
+Example:
+
+```json
+{
+  "campaign_id": 1,
+  "creator_id": 1
+}
+
+```
+
+## Contracts API Instructions
+
+### Creating a Contract
+`endpoit: /api/contracts`
+
+`Request Type: POST`
+
+JSON Payload:
+
+```json
+{
+	"contract": {
+		"creator_uuid": "a2ff4102-bf59-4641-a815-00353fad5657",
+		"brand_uuid": "e7e18afb-cf8a-46da-bbff-92646bf8a097",
+		"campaign_uuid": "bbf023e1-5dd0-4aba-86c4-428f82c34a48",
+		"document": "base64_encoded_document"
+	}
+}
+```
+
+Example return (note that `document` is converted to `file_path`):
+```json
+{
+    "data": {
+        "brand_uuid": "e7e18afb-cf8a-46da-bbff-92646bf8a097",
+        "campaign_uuid": "bbf023e1-5dd0-4aba-86c4-428f82c34a48",
+        "creator_uuid": "a2ff4102-bf59-4641-a815-00353fad5657",
+        "file_path": "doc_goes_here",
+        "id": "465557e4-6282-4da2-945e-fe4732233b1d"
+    }
+}
+```
+
+### Getting all documents for a campaign, creator, or brand
+`endpoint: /api/contract`
+
+`Request Type: POST`
+
+The top level key should be either `campaign_uuid`, `creator_uuid` or `brand_uuid`, and should contain the relevant UUID as the value.
+
+Example:
+
+```json
+{
+	"creator_uuid": "a2ff4102-bf59-4641-a815-00353fad5657"
+}
+```
+
+
+## Matches for Campaigns
+
+### To generate matches for a single campaign
+Do this whenever you feel it is appropriate.
+`endpoint: /api/campaigns/match`
+
+`Request Type: POST`
+
+Example payload:
+
+```json
+
+{
+  "campaign_id": 1
+}
+```
+
+### To get list of all participants in a single campaign
+`endpoint: /api/campaigns/matches`
+
+`Request Type: POST`
+
+Example Payload:
+```json
+{
+  "campaign_uuid": "b2ff4102-bf59-4641-a815-00353fad5657"
+}
+```
+
+
+It will return a list of participant attributes. Under the `creator` key for each item in the list will be the profile information for the associated creator.
+
+
+## Contracts
+
+### Uploading a contract
+`endpoint: /api/contracts`
+
+`Request Type: POST`
+
+
+Example:
+
+```json
+{
+	"contract": {
+		"creator_uuid": "a2ff4102-bf59-4641-a815-00353fad5657",
+		"brand_uuid": "e7e18afb-cf8a-46da-bbff-92646bf8a097",
+		"campaign_uuid": "bbf023e1-5dd0-4aba-86c4-428f82c34a48",
+		"document": "base64_encoded_document"
+	}
+}
+```
+
+
+### Getting a Contract
+`endpoint: /api/contracts`
+
+`Request Type: GET`
+
+Example payload:
+
+```json
+{
+  "id": 1
+}
+```
 
 ## Conversations/Messaging API instructions
 

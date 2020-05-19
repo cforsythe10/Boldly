@@ -19,8 +19,33 @@ defmodule Boldly.CreatorAccount.Creator do
     field :picture, :string
     field :web_link, :string
     field :profile_visits, :integer, default: 0
+    field :engagement_rate, :float, default: 0.0
 
     timestamps(type: :utc_datetime_usec)
+  end
+
+  def change_engagement(creator, engagement) do
+    creator
+    |> cast(
+      %{
+        engagement_rate: engagement
+      },
+      [
+        :uuid,
+        :name,
+        :birthday,
+        :values,
+        :industry,
+        :interests,
+        :location,
+        :email,
+        :password,
+        :description,
+        :picture,
+        :web_link,
+        :profile_visits
+      ]
+    )
   end
 
   def change_incr(creator, %{profile_visits: num_visits}) do
@@ -44,7 +69,8 @@ defmodule Boldly.CreatorAccount.Creator do
         :description,
         :picture,
         :web_link,
-        :profile_visits
+        :profile_visits,
+        :engagement_rate
       ]
     )
   end
@@ -65,7 +91,8 @@ defmodule Boldly.CreatorAccount.Creator do
       :description,
       :picture,
       :web_link,
-      :profile_visits
+      :profile_visits,
+      :engagement_rate
     ])
     |> validate_required([
       # :uuid,

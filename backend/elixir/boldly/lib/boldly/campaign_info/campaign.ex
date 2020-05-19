@@ -26,6 +26,10 @@ defmodule Boldly.CampaignInfo.Campaign do
       references: :uuid,
       type: Ecto.UUID
 
+    has_many :participants, Boldly.CampaignPart.Participant,
+      foreign_key: :campaign_uuid,
+      references: :uuid
+
     timestamps()
   end
 
@@ -77,7 +81,8 @@ defmodule Boldly.CampaignInfo.Campaign do
   end
 
   defp store_image(
-         %Ecto.Changeset{valid?: true, changes: %{photo_reference: picture, name: name}} = changeset
+         %Ecto.Changeset{valid?: true, changes: %{photo_reference: picture, name: name}} =
+           changeset
        ) do
     f_uuid = UUID.uuid4(:hex)
 

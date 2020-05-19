@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
-import * as RNFS from 'react-native-fs';
 import RNFetchBlob from 'react-native-fetch-blob';
 
 import Header from '../Components/Ui/Header';
@@ -19,14 +18,29 @@ export default class DirectMessages extends Component {
 		super(props);
 		this.state = {
 			messages: this.props.navigation.state.params.user.messages,
+			conversationId: props.navigation.state.params.user.conversationId,
 			currentMessage: '',
 			optionsOpened: false,
+			isCreator: props.navigation.state.params.isCreator
 		}
 		this.inputRef = React.createRef();
 	}
 
 	sendText() {
-		this.setState({ messages: [...this.state.messages, { text: this.state.currentMessage, fromUser: true }], currentMessage: '' });
+		const date = new Date();
+		let message = { content: this.state.currentMessage, sent_by_creator: this.state.isCreator, conversation_id: this.state.conversationId, date: date };
+		this.setState({ messages: [ message, ...this.state.messages], currentMessage: '' });
+		makePost('/api/messages', JSON.stringify({
+			message: {
+				content: this.state.currentMessage,
+				date: date,
+				sent_by_creator: this.state.isCreator,
+				conversation_id: this.state.conversationId
+			}
+		})).then(response => response.json())
+		.then(data => {
+			console.log(data);
+		});
 	}
 
 	async uploadClicked() {
@@ -94,13 +108,16 @@ export default class DirectMessages extends Component {
 
 	renderMessage(message, i) {
 		let messageSide = '';
-		if(message.fromUser) messageSide = 'sent';
+		console.log(this.state.isCreator);
+		if((message.sent_by_creator && this.state.isCreator) || (!message.sent_by_creator && !this.state.isCreator)) messageSide = 'sent';
 		else messageSide = 'received';
-		return <MessageBox key={i} text={message.text} styles={messageSide} />
+		return <MessageBox key={i} text={message.content} styles={messageSide} />
 	}
 
 	renderMessages(messages) {
-		return messages.map((message, i) => this.renderMessage(message, i));
+		let newArr = []
+		Object.values(messages).map((message) => newArr.unshift(message));
+		return newArr.map((message, i) => this.renderMessage(message, i));
 	}
 
 	render() {
@@ -111,7 +128,7 @@ export default class DirectMessages extends Component {
 				<Header navigation={this.props.navigation} headerType='BackEllipsesOtherProfile' title={user.name} source={hasImage} />
 				<View style={ styles.directMessagesContainer }>
 					<ScrollView ref={ ref => this.inputRef = ref } onContentSizeChange={(contentWidth, contentHeight) => { this.inputRef.scrollToEnd({animated: true}) }} contentContainerStyle={ styles.messagesContainer }>
-						<Text style={ styles.matchedText }>You matched with { user.name } { user.matchTime.includes(':') ? 'at' : 'on' } { user.matchTime } </Text>
+						{/* <Text style={ styles.matchedText }>You matched with { user.name } { user.matchTime.includes(':') ? 'at' : 'on' } { user.matchTime } </Text> */ }
 						{ this.renderMessages(this.state.messages) }
 					</ScrollView>
 					{this.renderTextField()}

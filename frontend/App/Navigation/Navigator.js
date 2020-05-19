@@ -10,6 +10,9 @@ import DirectMessages from '../Containers/DirectMessages.js';
 
 import Campaign from '../Containers/CampaignScreen';
 import CampaignCreator from '../Containers/CampaignCreatorScreen';
+import CampaignViewCreator from '../Containers/CampaignViewCreator';
+import CampaignViewBrand from '../Containers/CampaignViewBrand';
+import CampaignApplicant from '../Containers/CampaignApplicant';
 import Profile from '../Containers/ProfileScreen';
 import Settings from '../Containers/SettingsScreen';
 import SettingsBrand from '../Containers/SettingsBrand';
@@ -104,8 +107,17 @@ const Navigator = createStackNavigator(
         Campaigns: {
             screen: Campaign
         },
+        CampaignViewCreator: {
+        	screen: CampaignViewCreator
+        },
+        CampaignViewBrand: {
+        	screen: CampaignViewBrand
+        },
         CampaignCreator: {
         	screen: CampaignCreator
+        },
+        CampaignApplicant: {
+        	screen: CampaignApplicant
         },
         Settings: {
             screen: Settings

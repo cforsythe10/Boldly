@@ -3,6 +3,10 @@ defmodule BoldlyWeb.CampaignController do
 
   alias Boldly.CampaignInfo
   alias Boldly.CampaignInfo.Campaign
+  alias Boldly.CampaignPart
+  alias Boldly.CampaignPart.Participant
+  alias Boldly.CampaignMatcher
+  alias Boldly.CampaignInfo
 
   action_fallback BoldlyWeb.FallbackController
 
@@ -14,6 +18,43 @@ defmodule BoldlyWeb.CampaignController do
   def index(conn, _params) do
     campaigns = CampaignInfo.list_campaigns() |> get_pictures()
     render(conn, "index.json", campaigns: campaigns)
+  end
+
+  def match_all_campaigns(conn, _params) do
+    CampaignInfo.list_campaigns()
+    |> Enum.each(fn c ->
+      matches = CampaignMatcher.match(c.id)
+
+      participants =
+        Enum.map(matches, fn m ->
+          cr_uuid = m.uuid
+
+          if CampaignPart.is_not_participating(cr_uuid, c.uuid) do
+            {:ok, %Participant{} = participant} =
+              %{
+                is_active: false,
+                is_deleted: false,
+                creator_uuid: cr_uuid,
+                campaign_uuid: c.uuid
+              }
+              |> CampaignPart.create_participant()
+
+            participant
+          end
+        end)
+    end)
+    send_resp(conn, :no_content, "")
+  end
+
+  def get_camps_and_parts(conn, %{"brand_id" => b_id}) do
+    {fut, curr, past} = CampaignInfo.get_all_brand_camps_and_parts(b_id)
+    # IO.puts(curr)
+    render(conn, "brands_index.json", %{current: curr, past: past, future: fut})
+  end
+
+  def get_camps_and_parts(conn, %{"creator_id" => c_id}) do
+    {matched, applied, active} = CampaignInfo.get_all_creator_camps_and_parts(c_id)
+    render(conn, "creators_index.json", %{matched: matched, applied: applied, active: active})
   end
 
   @doc """
@@ -47,6 +88,7 @@ defmodule BoldlyWeb.CampaignController do
   def create(conn, %{"campaign" => campaign_params}) do
     with {:ok, %Campaign{} = campaign_p} <- CampaignInfo.create_campaign(campaign_params) do
       campaign = campaign_p |> get_pictures()
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.campaign_path(conn, :show, campaign))
@@ -94,7 +136,6 @@ defmodule BoldlyWeb.CampaignController do
     end
   end
 
-
   def get_pictures(campaigns) when is_list(campaigns) do
     Enum.map(campaigns, fn campaign ->
       get_pictures(campaign)
@@ -104,10 +145,10 @@ defmodule BoldlyWeb.CampaignController do
   def get_pictures(campaigns) do
     if campaigns.photo_reference do
       bucket_name = System.get_env("BUCKET_NAME")
-      pic_base64 = ExAws.S3.get_object(bucket_name, campaigns.photo_reference) |> ExAws.request!
+      pic_base64 = ExAws.S3.get_object(bucket_name, campaigns.photo_reference) |> ExAws.request!()
       Map.replace!(campaigns, :photo_reference, pic_base64.body)
     else
       campaigns
     end
-end
+  end
 end

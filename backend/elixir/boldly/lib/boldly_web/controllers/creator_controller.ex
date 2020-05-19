@@ -16,6 +16,12 @@ defmodule BoldlyWeb.CreatorController do
     render(conn, "index.json", creators: creators)
   end
 
+
+  def update_engagement(conn, %{"id" => id, "engagement_rate" => eng}) do
+    {:ok, creator} = CreatorAccount.update_engagement_rate(id, eng)
+    render(conn, "show.json", creator: creator)
+  end
+
   @doc """
   Creates a Creator account given valid attributes.
 
@@ -126,12 +132,10 @@ defmodule BoldlyWeb.CreatorController do
   def get_pictures(creators) do
     if creators.picture do
       bucket_name = System.get_env("BUCKET_NAME")
-      pic_base64 = ExAws.S3.get_object(bucket_name, creators.picture) |> ExAws.request!
+      pic_base64 = ExAws.S3.get_object(bucket_name, creators.picture) |> ExAws.request!()
       Map.replace!(creators, :picture, pic_base64.body)
     else
       creators
     end
-end
-
-
+  end
 end

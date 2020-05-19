@@ -21,6 +21,14 @@ defmodule Boldly.CreatorAccount do
     Repo.all(Creator)
   end
 
+  def update_engagement_rate(id, engagement_rate) do
+    cr = get_creator!(id)
+
+    cr
+    |> Creator.change_engagement(engagement_rate)
+    |> Repo.update()
+  end
+
   @doc """
   Gets a single creator.
 

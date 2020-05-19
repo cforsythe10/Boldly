@@ -12,6 +12,7 @@ defmodule Boldly.Repo.Migrations.CreateCreators do
       add :location, :string
       add :email, :string, null: false
       add :password_hash, :string
+      add :engagement_rate, :float
 
       timestamps(type: :utc_datetime_usec)
     end

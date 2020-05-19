@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import ProgressBar from '../../Components/Ui/SurveyProgressBar';
 import PrimaryButtonLarge from '../../Components/Ui/PrimaryButtonLarge';
 import Header from '../../Components/Ui/Header';
+import TextFieldDarkBG from '../../Components/Ui/TextFieldDarkBG';
 
 import BackButton from '../../Images/Icons/back.svg';
 import Logo from '../../Images/Icons/logo-fog.svg';
@@ -21,9 +22,9 @@ export default class Survey5 extends Component {
   				name: props.navigation.state.params.name,
   				isECommerse: props.navigation.state.params.isECommerse,
   				location: props.navigation.state.params.location,
-  				industries: [],
+  				industries: '',
   				values: [],
-  				interests: [],
+  				interests: '',
   				DOB: '',
   				email: '',
   				password: '',
@@ -46,25 +47,28 @@ export default class Survey5 extends Component {
       )
     }
 
+    _textChanged(val) {
+      this.setState({currentState: {...this.state.currentState, industries: val}});
+    }
+
   	render() {
-  		const nextSurveyState = {...this.state.currentState, industries: 'test',};
 		return (
 		  <View style={ styles.fullScreen } >
         <LinearGradient colors={[ Colors.cobalt, Colors.violet ]}  style={styles.fullScreen} useAngle={ true } angle={125} angleCenter={{x: 0.5, y: 0.5}} >
 		<Header headerType='Survey' navigation={this.props.navigation}/>
 		<View style={{flex: 9}} >
           <View style={styles.contentContainer}>
-            {nextSurveyState.isCreator ?
+            {this.state.currentState.isCreator ?
               <ProgressBar progress={4/10} /> :
               <ProgressBar progress={4/8} />
             }
             <Text style={ styles.text } >What industry are you in?</Text>
-  				  <Text style={{ color: Colors.fog }}>Industry picker will be implemented when designs/data are ready</Text>
+  				  <TextFieldDarkBG placeholder='Industry' onChangeText={(text) => this._textChanged(text)} secureTextEntry={false} />
 				  </View>
 
           <View style={styles.continueContainer}>
             {this.state.showContinue ?
-  					 <PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey6', {...nextSurveyState})} /> : null
+  					 <PrimaryButtonLarge text='Continue' onPress={() => this.props.navigation.navigate('Survey6', {...this.state.currentState})} /> : null
   				  }
           </View>
 					</View>
