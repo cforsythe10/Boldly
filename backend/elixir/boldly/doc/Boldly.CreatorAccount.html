@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.22.0">
+    <meta name="project" content="boldly v0.1.0">
+    <title>Boldly.CreatorAccount — boldly v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
+    <script src="dist/sidebar_items-1e6f72bcd6.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="api-reference.html" class="sidebar-projectName">
+boldly      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">boldly v0.1.0</small>
+Boldly.CreatorAccount      </h1>
+
+
+        <section id="moduledoc">
+<p>The CreatorAccount context.</p>        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#authenticate_user/2">authenticate_user(email, password)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_creator/1">change_creator(creator)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking creator changes.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_creator/1">create_creator(attrs \\ %{})</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a creator.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_creator/1">delete_creator(creator)</a>
+  </div>
+    <div class="summary-synopsis"><p>Deletes a creator.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_creator!/1">get_creator!(id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Gets a single creator.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#incr_view/1">incr_view(creator)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_creators/0">list_creators()</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the list of creators.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_creator/2">update_creator(creator, attrs)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates a creator.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_engagement_rate/2">update_engagement_rate(id, engagement_rate)</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="authenticate_user/2">
+  <div class="detail-header">
+    <a href="#authenticate_user/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">authenticate_user(email, password)</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="change_creator/1">
+  <div class="detail-header">
+    <a href="#change_creator/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">change_creator(creator)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking creator changes.</p><h2 id="change_creator/1-examples" class="section-heading">
+  <a href="#change_creator/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_creator</span><span class="p" data-group-id="8425795471-1">(</span><span class="n">creator</span><span class="p" data-group-id="8425795471-1">)</span><span class="w">
+</span><span class="p" data-group-id="8425795471-2">%</span><span class="nc" data-group-id="8425795471-2">Ecto.Changeset</span><span class="p" data-group-id="8425795471-2">{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8425795471-3">%</span><span class="nc" data-group-id="8425795471-3">Creator</span><span class="p" data-group-id="8425795471-3">{</span><span class="p" data-group-id="8425795471-3">}</span><span class="p" data-group-id="8425795471-2">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="create_creator/1">
+    <span id="create_creator/0"></span>
+  <div class="detail-header">
+    <a href="#create_creator/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_creator(attrs \\ %{})</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Creates a creator.</p><h2 id="create_creator/1-examples" class="section-heading">
+  <a href="#create_creator/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_creator</span><span class="p" data-group-id="3828216305-1">(</span><span class="p" data-group-id="3828216305-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="3828216305-2">}</span><span class="p" data-group-id="3828216305-1">)</span><span class="w">
+</span><span class="p" data-group-id="3828216305-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3828216305-4">%</span><span class="nc" data-group-id="3828216305-4">Creator</span><span class="p" data-group-id="3828216305-4">{</span><span class="p" data-group-id="3828216305-4">}</span><span class="p" data-group-id="3828216305-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_creator</span><span class="p" data-group-id="3828216305-5">(</span><span class="p" data-group-id="3828216305-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="3828216305-6">}</span><span class="p" data-group-id="3828216305-5">)</span><span class="w">
+</span><span class="p" data-group-id="3828216305-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3828216305-8">%</span><span class="nc" data-group-id="3828216305-8">Ecto.Changeset</span><span class="p" data-group-id="3828216305-8">{</span><span class="p" data-group-id="3828216305-8">}</span><span class="p" data-group-id="3828216305-7">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="delete_creator/1">
+  <div class="detail-header">
+    <a href="#delete_creator/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_creator(creator)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Deletes a creator.</p><h2 id="delete_creator/1-examples" class="section-heading">
+  <a href="#delete_creator/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_creator</span><span class="p" data-group-id="8317687158-1">(</span><span class="n">creator</span><span class="p" data-group-id="8317687158-1">)</span><span class="w">
+</span><span class="p" data-group-id="8317687158-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8317687158-3">%</span><span class="nc" data-group-id="8317687158-3">Creator</span><span class="p" data-group-id="8317687158-3">{</span><span class="p" data-group-id="8317687158-3">}</span><span class="p" data-group-id="8317687158-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_creator</span><span class="p" data-group-id="8317687158-4">(</span><span class="n">creator</span><span class="p" data-group-id="8317687158-4">)</span><span class="w">
+</span><span class="p" data-group-id="8317687158-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8317687158-6">%</span><span class="nc" data-group-id="8317687158-6">Ecto.Changeset</span><span class="p" data-group-id="8317687158-6">{</span><span class="p" data-group-id="8317687158-6">}</span><span class="p" data-group-id="8317687158-5">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="get_creator!/1">
+  <div class="detail-header">
+    <a href="#get_creator!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_creator!(id)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Gets a single creator.</p><p>Raises <a href="https://hexdocs.pm/ecto/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the Creator does not exist.</p><h2 id="get_creator!/1-examples" class="section-heading">
+  <a href="#get_creator!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_creator!</span><span class="p" data-group-id="4051900057-1">(</span><span class="mi">123</span><span class="p" data-group-id="4051900057-1">)</span><span class="w">
+</span><span class="p" data-group-id="4051900057-2">%</span><span class="nc" data-group-id="4051900057-2">Creator</span><span class="p" data-group-id="4051900057-2">{</span><span class="p" data-group-id="4051900057-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_creator!</span><span class="p" data-group-id="4051900057-3">(</span><span class="mi">456</span><span class="p" data-group-id="4051900057-3">)</span><span class="w">
+</span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>  </section>
+</section>
+<section class="detail" id="incr_view/1">
+  <div class="detail-header">
+    <a href="#incr_view/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">incr_view(creator)</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+<section class="detail" id="list_creators/0">
+  <div class="detail-header">
+    <a href="#list_creators/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_creators()</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Returns the list of creators.</p><h2 id="list_creators/0-examples" class="section-heading">
+  <a href="#list_creators/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_creators</span><span class="p" data-group-id="5919895561-1">(</span><span class="p" data-group-id="5919895561-1">)</span><span class="w">
+</span><span class="p" data-group-id="5919895561-2">[</span><span class="p" data-group-id="5919895561-3">%</span><span class="nc" data-group-id="5919895561-3">Creator</span><span class="p" data-group-id="5919895561-3">{</span><span class="p" data-group-id="5919895561-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="5919895561-2">]</span></code></pre>  </section>
+</section>
+<section class="detail" id="update_creator/2">
+  <div class="detail-header">
+    <a href="#update_creator/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_creator(creator, attrs)</h1>
+  </div>
+
+  <section class="docstring">
+
+<p>Updates a creator.</p><h2 id="update_creator/2-examples" class="section-heading">
+  <a href="#update_creator/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_creator</span><span class="p" data-group-id="9992221887-1">(</span><span class="n">creator</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9992221887-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="9992221887-2">}</span><span class="p" data-group-id="9992221887-1">)</span><span class="w">
+</span><span class="p" data-group-id="9992221887-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9992221887-4">%</span><span class="nc" data-group-id="9992221887-4">Creator</span><span class="p" data-group-id="9992221887-4">{</span><span class="p" data-group-id="9992221887-4">}</span><span class="p" data-group-id="9992221887-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_creator</span><span class="p" data-group-id="9992221887-5">(</span><span class="n">creator</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9992221887-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="9992221887-6">}</span><span class="p" data-group-id="9992221887-5">)</span><span class="w">
+</span><span class="p" data-group-id="9992221887-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9992221887-8">%</span><span class="nc" data-group-id="9992221887-8">Ecto.Changeset</span><span class="p" data-group-id="9992221887-8">{</span><span class="p" data-group-id="9992221887-8">}</span><span class="p" data-group-id="9992221887-7">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="update_engagement_rate/2">
+  <div class="detail-header">
+    <a href="#update_engagement_rate/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_engagement_rate(id, engagement_rate)</h1>
+  </div>
+
+  <section class="docstring">
+
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.22.0),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
