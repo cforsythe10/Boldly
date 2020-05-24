@@ -14,7 +14,7 @@ alias Boldly.{BrandAccount, CreatorAccount, CampaignInfo}
 
 valid_brand_attrs = %{
   ecommerce: true,
-  email: "some email",
+  email: "someemail",
   industries: "some industries",
   location: "some location",
   values: "some values",
@@ -38,9 +38,9 @@ valid_campaign_attrs = %{
   photo_reference: "some photo_reference",
   specific_to_location: true,
   start_date: ~D[2010-04-17],
-  uuid: "7488a646-e31f-11e4-aace-600308960662",
+  # uuid: "7488a646-e31f-11e4-aace-600308960662",
   values: "val1,val2,val3,valkilmer",
-  launched_by: "7488a646-e31f-11e4-aace-600308960660"
+  # launched_by: "7488a646-e31f-11e4-aace-600308960660"
 }
 
 valid_creator_attrs1 = %{
