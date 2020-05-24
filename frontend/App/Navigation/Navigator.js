@@ -12,6 +12,7 @@ import Campaign from '../Containers/CampaignScreen';
 import CampaignCreator from '../Containers/CampaignCreatorScreen';
 import CampaignViewCreator from '../Containers/CampaignViewCreator';
 import CampaignViewBrand from '../Containers/CampaignViewBrand';
+import CampaignApplicant from '../Containers/CampaignApplicant';
 import Profile from '../Containers/ProfileScreen';
 import Settings from '../Containers/SettingsScreen';
 import SettingsBrand from '../Containers/SettingsBrand';
@@ -114,6 +115,9 @@ const Navigator = createStackNavigator(
         },
         CampaignCreator: {
         	screen: CampaignCreator
+        },
+        CampaignApplicant: {
+        	screen: CampaignApplicant
         },
         Settings: {
             screen: Settings

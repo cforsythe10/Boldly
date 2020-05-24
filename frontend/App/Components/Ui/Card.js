@@ -41,6 +41,7 @@ const GetSvg = (value) => {
 };
 
 const goToView = (campaign, navigation) => {
+    console.log("mark");
     makePost('api/campaign/applicants', JSON.stringify({
         campaign_uuid: campaign.uuid
     })).then(response => response.json())
@@ -50,14 +51,19 @@ const goToView = (campaign, navigation) => {
     });
 };
 
-const Card = ({campaign, navigation, isCreator, link=true}) => {
+const getDescription = (str) => {
+    if(str.length < 20) return str;
+    else return str.substring(0, 18) + '...';
+}
+
+const Card = ({campaign, navigation, isCreator, showButtons = false, link=true}) => {
     if(link){
         return (
-            <TouchableOpacity style={styles.cardContainer} onPress={() => {if(isCreator) navigation.navigate('CampaignViewCreator', {campaign: campaign}); else goToView(campaign, navigation)}}>
+            <TouchableOpacity style={styles.cardContainer} onPress={() => {if(isCreator) navigation.navigate('CampaignViewCreator', {campaign: {...campaign, showButtons: showButtons}}); else goToView(campaign, navigation)}}>
                 <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={styles.backgroundImage}>
                     <Text style={styles.header}>{campaign.name}</Text>
                     <View style={styles.otherCardInfo}>
-                        <Text style={styles.description}>{campaign.description}</Text>
+                        <Text style={styles.description}>{getDescription(campaign.description)}</Text>
                         <View style={styles.values}>
                             {campaign.values && campaign.values.split(',').map(value => 
                                 <View key={value} >

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, KeyboardAvoidingView, Dimensions, ImageBackground } from 'react-native';
-import { useStore } from 'react-redux';
+import { useStore, connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import PrimaryButtonMedium from '../Components/Ui/PrimaryButtonMedium';
+import PrimaryButtonSmall from '../Components/Ui/PrimaryButtonSmall';
 
 import { Colors } from '../Themes';
 
@@ -16,9 +17,11 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import ColoredIcon from '../Components/Ui/ColoredIcon';
 
+import { getCampaigns } from '../Redux/campaignBuilder/campaignBuilderActions';
+
 import { makePost } from '../Services/Api';
 
-const CampaignViewCreator = ({navigation}) => {
+const CampaignViewCreator = ({navigation, getCampaigns}) => {
 	const store = useStore();
   const account = store.getState().loginReducer.loginReducer.account;
 
@@ -27,8 +30,6 @@ const CampaignViewCreator = ({navigation}) => {
 
   const currCampaign = navigation.state.params.campaign;
 
-  let showButtons = true;
-
   const denyCampaign = () => {
     makePost('/api/campaign/deactivate', JSON.stringify({
       campaign_id: currCampaign.id,
@@ -36,7 +37,7 @@ const CampaignViewCreator = ({navigation}) => {
     })).then(response => response.json())
     .then(data => {
       console.log(data);
-      showButtons = false;
+      getCampaigns({loginReducer: { loginReducer: { account: account}}, navigation: navigation});
     });
   };
 
@@ -47,14 +48,14 @@ const CampaignViewCreator = ({navigation}) => {
     })).then(response => response.json())
     .then(data => {
       console.log(data);
-      showButtons = false;
+      getCampaigns({loginReducer: { loginReducer: { account: account}}, navigation: navigation});
     });
   };
 
 	return (
     <View>
-      <Header headerType='MenuProfileTitle' title="Campaigns" navigation={navigation}/>
   		<ScrollView style={styles.fullScreen}>
+      <Header headerType='MenuProfileTitle' title="Campaigns" navigation={navigation} />
         <View style={styles.profileScroll}>
               <ScrollView  borderRadius={15} resizeMode="cover">
             
@@ -140,10 +141,11 @@ const CampaignViewCreator = ({navigation}) => {
                   { currCampaign.perks }
                   </Text>
                 </View>
-                {showButtons && <View style={{...styles.submitButtonContainer, flexDirection: 'row'}}>
-                  <PrimaryButtonMedium text="Deny" onPress={() => denyCampaign()}/>
-                  <PrimaryButtonMedium text="Apply" onPress={() => applyToCampaign()}/>
+                {currCampaign.showButtons && <View style={{...styles.submitButtonContainer, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, marginBottom: 30}}>
+                  <PrimaryButtonSmall text="Deny" onPress={() => denyCampaign()}/>
+                  <PrimaryButtonSmall text="Apply" onPress={() => applyToCampaign()}/>
                 </View>}
+                {!currCampaign.showButtons ? <View style={{marginBottom: 50}} /> : null}
               </View>
 
               <View style={styles.profileSection}>
@@ -176,4 +178,10 @@ const CampaignViewCreator = ({navigation}) => {
 	);
 };
 
-export default CampaignViewCreator;
+const mapStateToProps = state => ({...state});
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({getCampaigns}, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CampaignViewCreator);

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, KeyboardAvoidingView, Dimensions, ImageBackground } from 'react-native';
-import { useStore } from 'react-redux';
+import { useStore, connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import PrimaryButtonMedium from '../Components/Ui/PrimaryButtonMedium';
+import { getCampaigns } from '../Redux/campaignBuilder/campaignBuilderActions';
+
+import PrimaryButtonSmall from '../Components/Ui/PrimaryButtonSmall';
 
 import { Colors } from '../Themes';
 
@@ -18,24 +21,26 @@ import ColoredIcon from '../Components/Ui/ColoredIcon';
 
 import { makePost } from '../Services/Api';
 
-const CampaignApplicant = ({navigation, applicant}) => {
+const CampaignApplicant = ({navigation, getCampaigns}) => {
   const currCampaign = navigation.state.params.campaign;
+
+  let applicant = navigation.state.params.applicant;
 
   let showButtons = true;
 
   const store = useStore();
   const account = store.getState().loginReducer.loginReducer.account;
 
+  console.log(currCampaign);
+
   const declineApplicant = () => {
     makePost('/api/campaign/deactivate', JSON.stringify({
-      conversation: {
-        campaign_id: currCampaign.id,
-        creator_id: applicant.id
-      }
+      campaign_id: currCampaign.id,
+      creator_id: applicant.id
     })).then(response => response.json())
     .then(data => {
       console.log(data);
-      showButtons = false;
+      getCampaigns({loginReducer: { loginReducer: { account: account}}, navigation: navigation});
     });
   };
 
@@ -47,11 +52,14 @@ const CampaignApplicant = ({navigation, applicant}) => {
     .then(data => {
       console.log(data);
       makePost('/api/conversations', JSON.stringify({
-        brand_id: account.id,
-        creator_id: applicant.id
+        conversation:{
+          brand_id: account.id,
+          creator_id: applicant.id
+        }
       })).then(response => response.json())
       .then(data => {
         console.log(data);
+        getCampaigns({loginReducer: { loginReducer: { account: account}}, navigation: navigation});
       });
       showButtons = false;
     });
@@ -119,13 +127,13 @@ const CampaignApplicant = ({navigation, applicant}) => {
         </View>
         <View style={styles.profileSection}>
           <Text style={styles.h5}>
-            { isCreator ? "My Featured Posts" : "Our Featured Posts" }
+            "My Featured Posts"
           </Text>
           <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postFeature} />
         </View>
-        {showButtons && <View style={{...styles.submitButtonContainer, flexDirection: 'row'}}>
-          <PrimaryButtonMedium text="Decline" onPress={() => declineApplicant()}/>
-          <PrimaryButtonMedium text="Apply" onPress={() => acceptApplicant()}/>
+        {showButtons && <View style={{...styles.submitButtonContainer, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20}}>
+          <PrimaryButtonSmall text="Decline" onPress={() => declineApplicant()}/>
+          <PrimaryButtonSmall text="Accept" onPress={() => acceptApplicant()}/>
         </View>}
       </ScrollView>
       </View>
@@ -133,4 +141,11 @@ const CampaignApplicant = ({navigation, applicant}) => {
   );
 };
 
-export default CampaignApplicant;
+
+const mapStateToProps = state => ({...state});
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({getCampaigns}, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CampaignApplicant);

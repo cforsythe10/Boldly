@@ -9,25 +9,30 @@ import ApplicantCard from '../Components/Ui/ApplicantCard';
 
 const CampaignViewBrand = ({navigation}) => {
 	const currCampaign = navigation.state.params.campaign;
-	const applicants = navigation.state.params.applicants;
+	const applicants = [];
+	const participants = [];
 
-	console.log(currCampaign);
-	console.log(applicants);
+	if(navigation.state.params.applicants.length > 0) navigation.state.params.applicants.map(participant => {
+		if(participant.is_active) participants.push(participant);
+		else if(participant.has_applied) applicants.push(participant);
+	});
 
 	const renderApplicant = (applicant) => {
-		return <ApplicantCard applicant={applicant} navigation={navigation} />
+		console.log(applicant);
+		return <ApplicantCard key={applicant.creator.uuid} applicant={applicant} campaign={currCampaign} navigation={navigation} />
 	};
 
 	const renderApplicants = () => {
-		return applicants.map(applicant => renderApplicants(applicant));
+		return applicants.map(applicant => renderApplicant(applicant));
 	};
-
+	console.log(navigation.state.params);
 	return (
 		<ScrollView>
 			<Header headerType='MenuProfileTitle' title="Campaigns" navigation={navigation} />
 			<ScrollView style={styles.fullScreen}>
 				<Card campaign={currCampaign} navigation={navigation} isCreator={false} link={false} />
-				{currCampaign.participants.length > 0 ? <Text style={styles.header}>{campaign.participants.length() + ' Active Participants'}</Text> : null}
+				{participants.length > 0 ? <Text style={styles.header}>participants.length + ' Active Participants'</Text> : null}
+				<Text style={styles.header}>{applicants.length} Applicant(s)</Text>
 				{applicants.length > 0 ? renderApplicants() : null}
 			</ScrollView>
 		</ScrollView>

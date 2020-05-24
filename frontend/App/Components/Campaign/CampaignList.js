@@ -6,12 +6,7 @@ import styles from './Styles/CampaignStyles';
 import Card from '../Ui/Card';
 import { ScrollView } from 'react-native-gesture-handler';
 import PrimaryButtonPlus from '../Ui/PrimaryButtonPlus';
-
-
-/*
-
-
-*/
+import { makeGet } from '../../Services/Api';
 
 const CurrentCampaign = ({current, navigation}) => {
     const store = useStore();
@@ -21,23 +16,32 @@ const CurrentCampaign = ({current, navigation}) => {
     let campaignDraft = [];
     if(!account.birthday) current.map(campaign => {if(!campaign.isDraft) campaignPublished.push(campaign); else campaignDraft.push(campaign)});
 
+    const getOtherUsers = (participants, parameter) => {
+        console.log(participants);
+        let newParticipants = [];
+        for (i=0; i < participants.length; i++) {
+            makeGet('/api/creators', parameter, participants[i].id).then(response => response.json()).then(data => newParticipants = data.data);
+        }
+        return newParticipants;
+    }
+
     return (
         <View style={styles.campaigns}>
             {account.birthday && current.matched_with.length > 0 && <View style={styles.campaignMatches}>
                 <Text style={styles.header}>Your Matches</Text>
-                {current.matched_with.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {current.matched_with.map(campaignProps => <Card key={campaignProps.id} campaign={campaignProps} navigation={navigation} isCreator={true} showButtons={true} />)}
             </View>}
             {account.birthday && current.applied_to.length > 0 && <View style={styles.campaignApplied}>
                 <Text style={styles.header}>Applied</Text>
-                {current.applied_to.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {current.applied_to.map(campaignProps => <Card key={campaignProps.id} campaign={campaignProps} navigation={navigation} isCreator={true} />)}
             </View>}
             {account.birthday && current.currently_active.length > 0 && <View style={styles.campaignActive}>
                 <Text style={styles.header}>Active</Text>
-                {current.currently_active.map(campaignProps => <Card key={campaignProps.id} {...campaignProps} />)}
+                {current.currently_active.map(campaignProps => <Card key={campaignProps.id} campaign={campaignProps} navigation={navigation} isCreator={true} />)}
             </View>}
             {!account.birthday && campaignPublished.length > 0 && <View style={styles.campaignPublished}>
                 <Text style={styles.header}>Published</Text>
-                {campaignPublished.map(campaignProps => <Card key={campaignProps.id} campaign={campaignProps} navigation={navigation} isCreator={false} />)}
+                {campaignPublished.map(campaignProps => <Card key={campaignProps.id} campaign={{...campaignProps, participants:getOtherUsers(campaignProps.participants)}} navigation={navigation} isCreator={false} />)}
             </View>}
             {!account.birthday && campaignDraft.length > 0 && <View style={styles.campaignDraft}>
                 <Text style={styles.header}>Drafts</Text>
@@ -81,7 +85,6 @@ const renderTabBar = props => (
 );
 
 const CampaignList = ({campaigns, navigation, isCreator}) => {
-    console.log(campaigns);
     const { current, past } = campaigns;
     
     const [index, setIndex] = useState(0);
