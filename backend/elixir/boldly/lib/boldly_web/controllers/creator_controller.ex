@@ -16,7 +16,6 @@ defmodule BoldlyWeb.CreatorController do
     render(conn, "index.json", creators: creators)
   end
 
-
   def update_engagement(conn, %{"id" => id, "engagement_rate" => eng}) do
     {:ok, creator} = CreatorAccount.update_engagement_rate(id, eng)
     render(conn, "show.json", creator: creator)

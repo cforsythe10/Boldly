@@ -48,7 +48,6 @@ defmodule Boldly.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:bcrypt_elixir, "~> 2.0"},
-      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:poison, "~> 3.1"},
       {:distillery, "~> 2.0"},
@@ -57,7 +56,8 @@ defmodule Boldly.MixProject do
       {:ex_aws_s3, "~>2.0"},
       {:hackney, "~> 1.6"},
       {:uuid, "~> 1.1"},
-      {:csv, "~> 2.3"}
+      {:csv, "~> 2.3"},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 

@@ -12,7 +12,6 @@
 alias Boldly.InterestInfo
 alias Boldly.{BrandAccount, CreatorAccount, CampaignInfo}
 
-
 valid_brand_attrs = %{
   ecommerce: true,
   email: "some email",
@@ -23,8 +22,7 @@ valid_brand_attrs = %{
   name: "some name"
 }
 
-
-valid_campaign_attrs= %{
+valid_campaign_attrs = %{
   age_range: "20-80",
   compensation: "some compensation",
   creator_responsibilities: "some creator_responsibilities",
@@ -45,8 +43,7 @@ valid_campaign_attrs= %{
   launched_by: "7488a646-e31f-11e4-aace-600308960660"
 }
 
-
-valid_creator_attrs1= %{
+valid_creator_attrs1 = %{
   birthday: ~D[1980-04-17],
   email: "some_creator_email",
   industry: "public toilet",
@@ -57,8 +54,7 @@ valid_creator_attrs1= %{
   password: "some password"
 }
 
-
-valid_creator_attrs2= %{
+valid_creator_attrs2 = %{
   birthday: ~D[1999-04-17],
   email: "some_creator_email2",
   industry: "public toilet",
@@ -69,15 +65,13 @@ valid_creator_attrs2= %{
   password: "some password"
 }
 
-
 {:ok, brand} = BrandAccount.create_brand(valid_brand_attrs)
-{:ok, campaign} = CampaignInfo.create_campaign(Enum.into(%{launched_by: brand.uuid}, valid_campaign_attrs))
+
+{:ok, campaign} =
+  CampaignInfo.create_campaign(Enum.into(%{launched_by: brand.uuid}, valid_campaign_attrs))
 
 {:ok, _creator1} = CreatorAccount.create_creator(valid_creator_attrs1)
 {:ok, _creator1} = CreatorAccount.create_creator(valid_creator_attrs2)
-
-
-
 
 # InterestInfo.create_interest(%{interest: interest, categories: categories})
 
