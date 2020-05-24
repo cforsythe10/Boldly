@@ -12,7 +12,7 @@ defmodule BoldlyWeb.CreatorController do
   Returns a JSON list of all creators. Output fields can be seen in `BoldlyWeb.CreatorView.render/2`.
   """
   def index(conn, _params) do
-    creators = CreatorAccount.list_creators() |> get_pictures()
+    creators = CreatorAccount.list_creators() |> get_pictures() |> get_instagram()
     render(conn, "index.json", creators: creators)
   end
 
@@ -46,8 +46,8 @@ defmodule BoldlyWeb.CreatorController do
     with {:ok, %Creator{} = creator} <- CreatorAccount.create_creator(creator_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.creator_path(conn, :show, creator |> get_pictures()))
-      |> render("show.json", creator: creator |> get_pictures())
+      |> put_resp_header("location", Routes.creator_path(conn, :show, creator |> get_pictures() |> get_instagram()))
+      |> render("show.json", creator: creator |> get_pictures() |> get_instagram())
     end
   end
 
@@ -58,7 +58,7 @@ defmodule BoldlyWeb.CreatorController do
   """
   def show(conn, %{"id" => id}) do
     creator = CreatorAccount.get_creator!(id)
-    render(conn, "show.json", creator: creator |> get_pictures())
+    render(conn, "show.json", creator: creator |> get_pictures() |> get_instagram())
   end
 
   @doc """
@@ -70,7 +70,7 @@ defmodule BoldlyWeb.CreatorController do
     creator = CreatorAccount.get_creator!(id)
 
     with {:ok, %Creator{} = creator} <- CreatorAccount.update_creator(creator, creator_params) do
-      render(conn, "show.json", creator: creator |> get_pictures())
+      render(conn, "show.json", creator: creator |> get_pictures() |> get_instagram())
     end
   end
 
@@ -111,7 +111,7 @@ defmodule BoldlyWeb.CreatorController do
         |> put_session(:current_user_id, creator.id)
         |> put_status(:ok)
         |> put_view(BoldlyWeb.CreatorView)
-        |> render("sign_in.json", creator: creator |> get_pictures())
+        |> render("sign_in.json", creator: creator |> get_pictures() |> get_instagram())
 
       {:error, message} ->
         conn
@@ -119,6 +119,20 @@ defmodule BoldlyWeb.CreatorController do
         |> put_status(:unauthorized)
         |> put_view(BoldlyWeb.ErrorView)
         |> render("401.json", message: message)
+    end
+  end
+
+  def get_instagram(creators) when is_list(creators) do
+    Enum.map(creators, fn creator -> get_instagram(creator) end)
+  end
+
+  def get_instagram(creators) do
+    if creators.instagram_stats do
+      bucket_name = System.get_env("BUCKET_NAME")
+      resp = ExAws.S3.get_object(bucket_name, creators.instagram_stats) |> ExAws.request!()
+      Map.replace!(creators, :instagram_stats, resp.body)
+    else
+      creators
     end
   end
 
