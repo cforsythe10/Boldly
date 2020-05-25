@@ -108,7 +108,6 @@ export default class DirectMessages extends Component {
 
 	renderMessage(message, i) {
 		let messageSide = '';
-		console.log(this.state.isCreator);
 		if((message.sent_by_creator && this.state.isCreator) || (!message.sent_by_creator && !this.state.isCreator)) messageSide = 'sent';
 		else messageSide = 'received';
 		return <MessageBox key={i} text={message.content} styles={messageSide} />

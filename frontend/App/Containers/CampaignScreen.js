@@ -21,7 +21,7 @@ export default CampaignScreen = ({navigation}) => {
 		<ScrollView style={styles.fullScreen}>
     		<Header headerType='MenuProfileTitle' title="Campaigns" navigation={navigation}/>
 			<View style={{...styles.centerContentContainer, flex: 9}}>
-				{(navigation.state.params.current || navigation.state.params.past) && !account.birthday ? <CampaignList campaigns={{current: navigation.state.params.current, past: navigation.state.params.past}} navigation={navigation} isCreator={false} /> : null}
+				{(navigation.state.params.current || navigation.state.params.past) && !account.birthday ? <CampaignList campaigns={ navigation.state.params } navigation={navigation} isCreator={false} /> : null}
 				{(!navigation.state.params.current && !navigation.state.params.past) && !account.birthday ? <NoCampaigns navigation={navigation} /> : null}
 				{(navigation.state.params.matched_with || navigation.state.params.currently_active || navigation.state.params.applied_to) && account.birthday ? <CampaignList isCreator={true} campaigns={{applied_to: navigation.state.params.applied_to, currently_active: navigation.state.params.currently_active, matched_with: navigation.state.params.matched_with}} navigation={navigation} /> : null}
 			</View>

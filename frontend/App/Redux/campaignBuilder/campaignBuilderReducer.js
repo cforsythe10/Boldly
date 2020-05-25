@@ -86,6 +86,8 @@ const campaignBuilder = (state = initialState, action) => {
                     brand_id: action.data.loginReducer.loginReducer.account.id
                 })).then(response => response.json())
                 .then(data => {
+                    console.log('test');
+                    console.log(data);
                     action.data.navigation.navigate('Campaigns', data.data);
                     return{
                         ...state,

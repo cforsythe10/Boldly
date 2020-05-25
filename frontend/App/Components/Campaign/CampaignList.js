@@ -8,13 +8,14 @@ import { ScrollView } from 'react-native-gesture-handler';
 import PrimaryButtonPlus from '../Ui/PrimaryButtonPlus';
 import { makeGet } from '../../Services/Api';
 
-const CurrentCampaign = ({current, navigation}) => {
+const CurrentCampaign = ({current, navigation, future}) => {
     const store = useStore();
     const account = store.getState().loginReducer.loginReducer.account;
 
     let campaignPublished = [];
     let campaignDraft = [];
     if(!account.birthday) current.map(campaign => {if(!campaign.isDraft) campaignPublished.push(campaign); else campaignDraft.push(campaign)});
+    if(!account.birthday) future.map(campaign => {if(!campaign.isDraft) campaignPublished.push(campaign); else campaignDraft.push(campaign)});
 
     const getOtherUsers = (participants, parameter) => {
         console.log(participants);
@@ -96,7 +97,7 @@ const CampaignList = ({campaigns, navigation, isCreator}) => {
     const renderScene = ({ route }) => {
         switch (route.key) {
             case 'first':
-                if(!isCreator) return (<CurrentCampaign navigation={navigation} current={campaigns.current} />)
+                if(!isCreator) return (<CurrentCampaign navigation={navigation} current={campaigns.current} future={campaigns.future} />)
                 else return (<CurrentCampaign navigation={navigation} current={campaigns} />)
             case 'second':
                 return (<PastCampaign navigation={navigation} past={campaigns.past} />)

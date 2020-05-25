@@ -21,6 +21,7 @@ import BoldlyImage from '../Components/Ui/BoldlyImage';
 const DashboardScreen = ({navigation}) => {
     const store = useStore();
     const account = store.getState().loginReducer.loginReducer.account;
+    console.log(account);
     return (
     <View style={styles.fullScreen}>
         {account.birthday && !account.instagramAccount ? <DashboardMissingProfileElements navigation={navigation} /> : null }
