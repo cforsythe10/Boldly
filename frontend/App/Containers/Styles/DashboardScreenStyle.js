@@ -12,7 +12,7 @@ export default StyleSheet.create({
   insights:{
   	alignItems: 'center',
   	justifyContent: 'center',
-  	flex: 2,
+  	flex: 1,
     borderRadius: 20,
     marginBottom: 10,
     backgroundColor: 'white'
@@ -28,7 +28,7 @@ export default StyleSheet.create({
   campaigns:{
   	alignItems: 'center',
   	justifyContent: 'center',
-	flex: 3,
+	  flex: 3,
     borderRadius: 20,
     marginBottom: 10,
     backgroundColor: 'white'

@@ -22,6 +22,7 @@ return makePost('api/message', JSON.stringify({
 const MessagesReducer = (state = initialState, action) => {
 	switch(action.type) {
 		case MessagesActionTypes.GO_TO_MESSAGES:
+			console.log(action.data);
 			if(action.data.loginReducer.loginReducer.account.birthday){
 				let convos = [];
 

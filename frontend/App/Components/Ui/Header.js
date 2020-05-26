@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { View, Text, TouchableHighlight, Button, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
+
 import styles from './Styles/HeaderStyles'
+
 import BackButton from '../../Images/Icons/back.svg'
 import SettingsButton from '../../Images/Icons/settings.svg'
 import MenuButton from '../../Images/Icons/hamburger.svg'
@@ -20,6 +22,8 @@ import Ellipses from '../../Images/Icons/ellipses.svg'
 
 import * as MessagesActionCreators from '../../Redux/Messages/MessagesActions';
 import * as CampaignActionCreators from '../../Redux/campaignBuilder/campaignBuilderActions';
+
+import { makeGet } from '../../Services/Api';
 
 import { Colors } from '../../Themes/';
 import Modal from "react-native-modal";
@@ -61,9 +65,6 @@ class Header extends Component {
     
     open = () => this.setState({isModalVisible: true});
     close = () => this.setState({isModalVisible: false});
-
-    
-
     
 
     render() {
@@ -243,13 +244,10 @@ class Header extends Component {
                     <BackButton height={20} width={20} stroke={Colors.charcoal65 }/>
                 </TouchableHighlight>
                 
-                <TouchableOpacity onPress={ () => this.navigation.navigate('Profile') }>
+                <TouchableOpacity onPress={ () => this.navigation.navigate('ProfileView', this.props.account) }>
                     <View style={ styles.otherProfileContainer }>
                         <View style={ styles.profilePic }>
-                        {this.props.source ? 
-                            <Image source={require('../../Images/temporaryProfilePic.png')} resizeMode='contain' style={styles.image} /> :
                             <View style={styles.noProfilePic}></View>
-                        }
                         </View>
                         <Text style={styles.screenTitle}>
                             {this.props.title}
