@@ -79,10 +79,10 @@ export default class DashboardScreen extends Component {
     renderDashboard() {
         return (
             <View style={styles.fullScreen}>
-                {/*account.birthday && !account.instagramAccount ? <DashboardMissingProfileElements navigation={navigation} /> : null */}
-                {/*!account.birthday && !account.instagramAccount ? <DashboardMissingProfileElementsBrand navigation={navigation} /> : null */}
-                {account.birthday  ? <DashboardScreenRegular navigation={this.props.navigation} account={account} campaigns={campaigns} conversations={conversations} /> : null }
-                {!account.birthday ? <DashboardScreenRegularBrand navigation={this.props.navigation} account={account} campaigns={campaigns} conversations={conversations} /> : null }
+                {account.birthday && !account.instagramAccount ? <DashboardMissingProfileElements navigation={this.props.navigation} /> : null}
+                {!account.birthday && !account.instagramAccount ? <DashboardMissingProfileElementsBrand navigation={this.props.navigation} /> : null}
+                {account.birthday && account.instagramAccount  ? <DashboardScreenRegular navigation={this.props.navigation} account={account} campaigns={campaigns} conversations={conversations} /> : null }
+                {!account.birthday && account.instagramAccount ? <DashboardScreenRegularBrand navigation={this.props.navigation} account={account} campaigns={campaigns} conversations={conversations} /> : null }
             </View>
         )
     }
