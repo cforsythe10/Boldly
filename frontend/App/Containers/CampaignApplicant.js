@@ -22,6 +22,29 @@ import ColoredIcon from '../Components/Ui/ColoredIcon';
 import { makePost } from '../Services/Api';
 
 const CampaignApplicant = ({navigation, getCampaigns}) => {
+
+  const iterateVisits = (id, isCreator) => {
+    if(isCreator) {
+      
+      makePost('api/creators/increment', JSON.stringify({
+        id: id
+      })).then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
+    
+    } else {
+
+      makePost('api/brands/increment', JSON.stringify({
+        id: id
+      })).then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
+
+    }
+  }
+
   const currCampaign = navigation.state.params.campaign;
 
   let applicant = navigation.state.params.applicant;
@@ -64,6 +87,8 @@ const CampaignApplicant = ({navigation, getCampaigns}) => {
       showButtons = false;
     });
   };
+
+  iterateVisits(applicant.id, applicant.birthday);
 
   return (
     <View style={[styles.scene, styles.Fog]} >

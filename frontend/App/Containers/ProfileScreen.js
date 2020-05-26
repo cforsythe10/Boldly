@@ -31,7 +31,7 @@ const FirstRoute = () => {
       <View style={styles.profileScroll}>
       <ScrollView style={styles.fullScreen} borderRadius={15} resizeMode="cover">
       
-        <ImageBackground source={require('../Images/janessa.jpg')} style={styles.coverImage} >
+        <ImageBackground source={null} style={styles.coverImage} >
             <LinearGradient colors={['rgba(0, 0, 0, 0.6)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.9)']} style={{flex: 1, justifyContent: 'flex-end'}}>
               <View style={styles.profileHeader}>
               <Text style={styles.h3}>
@@ -90,7 +90,7 @@ const FirstRoute = () => {
           <Text style={styles.h5}>
             { isCreator ? "My Featured Posts" : "Our Featured Posts" }
           </Text>
-          <ImageBackground source={require('../Images/Janessa1.jpg')} style={styles.postFeature} />
+          <ImageBackground source={null} style={styles.postFeature} />
         </View>
       </ScrollView>
       </View>

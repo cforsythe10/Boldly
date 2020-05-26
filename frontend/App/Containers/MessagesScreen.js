@@ -39,7 +39,13 @@ const MessagesScreen = ({navigation}) => {
   }
 
   const renderMessages = (messages) => {
-      if(messages[0]) return Object.values(messages).map((message, i) => renderMessage(message, i));
+    return Object.values(messages).map((message, i) => renderMessage(message, i));
+  }
+
+  let convos = [];
+  for(i=0; i < navigation.state.params.convos.length; i++) {
+    let conv = {...navigation.state.params.convos[i], ...navigation.state.params.userData.data[i]};
+    convos.push(conv);
   }
 
   return (
@@ -48,7 +54,7 @@ const MessagesScreen = ({navigation}) => {
 
       <View style={styles.messagesContainer}>
           <ScrollView>
-            {renderMessages(navigation.state.params)}
+            {renderMessages(convos)}
          </ScrollView>
       </View>
     </View>

@@ -14,6 +14,7 @@ import CampaignViewCreator from '../Containers/CampaignViewCreator';
 import CampaignViewBrand from '../Containers/CampaignViewBrand';
 import CampaignApplicant from '../Containers/CampaignApplicant';
 import Profile from '../Containers/ProfileScreen';
+import ProfileView from '../Components/Profile/ProfileView';
 import Settings from '../Containers/SettingsScreen';
 import SettingsBrand from '../Containers/SettingsBrand';
 import SettingsCreator from '../Containers/SettingsCreator';
@@ -139,6 +140,9 @@ const Navigator = createStackNavigator(
         },
         Profile: {
             screen: Profile
+        },
+        ProfileView: {
+        	screen: ProfileView
         },
         Login: {
         	screen: Login
