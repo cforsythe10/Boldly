@@ -97,6 +97,14 @@ defmodule BoldlyWeb.CreatorController do
     end
   end
 
+  def update_instagram(conn, %{"id" => id, "instagram_stats" => inst_stats}) do
+    cr = CreatorAccount.get_creator!(id)
+
+    {:ok, %Creator{} = creator} = CreatorAccount.update_instagram(cr, inst_stats)
+
+    render(conn, "show.json", creator: creator)
+  end
+
   @doc """
   Ensures that the email and password of the account are valid.
 
