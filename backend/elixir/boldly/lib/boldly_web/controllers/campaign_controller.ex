@@ -43,6 +43,7 @@ defmodule BoldlyWeb.CampaignController do
           end
         end)
     end)
+
     send_resp(conn, :no_content, "")
   end
 

@@ -21,6 +21,12 @@ defmodule Boldly.CreatorAccount do
     Repo.all(Creator)
   end
 
+  def update_instagram(cr, inst_stats) do
+    cr
+    |> Creator.change_instagram(inst_stats)
+    |> Repo.update()
+  end
+
   def update_engagement_rate(id, engagement_rate) do
     cr = get_creator!(id)
 

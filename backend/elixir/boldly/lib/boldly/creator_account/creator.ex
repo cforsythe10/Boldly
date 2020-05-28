@@ -20,6 +20,7 @@ defmodule Boldly.CreatorAccount.Creator do
     field :web_link, :string
     field :profile_visits, :integer, default: 0
     field :engagement_rate, :float, default: 0.0
+    field :instagram_stats, :string
 
     timestamps(type: :utc_datetime_usec)
   end
@@ -43,7 +44,9 @@ defmodule Boldly.CreatorAccount.Creator do
         :description,
         :picture,
         :web_link,
-        :profile_visits
+        :profile_visits,
+        :engagement_rate,
+        :instagram_stats
       ]
     )
   end
@@ -70,7 +73,8 @@ defmodule Boldly.CreatorAccount.Creator do
         :picture,
         :web_link,
         :profile_visits,
-        :engagement_rate
+        :engagement_rate,
+        :instagram_stats
       ]
     )
   end
@@ -92,7 +96,8 @@ defmodule Boldly.CreatorAccount.Creator do
       :picture,
       :web_link,
       :profile_visits,
-      :engagement_rate
+      :engagement_rate,
+      :instagram_stats
     ])
     |> validate_required([
       # :uuid,
@@ -110,6 +115,7 @@ defmodule Boldly.CreatorAccount.Creator do
     |> unique_constraint(:email)
     |> put_password_hash()
     |> store_image()
+    |> store_instagram()
   end
 
   defp put_password_hash(
@@ -138,4 +144,23 @@ defmodule Boldly.CreatorAccount.Creator do
   end
 
   defp store_image(changeset), do: changeset
+
+  defp store_instagram(
+         %Ecto.Changeset{valid?: true, changes: %{instagram_stats: instagram_stats, name: name}} =
+           changeset
+       ) do
+    f_uuid = UUID.uuid4(:hex)
+
+    unique_filename = "#{f_uuid}-#{name}-#{:rand.uniform(100)}"
+
+    bucket_name = System.get_env("BUCKET_NAME")
+
+    img =
+      ExAws.S3.put_object(bucket_name, unique_filename, instagram_stats)
+      |> ExAws.request!()
+
+    change(changeset, %{instagram_stats: unique_filename})
+  end
+
+  defp store_instagram(changeset), do: changeset
 end

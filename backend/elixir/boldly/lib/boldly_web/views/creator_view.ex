@@ -46,7 +46,8 @@ defmodule BoldlyWeb.CreatorView do
       picture: creator.picture,
       web_link: creator.web_link,
       profile_visits: creator.profile_visits,
-      engagement_rate: creator.engagement_rate
+      engagement_rate: creator.engagement_rate,
+      instagram_stats: creator.instagram_stats
     }
   end
 
@@ -67,7 +68,8 @@ defmodule BoldlyWeb.CreatorView do
           picture: creator.picture,
           web_link: creator.web_link,
           profile_visits: creator.profile_visits,
-          engagement_rate: creator.engagement_rate
+          engagement_rate: creator.engagement_rate,
+          instagram_stats: creator.instagram_stats
         }
       }
     }
