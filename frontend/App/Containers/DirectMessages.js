@@ -108,7 +108,6 @@ export default class DirectMessages extends Component {
 
 	renderMessage(message, i) {
 		let messageSide = '';
-		console.log(this.state.isCreator);
 		if((message.sent_by_creator && this.state.isCreator) || (!message.sent_by_creator && !this.state.isCreator)) messageSide = 'sent';
 		else messageSide = 'received';
 		return <MessageBox key={i} text={message.content} styles={messageSide} />
@@ -120,12 +119,13 @@ export default class DirectMessages extends Component {
 		return newArr.map((message, i) => this.renderMessage(message, i));
 	}
 
+
 	render() {
 		let user = this.props.navigation.state.params.user;
 		let hasImage = user.image;
 		return (
 			<View style={ styles.fullScreen }>
-				<Header navigation={this.props.navigation} headerType='BackEllipsesOtherProfile' title={user.name} source={hasImage} />
+				<Header navigation={this.props.navigation} headerType='BackEllipsesOtherProfile' title={user.name} source={hasImage} account={{...user}} />
 				<View style={ styles.directMessagesContainer }>
 					<ScrollView ref={ ref => this.inputRef = ref } onContentSizeChange={(contentWidth, contentHeight) => { this.inputRef.scrollToEnd({animated: true}) }} contentContainerStyle={ styles.messagesContainer }>
 						{/* <Text style={ styles.matchedText }>You matched with { user.name } { user.matchTime.includes(':') ? 'at' : 'on' } { user.matchTime } </Text> */ }

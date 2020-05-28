@@ -73,6 +73,9 @@ valid_creator_attrs2 = %{
 {:ok, _creator1} = CreatorAccount.create_creator(valid_creator_attrs1)
 {:ok, _creator1} = CreatorAccount.create_creator(valid_creator_attrs2)
 
+
+
+
 # InterestInfo.create_interest(%{interest: interest, categories: categories})
 
 # f_name = "../../interests.csv"

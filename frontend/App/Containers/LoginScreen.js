@@ -35,7 +35,7 @@ class LoginScreen extends Component {
         .then(data => { 
           if(!data.errors) {
             this.props.login(data.data.creator);
-            this.props.navigation.navigate('Dashboard'); 
+            this.props.navigation.navigate('Dashboard', {account: data.data.creator} ); 
           }
         });
 
@@ -46,7 +46,7 @@ class LoginScreen extends Component {
         .then(data => { 
           if(!data.errors){
             this.props.login(data.data.brand);
-            this.props.navigation.navigate('Dashboard'); 
+            this.props.navigation.navigate('Dashboard', {account: data.data.brand}); 
           }
         });
   }
