@@ -45,35 +45,59 @@ class Survey8 extends Component {
   	buttonPressed(){
   		let accountInfo = {...this.state.currentState, password: this.state.password};
 
-      if(accountInfo.isCreator) makePost('api/creators', JSON.stringify({ creator: {
-        name: accountInfo.name,
-        email: accountInfo.email,
-        industry: accountInfo.industry,
-        interests: accountInfo.interests.toString(),
-        location: accountInfo.location,
-        values: accountInfo.values.toString(),
-        birthday: new Date(accountInfo.DOB).toISOString().substring(0,10),
-        password: accountInfo.password
-      }})).then( response => response.json())
-        .then(data => { if(!data.errors) {
-          this.props.login(data.data);
-          this.props.navigation.navigate('Dashboard'); 
-        }}
-      );
-      else makePost('api/brands', JSON.stringify({ brand: {
-        name: accountInfo.name,
-        ecommerce: accountInfo.isECommerse,
-        location: accountInfo.location,
-        industries: accountInfo.industry,
-        values: accountInfo.values.toString(),
-        email: accountInfo.email,
-        password: accountInfo.password
-      }})).then( response => response.json())
-        .then(data => { if(!data.errors) {
-          this.props.login(data.data);
-          this.props.navigation.navigate('Dashboard'); 
-        }}
-      );
+      if(accountInfo.isCreator)
+      {
+        let account = { creator: {
+          name: accountInfo.name,
+          email: accountInfo.email,
+          industry: accountInfo.industry,
+          interests: accountInfo.interests.toString(),
+          location: accountInfo.location,
+          values: accountInfo.values.toString(),
+          birthday: new Date(accountInfo.DOB).toISOString().substring(0,10),
+          password: accountInfo.password
+        }};
+        makePost('api/creators', JSON.stringify({ creator: {
+          name: accountInfo.name,
+          email: accountInfo.email,
+          industry: accountInfo.industry,
+          interests: accountInfo.interests.toString(),
+          location: accountInfo.location,
+          values: accountInfo.values.toString(),
+          birthday: new Date(accountInfo.DOB).toISOString().substring(0,10),
+          password: accountInfo.password
+        }})).then( response => response.json())
+          .then(data => { if(!data.errors) {
+            this.props.login(data.data);
+            this.props.navigation.navigate('Dashboard', {account: data.data}); 
+          }}
+        );
+      } 
+      else {
+        let account = { brand: {
+          name: accountInfo.name,
+          ecommerce: accountInfo.isECommerse,
+          location: accountInfo.location,
+          industries: accountInfo.industry,
+          values: accountInfo.values.toString(),
+          email: accountInfo.email,
+          password: accountInfo.password
+        }};
+        makePost('api/brands', JSON.stringify({ brand: {
+          name: accountInfo.name,
+          ecommerce: accountInfo.isECommerse,
+          location: accountInfo.location,
+          industries: accountInfo.industry,
+          values: accountInfo.values.toString(),
+          email: accountInfo.email,
+          password: accountInfo.password
+        }})).then( response => response.json())
+          .then(data => { if(!data.errors) {
+            this.props.login(data.data);
+            this.props.navigation.navigate('Dashboard', {account: data.data}); 
+          }}
+        );
+      }
   	}
 
     _renderHeader = () => {
