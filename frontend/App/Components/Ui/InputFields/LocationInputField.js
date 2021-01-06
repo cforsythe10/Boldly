@@ -7,7 +7,7 @@ import axios from 'axios';
 import { Fonts } from '../../../Themes';
 // import style from '../Styles/LocationFieldStyles';
 
-const googlePlacesApiKey = 'AIzaSyAaRpC7Y_nkSiJqEJr-84K_BcZEyDfLwy4';
+const googlePlacesApiKey = 'INSERT_GOOGLE_PLACES_KEY_HERE';
 
 const GooglePlacesAutocompleteStylesLight = {
 	description: {
